@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div id="archive">
+		<p class="archive_title">Por autor</p>
+		{% for author in authors %}
+			<a href="/author/{{ author.username }}" title="{{ author.username }}">
+				<img class="archive_profile_image" src="{% if author.profile.image %}/{{ author.profile.image }}{%else%}/s/img/assets/default_avatar.jpg{% endif %}" alt="{{ author.username }}">
+			</a>
+		{% endfor %}
+		<p class="archive_title">Por tag</p>
+		{% for object in object_list %}
+			<a href="/tag/{{ object.slug }}"><p>{{ object.slug|capfirst }}</p></a>
+		{% endfor %}
+		<p class="archive_title">Archivo</p>
+		{% for year,months in posts.items %}
+			<p class="archive_year">{{ year }}</p>
+			{% for month in months %}
+				<a href="/{{ year }}/{{ month|date:"m" }}"><p class="archive_month">{{ month|date:"F" }}</p></a>
+			{% endfor %}
+		{% endfor %}
+	</div>
+{% endblock %}

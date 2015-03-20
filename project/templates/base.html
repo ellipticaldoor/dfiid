@@ -1,0 +1,43 @@
+{% spaceless %}
+{% load staticfiles %}
+{% load compress %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>withaliasing</title>
+	<meta name="description" content="Trantoor">
+	<meta name="keywords" content="">
+	<meta name="theme-color" content="#34AADC">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:600,400" rel="stylesheet" type="text/css">
+	{% compress css inline %}
+		<link rel="stylesheet" href="/s/css/style.css" type="text/css" charset="utf-8">
+	{% endcompress %}
+</head>
+<body>
+	<header class="no-select">withaliasing</header>
+	<nav class="no-select">
+		<div class="container">
+			<a href="/">blog</a>
+			<a href="/archivo">buscar</a>
+			{% if user.get_username %}
+				<a target="_blank" href="/cms">cms</a>
+				<a href="/logout">logout</a>
+			{% endif %}
+		</div>
+	</nav>
+
+	<div class="container">
+		{% block content %}{% endblock %}
+		<footer>
+			<a href="mailto:dortamiguel@gmail.com">contacto</a> · <a href="/feed/">rss</a>
+		</footer>
+	</div>
+	{% compress js inline %}
+		<script src={% static "js/lib/fluidvids_2.4.0.min.js" %}></script>
+	{% endcompress %}
+</body>
+</html>
+{% endspaceless %}

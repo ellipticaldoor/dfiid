@@ -1,0 +1,42 @@
+
+{% load staticfiles %}
+{% load compress %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>cms</title>
+	<meta name="description" content="With Aliasing CMS">
+	<meta name="theme-color" content="#34AADC">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:600,400" rel="stylesheet" type="text/css">
+	{% compress css inline %}
+		<link rel="stylesheet" href="/s/css/style.css" type="text/css" charset="utf-8">
+		<link rel="stylesheet" href="/s/css/cms.css" type="text/css" charset="utf-8">
+	{% endcompress %}
+</head>
+<body>
+	<div id="cms_nav">
+		<div class="container">
+			<span id="cms_nav_left">
+				<a href="/cms">posts</a>
+				<a href="/cms/tags">tags</a>
+			</span>
+			<span id="cms_nav_right">
+				<a href="#">profile</a>
+				<a target="_blank" href="/">blog</a>
+				<a href="/logout">logout</a>
+			</span>
+		</div>
+	</div>
+	
+	<div class="container">
+		{% block content %}{% endblock %}
+	</div>
+	
+	<script src="//cdn.jsdelivr.net/marked/0.3.1/marked.min.js"></script>
+	{% block script %}{% endblock %}
+</body>
+</html>
+

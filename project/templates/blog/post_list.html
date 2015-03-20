@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	{% if object_list %}
+		{% for object in object_list %}
+			{% if forloop.counter0 < 5 %}
+				{% include "blog/layouts/post.html" %}
+			{% else %}
+				{% if forloop.counter0 == 5 %}
+					<p class="archive_title previous_posts">Anteriores</p>
+				{% endif %}
+				<li><p><a href="{{ object.get_absolute_url }}" class="post_title">{{ object.title }}</a><span class="list_date"> {{ object.pub_date | date:"d/M/Y" }}</span></p>
+			{% endif %}
+		{% endfor %}
+	{% else %}
+		{% include "layouts/no_content.html" %}
+	{% endif %}
+{% endblock %}

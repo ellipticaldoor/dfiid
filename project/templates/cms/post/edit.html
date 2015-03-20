@@ -1,0 +1,37 @@
+{% extends "cms/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	<div id="edit_form">
+		<section id="editor_section">
+			<form method="post" action="" class="form-horizontal">
+				{% csrf_token %}
+					<div id="main_edit">
+						<p>{{ form.title }}</p>
+						{{ form.body }}
+					</div>
+					<div id="edit_options">
+						<p>{{ form.pub_date }}</p>
+						<p>{{ form.tag }} {{ form.draft }} <span>draft</span></p>
+					</div>
+					<input class="form_button" type="submit" value="Submit" />
+			</form>
+		</section>
+		<section id="view_section">
+				<div class="post">
+					<a target="_blank" href="" id="post_title" class="post_title"></a>
+					<div id="post_content" class="post_content"></div>
+					<div class="post_info">
+						<span>Publicado por <span class="post_info_highlight"><a target="_blank" href="/author/{{ user.get_username }}/">{{ user.get_username }}</a></span>,</span>
+						<span>tag <span class="post_info_highlight"><a id="post_tag" target="_blank" href=""></a></span>,</span>
+						<span id="post_pub_date" class="post_info_highlight"></span>
+					</div>
+				</div>
+		</section>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<script src={% static "js/lib/fluidvids_2.4.0.min.js" %}></script>
+	<script src={% static "js/editor.js" %}></script>
+{% endblock %}

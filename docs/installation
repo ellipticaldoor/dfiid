@@ -1,0 +1,9 @@
+mkvirtualenv --python=[python 3 path] with_alising
+
+# On the project folder
+workon with_alising
+pip install -r requirements/base.txt
+python manage.py makemigrations user blog
+python manage.py migrate
+python manage.py syncdb
+python manage.py runserver

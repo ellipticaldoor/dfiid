@@ -1,0 +1,13 @@
+Iframe only escaping on markdown post content
+En el editor poner una vista única y un botón para previsualizar el post
+Implementar un sistema de comentarios propio
+Cambiar el título de la pestaña del editor con el del título conforme se escribe
+Acabar el RSS
+Añadir placeholder en los inputs del formulario de crear post
+Añadir sitemap.xmml
+Añadir perfil de usuario
+Añadir favicon.ico y robots.txt a las url [en nginx]
+Añadir mensaje para evitar salir de la pantalla si se ha realizado algún cambio en el editor
+Configurar caché
+Permitir borrar tags y posts
+Añadir url para visitar un post desde la preview del editor

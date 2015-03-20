@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if object_list %}
+		{% for object in object_list %}
+			{% include "blog/layouts/post.html" %}
+		{% endfor %}
+	{% else %}
+		{% include "layouts/no_content.html" %}
+	{% endif %}
+	{% if is_paginated %}
+		{% include "layouts/paginate.html" %}
+	{% endif %}
+{% endblock %}
