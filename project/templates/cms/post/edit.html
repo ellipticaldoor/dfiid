@@ -32,6 +32,8 @@
 {% endblock %}
 
 {% block script %}
-	<script src={% static "js/lib/fluidvids_2.4.0.min.js" %}></script>
-	<script src={% static "js/editor.js" %}></script>
+	{% compress js inline %}
+		<script src={% static "js/lib/fluidvids_2.4.0.min.js" %}></script>
+		<script src={% static "js/editor.js" %}></script>
+	{% endcompress %}
 {% endblock %}
