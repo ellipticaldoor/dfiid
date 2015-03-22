@@ -2,12 +2,12 @@
    ========================================================================== */
 
 textarea {
-	padding: 5px;
-	border: 1px solid #C7C7CC;
+	padding: 20px;
+	border: 1px solid #e7e7e7;
 	font-size: 110%;
 	max-width: 100%;
 	min-width: 100%;
-	height: 50vh;
+	height: calc(100vh - 210px);
 	min-height: 50vh;
 	resize: none;
 	outline: none;
@@ -35,7 +35,7 @@ textarea {
 #cms_nav_right a { margin-left: 10px; }
 
 
-/* Editor
+/* CMS List
    ========================================================================== */
 
 .cms_table {
@@ -68,9 +68,12 @@ textarea {
 /* Editor
    ========================================================================== */
 
+#edit_form { overflow: auto; }
+
 #edit_options {
 	float: left;
 	color: #8E8E93;
+	margin-bottom: 5px;
 }
 
 #view_section { display: none; }
@@ -79,3 +82,7 @@ textarea {
 	width: 100%;
 	margin-bottom: 5px; 
 }
+
+.form_button { margin-left: 5px; }
+
+#id_pub_date { width: 165px;  }

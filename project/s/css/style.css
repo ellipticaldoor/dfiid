@@ -273,8 +273,6 @@ footer a:visited { color: #8E8E93; }
 
 #login_form { margin-top: 25px; }
 
-#id_pub_date { width: 164px;  }
-
 #login_form input {
 	width: 250px;
 	max-width: 100%;

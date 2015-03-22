@@ -1,6 +1,7 @@
 // Global editor variables
 var editor_section = document.getElementById('editor_section');
 var view_section = document.getElementById('view_section');
+var textAreaLines = 0;
 
 // Form editor variables
 var id_title = document.getElementById('id_title');
@@ -16,13 +17,10 @@ var postTag = document.getElementById('post_tag');
 var postPubdate = document.getElementById('post_pub_date');
 
 
-document.addEventListener('DOMContentLoaded', function() {
-	textAreaAdjust(id_body);
-});
-
-id_body.addEventListener('input', function(event) {
-	textAreaAdjust(this);
-});
+window.onload = function() {
+	// textAreaAdjust(id_body);
+	// textAreaScrollHeight = id_body.scrollHeight;
+};
 
 document.addEventListener('keydown', function(event) {
 	if (event.shiftKey && event.location === KeyboardEvent.DOM_KEY_LOCATION_RIGHT) {
@@ -51,7 +49,18 @@ function updatePreview() {
 	postPubdate.innerHTML = id_pub_date.value;
 }
 
-function textAreaAdjust(event) {
-	event.style.height = '1px';
-	event.style.height = (25 + event.scrollHeight) + 'px';
-}
+// id_body.addEventListener('input', function(event) {
+// 	// console.log(textAreaScrollHeight);
+// 	// console.log(id_body.scrollHeight);
+// 	console.log(id_body.getAttribute("rows"));
+// 	if (textAreaScrollHeight != id_body.scrollHeight) {
+// 		console.log('something');
+// 		textAreaAdjust(this);
+// 		textAreaScrollHeight = id_body.scrollHeight;
+// 	}
+// });
+
+// function textAreaAdjust(event) {
+// 	event.style.height = '1px';
+// 	event.style.height = (25 + event.scrollHeight) + 'px';
+// }
