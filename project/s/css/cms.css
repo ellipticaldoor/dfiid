@@ -45,10 +45,9 @@ textarea {
 }
 
 .cms_date {
-	margin-top: 4px;
+	margin-left: 8px;
 	color: #8E8E93;
 	font-size: 70%;
-	float: right;
 }
 
 #cms_add {
@@ -60,8 +59,9 @@ textarea {
 
 .cms_draft {
 	font-size: 90%;
-	margin-left: 3px;
-	color: #8E8E93;
+	font-weight: bold;
+	margin-left: 8px;
+	color: #FF2D55;
 }
 
 
