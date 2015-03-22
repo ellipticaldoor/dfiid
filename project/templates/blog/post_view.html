@@ -4,10 +4,8 @@
 {% block content %}
 	{% if object %}
 		{% include "blog/layouts/post.html" %}
-		<!--
 		<div id="disqus_thread"></div>
 		<script type="text/javascript">var disqus_shortname="withaliasing";!function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+disqus_shortname+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}();</script>
-		-->
 	{% else %}
 		{% include "layouts/no_content.html" %}
 	{% endif %}
