@@ -4,7 +4,7 @@ from withaliasing.sitemaps import SiteSitemap, BlogSitemap
 
 
 sitemaps = {
-	'site': SiteSitemap(['front', 'search', 'feed']),
+	'site': SiteSitemap(['front', 'all', 'feed']),
 	'blog': BlogSitemap
 }
 
