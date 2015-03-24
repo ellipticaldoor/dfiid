@@ -10,7 +10,7 @@
 		{% endfor %}
 		<p class="archive_title">Por tag</p>
 		{% for object in object_list %}
-			<a href="/tag/{{ object.slug }}"><p>{{ object.slug|capfirst }}</p></a>
+			<a href="/tag/{{ object.slug }}"><p>{{ object.slug }}</p></a>
 		{% endfor %}
 		<p class="archive_title">Archivo</p>
 		{% for year,months in posts.items %}
