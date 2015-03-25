@@ -21,6 +21,7 @@ class SiteSitemap(Sitemap):
 		return datetime.now()
 
 	def location(self, obj):
+		print(reverse(obj))
 		return reverse(obj)
 
 
@@ -35,4 +36,4 @@ class BlogSitemap(Sitemap):
 		return obj.pub_date
 
 	def location(self, obj):
-		return '/'
+		return obj.get_absolute_url()

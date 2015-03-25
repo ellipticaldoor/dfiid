@@ -2,6 +2,7 @@ from time import time
 from urllib.parse import quote
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.utils.text import slugify
 
 from user.models import User
 from core.core import _createId
@@ -54,7 +55,8 @@ class Post(models.Model):
 	def __str__(self): return str(self.title)
 
 	def save(self, *args, **kwargs):
-		self.slug = self.title.replace(' ', '_').encode('ascii', errors='ignore')
+		self.slug = slugify(self.title.replace(' ', '_'))
+		if not self.slug: self.slug = '_'
 		super(Post, self).save(*args, **kwargs)
 
 	class Meta:
