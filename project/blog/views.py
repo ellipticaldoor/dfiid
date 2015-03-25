@@ -56,3 +56,12 @@ class ArchiveView(ListView):
 		context['posts'] = archivize(Post.objects.published())
 		context['authors'] = User.objects.all()
 		return context
+
+class AuthorView(ListView):
+	template_name = 'blog/profile.html'
+	model = User
+
+	def get_queryset(self):
+		author = self.kwargs['author']
+		queryset = Post.objects.by_author(author)
+		return queryset

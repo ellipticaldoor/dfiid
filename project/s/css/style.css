@@ -228,7 +228,7 @@ div.fluidvids iframe {
 .fluidvids { margin: 20px 0px 20px 0px; }
 
 
-/* Buscar
+/* All
    ========================================================================== */
 
 #archive { margin: 25px 0px 25px 0px; }
@@ -252,9 +252,36 @@ p.archive_month { margin-left: 2px; }
 }
 
 img.archive_profile_image {
-	border-radius: 2px;
+	margin: 1px 6px 1px 0px;
 	height: 150px;
-	margin: 5px 0px 0px 0px;
+}
+
+
+/* Profile
+   ========================================================================== */
+
+#profile_container {
+	overflow: auto;
+	margin: 25px 0px 25px 0px;
+	border-radius: 2px;
+}
+
+#profile_username {
+	display: block;
+	margin-bottom: 15px;
+	padding: 0px 10px 0px 10px;
+	border-radius: 2px;
+	font-size: 250%;
+	color: white;
+	background-color: #34AADC;
+	-webkit-animation: color_change 60s infinite alternate;
+	-ms-animation: color_change 60s infinite alternate;
+	animation: color_change 60s infinite alternate;
+}
+
+#profile_container img {
+	height: 200px;
+	margin-bottom: 8px;
 }
 
 

@@ -8,7 +8,8 @@ urlpatterns = patterns(
 
 	# Archivo
 	url(r'^all/$', views.ArchiveView.as_view(), name="all"),
-	url(r'^author/(?P<author>\S+)/$', views.PostAuthorView.as_view(), name="author_view"),
+	url(r'^author/posts/(?P<author>\S+)/$', views.PostAuthorView.as_view(), name="author_view"),
+	url(r'^author/(?P<author>\S+)/$', views.AuthorView.as_view(), name="author_view"),
 	url(r'^tag/(?P<tag>\S+)/$', views.PostTagView.as_view(), name="tag_view"),
 	url(r'^(?P<year>\d{4})/(?P<month>\d{2})/$',  views.PostDateView.as_view(), name="date_view"),
 	

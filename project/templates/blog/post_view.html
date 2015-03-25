@@ -12,5 +12,5 @@
 {% endblock %}
 
 {% block title %}
-	{{ object.title }}
+	{{ object.title |truncatechars:60}}
 {% endblock %}
