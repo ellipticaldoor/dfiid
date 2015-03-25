@@ -1,4 +1,5 @@
 from time import time
+from urllib.parse import quote
 from django.db import models
 from django.core.urlresolvers import reverse
 
@@ -53,7 +54,7 @@ class Post(models.Model):
 	def __str__(self): return str(self.title)
 
 	def save(self, *args, **kwargs):
-		self.slug = self.title.replace(' ', '_').replace('#', '_')
+		self.slug = quote(str(self.title), safe="")
 		super(Post, self).save(*args, **kwargs)
 
 	class Meta:
