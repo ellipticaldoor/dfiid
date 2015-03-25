@@ -269,9 +269,9 @@ img.archive_profile_image {
 #profile_username {
 	display: block;
 	margin-bottom: 15px;
-	padding: 0px 10px 0px 10px;
+	padding: 5px 8px 5px 8px;
 	border-radius: 2px;
-	font-size: 250%;
+	font-size: 160%;
 	color: white;
 	background-color: #34AADC;
 	-webkit-animation: color_change 60s infinite alternate;

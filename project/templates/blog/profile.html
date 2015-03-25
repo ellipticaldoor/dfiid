@@ -3,7 +3,7 @@
 
 {% block content %}
 	<div id="profile_container">
-		<span id="profile_username">{{ user.username }}</span>
+		<span id="profile_username">ellipticaldoor</span>
 		<img class="archive_profile_image" src="{% if user.profile.image %}/{{ user.profile.image }}{%else%}/s/img/assets/default_avatar.jpg{% endif %}" alt="{{ user.username }}">
 		{% if user.profile.bio %}
 			{{ user.profile.bio | markdown }}

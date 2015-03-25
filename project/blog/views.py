@@ -20,15 +20,6 @@ class PostView(DetailView):
 		return queryset
 
 
-class PostAuthorView(ListView):
-	template_name = 'blog/post_list.html'
-
-	def get_queryset(self):
-		author = self.kwargs['author']
-		queryset = Post.objects.by_author(author)
-		return queryset
-
-
 class PostTagView(ListView):
 	template_name = 'blog/post_list.html'
 
