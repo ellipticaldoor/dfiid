@@ -54,7 +54,7 @@ class Post(models.Model):
 	def __str__(self): return str(self.title)
 
 	def save(self, *args, **kwargs):
-		self.slug = quote(str(self.title), safe="")
+		self.slug = self.title.replace(' ', '_').encode('ascii', errors='ignore')
 		super(Post, self).save(*args, **kwargs)
 
 	class Meta:
