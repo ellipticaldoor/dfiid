@@ -32,6 +32,10 @@
 	</div>
 {% endblock %}
 
+{% block title %}
+	edit: {{object.title}}
+{% endblock %}
+
 {% block script %}
 	{% compress js inline %}
 		<script src={% static "js/lib/fluidvids_2.4.0.min.js" %}></script>
