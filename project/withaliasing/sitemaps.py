@@ -28,7 +28,7 @@ class SiteSitemap(Sitemap):
 
 class BlogSitemap(Sitemap):
 	changefreq = 'never'
-	priority = 0.9
+	priority = 0.5
 
 	def items(self):
 		return Post.objects.published()
@@ -42,7 +42,7 @@ class BlogSitemap(Sitemap):
 
 class TagSitemap(Sitemap):
 	changefreq = 'never'
-	priority = 0.8
+	priority = 0.4
 
 	def items(self):
 		return Tag.objects.all()
@@ -53,7 +53,7 @@ class TagSitemap(Sitemap):
 
 class UserSitemap(Sitemap):
 	changefreq = 'never'
-	priority = 0.7
+	priority = 0.6
 
 	def items(self):
 		return User.objects.all()
