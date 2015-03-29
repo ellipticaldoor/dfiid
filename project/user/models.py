@@ -47,4 +47,9 @@ class Profile(models.Model):
 	image = models.FileField(upload_to=get_profile_image, blank=True)
 	bio = models.CharField(max_length=255, blank=True)
 
+	def get_absolute_url(self):
+		if not hasattr(self.user, 'decode'): user = self.user
+		else: user = self.user.decode('utf-8')
+		return '/author/%s' % (user)
+
 	def __str__(self): return str(self.user)

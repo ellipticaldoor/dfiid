@@ -11,6 +11,9 @@ from core.core import _createId
 class Tag(models.Model):
 	slug = models.SlugField(max_length=100, primary_key=True)
 
+	def get_absolute_url(self):
+		return '/tag/%s' % (str(self.slug))
+
 	def __str__(self): return str(self.slug)
 
 

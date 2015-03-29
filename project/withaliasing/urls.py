@@ -1,11 +1,13 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from withaliasing.sitemaps import SiteSitemap, BlogSitemap
+from withaliasing import sitemaps
 
 
 sitemaps = {
-	'site': SiteSitemap(['front', 'all', 'feed']),
-	'blog': BlogSitemap
+	'site': sitemaps.SiteSitemap(['front', 'all', 'feed']),
+	'blog': sitemaps.BlogSitemap,
+	'tag': sitemaps.TagSitemap,
+	'user': sitemaps.UserSitemap,
 }
 
 urlpatterns = patterns(

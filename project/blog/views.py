@@ -48,6 +48,7 @@ class ArchiveView(ListView):
 		context['authors'] = User.objects.all()
 		return context
 
+
 class AuthorView(ListView):
 	template_name = 'blog/profile.html'
 	model = User
