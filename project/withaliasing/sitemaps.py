@@ -8,7 +8,6 @@ from core.core import archivize
 
 
 class SiteSitemap(Sitemap):
-	priority = 1
 
 	def __init__(self, names):
 		self.names = names
@@ -28,7 +27,6 @@ class SiteSitemap(Sitemap):
 
 class BlogSitemap(Sitemap):
 	changefreq = 'never'
-	priority = 0.5
 
 	def items(self):
 		return Post.objects.published()
@@ -42,7 +40,6 @@ class BlogSitemap(Sitemap):
 
 class TagSitemap(Sitemap):
 	changefreq = 'never'
-	priority = 0.4
 
 	def items(self):
 		return Tag.objects.all()
@@ -53,7 +50,6 @@ class TagSitemap(Sitemap):
 
 class UserSitemap(Sitemap):
 	changefreq = 'never'
-	priority = 0.6
 
 	def items(self):
 		return User.objects.all()
