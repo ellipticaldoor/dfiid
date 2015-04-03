@@ -8,7 +8,7 @@
 	{% if object_list %}
 		{% for object in object_list %}
 			<div class="cms_table">
-				<a withaliasing href="/tag/{{ object.slug }}">{{ object.slug }}</a>
+				<a href="/tag/{{ object.slug }}">{{ object.slug }}</a>
 			</div>
 		{% endfor %}
 	{% else %}

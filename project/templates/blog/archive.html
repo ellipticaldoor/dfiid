@@ -12,13 +12,6 @@
 		{% for object in object_list %}
 			<a href="/tag/{{ object.slug }}"><p>{{ object.slug }}</p></a>
 		{% endfor %}
-		<p class="archive_title">Archivo</p>
-		{% for year,months in posts.items %}
-			<p class="archive_year">{{ year }}</p>
-			{% for month in months %}
-				<a href="/{{ year }}/{{ month|date:"m" }}"><p class="archive_month">{{ month|date:"F" }}</p></a>
-			{% endfor %}
-		{% endfor %}
 	</div>
 {% endblock %}
 

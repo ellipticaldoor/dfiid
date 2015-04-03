@@ -1,10 +1,10 @@
 server {
-        server_name www.withaliasing.com;
-        return 301 $scheme://withaliasing.com$request_uri;
+        server_name www.dfiid.com;
+        return 301 $scheme://dfiid.com$request_uri;
 }
 
 server {
-        server_name withaliasing.com;
+        server_name dfiid.com;
 
         location / {
                 proxy_pass http://127.0.0.1:8000;
@@ -13,18 +13,18 @@ server {
         }
 
         location /favicon.ico {
-                alias /root/withaliasing/project/s/favicon.ico;
+                alias /root/dfiid/project/s/favicon.ico;
         }
 
         location /apple-touch-icon.png {
-                alias /root/withaliasing/project/s/apple-touch-icon.png;
+                alias /root/dfiid/project/s/apple-touch-icon.png;
         }
 
         location /robots.txt {
-                alias /root/withaliasing/project/s/robots.txt;
+                alias /root/dfiid/project/s/robots.txt;
         }
 
         location /s/ {
-                alias /root/withaliasing/project/s/;
+                alias /root/dfiid/project/s/;
         }
 }

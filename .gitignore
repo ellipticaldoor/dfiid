@@ -5,4 +5,4 @@ Thumbs.db
 staticfiles/
 migrations/
 __pycache__/
-TODO
+todo.md

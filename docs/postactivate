@@ -1,10 +1,10 @@
 #!/bin/bash
 # This hook is sourced after this virtualenv is activated.
-export DJANGO_SETTINGS_MODULE=''
+export DJANGO_SETTINGS_MODULE='dfiid.settings.'
 export SECRET_KEY=''
-export DB_NAME=''
+export DB_NAME='dfiid'
 export DB_USER=''
 export DB_PASSWORD=''
-export DB_HOST=''
+export DB_HOST='localhost'
 export DB_PORT=''
-export LANGUAGE=''
+export LANGUAGE='en-us'

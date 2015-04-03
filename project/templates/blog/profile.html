@@ -3,18 +3,18 @@
 
 {% block content %}
 	<div id="profile_container">
-		<span id="profile_username">ellipticaldoor</span>
+		<span id="profile_username">{{ object.username }}</span>
 		<img class="archive_profile_image" src="{% if user.profile.image %}/{{ user.profile.image }}{%else%}/s/img/assets/default_avatar.jpg{% endif %}" alt="{{ user.username }}">
 		{% if user.profile.bio %}
 			{{ user.profile.bio | markdown }}
 		{% else %}
-			<p>{{ user.username }} doesn't have a bio.</p>
+			<p>{{ user.bio }}</p>
 		{% endif %}
 	</div>
 	<p class="archive_title" href="/author/posts/{{ user.username }}">Posts</p>
-	{% for object in object_list %}
-		<li><p><a href="{{ object.get_absolute_url }}" class="post_title">{{ object.title }}</a><span class="list_date"> {{ object.pub_date | date:"d/M/Y" }}</span></p>
+	{% for post in posts %}
+		<li><p><a href="{{ post.get_absolute_url }}" class="post_title">{{ post.title }}</a><span class="list_date"> {{ post.pub_date | date:"d/M/Y" }}</span></p>
 	{% endfor %}
 {% endblock %}
 
-{% block title %}{{ user.username }} profile{% endblock %}
+{% block title %}{{ object.username }} profile{% endblock %}

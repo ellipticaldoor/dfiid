@@ -187,7 +187,14 @@ div.fluidvids iframe {
 	margin-bottom: 10px;
 }
 
-.post { margin-top: 3%; }
+.post_container {
+	padding: 4px 10px 4px 10px;
+}
+
+.post {
+	margin-top: 3%;
+	border-radius: 2px;
+}
 
 .post_title {font-size: 150%; }
 
@@ -202,16 +209,19 @@ div.fluidvids iframe {
 }
 
 .post_info {
-	background-color: #8E8E93;
-	padding: 5px 10px 5px 10px;
-	border-radius: 2px;
-	font-size: 85%;
-	color: white;
+	overflow: auto;
+	color: #8E8E93;
+	line-height: 30px;
 }
 
-.post_info span { margin-bottom: 8px; }
+.post_info img {
+	width: 30px;
+	height: 30px;
+	margin: 0px;
+}
 
-.post_info_highlight a { color: #E4DDCA; }
+.post_info img, .post_info span { float: left; }
+.post_info span { margin-left: 8px; }
 
 #paginate { padding: 25px 4px 0px 0px; }
 
@@ -223,8 +233,6 @@ div.fluidvids iframe {
 	margin-left: 2px;
 }
 
-#disqus_thread { margin-top: 20px; }
-
 .fluidvids { margin: 20px 0px 20px 0px; }
 
 
@@ -232,13 +240,6 @@ div.fluidvids iframe {
    ========================================================================== */
 
 #archive { margin: 25px 0px 25px 0px; }
-
-p.archive_year {
-	margin-top: 5px;
-	font-weight: bold;
-}
-
-p.archive_month { margin-left: 2px; }
 
 .archive_title {
 	color: white;

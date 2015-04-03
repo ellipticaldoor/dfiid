@@ -1,5 +1,5 @@
 """
-Django settings for withaliasing project.
+Django settings for dfiid project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -60,9 +60,9 @@ MIDDLEWARE_CLASSES = (
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'withaliasing.urls'
+ROOT_URLCONF = 'dfiid.urls'
 
-WSGI_APPLICATION = 'withaliasing.wsgi.application'
+WSGI_APPLICATION = 'dfiid.wsgi.application'
 
 DATABASES = {
 	'default': {

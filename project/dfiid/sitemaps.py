@@ -4,7 +4,6 @@ from django.contrib.sitemaps import Sitemap
 from django.core.urlresolvers import reverse
 from user.models import User
 from blog.models import Post, Tag
-from core.core import archivize
 
 
 class SiteSitemap(Sitemap):
@@ -55,4 +54,4 @@ class UserSitemap(Sitemap):
 		return User.objects.all()
 
 	def location(self, obj):
-		return obj.profile.get_absolute_url()
+		return obj.get_absolute_url()

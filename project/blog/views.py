@@ -2,7 +2,6 @@ from django.views.generic import ListView, DetailView
 
 from user.models import User
 from blog.models import Post, Tag
-from core.core import archivize
 
 
 class FrontView(ListView):
@@ -44,16 +43,15 @@ class ArchiveView(ListView):
 
 	def get_context_data(self, **kwargs):
 		context = super(ArchiveView, self).get_context_data(**kwargs)
-		context['posts'] = archivize(Post.objects.published())
 		context['authors'] = User.objects.all()
 		return context
 
 
-class AuthorView(ListView):
+class AuthorView(DetailView):
 	template_name = 'blog/profile.html'
 	model = User
 
-	def get_queryset(self):
-		author = self.kwargs['author']
-		queryset = Post.objects.by_author(author)
-		return queryset
+	def get_context_data(self, **kwargs):
+		context = super(AuthorView, self).get_context_data(**kwargs)
+		context['posts'] = Post.objects.by_author(self.kwargs['pk'])
+		return context

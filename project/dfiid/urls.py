@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from withaliasing import sitemaps
+from dfiid import sitemaps
 
 
 sitemaps = {
-	'site': sitemaps.SiteSitemap(['front', 'all', 'feed']),
+	'site': sitemaps.SiteSitemap(['front', 'search', 'feed']),
 	'blog': sitemaps.BlogSitemap,
 	'tag': sitemaps.TagSitemap,
 	'user': sitemaps.UserSitemap,
