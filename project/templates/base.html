@@ -24,7 +24,7 @@
 		<div class="container">
 			<a href="/">portada </a>
 			<a href="/search">buscar </a>
-			{% if user.get_username %}
+			{% if user.is_authenticated %}
 				<a href="/cms">cms </a>
 				<a href="/logout">logout </a>
 			{% endif %}

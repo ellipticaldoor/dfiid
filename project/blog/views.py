@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
 
-from user.models import User
+from user.models import User, Profile
 from blog.models import Post, Tag
 
 
@@ -49,7 +49,7 @@ class ArchiveView(ListView):
 
 class AuthorView(DetailView):
 	template_name = 'blog/profile.html'
-	model = User
+	model = Profile
 
 	def get_context_data(self, **kwargs):
 		context = super(AuthorView, self).get_context_data(**kwargs)
