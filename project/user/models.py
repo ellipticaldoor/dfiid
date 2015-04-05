@@ -50,6 +50,6 @@ class Profile(models.Model):
 	def get_absolute_url(self):
 		if not hasattr(self.user, 'decode'): user = self.user
 		else: user = self.user.decode('utf-8')
-		return '/author/%s' % (user)
+		return '/user/%s' % (user)
 
 	def __str__(self): return str(self.user)

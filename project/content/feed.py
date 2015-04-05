@@ -1,9 +1,9 @@
 from django.contrib.syndication.views import Feed
-from blog.models import Post
+from content.models import Post
 
 
-class BlogFeed(Feed):
-	title = "Trantoor blog"
+class ContentFeed(Feed):
+	title = "Trantoor content"
 	link = "/feed"
 	description = "Latest Trantoor posts"
 

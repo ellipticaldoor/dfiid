@@ -46,7 +46,7 @@ INSTALLED_APPS = (
 	'compressor',
 	'core',
 	'user',
-	'blog',
+	'content',
 	'cms',
 )
 

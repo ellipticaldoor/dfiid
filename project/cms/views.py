@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 
-from blog.models import Post, Tag
+from content.models import Post, Tag
 from cms.forms import PostForm, TagForm
 
 

@@ -2,10 +2,11 @@
 {% load staticfiles %}
 
 {% block content %}
+	+ Crear post en esta lista
 	{% if object_list %}
 		{% for object in object_list %}
 			{% if forloop.counter0 < 5 %}
-				{% include "blog/layouts/post.html" %}
+				{% include "content/layouts/post.html" %}
 			{% else %}
 				{% if forloop.counter0 == 5 %}
 					<p class="archive_title previous_posts">Anteriores</p>

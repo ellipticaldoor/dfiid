@@ -5,7 +5,7 @@ from dfiid import sitemaps
 
 sitemaps = {
 	'site': sitemaps.SiteSitemap(['front', 'search', 'feed']),
-	'blog': sitemaps.BlogSitemap,
+	'content': sitemaps.ContentSitemap,
 	'tag': sitemaps.TagSitemap,
 	'user': sitemaps.UserSitemap,
 }
@@ -17,5 +17,5 @@ urlpatterns = patterns(
 
 	url(r'^', include('user.urls')),
 	url(r'^', include('cms.urls')),
-	url(r'^', include('blog.urls')),
+	url(r'^', include('content.urls')),
 )

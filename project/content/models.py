@@ -69,7 +69,7 @@ class Post(models.Model):
 class PostPhoto(models.Model):
 	def get_post_image(instance, filename):
 		# TODO: cambiar filename por photo_id
-		return 's/media/img/blog/%s_%s' % (str(time()).replace('.', '_'), filename)
+		return 's/media/img/content/%s_%s' % (str(time()).replace('.', '_'), filename)
 
 	photo_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
 	photo = models.FileField(upload_to=get_post_image)

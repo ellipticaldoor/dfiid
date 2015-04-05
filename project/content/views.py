@@ -1,17 +1,17 @@
 from django.views.generic import ListView, DetailView
 
 from user.models import User, Profile
-from blog.models import Post, Tag
+from content.models import Post, Tag
 
 
 class FrontView(ListView):
-	template_name = 'blog/front.html'
+	template_name = 'content/front.html'
 	queryset = Post.objects.published()
 	paginate_by = 5
 
 
 class PostView(DetailView):
-	template_name = 'blog/post_view.html'
+	template_name = 'content/post_view.html'
 
 	def get_queryset(self):
 		pk, slug = self.kwargs['pk'], self.kwargs['slug']
@@ -20,7 +20,7 @@ class PostView(DetailView):
 
 
 class PostTagView(ListView):
-	template_name = 'blog/post_list.html'
+	template_name = 'content/post_list.html'
 
 	def get_queryset(self):
 		tag = self.kwargs['tag']
@@ -29,7 +29,7 @@ class PostTagView(ListView):
 
 
 class PostDateView(ListView):
-	template_name = 'blog/post_list.html'
+	template_name = 'content/post_list.html'
 
 	def get_queryset(self):
 		year, month = self.kwargs['year'], self.kwargs['month']
@@ -38,7 +38,7 @@ class PostDateView(ListView):
 
 
 class ArchiveView(ListView):
-	template_name = 'blog/archive.html'
+	template_name = 'content/archive.html'
 	model = Tag
 
 	def get_context_data(self, **kwargs):
@@ -47,11 +47,11 @@ class ArchiveView(ListView):
 		return context
 
 
-class AuthorView(DetailView):
-	template_name = 'blog/profile.html'
+class UserView(DetailView):
+	template_name = 'content/profile.html'
 	model = Profile
 
 	def get_context_data(self, **kwargs):
-		context = super(AuthorView, self).get_context_data(**kwargs)
+		context = super(UserView, self).get_context_data(**kwargs)
 		context['posts'] = Post.objects.by_author(self.kwargs['pk'])
 		return context

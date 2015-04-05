@@ -11,7 +11,7 @@
 			<p>{{ object.bio }}</p>
 		{% endif %}
 	</div>
-	<p class="archive_title" href="/author/posts/{{ object.user }}">Posts</p>
+	<p class="archive_title" href="/user/posts/{{ object.user }}">Posts</p>
 	{% for post in posts %}
 		<li><p><a href="{{ post.get_absolute_url }}" class="post_title">{{ post.title }}</a><span class="list_date"> {{ post.pub_date | date:"d/M/Y" }}</span></p>
 	{% endfor %}

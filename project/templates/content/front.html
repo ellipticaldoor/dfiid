@@ -3,7 +3,7 @@
 {% block content %}
 	{% if object_list %}
 		{% for object in object_list %}
-			{% include "blog/layouts/post.html" %}
+			{% include "content/layouts/post.html" %}
 		{% endfor %}
 	{% else %}
 		{% include "layouts/no_content.html" %}

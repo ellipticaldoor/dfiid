@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 
-from blog.models import Tag, Post, PostPhoto
+from content.models import Tag, Post, PostPhoto
 
 
 class PostAdmin(admin.ModelAdmin):

@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<title>{% block title %}dfiid{% endblock %}</title>
 	<meta name="description" content="dfiid">
-	<meta name="keywords" content="dfiid, blog, videojuegos, tecnología, cine, diseño, random">
+	<meta name="keywords" content="dfiid, videojuegos, tecnología, cine, diseño, random">
 	<meta name="theme-color" content="#FFFFFF">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% block meta %}{% endblock %}
@@ -19,16 +19,30 @@
 	{% endcompress %}
 </head>
 <body>
-	<header class="no-select">dfiid</header>
-	<nav class="no-select">
-		<div class="container">
-			<a href="/">portada </a>
-			<a href="/search">buscar </a>
+	<nav id="top_nav" class="nav no-select">
+		<ul>
+			<li><a id="dfiid" href="/">dfiid</a></li>
+			<li><a href="/search">subs</a></li>
+			<li><a href="/search">usuarios</a></li>
+
 			{% if user.is_authenticated %}
-				<a href="/cms">cms </a>
-				<a href="/logout">logout </a>
+				<li><a href="#">perfil</a></li>
+				<li><a href="#">preferencias</a></li>
+				<li><a href="/logout">logout</a></li>
+			{% else %}
+				<li><a href="/login">login</a></li>
 			{% endif %}
-		</div>
+		</ul>
+	</nav>
+
+	<nav id="create_nav" class="nav no-select">
+		<ul>
+			<li><a href="/new_post">crear</a></li>
+			{% if user.is_authenticated %}
+				<li><a href="/cms">creado</a></li>
+				<li><a href="#">comentado</a></li>
+			{% endif %}
+		</ul>
 	</nav>
 
 	<div class="container">

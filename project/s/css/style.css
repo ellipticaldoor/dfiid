@@ -129,24 +129,20 @@ select {
 
 header {
 	background-color: #34AADC;
-	background-image: url("../img/assets/header.png");
+	/*background-image: url("../img/assets/header.png");*/
 	background-position: center;
 	color: white;
-	height: 250px;
-	line-height: 200px;
-	text-align: center;
-	font-size: 60px;
+	height: 50px;
+	line-height: 50px;
+	/*text-align: center;*/
+	font-size: 30px;
+	padding-left: 20px;
 	cursor: default;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
+
 }
 
 @media (max-width: 500px) {
 	header {
-		font-size: 40px;
-		height: 200px;
-		line-height: 150px;
 		background-position: center top;
 	}
 }
@@ -154,7 +150,41 @@ header {
 /* Navbar
    ========================================================================== */
 
-nav {
+#dfiid {
+	font-size: 30px;
+	margin-right: 20px;
+}
+
+.nav ul {
+	overflow: hidden;
+	list-style-type: none;
+	height: 50px;
+	line-height: 50px;
+	font-size: 17px;
+	margin: 0;
+	padding: 0px 20px 0px 20px;
+}
+
+.nav a {
+	display: block;
+	margin-right: 15px;
+}
+
+#top_nav {
+	background-color: #34AADC;
+	-webkit-animation: color_change 60s infinite alternate;
+	-ms-animation: color_change 60s infinite alternate;
+	animation: color_change 60s infinite alternate;
+}
+
+#top_nav li { float: left; }
+#top_nav a { color: white; }
+
+#create_nav li { float: right; }
+
+
+
+/*nav {
 	background-color: rgba(31, 31, 33, 0.5);
 	margin-top: -50px;
 	height: 50px;
@@ -171,9 +201,9 @@ nav a {
 
 nav a:visited { color: white; }
 nav a:last-child { margin-right: 0px; }
+*/
 
-
-/* Blog
+/* content
    ========================================================================== */
 
 img {

@@ -4,10 +4,11 @@
 	<div id="archive">
 		<p class="archive_title">Por autor</p>
 		{% for author in authors %}
-			<a href="/author/{{ author.username }}" title="{{ author.username }}">
+			<a href="/user/{{ author.username }}" title="{{ author.username }}">
 				<img class="archive_profile_image" src="{% if author.profile.image %}/{{ author.profile.image }}{%else%}/s/img/assets/default_avatar.jpg{% endif %}" alt="{{ author.username }}">
 			</a>
 		{% endfor %}
+		<p>+ crear sub</p>
 		<p class="archive_title">Por tag</p>
 		{% for object in object_list %}
 			<a href="/tag/{{ object.slug }}"><p>{{ object.slug }}</p></a>

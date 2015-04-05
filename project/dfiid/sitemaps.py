@@ -3,7 +3,7 @@ from datetime import datetime
 from django.contrib.sitemaps import Sitemap
 from django.core.urlresolvers import reverse
 from user.models import User
-from blog.models import Post, Tag
+from content.models import Post, Tag
 
 
 class SiteSitemap(Sitemap):
@@ -24,7 +24,7 @@ class SiteSitemap(Sitemap):
 		return reverse(obj)
 
 
-class BlogSitemap(Sitemap):
+class ContentSitemap(Sitemap):
 	changefreq = 'never'
 
 	def items(self):
