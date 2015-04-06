@@ -33,13 +33,7 @@
 	</div>
 {% endblock %}
 
-{% block title %}
-	{% if object.title %}
-		editar · {{ object.title }}
-	{% else %}
-		crear
-	{% endif %}
-{% endblock %}
+{% block title %}{% if object.title %}editar · {{ object.title }}{% else %}crear{% endif %}{% endblock %}
 
 {% block css %}
 	<link rel="stylesheet" href="/s/css/edit.css" type="text/css" charset="utf-8">
@@ -47,7 +41,6 @@
 
 {% block script %}
 	{% compress js inline %}
-		<script src={% static "js/lib/fluidvids_2.4.0.min.js" %}></script>
 		<script src={% static "js/editor.js" %}></script>
 	{% endcompress %}
 {% endblock %}
