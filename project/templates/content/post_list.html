@@ -2,14 +2,13 @@
 {% load staticfiles %}
 
 {% block content %}
-	+ Crear post en esta lista
 	{% if object_list %}
 		{% for object in object_list %}
 			{% if forloop.counter0 < 5 %}
 				{% include "content/layouts/post.html" %}
 			{% else %}
 				{% if forloop.counter0 == 5 %}
-					<p class="archive_title previous_posts">Anteriores</p>
+					<p>Anteriores</p>
 				{% endif %}
 				<li><p><a href="{{ object.get_absolute_url }}" class="post_title">{{ object.title }}</a><span class="list_date"> {{ object.pub_date | date:"d/M/Y" }}</span></p>
 			{% endif %}
@@ -18,3 +17,5 @@
 		{% include "layouts/no_content.html" %}
 	{% endif %}
 {% endblock %}
+
+{% block title %}{% endblock %}

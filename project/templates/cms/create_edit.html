@@ -1,4 +1,4 @@
-{% extends "cms/base.html" %}
+{% extends "base.html" %}
 {% load compress %}
 {% load staticfiles %}
 
@@ -13,9 +13,9 @@
 					</div>
 					<div id="edit_options">
 						<p>{{ form.pub_date }}</p>
-						<p>{{ form.tag }} {{ form.draft }} <span>draft</span></p>
+						<p>{{ form.sub }} {{ form.draft }} <span>draft</span></p>
 					</div>
-					<input class="form_button" type="submit" value="Submit" />
+					<input id="edit_form_button" type="submit" value="Submit" />
 			</form>
 		</section>
 		<section id="view_section">
@@ -23,8 +23,9 @@
 					<a href="" id="post_title" class="post_title"></a>
 					<div id="post_content" class="post_content"></div>
 					<div class="post_info">
-						<span>Publicado por <span class="post_info_highlight"><a href="/user/{{ user.get_username }}/">{{ user.get_username }}</a></span>, </span>
-						<span>tag <span class="post_info_highlight"><a id="post_tag" href=""></a></span>, </span>
+						<a href="/user/{{ user.username }}"><img alt="{{ user.username }}" src="/{{ user.profile.image }}"></a>
+						<span> por <span class="post_info_highlight"><a href="/user/{{ user.get_username }}/">{{ user.get_username }}</a></span>, </span>
+						<span>sub <span class="post_info_highlight"><a id="post_sub" href=""></a></span>, </span>
 						<span id="post_pub_date" class="post_info_highlight"></span>
 					</div>
 				</div>
@@ -32,7 +33,17 @@
 	</div>
 {% endblock %}
 
-{% block title %}edit: {{object.title}}{% endblock %}
+{% block title %}
+	{% if object.title %}
+		editar · {{ object.title }}
+	{% else %}
+		crear
+	{% endif %}
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="/s/css/edit.css" type="text/css" charset="utf-8">
+{% endblock %}
 
 {% block script %}
 	{% compress js inline %}

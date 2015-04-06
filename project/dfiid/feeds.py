@@ -3,7 +3,7 @@ from content.models import Post
 
 
 class ContentFeed(Feed):
-	title = "Trantoor content"
+	title = "dfiid content"
 	link = "/feed"
 	description = "Latest Trantoor posts"
 

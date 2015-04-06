@@ -1,8 +1,8 @@
-{% extends "cms/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-	<div id="cms_menu">
-		<span id="cms_add" class="def_button"><a href="/new_post">+ add post</a></span>
+	<div id="create_menu">
+		<span id="cms_add" class="def_button"><a href="/create">+ add post</a></span>
 	</div>
 	
 	{% if object_list %}
@@ -22,4 +22,4 @@
 	{% endif %}
 {% endblock %}
 
-{% block title %}cms: posts{% endblock %}
+{% block title %}create: posts{% endblock %}

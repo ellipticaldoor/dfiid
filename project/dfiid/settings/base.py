@@ -2,18 +2,15 @@
 Django settings for dfiid project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
+https://docs.djangoproject.com/en/1.8/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
+https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
-
-# Normally you should not import ANYTHING from Django directly
-# into your settings, but ImproperlyConfigured is an exception.
 from django.core.exceptions import ImproperlyConfigured
 
 def get_env(setting):
@@ -24,10 +21,9 @@ def get_env(setting):
 		error_msg = 'Set the %s env variable' % setting
 		raise ImproperlyConfigured(error_msg)
 
-# SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = get_env('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = True
@@ -46,7 +42,9 @@ INSTALLED_APPS = (
 	'compressor',
 	'core',
 	'user',
+	'user_profile',
 	'content',
+	'sub',
 	'cms',
 )
 

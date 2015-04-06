@@ -1,3 +1,6 @@
+/* General
+   ========================================================================== */
+
 *, *:before, *:after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -34,35 +37,6 @@
 	100% { background-color: #007AFF; }
 }
 
-.error {
-	margin-top: 25px;
-	border-radius: 2px;
-	color: white;
-	font-size: 1000%;
-	text-align: center;
-	background-color: #34AADC;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
-}
-
-#error404 { font-size: 1000%; }
-#nopost {
-	font-size: 250%;
-	padding: 30px;
-}
-
-.def_button {
-	margin-right: 5px;
-	padding: 3px 6px 3px 6px;
-	border-radius: 2px;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
-}
-
-span.def_button a { color: #ffffff; }
-
 
 /* Typography
    ========================================================================== */
@@ -81,6 +55,51 @@ a {
 
 a:hover { text-decoration: underline; }
 a:visited { color: #007AFF; }
+
+
+/* Resources
+   ========================================================================== */
+
+.error {
+	margin-top: 25px;
+	border-radius: 2px;
+	color: white;
+	font-size: 1000%;
+	text-align: center;
+	background-color: #34AADC;
+	-webkit-animation: color_change 60s infinite alternate;
+	-ms-animation: color_change 60s infinite alternate;
+	animation: color_change 60s infinite alternate;
+}
+
+#error404 { font-size: 1000%; }
+
+#nopost {
+	font-size: 250%;
+	padding: 30px;
+}
+
+.def_button {
+	margin-right: 5px;
+	padding: 3px 6px 3px 6px;
+	border-radius: 2px;
+	-webkit-animation: color_change 60s infinite alternate;
+	-ms-animation: color_change 60s infinite alternate;
+	animation: color_change 60s infinite alternate;
+}
+
+span.def_button a { color: #ffffff; }
+
+.def_title {
+	color: white;
+	padding: 4px 8px 4px 8px;
+	border-radius: 2px;
+	margin: 10px 0px 6px 0px;
+	background-color: #34AADC;
+	-webkit-animation: color_change 60s infinite alternate;
+	-ms-animation: color_change 60s infinite alternate;
+	animation: color_change 60s infinite alternate;
+}
 
 
 /* Input
@@ -124,30 +143,23 @@ select {
 }
 
 
-/* Header
+/* Panels
    ========================================================================== */
 
-header {
-	background-color: #34AADC;
-	/*background-image: url("../img/assets/header.png");*/
-	background-position: center;
-	color: white;
-	height: 50px;
-	line-height: 50px;
-	/*text-align: center;*/
-	font-size: 30px;
-	padding-left: 20px;
-	cursor: default;
+.panel { float: left; }
 
+#info_panel {
+	width: 300px;
+	height: 800px;
+	background-color: #F7F7F7;
 }
 
-@media (max-width: 500px) {
-	header {
-		background-position: center top;
-	}
+#content_panel {
+	width: calc(100% - 300px);
 }
 
-/* Navbar
+
+/* Nav
    ========================================================================== */
 
 #dfiid {
@@ -180,30 +192,31 @@ header {
 #top_nav li { float: left; }
 #top_nav a { color: white; }
 
+
+/* Create nav
+   ========================================================================== */
+
+#create_nav {
+	margin-top: 10px;
+	height: 30px;
+}
+
 #create_nav li { float: right; }
 
-
-
-/*nav {
-	background-color: rgba(31, 31, 33, 0.5);
-	margin-top: -50px;
-	height: 50px;
-	line-height: 50px;
-	font-size: 118%;
-	text-align: center;
+#create_nav a {
+    color: #ffffff;
+    border-radius: 2px;
+    padding: 0px 10px 0px 10px;
+    line-height: 30px;
+    background-color: #34AADC;
+    margin-right: 10px;
+    -webkit-animation: color_change 60s infinite alternate;
+	-ms-animation: color_change 60s infinite alternate;
+	animation: color_change 60s infinite alternate;
 }
 
-nav a {
-	float: left;
-	color: white;
-	margin-right: 22px;
-}
 
-nav a:visited { color: white; }
-nav a:last-child { margin-right: 0px; }
-*/
-
-/* content
+/* Content
    ========================================================================== */
 
 img {
@@ -217,16 +230,9 @@ div.fluidvids iframe {
 	margin-bottom: 10px;
 }
 
-.post_container {
-	padding: 4px 10px 4px 10px;
-}
+.post { margin-bottom: 2%;}
 
-.post {
-	margin-top: 3%;
-	border-radius: 2px;
-}
-
-.post_title {font-size: 150%; }
+.post_title { font-size: 150%; }
 
 .post_content {
 	padding: 1px;
@@ -266,28 +272,6 @@ div.fluidvids iframe {
 .fluidvids { margin: 20px 0px 20px 0px; }
 
 
-/* All
-   ========================================================================== */
-
-#archive { margin: 25px 0px 25px 0px; }
-
-.archive_title {
-	color: white;
-	padding: 4px 8px 4px 8px;
-	border-radius: 2px;
-	margin: 10px 0px 6px 0px;
-	background-color: #34AADC;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
-}
-
-img.archive_profile_image {
-	margin: 1px 6px 1px 0px;
-	height: 150px;
-}
-
-
 /* Profile
    ========================================================================== */
 
@@ -310,34 +294,16 @@ img.archive_profile_image {
 	animation: color_change 60s infinite alternate;
 }
 
-#profile_container img {
-	height: 200px;
-	margin-bottom: 8px;
+img.profile_image {
+    height: 150px;
 }
-
-
-/* Footer
-   ========================================================================== */
-
-footer {
-	margin-top: 25px;
-	border-top: 1px solid #8E8E93;
-	font-size: 90%;
-	padding: 20px;
-}
-
-footer a { color: #8E8E93; }
-footer a:visited { color: #8E8E93; }
 
 
 /* Login form
    ========================================================================== */
 
-#login_form { margin-top: 25px; }
-
 #login_form input {
 	width: 250px;
 	max-width: 100%;
-	margin: 5px auto;
 	display: block;
 }

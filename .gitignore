@@ -2,6 +2,7 @@
 Thumbs.db
 *.pyc
 */s/media
+*/s/admin
 staticfiles/
 migrations/
 __pycache__/

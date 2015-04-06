@@ -11,51 +11,45 @@
 	<meta name="keywords" content="dfiid, videojuegos, tecnología, cine, diseño, random">
 	<meta name="theme-color" content="#FFFFFF">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% block meta %}{% endblock %}
 	<link rel="icon" sizes="192x192" href="/s/img/assets/dfiid_icon.png">
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:600,400" rel="stylesheet" type="text/css">
 	{% compress css inline %}
 		<link rel="stylesheet" href="/s/css/style.css" type="text/css" charset="utf-8">
+		{% block css %}{% endblock %}
 	{% endcompress %}
 </head>
 <body>
 	<nav id="top_nav" class="nav no-select">
 		<ul>
 			<li><a id="dfiid" href="/">dfiid</a></li>
-			<li><a href="/search">subs</a></li>
-			<li><a href="/search">usuarios</a></li>
+		</ul>
+	</nav>
+
+	<div id="info_panel" class="panel">
+		<ul>
+			<li><a href="/subs">subs</a></li>
+			<li><a href="/users">usuarios</a></li>
 
 			{% if user.is_authenticated %}
-				<li><a href="#">perfil</a></li>
+				<li><a href="/user/{{ user.username }}">perfil</a></li>
 				<li><a href="#">preferencias</a></li>
 				<li><a href="/logout">logout</a></li>
 			{% else %}
 				<li><a href="/login">login</a></li>
 			{% endif %}
-		</ul>
-	</nav>
 
-	<nav id="create_nav" class="nav no-select">
-		<ul>
-			<li><a href="/new_post">crear</a></li>
+			<li><a href="/create">crear</a></li>
 			{% if user.is_authenticated %}
-				<li><a href="/cms">creado</a></li>
+				<li><a href="/created">creado</a></li>
 				<li><a href="#">comentado</a></li>
 			{% endif %}
 		</ul>
-	</nav>
-
-	<div class="container">
+	</div>
+	<div id="content_panel" class="panel">
 		{% block content %}{% endblock %}
-		<footer>
-			<a href="mailto:dortamiguel@gmail.com">contacto</a> · <a href="/feed/">feed</a> · <a href="https://github.com/ellipticaldoor/dfiid">github</a>
-		</footer>
 	</div>
 
-	{% compress js inline %}
-		<script src={% static "js/lib/fluidvids_2.4.0.min.js" %}></script>
-	{% endcompress %}
-	<script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-61029039-1","auto"),ga("send","pageview");</script>
+	<script>(function(root,factory){if(typeof define==='function'&&define.amd){define(factory);}else if(typeof exports==='object'){module.exports=factory;}else{root.fluidvids=factory();}})(this,function(){'use strict';var fluidvids={selector:['iframe','object'],players:['www.youtube.com','player.vimeo.com']};var css=['.fluidvids {','width: 100%; max-width: 100%; position: relative;','}','.fluidvids-item {','position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;','}'].join('');var head=document.head||document.getElementsByTagName('head')[0];function matches(src){return new RegExp('^(https?:)?\/\/(?:'+fluidvids.players.join('|')+').*$','i').test(src);}function getRatio(height,width){return((parseInt(height,10)/parseInt(width,10))*100)+'%';}function fluid(elem){if(!matches(elem.src)&&!matches(elem.data)||!!elem.getAttribute('data-fluidvids'))return;var wrap=document.createElement('div');elem.parentNode.insertBefore(wrap,elem);elem.className+=(elem.className?' ':'')+'fluidvids-item';elem.setAttribute('data-fluidvids','loaded');wrap.className+='fluidvids';wrap.style.paddingTop=getRatio(elem.height,elem.width);wrap.appendChild(elem);}function addStyles(){var div=document.createElement('div');div.innerHTML='<p>x</p><style>'+css+'</style>';head.appendChild(div.childNodes[1]);}fluidvids.render=function(){var nodes=document.querySelectorAll(fluidvids.selector.join());var i=nodes.length;while(i--){fluid(nodes[i]);}};fluidvids.init=function(obj){for(var key in obj){fluidvids[key]=obj[key];}fluidvids.render();addStyles();};return fluidvids;});fluidvids.init({selector:['iframe','object'],players:['youtube.com','www.youtube.com','player.vimeo.com']});</script>
 </body>
 </html>
 {% endspaceless %}

@@ -1,14 +1,14 @@
-{% extends "cms/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-	<div id="cms_menu">
-		<span id="cms_add" class="def_button"><a href="/new_tag">+ add tag</a></span>
+	<div id="create_menu">
+		<span class="def_button"><a href="/create_sub">crear sub</a></span>
 	</div>
 	
 	{% if object_list %}
 		{% for object in object_list %}
-			<div class="cms_table">
-				<a href="/tag/{{ object.slug }}">{{ object.slug }}</a>
+			<div class="create_table">
+				<a href="/sub/{{ object.slug }}">{{ object.slug }}</a>
 			</div>
 		{% endfor %}
 	{% else %}
@@ -20,4 +20,4 @@
 	{% endif %}
 {% endblock %}
 
-{% block title %}cms: tags{% endblock %}
+{% block title %}subs{% endblock %}

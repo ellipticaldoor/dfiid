@@ -1,14 +1,14 @@
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import FormView, TemplateView, RedirectView
+from django.views.generic import FormView, RedirectView
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 
 
 class LoginView(FormView):
 	form_class = AuthenticationForm
-	template_name = 'user/auth/login.html'
-	success_url =  reverse_lazy('cms_post_list')
+	template_name = 'auth/login.html'
+	success_url =  reverse_lazy('front')
 
 	def dispatch(self, request, *args, **kwargs):
 		if request.user.is_authenticated():

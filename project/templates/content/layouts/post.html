@@ -6,10 +6,10 @@
 
 	<div class="post_info">
 		<a href="/user/{{ object.author }}"><img alt="{{ object.author }}" src="/{{ object.author.profile.image }}"></a>
-		<span> por <a href="/user/{{ object.author }}">{{ object.author }}</a> en <a href="/tag/{{ object.tag }}">{{ object.tag }}</a> </span>
+		<span> por <a href="/user/{{ object.author }}">{{ object.author }}</a> en <a href="/sub/{{ object.sub }}">{{ object.sub }}</a> </span>
 		<span>{{ object.pub_date | date:"d/m/y h:i" }} </span>
 		{% ifequal user.get_username  object.author|slugify %}
-			<span class="post_info_highlight"><a href="{{ object.get_absolute_url }}/edit">edit</a></span>
+			<span class="post_info_highlight"><a href="{{ object.get_absolute_url }}/edit">editar</a></span>
 		{% endifequal %}
 	</div>
 </div>

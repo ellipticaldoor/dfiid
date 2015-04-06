@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView
 
-from user.models import User, Profile
-from content.models import Post, Tag
+from user.models import User
+from content.models import Post
 
 
 class FrontView(ListView):
@@ -19,39 +19,10 @@ class PostView(DetailView):
 		return queryset
 
 
-class PostTagView(ListView):
+class PostBySubView(ListView):
 	template_name = 'content/post_list.html'
 
 	def get_queryset(self):
-		tag = self.kwargs['tag']
-		queryset = Post.objects.by_tag(tag)
+		sub = self.kwargs['sub']
+		queryset = Post.objects.by_sub(sub)
 		return queryset
-
-
-class PostDateView(ListView):
-	template_name = 'content/post_list.html'
-
-	def get_queryset(self):
-		year, month = self.kwargs['year'], self.kwargs['month']
-		queryset = Post.objects.by_date(year, month)
-		return queryset
-
-
-class ArchiveView(ListView):
-	template_name = 'content/archive.html'
-	model = Tag
-
-	def get_context_data(self, **kwargs):
-		context = super(ArchiveView, self).get_context_data(**kwargs)
-		context['authors'] = User.objects.all()
-		return context
-
-
-class UserView(DetailView):
-	template_name = 'content/profile.html'
-	model = Profile
-
-	def get_context_data(self, **kwargs):
-		context = super(UserView, self).get_context_data(**kwargs)
-		context['posts'] = Post.objects.by_author(self.kwargs['pk'])
-		return context
