@@ -159,23 +159,47 @@ select {
 .panel { float: left; }
 
 #info_panel {
-	width: 250px;
+	width: 180px;
 	border-right: 1px solid #C7C7CC;
 }
 
+#info_panel ul { padding: 5px 15px 5px 15px; }
+
+#info_panel h4 {
+	margin: 10px 0px 0px 0px;
+	color: #4A4A4A;
+}
+
+#info_panel a {
+	margin-left: 1px;
+	color: #007AFF;
+}
+
 #content_panel {
-	width: calc(100% - 250px);
+	width: calc(100% - 180px);
 	max-width: 650px;
 	background-color: white;
 }
+
+.panel_link { font-weight: bold; }
+
+#anon_panel_link { color: #FF9500 !important; }
+#auth_panel_link { color: #0BD318 !important; }
+#create_panel_link { color: #EF4DB6 !important; }
+#github_panel_link { color: #8E8E93 !important; }
 
 
 /* Nav
 ========================================================================== */
 
 #dfiid {
-	font-size: 30px;
-	margin-right: 20px;
+	font-size: 28px;
+	margin-left: -5px;
+}
+
+#logo_white {
+	margin-top: 10px;
+	height: 30px;
 }
 
 .nav ul {
@@ -201,6 +225,8 @@ select {
 
 #top_nav li { float: left; }
 #top_nav a { color: white; }
+
+
 
 
 /* Create nav

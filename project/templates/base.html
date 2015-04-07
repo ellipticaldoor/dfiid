@@ -20,29 +20,32 @@
 </head>
 <body>
 	<nav id="top_nav" class="nav no-select">
-		<ul><li><a id="dfiid" href="/">dfiid</a></li></ul>
+		<ul>
+			<li><a href="/"><img id="logo_white" src="/s/img/assets/dfiid_logo_white_nav.png" alt="dfiid logo"></a></li>
+			<li><a id="dfiid" href="/">dfiid</a></li>
+		</ul>
 	</nav>
 
 	<div class="info_panel_container">
 		<div id="info_panel" class="panel">
 			<ul>
-				<li><a href="/">portada</a></li>
-				<li><a href="#">anon</a></li>
+				<li><a class="panel_link" href="/">portada</a></li>
+				<li><a id="anon_panel_link" class="panel_link" href="#">anon</a></li>
 				<li><a href="/subs">subs</a></li>
 				<li><a href="/users">usuarios</a></li>
 
-				<li><h3>Cuenta</h3></li>
+				<li><h4>Cuenta</h4></li>
 				{% if user.is_authenticated %}
-					<li><a href="/user/{{ user.username }}">perfil</a></li>
+					<li><a id="auth_panel_link" class="panel_link" href="/user/{{ user.username }}">perfil</a></li>
 					<li><a href="#">preferencias</a></li>
 					<li><a href="/logout">logout</a></li>
 				{% else %}
-					<li><a href="/login">login</a></li>
+					<li><a id="auth_panel_link" class="panel_link" href="/login">login</a></li>
 					<li><a href="/login">registrarse</a></li>
 				{% endif %}
 
-				<li><h3>Contenido</h3></li>
-				<li><a href="/create">crear</a></li>
+				<li><h4>Contenido</h4></li>
+				<li><a id="create_panel_link" class="panel_link" href="/create">crear</a></li>
 				{% if user.is_authenticated %}
 					<li><a href="/created">creado</a></li>
 					<li><a href="#">comentado</a></li>
@@ -50,11 +53,11 @@
 				{% endif %}
 
 
-				<li><h3>Otros</h3></li>
+				<li><h4>Otros</h4></li>
 				<li><a href="#">acerca</a></li>
 				<li><a href="mailto:dortamiguel@gmail.com">contacto</a></li>
 				<li><a href="/feed">feed</a></li>
-				<li><a href="https://github.com/ellipticaldoor/dfiid">github</a></li>
+				<li><a id="github_panel_link" class="panel_link" href="https://github.com/ellipticaldoor/dfiid">github</a></li>
 			</ul>
 		</div>
 	</div>
