@@ -20,33 +20,49 @@
 </head>
 <body>
 	<nav id="top_nav" class="nav no-select">
-		<ul>
-			<li><a id="dfiid" href="/">dfiid</a></li>
-		</ul>
+		<ul><li><a id="dfiid" href="/">dfiid</a></li></ul>
 	</nav>
 
-	<div id="info_panel" class="panel">
-		<ul>
-			<li><a href="/subs">subs</a></li>
-			<li><a href="/users">usuarios</a></li>
+	<div class="info_panel_container">
+		<div id="info_panel" class="panel">
+			<ul>
+				<li><a href="/">portada</a></li>
+				<li><a href="#">anon</a></li>
+				<li><a href="/subs">subs</a></li>
+				<li><a href="/users">usuarios</a></li>
 
-			{% if user.is_authenticated %}
-				<li><a href="/user/{{ user.username }}">perfil</a></li>
-				<li><a href="#">preferencias</a></li>
-				<li><a href="/logout">logout</a></li>
-			{% else %}
-				<li><a href="/login">login</a></li>
-			{% endif %}
+				<li><h3>Cuenta</h3></li>
+				{% if user.is_authenticated %}
+					<li><a href="/user/{{ user.username }}">perfil</a></li>
+					<li><a href="#">preferencias</a></li>
+					<li><a href="/logout">logout</a></li>
+				{% else %}
+					<li><a href="/login">login</a></li>
+					<li><a href="/login">registrarse</a></li>
+				{% endif %}
 
-			<li><a href="/create">crear</a></li>
-			{% if user.is_authenticated %}
-				<li><a href="/created">creado</a></li>
-				<li><a href="#">comentado</a></li>
-			{% endif %}
-		</ul>
+				<li><h3>Contenido</h3></li>
+				<li><a href="/create">crear</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="/created">creado</a></li>
+					<li><a href="#">comentado</a></li>
+					<li><a href="/create_sub">crear sub</a></li>
+				{% endif %}
+
+
+				<li><h3>Otros</h3></li>
+				<li><a href="#">acerca</a></li>
+				<li><a href="mailto:dortamiguel@gmail.com">contacto</a></li>
+				<li><a href="/feed">feed</a></li>
+				<li><a href="https://github.com/ellipticaldoor/dfiid">github</a></li>
+			</ul>
+		</div>
 	</div>
+
 	<div id="content_panel" class="panel">
-		{% block content %}{% endblock %}
+		<div class="container">
+			{% block content %}{% endblock %}
+		</div>
 	</div>
 
 	<script>(function(root,factory){if(typeof define==='function'&&define.amd){define(factory);}else if(typeof exports==='object'){module.exports=factory;}else{root.fluidvids=factory();}})(this,function(){'use strict';var fluidvids={selector:['iframe','object'],players:['www.youtube.com','player.vimeo.com']};var css=['.fluidvids {','width: 100%; max-width: 100%; position: relative;','}','.fluidvids-item {','position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;','}'].join('');var head=document.head||document.getElementsByTagName('head')[0];function matches(src){return new RegExp('^(https?:)?\/\/(?:'+fluidvids.players.join('|')+').*$','i').test(src);}function getRatio(height,width){return((parseInt(height,10)/parseInt(width,10))*100)+'%';}function fluid(elem){if(!matches(elem.src)&&!matches(elem.data)||!!elem.getAttribute('data-fluidvids'))return;var wrap=document.createElement('div');elem.parentNode.insertBefore(wrap,elem);elem.className+=(elem.className?' ':'')+'fluidvids-item';elem.setAttribute('data-fluidvids','loaded');wrap.className+='fluidvids';wrap.style.paddingTop=getRatio(elem.height,elem.width);wrap.appendChild(elem);}function addStyles(){var div=document.createElement('div');div.innerHTML='<p>x</p><style>'+css+'</style>';head.appendChild(div.childNodes[1]);}fluidvids.render=function(){var nodes=document.querySelectorAll(fluidvids.selector.join());var i=nodes.length;while(i--){fluid(nodes[i]);}};fluidvids.init=function(obj){for(var key in obj){fluidvids[key]=obj[key];}fluidvids.render();addStyles();};return fluidvids;});fluidvids.init({selector:['iframe','object'],players:['youtube.com','www.youtube.com','player.vimeo.com']});</script>

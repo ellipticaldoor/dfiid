@@ -1,5 +1,5 @@
 /* General
-   ========================================================================== */
+========================================================================== */
 
 *, *:before, *:after {
 	-moz-box-sizing: border-box;
@@ -18,8 +18,12 @@
 
 .container {
 	margin: 0 auto;
-	max-width: 651px;
-	width: 93%;
+	width: calc(100% - 30px);
+}
+
+.info_panel_container {
+	margin-top: 15px;
+	width: calc(100% - 30px);
 }
 
 @-webkit-keyframes color_change {
@@ -39,9 +43,9 @@
 
 
 /* Typography
-   ========================================================================== */
+========================================================================== */
 
-html, textarea {
+html, body, textarea {
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 100%;
 	text-rendering: optimizeLegibility;
@@ -56,9 +60,15 @@ a {
 a:hover { text-decoration: underline; }
 a:visited { color: #007AFF; }
 
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
 
 /* Resources
-   ========================================================================== */
+========================================================================== */
 
 .error {
 	margin-top: 25px;
@@ -103,7 +113,7 @@ span.def_button a { color: #ffffff; }
 
 
 /* Input
-   ========================================================================== */
+========================================================================== */
 
 input {
 	font-size: 100%;
@@ -144,23 +154,24 @@ select {
 
 
 /* Panels
-   ========================================================================== */
+========================================================================== */
 
 .panel { float: left; }
 
 #info_panel {
-	width: 300px;
-	height: 800px;
-	background-color: #F7F7F7;
+	width: 250px;
+	border-right: 1px solid #C7C7CC;
 }
 
 #content_panel {
-	width: calc(100% - 300px);
+	width: calc(100% - 250px);
+	max-width: 650px;
+	background-color: white;
 }
 
 
 /* Nav
-   ========================================================================== */
+========================================================================== */
 
 #dfiid {
 	font-size: 30px;
@@ -169,7 +180,6 @@ select {
 
 .nav ul {
 	overflow: hidden;
-	list-style-type: none;
 	height: 50px;
 	line-height: 50px;
 	font-size: 17px;
@@ -194,7 +204,7 @@ select {
 
 
 /* Create nav
-   ========================================================================== */
+========================================================================== */
 
 #create_nav {
 	margin-top: 10px;
@@ -263,12 +273,6 @@ div.fluidvids iframe {
 
 .archive_title.previous_posts { margin: 30px 0px 10px 0px; }
 
-.list_date {
-	font-size: 90%;
-	color: #8E8E93;
-	margin-left: 2px;
-}
-
 .fluidvids { margin: 20px 0px 20px 0px; }
 
 
@@ -294,8 +298,16 @@ div.fluidvids iframe {
 	animation: color_change 60s infinite alternate;
 }
 
-img.profile_image {
-    height: 150px;
+.profile_image { height: 150px; }
+
+.profile_list_title {
+	font-size: 120%;
+}
+
+.profile_list_date {
+	font-size: 90%;
+	color: #8E8E93;
+	margin-left: 2px;
 }
 
 

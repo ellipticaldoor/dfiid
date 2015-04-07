@@ -4,7 +4,7 @@
 {% block content %}
 	<div id="profile_container">
 		<span id="profile_username">{{ object.user }}</span>
-		<img src="{% if object.image %}/{{ object.image }}{%else%}/s/img/assets/default_avatar.jpg{% endif %}" alt="{{ object.user }}">
+		<img class="profile_image"src="{% if object.image %}/{{ object.image }}{%else%}/s/img/assets/default_avatar.jpg{% endif %}" alt="{{ object.user }}">
 		{% if object.bio %}
 			{{ object.bio | markdown }}
 		{% else %}
@@ -13,7 +13,7 @@
 	</div>
 	<p class="def_title" href="/user/posts/{{ object.user }}">Posts</p>
 	{% for post in posts %}
-		<li><p><a href="{{ post.get_absolute_url }}" class="post_title">{{ post.title }}</a><span class="list_date"> {{ post.pub_date | date:"d/M/Y" }}</span></p>
+		<li><p><a class="profile_list_title" href="{{ post.get_absolute_url }}">{{ post.title }}</a><span class="profile_list_date"> {{ post.pub_date | date:"d/M/Y" }}</span></p>
 	{% endfor %}
 {% endblock %}
 
