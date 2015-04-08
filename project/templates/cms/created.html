@@ -2,14 +2,14 @@
 
 {% block content %}
 	<div id="create_menu">
-		<span id="cms_add" class="def_button"><a href="/create">+ add post</a></span>
+		<span id="cms_add" class="def_button"><a href="/create">crear post</a></span>
 	</div>
 	
 	{% if object_list %}
 		{% for object in object_list %}
 			<div class="cms_table">
 				<a href="{{ object.get_absolute_url }}/edit">{{ object.title }}</a>
-				{% if object.draft %}<span class="cms_draft">draft</span>{% endif %}
+				{% if object.draft %}<span class="cms_draft">borrador</span>{% endif %}
 				<span class="cms_date">{{ object.pub_date | date:"d/m/y h:i" }}</span>
 			</div>
 		{% endfor %}
@@ -22,4 +22,4 @@
 	{% endif %}
 {% endblock %}
 
-{% block title %}create: posts{% endblock %}
+{% block title %}creado{% endblock %}

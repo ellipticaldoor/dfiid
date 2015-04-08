@@ -95,6 +95,8 @@ AUTH_USER_MODEL = 'user.User'
 
 LOGIN_URL = '/login'
 
+LOGIN_REDIRECT_URL = '/'
+
 COMPRESS_ROOT = os.path.join(BASE_DIR, 's')
 
 COMPRESS_ENABLED = False

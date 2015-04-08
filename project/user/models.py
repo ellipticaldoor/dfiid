@@ -8,19 +8,18 @@ class UserManager(BaseUserManager):
 		user = self.model(*args, **kwargs)
 		user.set_password(password)
 		user.save()
-
 		return user
 
 	def create_superuser(self, username, password, *args, **kwargs):
 		superuser = self.create_user(username=username, password=password)
 		superuser.is_staff = superuser.is_admin = superuser.is_superuser = True
+		superuser.set_password(password)
 		superuser.save()
-
 		return superuser
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-	username = models.CharField(primary_key=True, max_length=16, default=_createId)
+	username = models.CharField(primary_key=True, max_length=16)
 	USERNAME_FIELD = 'username'
 
 	created = models.DateTimeField(auto_now_add=True)

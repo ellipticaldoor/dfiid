@@ -90,15 +90,15 @@ ul {
 }
 
 .def_button {
-	margin-right: 5px;
+	/*margin-right: 5px;
 	padding: 3px 6px 3px 6px;
 	border-radius: 2px;
 	-webkit-animation: color_change 60s infinite alternate;
 	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
+	animation: color_change 60s infinite alternate;*/
 }
 
-span.def_button a { color: #ffffff; }
+span.def_button a { /*color: #ffffff; */}
 
 .def_title {
 	color: white;
@@ -266,7 +266,7 @@ div.fluidvids iframe {
 	margin-bottom: 10px;
 }
 
-.post { margin-bottom: 2%;}
+/*.post { margin-bottom: 0px; }*/
 
 .post_title { font-size: 150%; }
 
@@ -307,7 +307,6 @@ div.fluidvids iframe {
 
 #profile_container {
 	overflow: auto;
-	margin: 25px 0px 25px 0px;
 	border-radius: 2px;
 }
 

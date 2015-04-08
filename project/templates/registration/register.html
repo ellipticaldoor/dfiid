@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	<form id="login_form" method="post" action="">
+		{% csrf_token %}
+		<input id="id_username" maxlength="16" name="username" type="text" placeholder="username" autofocus required/>
+		<input id="id_password" maxlength="128" name="password" type="text" placeholder="password" required/>
+		<input type="submit" value="register" />
+	</form>
+{% endblock %}

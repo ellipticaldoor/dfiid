@@ -13,8 +13,7 @@ class PostQuerySet(models.QuerySet):
 	def by_post(self, pk, slug): return self.filter(pk=pk, slug=slug, draft=False)
 	def by_author(self, author): return self.filter(author=author, draft=False)
 	def by_sub(self, sub): return self.filter(sub=sub, draft=False)
-	def by_date(self, year, month):
-		return self.filter(pub_date__year=year,pub_date__month=month, draft=False)
+	def by_date(self, year, month): return self.filter(pub_date__year=year,pub_date__month=month, draft=False)
 
 
 class Post(models.Model):
