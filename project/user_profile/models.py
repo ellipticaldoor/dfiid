@@ -8,7 +8,7 @@ class Profile(models.Model):
 		return 's/media/img/profile/%s_%s' % (str(time()).replace('.', '_'), filename)
 
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile', primary_key=True)
-	email = models.EmailField(unique=True)
+	email = models.EmailField(unique=True, blank=True)
 	image = models.FileField(upload_to=get_profile_image, blank=True)
 	bio = models.CharField(max_length=255, blank=True)
 

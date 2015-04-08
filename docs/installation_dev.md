@@ -1,7 +1,7 @@
 # Create a virtualenv for the dfiid project
 
 ```
-mkirtualenv --python=[your_python_3_path] dfiid
+mkvirtualenv --python=[your_python_3_path] dfiid
 ```
 
 You can find your python3 path with:
