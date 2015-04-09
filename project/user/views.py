@@ -1,19 +1,26 @@
-from django.http import HttpResponseRedirect
 from django.views.generic import CreateView
+from django.contrib.auth import authenticate, login
 
-from user.forms import RegistrationForm
-from user.models import User
+from user.forms import SignUpForm
+from user_profile.models import Profile
 
 
-class RegistrationView(CreateView):
-	form_class = RegistrationForm
-	template_name = 'registration/register.html'
-	model = User
+class SignUpView(CreateView):
+	form_class = SignUpForm
+	template_name = 'registration/signup.html'
+	success_url = '/'
 
 	def form_valid(self, form):
 		obj = form.save(commit=False)
+		obj.set_password(obj.password)
 		obj.save()
-		# Crear perfil y usuario
-		print(obj.username)
-		print(obj.password)
-		return HttpResponseRedirect('/')
+
+		Profile.objects.create_profile(user=obj)
+
+		username = self.request.POST['username']
+		password = self.request.POST['password']
+
+		user = authenticate(username=username, password=password)
+		login(self.request, user)
+
+		return super(SignUpView, self).form_valid(form)

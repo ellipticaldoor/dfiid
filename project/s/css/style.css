@@ -219,24 +219,22 @@ select {
 
 .side_panel { padding: 5px 15px 5px 15px; }
 
-#left_panel {
+#link_panel {
 	width: 180px;
 	border-right: 1px solid #C7C7CC;
 }
 
-#left_panel ul {  }
-
-#left_panel li {
+#link_panel li {
 	margin-top: 4px;
 	font-size: 105%;
 }
 
-#left_panel h4 {
+#link_panel h4 {
 	margin: 14px 0px 0px 0px;
 	color: #4A4A4A;
 }
 
-#left_panel a {
+#link_panel a {
 	margin-left: 1px;
 	color: #007AFF;
 }
@@ -250,7 +248,7 @@ select {
 #create_panel_link { color: #EF4DB6 !important; }
 #github_panel_link { color: #8E8E93 !important; }
 
-#right_panel {
+#info_panel {
 	width: 300px;
 	height: 500px;
 	border-left: 1px solid #C7C7CC;
@@ -260,6 +258,22 @@ select {
 	width: 100%;
 	height: 100%;
 	background-color: #D1EEFC;
+}
+
+#links_nav_link { display: none; }
+#info_nav_link { display: none; }
+
+@media (max-width: 900px) {
+	#link_panel { width: 150px; }
+	#info_panel { display: none; }
+	#info_nav_link { display: block; }
+	#content_panel { width: calc(100vw - 150px); }
+}
+
+@media (max-width: 600px) {
+	#link_panel { display: none; }
+	#links_nav_link { display: block; }
+	#content_panel { width: 100vw; }
 }
 
 

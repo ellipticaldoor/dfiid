@@ -1,6 +1,14 @@
 from time import time
 from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import BaseUserManager
+
+
+class ProfileManager(BaseUserManager):
+	def create_profile(self, *args, **kwargs):
+		profile = self.model(*args, **kwargs)
+		profile.save()
+		return profile
 
 
 class Profile(models.Model):
@@ -8,9 +16,10 @@ class Profile(models.Model):
 		return 's/media/img/profile/%s_%s' % (str(time()).replace('.', '_'), filename)
 
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile', primary_key=True)
-	email = models.EmailField(unique=True, blank=True)
 	image = models.FileField(upload_to=get_profile_image, blank=True)
 	bio = models.CharField(max_length=255, blank=True)
+
+	objects = ProfileManager()
 
 	def get_absolute_url(self):
 		if not hasattr(self.user, 'decode'): user = self.user

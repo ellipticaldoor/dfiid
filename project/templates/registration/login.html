@@ -4,8 +4,8 @@
 {% block content %}
 	<form id="login_form" method="post" action="">
 		{% csrf_token %}
-		<input id="id_username" maxlength="254" name="username" type="text" placeholder="username" autofocus required/>
-		<input id="id_password" name="password" type="password" placeholder="password" required/>
+		<input id="id_username" maxlength="254" name="username" type="text" placeholder="usuario" autofocus required/>
+		<input id="id_password" name="password" type="password" placeholder="contraseña" required/>
 		<input type="submit" value="login" />
 	</form>
 {% endblock %}

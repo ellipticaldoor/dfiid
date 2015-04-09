@@ -1,4 +1,4 @@
-{% spaceless %}
+
 {% load compress %}
 
 <!DOCTYPE html>
@@ -22,12 +22,12 @@
 		<ul>
 			<li><a href="/"><img id="logo_white" src="/s/img/assets/dfiid_logo_white_nav.png" alt="dfiid logo"></a></li>
 			<li><a id="dfiid" href="/">dfiid</a></li>
-			<li><a href="#">links</a></li>
-			<li><a href="#">info</a></li>
+			<li><a id="links_nav_link" href="#">links</a></li>
+			<li><a id="info_nav_link" href="#">info</a></li>
 		</ul>
 	</nav>
 
-	<div id="left_panel" class="panel side_panel">
+	<div id="link_panel" class="panel side_panel">
 		<ul>
 			<li><a class="panel_link" href="/">portada</a></li>
 			<li><a id="anon_panel_link" class="panel_link" href="#">anon</a></li>
@@ -41,7 +41,7 @@
 				<li><a href="/logout">logout</a></li>
 			{% else %}
 				<li><a id="auth_panel_link" class="panel_link" href="/login">login</a></li>
-				<li><a href="/register">registro</a></li>
+				<li><a href="/signup">signup</a></li>
 			{% endif %}
 
 			<li><h4>Contenido</h4></li>
@@ -66,7 +66,7 @@
 		</div>
 	</div>
 
-	<div id="right_panel" class="panel side_panel">
+	<div id="info_panel" class="panel side_panel">
 		<div id="panel_test_content"></div>
 	</div>
 
@@ -77,4 +77,3 @@
 	{% endcompress %}
 </body>
 </html>
-{% endspaceless %}
