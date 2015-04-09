@@ -21,9 +21,8 @@
 	width: calc(100% - 30px);
 }
 
-.info_panel_container {
-	margin-top: 15px;
-	width: calc(100% - 30px);
+.panel_container {
+	
 }
 
 @-webkit-keyframes color_change {
@@ -156,30 +155,33 @@ select {
 /* Panels
 ========================================================================== */
 
-.panel { float: left; }
+.panel {
+	float: left;
+	margin-top: 15px;
+}
 
-#info_panel {
+.side_panel {
+	padding: 5px 15px 5px 15px;
+}
+
+#left_panel {
 	width: 180px;
 	border-right: 1px solid #C7C7CC;
 }
 
-#info_panel ul { padding: 5px 15px 5px 15px; }
+#left_panel ul {  }
 
-#info_panel h4 {
+#left_panel h4 {
 	margin: 10px 0px 0px 0px;
 	color: #4A4A4A;
 }
 
-#info_panel a {
+#left_panel a {
 	margin-left: 1px;
 	color: #007AFF;
 }
 
-#content_panel {
-	width: calc(100% - 180px);
-	max-width: 650px;
-	background-color: white;
-}
+#content_panel { width: calc(100vw - 180px - 300px); }
 
 .panel_link { font-weight: bold; }
 
@@ -187,6 +189,18 @@ select {
 #auth_panel_link { color: #0BD318 !important; }
 #create_panel_link { color: #EF4DB6 !important; }
 #github_panel_link { color: #8E8E93 !important; }
+
+#right_panel {
+	width: 300px;
+	height: 500px;
+	border-left: 1px solid #C7C7CC;
+}
+
+#panel_test_content {
+	width: 100%;
+	height: 100%;
+	background-color: #D1EEFC;
+}
 
 
 /* Nav
@@ -203,9 +217,10 @@ select {
 }
 
 .nav ul {
+	position: absolute;
+	float: left;
 	overflow: hidden;
 	height: 50px;
-	line-height: 50px;
 	font-size: 17px;
 	margin: 0;
 	padding: 0px 20px 0px 20px;
@@ -217,6 +232,9 @@ select {
 }
 
 #top_nav {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
 	background-color: #34AADC;
 	-webkit-animation: color_change 60s infinite alternate;
 	-ms-animation: color_change 60s infinite alternate;
@@ -225,8 +243,6 @@ select {
 
 #top_nav li { float: left; }
 #top_nav a { color: white; }
-
-
 
 
 /* Create nav
@@ -240,13 +256,13 @@ select {
 #create_nav li { float: right; }
 
 #create_nav a {
-    color: #ffffff;
-    border-radius: 2px;
-    padding: 0px 10px 0px 10px;
-    line-height: 30px;
-    background-color: #34AADC;
-    margin-right: 10px;
-    -webkit-animation: color_change 60s infinite alternate;
+	color: #ffffff;
+	border-radius: 2px;
+	padding: 0px 10px 0px 10px;
+	line-height: 30px;
+	background-color: #34AADC;
+	margin-right: 10px;
+	-webkit-animation: color_change 60s infinite alternate;
 	-ms-animation: color_change 60s infinite alternate;
 	animation: color_change 60s infinite alternate;
 }
@@ -266,7 +282,10 @@ div.fluidvids iframe {
 	margin-bottom: 10px;
 }
 
-/*.post { margin-bottom: 0px; }*/
+.post {
+	margin-bottom: 30px;
+	max-width: 600px;
+}
 
 .post_title { font-size: 150%; }
 
