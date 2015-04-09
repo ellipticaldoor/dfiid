@@ -25,19 +25,34 @@
 	
 }
 
-@-webkit-keyframes color_change {
+@-webkit-keyframes bg_change {
 	0% { background-color: #34AADC; }
 	100% { background-color: #007AFF; }
+}
+
+@-ms-keyframes bg_change {
+	0% { background-color: #34AADC; }
+	100% { background-color: #007AFF; }
+}
+
+@keyframes bg_change {
+	0% { background-color: #34AADC; }
+	100% { background-color: #007AFF; }
+}
+
+@-webkit-keyframes color_change {
+	0% { color: #34AADC; }
+	100% { color: #007AFF; }
 }
 
 @-ms-keyframes color_change {
-	0% { background-color: #34AADC; }
-	100% { background-color: #007AFF; }
+	0% { color: #34AADC; }
+	100% { color: #007AFF; }
 }
 
 @keyframes color_change {
-	0% { background-color: #34AADC; }
-	100% { background-color: #007AFF; }
+	0% { color: #34AADC; }
+	100% { color: #007AFF; }
 }
 
 
@@ -76,9 +91,9 @@ ul {
 	font-size: 1000%;
 	text-align: center;
 	background-color: #34AADC;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
+	-webkit-animation: bg_change 60s infinite alternate;
+	-ms-animation: bg_change 60s infinite alternate;
+	animation: bg_change 60s infinite alternate;
 }
 
 #error404 { font-size: 1000%; }
@@ -92,9 +107,9 @@ ul {
 	/*margin-right: 5px;
 	padding: 3px 6px 3px 6px;
 	border-radius: 2px;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;*/
+	-webkit-animation: bg_change 60s infinite alternate;
+	-ms-animation: bg_change 60s infinite alternate;
+	animation: bg_change 60s infinite alternate;*/
 }
 
 span.def_button a { /*color: #ffffff; */}
@@ -105,9 +120,9 @@ span.def_button a { /*color: #ffffff; */}
 	border-radius: 2px;
 	margin: 10px 0px 6px 0px;
 	background-color: #34AADC;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
+	-webkit-animation: bg_change 60s infinite alternate;
+	-ms-animation: bg_change 60s infinite alternate;
+	animation: bg_change 60s infinite alternate;
 }
 
 
@@ -131,9 +146,9 @@ input[type="submit"] {
 	color: white;
 	border: 1px solid #34AADC;
 	background-color: #34AADC;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
+	-webkit-animation: bg_change 60s infinite alternate;
+	-ms-animation: bg_change 60s infinite alternate;
+	animation: bg_change 60s infinite alternate;
 }
 
 input[type="button"] { background-color: white; }
@@ -151,6 +166,48 @@ select {
 	outline: none;
 }
 
+/* Nav
+========================================================================== */
+
+#dfiid {
+	font-size: 28px;
+	margin-left: -8px;
+	margin-right: 24px;
+}
+
+#logo_white {
+	margin-top: 10px;
+	height: 30px;
+}
+
+.nav ul {
+	position: absolute;
+	float: left;
+	overflow: hidden;
+	height: 50px;
+	font-size: 18px;
+	margin: 0;
+	padding: 0px 15px 0px 15px;
+}
+
+.nav a {
+	display: block;
+	margin-right: 15px;
+}
+
+#top_nav {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background-color: #34AADC;
+	-webkit-animation: bg_change 60s infinite alternate;
+	-ms-animation: bg_change 60s infinite alternate;
+	animation: bg_change 60s infinite alternate;
+}
+
+#top_nav li { float: left; }
+#top_nav a { color: white; }
+
 
 /* Panels
 ========================================================================== */
@@ -160,9 +217,7 @@ select {
 	margin-top: 15px;
 }
 
-.side_panel {
-	padding: 5px 15px 5px 15px;
-}
+.side_panel { padding: 5px 15px 5px 15px; }
 
 #left_panel {
 	width: 180px;
@@ -171,8 +226,13 @@ select {
 
 #left_panel ul {  }
 
+#left_panel li {
+	margin-top: 4px;
+	font-size: 105%;
+}
+
 #left_panel h4 {
-	margin: 10px 0px 0px 0px;
+	margin: 14px 0px 0px 0px;
 	color: #4A4A4A;
 }
 
@@ -200,71 +260,6 @@ select {
 	width: 100%;
 	height: 100%;
 	background-color: #D1EEFC;
-}
-
-
-/* Nav
-========================================================================== */
-
-#dfiid {
-	font-size: 28px;
-	margin-left: -5px;
-}
-
-#logo_white {
-	margin-top: 10px;
-	height: 30px;
-}
-
-.nav ul {
-	position: absolute;
-	float: left;
-	overflow: hidden;
-	height: 50px;
-	font-size: 17px;
-	margin: 0;
-	padding: 0px 20px 0px 20px;
-}
-
-.nav a {
-	display: block;
-	margin-right: 15px;
-}
-
-#top_nav {
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
-	background-color: #34AADC;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
-}
-
-#top_nav li { float: left; }
-#top_nav a { color: white; }
-
-
-/* Create nav
-========================================================================== */
-
-#create_nav {
-	margin-top: 10px;
-	height: 30px;
-}
-
-#create_nav li { float: right; }
-
-#create_nav a {
-	color: #ffffff;
-	border-radius: 2px;
-	padding: 0px 10px 0px 10px;
-	line-height: 30px;
-	background-color: #34AADC;
-	margin-right: 10px;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
 }
 
 
@@ -337,9 +332,9 @@ div.fluidvids iframe {
 	font-size: 160%;
 	color: white;
 	background-color: #34AADC;
-	-webkit-animation: color_change 60s infinite alternate;
-	-ms-animation: color_change 60s infinite alternate;
-	animation: color_change 60s infinite alternate;
+	-webkit-animation: bg_change 60s infinite alternate;
+	-ms-animation: bg_change 60s infinite alternate;
+	animation: bg_change 60s infinite alternate;
 }
 
 .profile_image { height: 150px; }

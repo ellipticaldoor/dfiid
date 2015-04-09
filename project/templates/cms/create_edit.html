@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load compress %}
-{% load staticfiles %}
+{% block title %}{% if object.title %}editar{% else %}crear{% endif %}{% endblock %}
 
 {% block content %}
 	<div id="edit_form">
@@ -33,14 +33,12 @@
 	</div>
 {% endblock %}
 
-{% block title %}{% if object.title %}editar{% else %}crear{% endif %}{% endblock %}
-
 {% block css %}
 	<link rel="stylesheet" href="/s/css/edit.css" type="text/css" charset="utf-8">
 {% endblock %}
 
-{% block script %}
+{% block js %}
 	{% compress js inline %}
-		<script src={% static "js/editor.js" %}></script>
+		<script src="/s/js/editor.js"></script>
 	{% endcompress %}
 {% endblock %}

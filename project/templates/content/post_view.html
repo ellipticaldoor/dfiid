@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% block title %}{{ object.title }}{% endblock %}
 
 {% block content %}
 	{% if object %}
@@ -8,5 +8,3 @@
 		{% include "layouts/no_content.html" %}
 	{% endif %}
 {% endblock %}
-
-{% block title %}{{ object.title |truncatechars:60}}{% endblock %}
