@@ -14,8 +14,8 @@ class PostView(DetailView):
 	template_name = 'content/post_view.html'
 
 	def get_queryset(self):
-		user = request.user
-		queryset = Post.objects.created(user)
+		pk, slug = self.kwargs['pk'], self.kwargs['slug']
+		queryset = Post.objects.by_post(pk, slug)
 		return queryset
 
 
