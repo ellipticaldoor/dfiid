@@ -13,7 +13,7 @@ class CreatePostView(CreateView):
 
 	def form_valid(self, form):
 		obj = form.save(commit=False)
-		obj.author = self.request.user
+		obj.user = self.request.user
 		obj.save()
 		return HttpResponseRedirect(obj.get_edit_url())
 
@@ -22,6 +22,10 @@ class ListPostView(ListView):
 	template_name = 'cms/created.html'
 	queryset = Post.objects.all()
 	paginate_by = 14
+
+	def get_queryset(self):
+		queryset = Post.objects.created(self.request.user)
+		return queryset
 
 
 class EditPostView(UpdateView):

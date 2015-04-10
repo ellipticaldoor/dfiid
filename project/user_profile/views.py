@@ -12,7 +12,7 @@ class ProfileView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super(ProfileView, self).get_context_data(**kwargs)
-		context['posts'] = Post.objects.by_author(self.kwargs['pk'])
+		context['posts'] = Post.objects.by_user(self.kwargs['pk'])
 		return context
 
 

@@ -10,8 +10,9 @@ from core.core import _createId
 class PostQuerySet(models.QuerySet):
 	# TODO: Publicar solo entradas con pub_date menor a la fecha actual
 	def published(self): return self.filter(draft=False)
+	def created(self, user): return self.filter(user=user)
 	def by_post(self, pk, slug): return self.filter(pk=pk, slug=slug, draft=False)
-	def by_author(self, author): return self.filter(author=author, draft=False)
+	def by_user(self, user): return self.filter(user=user, draft=False)
 	def by_sub(self, sub): return self.filter(sub=sub, draft=False)
 	def by_date(self, year, month): return self.filter(pub_date__year=year,pub_date__month=month, draft=False)
 
@@ -22,7 +23,7 @@ class Post(models.Model):
 	slug = models.CharField(max_length=100)
 	body = models.TextField()
 	draft = models.BooleanField(default=True)
-	author = models.ForeignKey(User)
+	user = models.ForeignKey(User)
 	pub_date = models.DateTimeField()
 	sub = models.ForeignKey(Sub)
 
