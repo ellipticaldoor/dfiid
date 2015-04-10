@@ -4,8 +4,15 @@
 {% block content %}
 	<form id="login_form" method="post" action="">
 		{% csrf_token %}
+		<!--
 		<input id="id_username" maxlength="16" name="username" type="text" placeholder="usuario" autofocus required/>
 		<input id="id_password" maxlength="128" name="password" type="password" placeholder="contraseña" required/>
+		-->
+		{{ form }}
 		<input type="submit" value="crear cuenta" />
 	</form>
+{% endblock %}
+
+{% block js_head %}
+	<script src='https://www.google.com/recaptcha/api.js' async defer></script>
 {% endblock %}

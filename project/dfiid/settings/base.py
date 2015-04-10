@@ -40,6 +40,7 @@ INSTALLED_APPS = (
 	'django.contrib.sitemaps',
 	'markdown_deux',
 	'compressor',
+	'nocaptcha_recaptcha',
 	'core',
 	'user',
 	'user_profile',
@@ -114,3 +115,7 @@ MARKDOWN_DEUX_STYLES = {
 		'safe_mode': False,
 	},
 }
+
+NORECAPTCHA_SITE_KEY = get_env('NORECAPTCHA_SITE_KEY')
+
+NORECAPTCHA_SECRET_KEY = get_env('NORECAPTCHA_SECRET_KEY')

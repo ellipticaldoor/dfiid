@@ -261,12 +261,13 @@ select {
 }
 
 #links_nav_link { display: none; }
+#content_nav_link { display: none; }
 #info_nav_link { display: none; }
 
 @media (max-width: 900px) {
 	#link_panel { width: 150px; }
 	#info_panel { display: none; }
-	#info_nav_link { display: block; }
+	#info_nav_link, #content_nav_link { display: block; }
 	#content_panel { width: calc(100vw - 150px); }
 }
 

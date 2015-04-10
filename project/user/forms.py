@@ -1,8 +1,12 @@
+from nocaptcha_recaptcha.fields import NoReCaptchaField
 from django import forms
+
 from user.models import User
 
 
 class SignUpForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['username', 'password', ]
+	captcha = NoReCaptchaField()
+	
+	class Meta:
+		model = User
+		fields = ['username', 'password', ]

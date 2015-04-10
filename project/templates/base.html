@@ -1,4 +1,3 @@
-
 {% load compress %}
 
 <!DOCTYPE html>
@@ -16,6 +15,7 @@
 		<link rel="stylesheet" href="/s/css/style.css" type="text/css" charset="utf-8">
 		{% block css %}{% endblock %}
 	{% endcompress %}
+	{% block js_head %}{% endblock %}
 </head>
 <body>
 	<nav id="top_nav" class="nav no-select">
@@ -23,7 +23,7 @@
 			<li><a href="/"><img id="logo_white" src="/s/img/assets/dfiid_logo_white_nav.png" alt="dfiid logo"></a></li>
 			<li><a id="dfiid" href="/">dfiid</a></li>
 			<li><a id="links_nav_link" href="#">links</a></li>
-			<li><a id="links_nav_link" href="#">content</a></li>
+			<li><a id="content_nav_link" href="#">content</a></li>
 			<li><a id="info_nav_link" href="#">info</a></li>
 		</ul>
 	</nav>
