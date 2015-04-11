@@ -2,12 +2,9 @@
 {% block title %}registro{% endblock %}
 
 {% block content %}
-	<form id="login_form" method="post" action="">
+	{{ form.non_field_errors }}
+	<form class="auth_form" action="/signup/" method="post">
 		{% csrf_token %}
-		<!--
-		<input id="id_username" maxlength="16" name="username" type="text" placeholder="usuario" autofocus required/>
-		<input id="id_password" maxlength="128" name="password" type="password" placeholder="contraseña" required/>
-		-->
 		{{ form }}
 		<input type="submit" value="crear cuenta" />
 	</form>

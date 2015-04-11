@@ -4,16 +4,20 @@
 
 {% block content %}
 	<div id="edit_form">
+		{{ form.non_field_errors }}
 		<section id="editor_section">
-			<form method="post" action="" class="form-horizontal">
+			<form class="form-horizontal" action="/create/" method="post">
 				{% csrf_token %}
 					<div id="main_edit">
 						<p>{{ form.title }}</p>
+						{{ form.title.errors }}
+
 						{{ form.body }}
+						{{ form.body.errors }}
 					</div>
 					<div id="edit_options">
-						<p>{{ form.pub_date }}</p>
-						<p>{{ form.sub }} {{ form.draft }} <span>draft</span></p>
+						<p>{{ form.pub_date }}{{ form.pub_date.errors }}</p>
+						<p>{{ form.sub }}{{ form.sub.errors }} {{ form.draft }}{{ form.draft.errors }} <span>draft</span></p>
 					</div>
 					<input id="edit_form_button" type="submit" value="Submit" />
 			</form>

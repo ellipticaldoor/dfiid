@@ -365,10 +365,10 @@ div.fluidvids iframe {
 }
 
 
-/* Login form
+/* Auth form
    ========================================================================== */
 
-#login_form input {
+.auth_form input {
 	width: 250px;
 	max-width: 100%;
 	display: block;

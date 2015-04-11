@@ -7,7 +7,7 @@ from user_profile.models import Profile
 
 class SignUpView(CreateView):
 	form_class = SignUpForm
-	template_name = 'registration/signup.html'
+	template_name = 'user/signup.html'
 	success_url = '/'
 
 	def form_valid(self, form):
