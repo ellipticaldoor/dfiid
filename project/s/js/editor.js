@@ -1,20 +1,19 @@
-// Global editor variables
+// global editor variables
 var editor_section = document.getElementById('editor_section');
 var view_section = document.getElementById('view_section');
-var textAreaLines = 0;
 
-// Form editor variables
+// form editor variables
 var id_title = document.getElementById('id_title');
 var id_body = document.getElementById('id_body');
 var id_sub = document.getElementById('id_sub');
 var id_pub_date = document.getElementById('id_pub_date');
 var editor_hidden = false;
 
-// Post view variables
-var postTitle = document.getElementById('post_title');
-var postBody = document.getElementById('post_content');
-var postSub = document.getElementById('post_sub');
-var postPubdate = document.getElementById('post_pub_date');
+// post view variables
+var post_title = document.getElementById('post_title');
+var post_content = document.getElementById('post_content');
+var post_sub = document.getElementById('post_sub');
+var post_pub_date = document.getElementById('post_pub_date');
 
 
 document.addEventListener('keydown', function(event) {
@@ -24,7 +23,7 @@ document.addEventListener('keydown', function(event) {
 			view_section.style.display = 'block';
 			editor_hidden = true;
 
-			updatePreview();
+			update_preview();
 			fluidvids.init();
 		}
 		else {
@@ -35,11 +34,11 @@ document.addEventListener('keydown', function(event) {
 	}
 });
 
-function updatePreview() {
-	postBody.innerHTML = (marked(id_body.value));
-	postTitle.innerHTML = id_title.value;
-	postTitle.setAttribute('href', '/' + id_title.value.replace(/ |#/g,"_"));
-	postSub.innerHTML = id_sub.value;
-	postSub.setAttribute('href', '/sub/' + id_sub.value);
-	postPubdate.innerHTML = id_pub_date.value;
+function update_preview() {
+	post_content.innerHTML = (marked(id_body.value));
+	post_title.innerHTML = id_title.value;
+	post_title.setAttribute('href', '/' + id_title.value.replace(/ |#/g,"_"));
+	post_sub.innerHTML = id_sub.value;
+	post_sub.setAttribute('href', '/sub/' + id_sub.value);
+	post_pub_date.innerHTML = id_pub_date.value;
 }
