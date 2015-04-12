@@ -21,6 +21,8 @@
 	width: calc(100% - 30px);
 }
 
+.max_width { max-width: 600px; }
+
 
 /* Animations
 ========================================================================== */
@@ -294,10 +296,7 @@ div.fluidvids iframe {
 	margin-bottom: 10px;
 }
 
-.post {
-	margin-bottom: 30px;
-	max-width: 600px;
-}
+.post { margin-bottom: 30px; }
 
 .post_title { font-size: 150%; }
 
