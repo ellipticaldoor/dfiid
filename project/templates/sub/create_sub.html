@@ -4,7 +4,7 @@
 {% block content %}
 	<form method="post" action="" class="form-horizontal">
 		{% csrf_token %}
-			<input id="id_slug" maxlength="100" name="slug" type="text" autofocus/>
-			<input class="form_button" type="submit" value="Submit" />
+		{{ form }}
+		<input class="form_button" type="submit" value="crear sub" />
 	</form>
 {% endblock %}

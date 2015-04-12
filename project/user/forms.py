@@ -23,8 +23,8 @@ class LoginForm(AuthenticationForm):
 		super(LoginForm, self).__init__(*args, **kwargs)
 		set_user_form_attrs(self)
 
-	username = forms.CharField(max_length=16)
-	password = forms.CharField(widget=forms.PasswordInput)
+	username = forms.CharField(label="", max_length=16, )
+	password = forms.CharField(label="", widget=forms.PasswordInput)
 
 
 class SignUpForm(forms.ModelForm):

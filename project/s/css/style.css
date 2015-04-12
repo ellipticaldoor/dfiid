@@ -21,9 +21,9 @@
 	width: calc(100% - 30px);
 }
 
-.panel_container {
-	
-}
+
+/* Animations
+========================================================================== */
 
 @-webkit-keyframes bg_change {
 	0% { background-color: #34AADC; }
@@ -239,7 +239,7 @@ select {
 	color: #007AFF;
 }
 
-#content_panel { width: calc(100vw - 180px - 300px); }
+#mid_panel { width: calc(100vw - 180px - 280px); }
 
 .panel_link { font-weight: bold; }
 
@@ -249,7 +249,7 @@ select {
 #github_panel_link { color: #8E8E93 !important; }
 
 #info_panel {
-	width: 300px;
+	width: 280px;
 	height: 500px;
 	border-left: 1px solid #C7C7CC;
 }
@@ -257,24 +257,27 @@ select {
 #panel_test_content {
 	width: 100%;
 	height: 100%;
-	background-color: #D1EEFC;
 }
 
 #links_nav_link { display: none; }
 #content_nav_link { display: none; }
 #info_nav_link { display: none; }
 
-@media (max-width: 900px) {
-	#link_panel { width: 150px; }
+@media (max-width: 1000px) {
 	#info_panel { display: none; }
 	#info_nav_link, #content_nav_link { display: block; }
-	#content_panel { width: calc(100vw - 150px); }
+	#mid_panel { width: calc(100vw - 180px); }
+}
+
+@media (max-width: 800px) {
+	#link_panel { width: 150px; }
+	#mid_panel { width: calc(100vw - 150px); }
 }
 
 @media (max-width: 600px) {
 	#link_panel { display: none; }
 	#links_nav_link { display: block; }
-	#content_panel { width: 100vw; }
+	#mid_panel { width: 100vw; }
 }
 
 
