@@ -7,7 +7,7 @@
 	<div class="post_info">
 		<a href="/user/{{ object.user }}"><img alt="{{ object.user }}" src="/{{ object.user.profile.image }}"></a>
 		<span> por <a href="/user/{{ object.user }}">{{ object.user }}</a> en <a href="/sub/{{ object.sub }}">{{ object.sub }}</a> </span>
-		<span>{{ object.pub_date | date:"d/m/y h:i" }} </span>
+		<span>{{ object.pub_date | date:"d/m/Y h:i" }} </span>
 		{% ifequal user.get_username  object.user|slugify %}
 			<span class="post_info_highlight"><a href="{{ object.get_absolute_url }}/edit">editar</a></span>
 		{% endifequal %}

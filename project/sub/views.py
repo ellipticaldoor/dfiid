@@ -15,4 +15,3 @@ class CreateSubView(CreateView):
 class SubsView(ListView):
 	template_name = 'sub/subs.html'
 	model = Sub
-	paginate_by = 14

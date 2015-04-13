@@ -6,8 +6,7 @@ from content.models import Post
 
 class FrontView(ListView):
 	template_name = 'content/front.html'
-	queryset = Post.objects.published()
-	paginate_by = 5
+	queryset = Post.objects.published()[:2]
 
 
 class PostView(DetailView):

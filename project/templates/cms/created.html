@@ -12,7 +12,7 @@
 			<div class="cms_table">
 				<a href="{{ object.get_absolute_url }}/edit">{{ object.title }}</a>
 				{% if object.draft %}<span class="cms_draft">borrador</span>{% endif %}
-				<span class="cms_date">{{ object.pub_date | date:"d/m/y h:i" }}</span>
+				<span class="cms_date">{{ object.pub_date | date:"d/m/Y h:i" }}</span>
 			</div>
 		{% endfor %}
 	{% else %}

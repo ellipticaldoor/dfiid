@@ -4,13 +4,6 @@
 
 {% block content %}
 	{% if object_list %}
-		{% for object in object_list %}
-			{% include "content/layouts/post.html" %}
-		{% endfor %}
-	{% else %}
-		{% include "layouts/no_content.html" %}
-	{% endif %}
-	{% if is_paginated %}
-		{% include "layouts/paginate.html" %}
-	{% endif %}
+		{% for object in object_list %}{% include "content/layouts/post.html" %}{% endfor %}
+	{% else %}{% include "layouts/no_content.html" %}{% endif %}
 {% endblock %}
