@@ -37,7 +37,6 @@ document.addEventListener('keydown', function(event) {
 function update_preview() {
 	post_content.innerHTML = (marked(id_body.value));
 	post_title.innerHTML = id_title.value;
-	post_title.setAttribute('href', '/' + id_title.value.replace(/ |#/g,"_"));
 	post_sub.innerHTML = id_sub.value;
 	post_sub.setAttribute('href', '/sub/' + id_sub.value);
 	post_pub_date.innerHTML = id_pub_date.value;

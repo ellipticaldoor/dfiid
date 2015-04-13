@@ -26,12 +26,12 @@
 		</section>
 		<section id="view_section">
 				<div class="post">
-					<a href="" id="post_title" class="post_title"></a>
+					<a href="#" onClick="return false;" id="post_title" class="post_title"></a>
 					<div id="post_content" class="post_content"></div>
+
 					<div class="post_info">
 						<a href="/user/{{ user.username }}"><img alt="{{ user.username }}" src="/{{ user.profile.image }}"></a>
-						<span> por <span class="post_info_highlight"><a href="/user/{{ user.get_username }}/">{{ user.get_username }}</a></span>, </span>
-						<span>sub <span class="post_info_highlight"><a id="post_sub" href=""></a></span>, </span>
+						<span> por <a href="/user/{{ user.username }}">{{ user.username }}</a> en <a id="post_sub" href=""></a> </span>
 						<span id="post_pub_date" class="post_info_highlight"></span>
 					</div>
 				</div>
