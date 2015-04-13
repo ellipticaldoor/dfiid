@@ -145,7 +145,6 @@ input {
 	padding: 5px;
 	border-radius: 2px;
 	border: 1px solid #C7C7CC;
-	outline: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
@@ -163,7 +162,10 @@ input[type="submit"] {
 input[type="button"] { background-color: white; }
 input[type="checkbox"] { margin-right: 3px; }
 
-input::-webkit-input-placeholder { color: #DBDDDE; }
+::-webkit-input-placeholder { color: #C7C7CC; }
+:-moz-placeholder { color: #C7C7CC; opacity: 1; }
+::-moz-placeholder { color: #C7C7CC; opacity: 1; }
+:-ms-input-placeholder { color: #C7C7CC; }
 
 select {
 	margin: 5px 5px 0px 0px;
@@ -172,8 +174,8 @@ select {
 	padding: 5px;
 	border: 1px solid #C7C7CC;
 	border-radius: 2px;
-	outline: none;
 }
+
 
 /* Nav
 ========================================================================== */

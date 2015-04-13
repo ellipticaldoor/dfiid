@@ -17,7 +17,6 @@ class PostView(DetailView):
 		queryset = Post.objects.by_post(pk, slug)
 		return queryset
 
-
 class PostBySubView(ListView):
 	template_name = 'content/post_list.html'
 
