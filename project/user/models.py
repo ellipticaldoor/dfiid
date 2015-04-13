@@ -32,3 +32,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 	def get_short_name(self): return self.username
 	def get_full_name(self): return self.username
+
+	class Meta:
+		ordering = ['-created']

@@ -3,7 +3,6 @@ from django.views.generic import ListView, DetailView
 from user.models import User
 from user_profile.models import Profile
 from content.models import Post
-from sub.models import Sub
 
 
 class ProfileView(DetailView):
@@ -18,4 +17,4 @@ class ProfileView(DetailView):
 
 class UsersView(ListView):
 	template_name = 'user_profile/users.html'
-	model = Profile
+	model = User
