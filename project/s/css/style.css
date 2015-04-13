@@ -82,6 +82,8 @@ ul {
 	padding: 0;
 }
 
+h4 { font-weight: normal; }
+
 
 /* Resources
 ========================================================================== */
@@ -242,8 +244,6 @@ select {
 }
 
 #mid_panel { width: calc(100vw - 180px - 280px); }
-
-.panel_link { font-weight: bold; }
 
 #anon_panel_link { color: #FF9500 !important; }
 #auth_panel_link { color: #0BD318 !important; }

@@ -30,23 +30,23 @@
 
 	<div id="link_panel" class="panel side_panel">
 		<ul>
-			<li><a class="panel_link" href="/">portada</a></li>
-			<li><a id="anon_panel_link" class="panel_link" href="#">anon</a></li>
+			<li><a href="/">portada</a></li>
+			<li><a id="anon_panel_link" href="#">anon</a></li>
 			<li><a href="/subs">subs</a></li>
 			<li><a href="/users">usuarios</a></li>
 
 			<li><h4>Cuenta</h4></li>
 			{% if user.is_authenticated %}
-				<li><a id="auth_panel_link" class="panel_link" href="/user/{{ user.username }}">perfil</a></li>
+				<li><a id="auth_panel_link" href="/user/{{ user.username }}">perfil</a></li>
 				<li><a href="#">preferencias</a></li>
 				<li><a href="/logout">logout</a></li>
 			{% else %}
-				<li><a id="auth_panel_link" class="panel_link" href="/login">login</a></li>
+				<li><a id="auth_panel_link" href="/login">login</a></li>
 				<li><a href="/signup">signup</a></li>
 			{% endif %}
 
 			<li><h4>Contenido</h4></li>
-			<li><a id="create_panel_link" class="panel_link" href="/create">crear</a></li>
+			<li><a id="create_panel_link"  href="/create">crear</a></li>
 			{% if user.is_authenticated %}
 				<li><a href="/created">creado</a></li>
 				<li><a href="#">comentado</a></li>
@@ -55,10 +55,10 @@
 
 			<li><h4>Otros</h4></li>
 			<li><a href="/feed">feed</a></li>
+			<li><a href="#">blog</a></li>
 			<li><a href="#">acerca</a></li>
-			<li><a href="#">dfiid blog</a></li>
 			<li><a href="mailto:dortamiguel@gmail.com">contacto</a></li>
-			<li><a id="github_panel_link" class="panel_link" href="https://github.com/ellipticaldoor/dfiid">github</a></li>
+			<li><a id="github_panel_link" href="https://github.com/ellipticaldoor/dfiid">github</a></li>
 		</ul>
 	</div>
 
