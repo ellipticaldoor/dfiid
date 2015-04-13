@@ -281,7 +281,7 @@ select {
 	#mid_panel { width: calc(100vw - 150px); }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
 	#links_nav_link { display: block; }
 	#mid_panel { width: 100vw; }
 }
