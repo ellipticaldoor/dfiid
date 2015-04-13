@@ -54,10 +54,31 @@ function set_show_mode() {
 
 function set_selected() {
 	if (show_mode == 2 ) {
-		mid_nav_link.classList.add('selected');
+		if (mid_or_info == true) {
+			mid_nav_link.classList.add('selected');
+			info_nav_link.classList.remove('selected');
+		}
+		else if (mid_or_info == false) {
+			mid_nav_link.classList.remove('selected');
+			info_nav_link.classList.add('selected');
+		}
 	}
 	else if (show_mode == 1 ) {
-
+		if (main_panel == 1) {
+			links_nav_link.classList.add('selected');
+			mid_nav_link.classList.remove('selected');
+			info_nav_link.classList.remove('selected');
+		}
+		else if (main_panel == 2) {
+			links_nav_link.classList.remove('selected');
+			mid_nav_link.classList.add('selected');
+			info_nav_link.classList.remove('selected');
+		}
+		else if (main_panel == 3) {
+			links_nav_link.classList.remove('selected');
+			mid_nav_link.classList.remove('selected');
+			info_nav_link.classList.add('selected');
+		}
 	}
 }
 
