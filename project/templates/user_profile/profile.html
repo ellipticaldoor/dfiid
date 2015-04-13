@@ -18,7 +18,7 @@
 	</div>
 	<p class="def_title" href="/user/posts/{{ object.user }}">Posts</p>
 	{% for post in posts %}
-		<li><p><a class="profile_list_title" href="{{ post.get_absolute_url }}">{{ post.title }}</a><span class="profile_list_date"> {{ post.pub_date | date:"d/m/Y h:i" }}</span></p>
+		<li><p><a class="profile_list_title" href="{{ post.get_absolute_url }}">{{ post.title }}</a><span class="profile_list_date"> {{ post.pub_date | date:"d/m/Y H:i" }}</span></p>
 	{% endfor %}
 {% endblock %}
 
