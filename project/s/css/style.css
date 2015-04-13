@@ -63,8 +63,8 @@
 
 html, body, textarea {
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 100%;
 	text-rendering: optimizeLegibility;
+	font-size: 100%;
 	color: #1F1F21;
 }
 
@@ -83,6 +83,11 @@ ul {
 }
 
 h4 { font-weight: normal; }
+
+.selected {
+	text-decoration: underline;
+	font-weight: bold;
+}
 
 
 /* Resources

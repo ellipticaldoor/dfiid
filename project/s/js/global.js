@@ -52,6 +52,15 @@ function set_show_mode() {
 	set_panel_visibility();
 }
 
+function set_selected() {
+	if (show_mode == 2 ) {
+		mid_nav_link.classList.add('selected');
+	}
+	else if (show_mode == 1 ) {
+
+	}
+}
+
 function set_panel_visibility() {
 	if (show_mode == 3) {
 		link_panel.style.display = 'block';
@@ -68,6 +77,7 @@ function set_panel_visibility() {
 			mid_panel.style.display = 'none';
 			info_panel.style.display = 'block';
 		}
+		set_selected();
 	}
 	else if(show_mode == 1) {
 		if (main_panel == 1) {
@@ -85,5 +95,6 @@ function set_panel_visibility() {
 			mid_panel.style.display = 'none';
 			info_panel.style.display = 'block';
 		}
+		set_selected();
 	}
 }
