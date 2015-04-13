@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}login{% endblock %}
+{% block login_select %}selected{% endblock %}
 
 {% block content %}
 	<form class="auth_form" action="/login/" method="post">
@@ -7,17 +8,4 @@
 		{{ form }}
 		<input type="submit" value="login" />
 	</form>
-	<!--
-	{{ form.non_field_errors }}
-	<form class="auth_form" action="/login/" method="post">
-		{% csrf_token %}
-		<input id="id_username" maxlength="254" name="username" type="text" placeholder="usuario" autofocus required/>
-		{{ form.username.errors }}
-		
-		<input id="id_password" name="password" type="password" placeholder="contraseña" required/>
-		{{ form.password.errors }}
-		
-		<input type="submit" value="login" />
-	</form>
-	-->
 {% endblock %}

@@ -112,7 +112,7 @@ STATICFILES_FINDERS = (
 
 MARKDOWN_DEUX_STYLES = {
 	'default': {
-		'safe_mode': False,
+		'safe_mode': True,
 	},
 }
 

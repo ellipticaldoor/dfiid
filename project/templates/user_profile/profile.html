@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% load markdown_deux_tags %}
+{% block title %}{{ object.user }}{% endblock %}
+{% block profile_select %}{% ifequal user.get_username  object.user|slugify %}selected{% endifequal %}{% endblock %}
+{% block users_select %}{% ifnotequal user.get_username  object.user|slugify %}selected{% endifnotequal %}{% endblock %}
 
 {% block content %}
+
+
 	<div id="profile_container">
 		<span id="profile_username">{{ object.user }}</span>
 		<img class="profile_image"src="{% if object.image %}/{{ object.image }}{%else%}/s/img/assets/default_avatar.jpg{% endif %}" alt="{{ object.user }}">
@@ -17,4 +22,3 @@
 	{% endfor %}
 {% endblock %}
 
-{% block title %}perfil de {{ object.user }}{% endblock %}
