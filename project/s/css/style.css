@@ -42,21 +42,6 @@
 	100% { background-color: #007AFF; }
 }
 
-@-webkit-keyframes color_change {
-	0% { color: #34AADC; }
-	100% { color: #007AFF; }
-}
-
-@-ms-keyframes color_change {
-	0% { color: #34AADC; }
-	100% { color: #007AFF; }
-}
-
-@keyframes color_change {
-	0% { color: #34AADC; }
-	100% { color: #007AFF; }
-}
-
 
 /* Typography
 ========================================================================== */
@@ -88,6 +73,8 @@ ul {
 	margin: 0;
 	padding: 0;
 }
+
+input { outline: none; }
 
 
 /* Resources

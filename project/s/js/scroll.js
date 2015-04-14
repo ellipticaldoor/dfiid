@@ -16,6 +16,5 @@ $(window).scroll(function() {
 
 function searchSuccess(data, textStatus, jqXHR) {
 	page_number = page_number + 1;
-	console.log(page_number);
 	$(data).insertAfter($('.post').last());
 }
