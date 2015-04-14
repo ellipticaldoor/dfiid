@@ -6,7 +6,13 @@ from content.models import Post
 
 class FrontView(ListView):
 	template_name = 'content/front.html'
-	queryset = Post.objects.published()[:1]
+	queryset = Post.objects.published()
+	paginate_by = 1
+
+	def get(self, request, *args, **kwargs):
+		if request.is_ajax(): self.template_name = 'content/ajax/posts.html'
+		return super(FrontView, self).get(request, *args, **kwargs)
+
 
 class PostView(DetailView):
 	template_name = 'content/post_view.html'
@@ -16,20 +22,11 @@ class PostView(DetailView):
 		queryset = Post.objects.by_post(pk, slug)
 		return queryset
 
+
 class PostBySubView(ListView):
 	template_name = 'content/post_list.html'
 
 	def get_queryset(self):
 		sub = self.kwargs['sub']
 		queryset = Post.objects.by_sub(sub)
-		return queryset
-
-
-class AjaxContentView(ListView):
-	template_name = 'content/ajax/posts.html'
-
-	def get_queryset(self):
-		query = self.request.GET.get('query')
-		if query: queryset = Post.objects.published()
-		else: queryset = Post.objects.published()[:1]
 		return queryset

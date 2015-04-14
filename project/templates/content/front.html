@@ -4,11 +4,9 @@
 
 {% block content %}
 	{% if object_list %}
-		<div id="posts_container">
-			{% for object in object_list %}
-				{% include "content/layouts/post.html" %}
-			{% endfor %}
-		</div>
+		{% for object in object_list %}
+			{% include "content/layouts/post.html" %}
+		{% endfor %}
 	{% else %}
 		{% include "layouts/no_content.html" %}
 	{% endif %}

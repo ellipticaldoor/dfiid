@@ -1,17 +1,21 @@
-document.addEventListener('keydown', function(event) {
-	if (event.shiftKey && event.location === KeyboardEvent.DOM_KEY_LOCATION_RIGHT) {
+var page_number = 2;
+
+$(window).scroll(function() {
+	if($(window).scrollTop() + $(window).height() == $(document).height()) {
 		$.ajax({
-			type: "GET",
-			url: "/ajax_content/",
+			type: 'GET',
+			url: '/',
 			data: {
-				"query" : "hooola",
+				'page' : page_number,
 			},
 			success: searchSuccess,
-			dataType: "html"
+			dataType: 'html'
 		});
-	}
+   }
 });
 
 function searchSuccess(data, textStatus, jqXHR) {
-	$("#posts_container").html(data);
+	page_number = page_number + 1;
+	console.log(page_number);
+	$(data).insertAfter($('.post').last());
 }
