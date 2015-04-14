@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load compress %}
 {% block title %}{% if object.title %}editar{% else %}crear{% endif %}{% endblock %}
 {% block create_select %}{% if not object.title %}selected{% endif %}{% endblock %}
 {% block created_select %}{% if object.title %}selected{% endif %}{% endblock %}
@@ -44,8 +43,6 @@
 {% endblock %}
 
 {% block js %}
-	{% compress js inline %}
-		<script src="/s/js/lib/marked.0.3.2.min.js"></script>
-		<script src="/s/js/editor.js"></script>
-	{% endcompress %}
+	<script src="/s/js/lib/marked_0.3.2.min.js"></script>
+	<script src="/s/js/editor.js"></script>
 {% endblock %}

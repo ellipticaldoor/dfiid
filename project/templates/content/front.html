@@ -4,10 +4,17 @@
 
 {% block content %}
 	{% if object_list %}
-		{% for object in object_list %}
-			{% include "content/layouts/post.html" %}
-		{% endfor %}
+		<div id="posts_container">
+			{% for object in object_list %}
+				{% include "content/layouts/post.html" %}
+			{% endfor %}
+		</div>
 	{% else %}
 		{% include "layouts/no_content.html" %}
 	{% endif %}
+{% endblock %}
+
+{% block js %}
+	<script src="/s/js/lib/zepto_1.1.6.min.js"></script>
+	<script src="/s/js/scroll.js"></script>
 {% endblock %}
