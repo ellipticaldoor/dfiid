@@ -5,20 +5,18 @@
 {% block users_select %}{% ifnotequal user.get_username  object.user|slugify %}selected{% endifnotequal %}{% endblock %}
 
 {% block content %}
-
-
 	<div id="profile_container">
 		<span id="profile_username">{{ object.user }}</span>
-		<img class="profile_image"src="{% if object.image %}/{{ object.image }}{%else%}/s/img/assets/default_avatar.jpg{% endif %}" alt="{{ object.user }}">
+		<img class="profile_image"src="{% if object.image %}/{{ object.image }}{%else%}/s/img/default_avatar.jpg{% endif %}" alt="{{ object.user }}">
 		{% if object.bio %}
 			{{ object.bio | markdown }}
 		{% else %}
 			<p>{{ object.bio }}</p>
 		{% endif %}
 	</div>
+
 	<p class="def_title" href="/user/posts/{{ object.user }}">Posts</p>
 	{% for post in posts %}
 		<li><p><a class="profile_list_title" href="{{ post.get_absolute_url }}">{{ post.title }}</a><span class="profile_list_date"> {{ post.pub_date | date:"d/m/Y H:i" }}</span></p>
 	{% endfor %}
 {% endblock %}
-

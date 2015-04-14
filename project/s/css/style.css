@@ -188,10 +188,6 @@ nav {
 	border-bottom: 1px solid #D7D7D7;
 }
 
-@media (max-width: 950px) {
-	nav { display: block; }
-}
-
 nav ul { text-align: center; }
 nav li { display: inline; }
 nav a { display: inline-block; }
@@ -202,13 +198,13 @@ nav a { display: inline-block; }
 
 .panel {
 	float: left;
-	margin-top: 15px;
+	margin: 20px 0px 20px 0px;
 }
 
 .side_panel { padding: 5px 15px 5px 15px; }
 
 #link_panel {
-	width: 130px;
+	width: 140px;
 	border-right: 1px solid #D7D7D7;
 }
 
@@ -224,7 +220,7 @@ nav a { display: inline-block; }
 	background-color: #ecf0f1;
 }
 
-#mid_panel { width: calc(100vw - 130px - 280px); }
+#mid_panel { width: calc(100vw - 140px - 280px); }
 
 
 /* Panel content
@@ -245,11 +241,24 @@ nav a { display: inline-block; }
 	color: #007AFF;
 }
 
+#dfiid a {
+	color: #34AADC;
+}
+
+#dfiid img {
+	height: 19px;
+	margin: 0px 5px -3px 0px;
+}
+
+.panel_image {
+	height: 19px;
+	margin: 0px 5px -5px 0px;
+}
+
 #anon_panel_link { color: #FF9500 !important; }
 #auth_panel_link { color: #0BD318 !important; }
 #create_panel_link { color: #EF4DB6 !important; }
 #github_panel_link { color: #8E8E93 !important; }
-
 
 .nav_link {
 	width: 50px;
@@ -263,9 +272,10 @@ nav a { display: inline-block; }
 /* Panel @media
 ========================================================================== */
 
-@media (max-width: 880px) {
+@media (max-width: 890px) {
+	nav { display: block; }
 	#info_nav_link, #mid_nav_link { display: inline-block; }
-	#mid_panel { width: calc(100vw - 130px); }
+	#mid_panel { width: calc(100vw - 140px); }
 }
 
 @media (max-width: 480px) {

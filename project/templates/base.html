@@ -9,7 +9,7 @@
 	<meta name="keywords" content="dfiid, videojuegos, tecnología, cine, diseño, random">
 	<meta name="theme-color" content="#FFFFFF">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" sizes="192x192" href="/s/img/assets/dfiid_logo.png">
+	<link rel="icon" sizes="192x192" href="/s/img/dfiid_logo.png">
 	{% compress css inline %}
 		<link rel="stylesheet" href="/s/css/open_sans.css" type="text/css" charset="utf-8">
 		<link rel="stylesheet" href="/s/css/style.css" type="text/css" charset="utf-8">
@@ -28,14 +28,14 @@
 
 	<div id="link_panel" class="panel side_panel">
 		<ul>
-			<li><a href="/" class="{% block front_select %}{% endblock %}">dfiid</a></li>
+			<li id="dfiid"><a href="/" class="{% block front_select %}{% endblock %}"><img src="/s/img/dfiid_logo_small.png" alt="dfiid">dfiid</a></li>
 			<li><a id="anon_panel_link" href="#">anon</a></li>
 			<li><a href="/subs" class="{% block subs_select %}{% endblock %}">subs</a></li>
 			<li><a href="/users" class="{% block users_select %}{% endblock %}">usuarios</a></li>
 
 			<li><h4>Cuenta</h4></li>
 			{% if user.is_authenticated %}
-				<li><a id="auth_panel_link" href="/user/{{ user.username }}" class="{% block profile_select %}{% endblock %}">perfil</a></li>
+				<li><a id="auth_panel_link" href="/user/{{ user.username }}" class="{% block profile_select %}{% endblock %}"><img class="panel_image" src="{% if user.profile.image %}/{{ user.profile.image}}{%else%}/s/img/default_avatar.jpg{% endif %}" alt="{{ user.username }}">perfil</a></li>
 				<li><a href="#">preferencias</a></li>
 				<li><a href="/logout">logout</a></li>
 			{% else %}
