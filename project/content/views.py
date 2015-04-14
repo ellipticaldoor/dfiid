@@ -7,10 +7,12 @@ from content.models import Post
 class FrontView(ListView):
 	template_name = 'content/front.html'
 	queryset = Post.objects.published()
-	paginate_by = 1
+	paginate_by = 2
 
 	def get(self, request, *args, **kwargs):
-		if request.is_ajax(): self.template_name = 'content/ajax/posts.html'
+		if request.is_ajax():
+			self.template_name = 'content/ajax/posts.html'
+
 		return super(FrontView, self).get(request, *args, **kwargs)
 
 

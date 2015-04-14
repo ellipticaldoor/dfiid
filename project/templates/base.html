@@ -18,19 +18,17 @@
 	{% block js_head %}{% endblock %}
 </head>
 <body>
-	<nav id="top_nav" class="nav no-select">
+	<nav class="no-select">
 		<ul>
-			<li><a href="/"><img id="logo_white" src="/s/img/assets/dfiid_logo_white_nav.png" alt="dfiid logo"></a></li>
-			<li><a id="dfiid" href="/">dfiid</a></li>
-			<li><a id="links_nav_link" href="#" onClick="return false;">links</a></li>
-			<li><a id="mid_nav_link" href="#" onClick="return false;">mid</a></li>
-			<li><a id="info_nav_link" href="#" onClick="return false;">info</a></li>
+			<li><a id="link_nav_link" class="nav_link" href="#" onClick="return false;">link</a></li>
+			<li><a id="mid_nav_link" class="nav_link" href="#" onClick="return false;">mid</a></li>
+			<li><a id="info_nav_link" class="nav_link" href="#" onClick="return false;">info</a></li>
 		</ul>
 	</nav>
 
 	<div id="link_panel" class="panel side_panel">
 		<ul>
-			<li><a href="/" class="{% block front_select %}{% endblock %}">portada</a></li>
+			<li><a href="/" class="{% block front_select %}{% endblock %}">dfiid</a></li>
 			<li><a id="anon_panel_link" href="#">anon</a></li>
 			<li><a href="/subs" class="{% block subs_select %}{% endblock %}">subs</a></li>
 			<li><a href="/users" class="{% block users_select %}{% endblock %}">usuarios</a></li>

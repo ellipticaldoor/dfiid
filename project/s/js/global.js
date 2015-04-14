@@ -3,7 +3,7 @@ var link_panel = document.getElementById('link_panel');
 var mid_panel = document.getElementById('mid_panel');
 var info_panel = document.getElementById('info_panel');
 
-var links_nav_link = document.getElementById('links_nav_link');
+var link_nav_link = document.getElementById('link_nav_link');
 var mid_nav_link = document.getElementById('mid_nav_link');
 var info_nav_link = document.getElementById('info_nav_link');
 
@@ -26,7 +26,7 @@ window.addEventListener('resize', function(event){
 });
 
 
-links_nav_link.addEventListener('click', function() {
+link_nav_link.addEventListener('click', function() {
 	main_panel = 1;
 	set_panel_visibility();
 });
@@ -45,8 +45,8 @@ info_nav_link.addEventListener('click', function() {
 
 
 function set_show_mode() {
-	if (window_width >= 950) { show_mode = 3; }
-	else if ( window_width > 480 && window_width < 950) { show_mode = 2; }
+	if (window_width >= 880) { show_mode = 3; }
+	else if ( window_width > 480 && window_width < 880) { show_mode = 2; }
 	else if ( window_width <= 480) { show_mode = 1; }
 
 	set_panel_visibility();
@@ -65,17 +65,17 @@ function set_selected() {
 	}
 	else if (show_mode == 1 ) {
 		if (main_panel == 1) {
-			links_nav_link.classList.add('selected');
+			link_nav_link.classList.add('selected');
 			mid_nav_link.classList.remove('selected');
 			info_nav_link.classList.remove('selected');
 		}
 		else if (main_panel == 2) {
-			links_nav_link.classList.remove('selected');
+			link_nav_link.classList.remove('selected');
 			mid_nav_link.classList.add('selected');
 			info_nav_link.classList.remove('selected');
 		}
 		else if (main_panel == 3) {
-			links_nav_link.classList.remove('selected');
+			link_nav_link.classList.remove('selected');
 			mid_nav_link.classList.remove('selected');
 			info_nav_link.classList.add('selected');
 		}
