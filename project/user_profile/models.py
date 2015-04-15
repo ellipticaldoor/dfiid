@@ -1,4 +1,6 @@
 from time import time
+from markdown import markdown
+
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
@@ -17,9 +19,14 @@ class Profile(models.Model):
 
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile', primary_key=True)
 	image = models.FileField(upload_to=get_profile_image, blank=True)
-	bio = models.CharField(max_length=255, blank=True)
+	bio = models.TextField(max_length=500, blank=True)
+	bio_html = models.TextField(blank=True, null=True)
 
 	objects = ProfileManager()
+
+	def save(self):
+		self.bio_html = markdown(self.bio, safe_mode=True)
+		super(Profile, self).save()
 
 	def get_absolute_url(self):
 		if not hasattr(self.user, 'decode'): user = self.user

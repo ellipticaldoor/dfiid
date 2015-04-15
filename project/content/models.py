@@ -1,4 +1,6 @@
 from time import time
+from markdown import markdown
+
 from django.db import models
 from django.utils.text import slugify
 
@@ -19,15 +21,22 @@ class PostQuerySet(models.QuerySet):
 
 class Post(models.Model):
 	post_id = models.CharField(primary_key=True, max_length=16, default=_createId)
+	user = models.ForeignKey(User)
 	title = models.CharField(max_length=100)
 	slug = models.CharField(max_length=100)
-	body = models.TextField()
+	body = models.TextField(max_length=3000, default='', blank=True)
+	body_html  = models.TextField(blank=True, null=True)
 	draft = models.BooleanField(default=True)
-	user = models.ForeignKey(User)
 	pub_date = models.DateTimeField()
 	sub = models.ForeignKey(Sub)
 
 	objects = PostQuerySet.as_manager()
+
+	def save(self):
+		self.slug = slugify(self.title.replace(' ', '_'))
+		if not self.slug: self.slug = '_'
+		self.body_html = markdown(self.body, safe_mode=True)
+		super(Post, self).save()
 
 	def get_absolute_url(self):
 		if not hasattr(self.post_id, 'decode'): post_id = self.post_id
@@ -38,10 +47,6 @@ class Post(models.Model):
 
 	def __str__(self): return str(self.title)
 
-	def save(self, *args, **kwargs):
-		self.slug = slugify(self.title.replace(' ', '_'))
-		if not self.slug: self.slug = '_'
-		super(Post, self).save(*args, **kwargs)
 
 	class Meta:
 		ordering = ['-pub_date']

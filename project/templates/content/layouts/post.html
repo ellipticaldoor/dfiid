@@ -1,8 +1,6 @@
-{% load markdown_deux_tags %}
-
 <div class="post max_width">
 	<a href="{{ object.get_absolute_url }}" class="post_title">{{ object.title }}</a>
-	<div class="post_content">{{ object.body | markdown }}</div>
+	<div class="post_content">{{ object.body_html|safe }}</div>
 
 	<div class="post_info">
 		<a href="/user/{{ object.user }}"><img alt="{{ object.user }}" src="/{{ object.user.profile.image }}"></a>

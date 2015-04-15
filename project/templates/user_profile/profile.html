@@ -9,7 +9,7 @@
 		<span id="profile_username">{{ object.user }}</span>
 		<img class="profile_image"src="{% if object.image %}/{{ object.image }}{%else%}/s/img/default_avatar.jpg{% endif %}" alt="{{ object.user }}">
 		{% if object.bio %}
-			{{ object.bio | markdown }}
+			{{ object.bio }}
 		{% else %}
 			<p>{{ object.bio }}</p>
 		{% endif %}

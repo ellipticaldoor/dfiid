@@ -38,7 +38,6 @@ INSTALLED_APPS = (
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'django.contrib.sitemaps',
-	'markdown_deux',
 	'compressor',
 	'nocaptcha_recaptcha',
 	'core',
@@ -109,12 +108,6 @@ STATICFILES_FINDERS = (
 	'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 	'compressor.finders.CompressorFinder',
 )
-
-MARKDOWN_DEUX_STYLES = {
-	'default': {
-		'safe_mode': True,
-	},
-}
 
 NORECAPTCHA_SITE_KEY = get_env('NORECAPTCHA_SITE_KEY')
 
