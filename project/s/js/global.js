@@ -25,6 +25,27 @@ window.addEventListener('resize', function(event){
 	set_show_mode();
 });
 
+$(document).swipeLeft(function(){
+	if ( main_panel == 1 ) {
+		main_panel = 2;
+		set_panel_visibility();
+	}
+	else if ( main_panel == 2 ) {
+		main_panel = 3;
+		set_panel_visibility();
+	}
+})
+
+$(document).swipeRight(function(){
+	if ( main_panel == 3 ) {
+		main_panel = 2;
+		set_panel_visibility();
+	}
+	else if ( main_panel == 2 ) {
+		main_panel = 1;
+		set_panel_visibility();
+	}
+})
 
 link_nav_link.addEventListener('click', function() {
 	main_panel = 1;
