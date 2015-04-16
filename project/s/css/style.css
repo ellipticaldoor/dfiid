@@ -74,11 +74,6 @@ ul {
 	padding: 0;
 }
 
-input { outline: none; }
-input:focus { border: 1px solid #34AADC }
-
-input[type="submit"] { cursor: pointer; }
-
 
 /* Resources
 ========================================================================== */
@@ -135,15 +130,20 @@ input {
 	padding: 5px;
 	border-radius: 2px;
 	border: 1px solid #C7C7CC;
+	outline: none;
+	-webkit-appearance: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
 }
 
+input:focus { border: 1px solid #34AADC }
+
 input[type="submit"] {
 	color: white;
 	border: 1px solid #34AADC;
 	background-color: #34AADC;
+	cursor: pointer;
 	-webkit-animation: bg_change 60s infinite alternate;
 	-ms-animation: bg_change 60s infinite alternate;
 	animation: bg_change 60s infinite alternate;
@@ -387,15 +387,15 @@ div.fluidvids iframe {
 #message_auth_form { margin-bottom: 10px; }
 
 .g-recaptcha {
-	width: 235px !important;
-	height: 75px !important;
 	overflow: hidden;
+	width: 235px !important;
+	height: 55px !important;
 	border-radius: 2px;
-	border-right: 1px solid #d3d3d3;
-	border-bottom: 1px solid #d3d3d3;
-	background-color: #f9f9f9;
+	border: 1px solid #d3d3d3;
 	margin: 0px auto 5px auto;
 }
+
+.g-recaptcha iframe { margin: -10px 0px 0px -2px; }
 
 
 /* Editor
