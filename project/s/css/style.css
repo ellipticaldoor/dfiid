@@ -24,25 +24,6 @@
 .max_width { max-width: 600px; }
 
 
-/* Animations
-========================================================================== */
-
-@-webkit-keyframes bg_change {
-	0% { background-color: #34AADC; }
-	100% { background-color: #007AFF; }
-}
-
-@-ms-keyframes bg_change {
-	0% { background-color: #34AADC; }
-	100% { background-color: #007AFF; }
-}
-
-@keyframes bg_change {
-	0% { background-color: #34AADC; }
-	100% { background-color: #007AFF; }
-}
-
-
 /* Typography
 ========================================================================== */
 
@@ -433,3 +414,40 @@ textarea {
 }
 
 textarea:focus { border: 1px solid #D1EEFC; }
+
+
+/* Animations
+========================================================================== */
+
+@-webkit-keyframes bg_change {
+	0% { background-color: #007AFF; }
+	100% { background-color: #34AADC; }
+}
+
+@-ms-keyframes bg_change {
+	0% { background-color: #007AFF; }
+	100% { background-color: #34AADC; }
+}
+
+@keyframes bg_change {
+	0% { background-color: #007AFF; }
+	100% { background-color: #34AADC; }
+}
+
+#loading {
+	overflow: auto;
+	width: 78px;
+	margin: 0 auto;
+}
+
+#loading div {
+	float: left;
+	margin: 0px 3px 0px 3px;
+	width: 15px;
+	height: 15px;
+	border-radius: 100px;
+	background-color: #34AADC;
+	-webkit-animation: bg_change 0.5s infinite alternate;
+	-ms-animation: bg_change 0.5s infinite alternate;
+	animation: bg_change 0.5s infinite alternate;
+}
