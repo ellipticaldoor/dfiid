@@ -3,9 +3,16 @@
 {% block login_select %}selected{% endblock %}
 
 {% block content %}
-	<form class="auth_form" action="/login/" method="post">
-		{% csrf_token %}
-		{{ form }}
-		<input type="submit" value="login" />
-	</form>
+	<div id="auth_form_container" class="max_width">
+		<img src="/s/img/dfiid_logo_with_text.jpg">
+
+		<form id="auth_form" action="/login/" method="post">
+			{% csrf_token %}
+			<p id="message_auth_form">:)</p>
+			{{ form }}
+			<input type="submit" value="login" />
+		</form>
+
+		<a href="/signup">signup</a>
+	</div>
 {% endblock %}
