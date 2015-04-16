@@ -4,17 +4,21 @@
 
 {% block content %}
 	<div id="auth_form_container" class="max_width">
-		<img src="/s/img/dfiid_logo_with_text.jpg">
+		{% if not user.is_authenticated %}
+			<img src="/s/img/dfiid_logo_with_text.jpg">
 
-		{{ form.non_field_errors }}
-		<form id="auth_form" class="max_width" action="/signup/" method="post">
-			{% csrf_token %}
-			<p id="message_auth_form">:D</p>
-			{{ form }}
-			<input type="submit" value="crear cuenta" />
-		</form>
+			{{ form.non_field_errors }}
+			<form id="auth_form" class="max_width" action="/signup/" method="post">
+				{% csrf_token %}
+				<p id="message_auth_form">:D</p>
+				{{ form }}
+				<input type="submit" value="crear cuenta" />
+			</form>
 
-		<a href="/login">login</a>
+			<a href="/login">login</a>
+		{% else %}
+			<a href="/logout">logout</a>
+		{% endif %}
 	</div>
 {% endblock %}
 
