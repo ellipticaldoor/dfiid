@@ -75,6 +75,7 @@ ul {
 }
 
 input { outline: none; }
+input:focus { border: 1px solid #34AADC; }
 
 
 /* Resources

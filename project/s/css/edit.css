@@ -13,6 +13,8 @@ textarea {
 	outline: none;
 }
 
+textarea:focus { border: 1px solid #D1EEFC; }
+
 
 /* Editor
 ========================================================================== */
