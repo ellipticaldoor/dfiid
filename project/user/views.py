@@ -1,8 +1,9 @@
-from django.views.generic import CreateView
+from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth import authenticate, login
 
+from user.models import User, Profile
+from content.models import Post
 from user.forms import SignUpForm
-from user_profile.models import Profile
 
 
 class SignUpView(CreateView):
@@ -24,3 +25,18 @@ class SignUpView(CreateView):
 		login(self.request, user)
 
 		return super(SignUpView, self).form_valid(form)
+
+
+class ProfileView(DetailView):
+	template_name = 'user/profile.html'
+	model = Profile
+
+	def get_context_data(self, **kwargs):
+		context = super(ProfileView, self).get_context_data(**kwargs)
+		context['posts'] = Post.objects.by_user(self.kwargs['pk'])
+		return context
+
+
+class UsersView(ListView):
+	template_name = 'user/users.html'
+	model = User

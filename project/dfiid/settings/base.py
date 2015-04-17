@@ -42,7 +42,6 @@ INSTALLED_APPS = (
 	'nocaptcha_recaptcha',
 	'core',
 	'user',
-	'user_profile',
 	'content',
 	'sub',
 	'cms',

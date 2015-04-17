@@ -1,10 +1,11 @@
 from time import time
 from markdown import markdown
 
+from django.conf import settings
 from django.db import models
 from django.utils.text import slugify
 
-from user.models import User
+from user.models import Profile
 from sub.models import Sub
 from core.core import _createId
 
@@ -16,12 +17,11 @@ class PostQuerySet(models.QuerySet):
 	def by_post(self, pk, slug): return self.filter(pk=pk, slug=slug, draft=False)
 	def by_user(self, user): return self.filter(user=user, draft=False)
 	def by_sub(self, sub): return self.filter(sub=sub, draft=False)
-	def by_date(self, year, month): return self.filter(pub_date__year=year,pub_date__month=month, draft=False)
 
 
 class Post(models.Model):
 	post_id = models.CharField(primary_key=True, max_length=16, default=_createId)
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(Profile, related_name="posts")
 	title = models.CharField(max_length=100)
 	slug = models.CharField(max_length=100)
 	body = models.TextField(max_length=3000, default='', blank=True)
@@ -47,9 +47,21 @@ class Post(models.Model):
 
 	def __str__(self): return str(self.title)
 
-
 	class Meta:
 		ordering = ['-pub_date']
+
+
+class PostComment(models.Model):
+	comment_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
+	creator = models.ForeignKey(Profile, related_name="comments")
+	post = models.ForeignKey(Post, related_name="comments")
+	body = models.TextField(max_length=3000, default='', blank=True)
+	body_html  = models.TextField(blank=True, null=True)
+	created = models.DateTimeField(auto_now_add=True)
+
+	def save(self):
+		self.body_html = markdown(self.body, safe_mode=True)
+		super(PostComment, self).save()
 
 
 class PostPhoto(models.Model):

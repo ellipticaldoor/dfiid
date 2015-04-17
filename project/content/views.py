@@ -1,13 +1,13 @@
 from django.views.generic import ListView, DetailView
 
 from user.models import User
-from content.models import Post
+from content.models import Post, PostComment
 
 
 class FrontView(ListView):
 	template_name = 'content/front.html'
 	queryset = Post.objects.published()
-	paginate_by = 3
+	paginate_by = 2
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax():
