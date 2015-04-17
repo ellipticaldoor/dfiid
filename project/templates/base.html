@@ -35,7 +35,7 @@
 
 			<li><h4>Cuenta</h4></li>
 			{% if user.is_authenticated %}
-				<li><a id="auth_panel_link" href="/user/{{ user.username }}" class="{% block profile_select %}{% endblock %}"><img class="panel_image" src="{% if user.profile.image %}/{{ user.profile.image}}{%else%}/s/img/default_avatar.jpg{% endif %}" alt="{{ user.username }}">perfil</a></li>
+				<li><a id="auth_panel_link" href="/user/{{ user.username }}" class="{% block profile_select %}{% endblock %}"><img class="panel_avatar" src="/{{ user.avatar}}" alt="{{ user.username }}">perfil</a></li>
 				<li><a href="#">preferencias</a></li>
 				<li><a href="/logout">logout</a></li>
 			{% else %}

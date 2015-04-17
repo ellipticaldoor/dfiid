@@ -5,7 +5,7 @@
 	<div id="archive">
 		{% for object in object_list %}
 			<a href="/user/{{ object.username }}" title="{{ object.username }}">
-				<img class="profile_image" src="{% if object.profile.image %}/{{ object.profile.image }}{%else%}/s/img/default_avatar.jpg{% endif %}" alt="{{ object.user }}">
+				<img class="profile_image" src="{% if object.image %}/{{ object.image }}{%else%}/s/img/default_avatar.jpg{% endif %}" alt="{{ object.user }}">
 			</a>
 		{% endfor %}
 	</div>

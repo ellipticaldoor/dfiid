@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth import authenticate, login
 
-from user.models import User, Profile
+from user.models import User
 from content.models import Post
 from user.forms import SignUpForm
 
@@ -16,8 +16,6 @@ class SignUpView(CreateView):
 		obj.set_password(obj.password)
 		obj.save()
 
-		Profile.objects.create_profile(user=obj)
-
 		username = self.request.POST['username']
 		password = self.request.POST['password']
 
@@ -29,7 +27,7 @@ class SignUpView(CreateView):
 
 class ProfileView(DetailView):
 	template_name = 'user/profile.html'
-	model = Profile
+	model = User
 
 	def get_context_data(self, **kwargs):
 		context = super(ProfileView, self).get_context_data(**kwargs)

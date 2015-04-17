@@ -4,7 +4,6 @@ from markdown import markdown
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from core.core import _createId
 
 
 class UserManager(BaseUserManager):
@@ -23,6 +22,9 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+	def get_avatar(instance, filename):
+		return 's/media/img/user/avatar/%s_%s' % (str(time()).replace('.', '_'), filename)
+
 	username = models.CharField(primary_key=True, max_length=16)
 	USERNAME_FIELD = 'username'
 
@@ -32,36 +34,19 @@ class User(AbstractBaseUser, PermissionsMixin):
 	is_admin = models.BooleanField(default=False)
 	is_staff = models.BooleanField(default=False)
 
-	objects = UserManager()
-
-	def get_short_name(self): return self.username
-	def get_full_name(self): return self.username
-
-	class Meta:
-		ordering = ['-created']
-
-
-class ProfileManager(BaseUserManager):
-	def create_profile(self, *args, **kwargs):
-		profile = self.model(*args, **kwargs)
-		profile.save()
-		return profile
-
-
-class Profile(models.Model):
-	def get_profile_image(instance, filename):
-		return 's/media/img/profile/%s_%s' % (str(time()).replace('.', '_'), filename)
-
-	user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile', primary_key=True)
-	image = models.FileField(upload_to=get_profile_image, blank=True)
-	bio = models.TextField(max_length=500, blank=True)
+	avatar = models.FileField(upload_to=get_avatar, default='s/img/default_avatar.jpg')
+	bio = models.TextField(max_length=500, default=':3')
 	bio_html = models.TextField(blank=True, null=True)
 
-	objects = ProfileManager()
+	objects = UserManager()
 
-	def save(self):
+	def save(self, *args, **kwargs):
 		self.bio_html = markdown(self.bio, safe_mode=True)
-		super(Profile, self).save()
+		super(User, self).save()
+
+	def get_short_name(self): return self.username
+
+	def get_full_name(self): return self.username
 
 	def get_absolute_url(self):
 		if not hasattr(self.user, 'decode'): user = self.user

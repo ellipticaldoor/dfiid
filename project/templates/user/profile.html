@@ -5,16 +5,12 @@
 
 {% block content %}
 	<div id="profile_container">
-		<span id="profile_username">{{ object.user }}</span>
-		<img class="profile_image"src="{% if object.image %}/{{ object.image }}{%else%}/s/img/default_avatar.jpg{% endif %}" alt="{{ object.user }}">
-		{% if object.bio_html %}
-			{{ object.bio_html|safe }}
-		{% else %}
-			<p>Sin bio :D</p>
-		{% endif %}
+		<span id="profile_username">{{ object.username }}</span>
+		<img class="profile_image"src="/{{ object.avatar }}" alt="{{ object.username }}">
+		{{ object.bio_html|safe }}
 	</div>
 
-	<p class="def_title" href="/user/posts/{{ object.user }}">Posts</p>
+	<p class="def_title" href="/user/posts/{{ object.username }}">Posts</p>
 	{% for post in posts %}
 		<li><p><a class="profile_list_title" href="{{ post.get_absolute_url }}">{{ post.title }}</a><span class="profile_list_date"> {{ post.pub_date | date:"d/m/Y H:i" }}</span></p>
 	{% endfor %}

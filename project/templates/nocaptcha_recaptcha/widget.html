@@ -1,5 +1,0 @@
-<div class="g-recaptcha" {% for attr in gtag_attrs.items %}{{ attr.0 }}="{{ attr.1 }}" {% endfor %}data-sitekey="{{ site_key }}"></div>
-<noscript>
-	<iframe src="{{ fallback_url }}?k={{ site_key }}" frameborder="0" scrolling="no"></iframe>
-	<textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" value=""></textarea>
-</noscript>

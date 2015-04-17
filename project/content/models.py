@@ -5,7 +5,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.text import slugify
 
-from user.models import Profile
+from user.models import User
 from sub.models import Sub
 from core.core import _createId
 
@@ -21,7 +21,7 @@ class PostQuerySet(models.QuerySet):
 
 class Post(models.Model):
 	post_id = models.CharField(primary_key=True, max_length=16, default=_createId)
-	user = models.ForeignKey(Profile, related_name="posts")
+	user = models.ForeignKey(User, related_name="posts")
 	title = models.CharField(max_length=100)
 	slug = models.CharField(max_length=100)
 	body = models.TextField(max_length=3000, default='', blank=True)
@@ -51,9 +51,9 @@ class Post(models.Model):
 		ordering = ['-pub_date']
 
 
-class PostComment(models.Model):
+class Comment(models.Model):
 	comment_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
-	creator = models.ForeignKey(Profile, related_name="comments")
+	creator = models.ForeignKey(User, related_name="comments")
 	post = models.ForeignKey(Post, related_name="comments")
 	body = models.TextField(max_length=3000, default='', blank=True)
 	body_html  = models.TextField(blank=True, null=True)
@@ -61,10 +61,10 @@ class PostComment(models.Model):
 
 	def save(self):
 		self.body_html = markdown(self.body, safe_mode=True)
-		super(PostComment, self).save()
+		super(Comment, self).save()
 
 
-class PostPhoto(models.Model):
+class Photo(models.Model):
 	def get_post_image(instance, filename):
 		# TODO: cambiar filename por photo_id
 		return 's/media/img/content/%s_%s' % (str(time()).replace('.', '_'), filename)
@@ -74,3 +74,12 @@ class PostPhoto(models.Model):
 	post = models.ForeignKey(Post, related_name='photo')
 
 	def __str__(self): return str(self.photo)
+
+
+class Sub(models.Model):
+	slug = models.SlugField(max_length=100, primary_key=True)
+	created = models.DateTimeField(auto_now_add=True)
+
+	def get_absolute_url(self): return '/sub/%s' % (str(self.slug))
+
+	def __str__(self): return str(self.slug)

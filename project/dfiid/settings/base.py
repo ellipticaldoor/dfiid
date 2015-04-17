@@ -44,7 +44,6 @@ INSTALLED_APPS = (
 	'user',
 	'content',
 	'sub',
-	'cms',
 )
 
 MIDDLEWARE_CLASSES = (
