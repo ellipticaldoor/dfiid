@@ -22,7 +22,7 @@ Remember to fill it with your on configuration.
 ```
 workon dfiid
 pip install -r requirements/dev
-python manage.py makemigrations user sub content
+python manage.py makemigrations user content
 python manage.py migrate
 python manage.py syncdb
 python manage.py runserver

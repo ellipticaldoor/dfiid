@@ -2,8 +2,8 @@ from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
-from content.models import Post
-from content.forms import PostForm
+from content.models import Post, Sub
+from content.forms import PostForm, SubForm
 
 
 class FrontView(ListView):
@@ -39,6 +39,16 @@ class CreatePostView(CreateView):
 		return HttpResponseRedirect(obj.get_edit_url())
 
 
+class EditPostView(UpdateView):
+	template_name = 'content/create_edit.html'
+	model = Post
+	form_class = PostForm
+
+	def get_success_url(self):
+		# Añadir mensaje cambios guardados
+		return self.object.get_edit_url()
+
+
 class ListPostView(ListView):
 	template_name = 'content/created.html'
 	queryset = Post.objects.all()
@@ -49,11 +59,22 @@ class ListPostView(ListView):
 		return queryset
 
 
-class EditPostView(UpdateView):
-	template_name = 'content/create_edit.html'
-	model = Post
-	form_class = PostForm
+class SubContentView(ListView):
+	template_name = 'content/post_list.html'
 
-	def get_success_url(self):
-		# Añadir mensaje cambios guardados
-		return self.object.get_edit_url()
+	def get_queryset(self):
+		sub = self.kwargs['sub']
+		queryset = Post.objects.by_sub(sub)
+		return queryset
+
+
+class SubView(ListView):
+	template_name = 'content/sub.html'
+	model = Sub
+
+
+class CreateSubView(CreateView):
+	template_name = 'content/create_sub.html'
+	model = Sub
+	form_class = SubForm
+	success_url = '/sub'

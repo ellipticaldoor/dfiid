@@ -1,6 +1,6 @@
 from django import forms
 
-from content.models import Post
+from content.models import Post, Sub
 
 
 class PostForm(forms.ModelForm):
@@ -21,3 +21,17 @@ class PostForm(forms.ModelForm):
 	class Meta:
 		model = Post
 		fields = ('title', 'body', 'pub_date', 'sub', 'draft')
+
+
+class SubForm(forms.ModelForm):
+	def __init__(self, *args, **kwargs):
+		super(SubForm, self).__init__(*args, **kwargs)
+		self.fields['slug'].widget.attrs.update({
+			'autofocus': 'autofocus',
+			'required': 'required',
+			'placeholder': 'sub'
+			})
+		
+	class Meta:
+		model = Sub
+		fields = ('slug',)

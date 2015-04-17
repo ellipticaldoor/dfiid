@@ -6,8 +6,16 @@ from django.db import models
 from django.utils.text import slugify
 
 from user.models import User
-from sub.models import Sub
 from core.core import _createId
+
+
+class Sub(models.Model):
+	slug = models.SlugField(max_length=100, primary_key=True)
+	created = models.DateTimeField(auto_now_add=True)
+
+	def get_absolute_url(self): return '/sub/%s' % (str(self.slug))
+
+	def __str__(self): return str(self.slug)
 
 
 class PostQuerySet(models.QuerySet):
@@ -74,12 +82,3 @@ class Photo(models.Model):
 	post = models.ForeignKey(Post, related_name='photo')
 
 	def __str__(self): return str(self.photo)
-
-
-class Sub(models.Model):
-	slug = models.SlugField(max_length=100, primary_key=True)
-	created = models.DateTimeField(auto_now_add=True)
-
-	def get_absolute_url(self): return '/sub/%s' % (str(self.slug))
-
-	def __str__(self): return str(self.slug)
