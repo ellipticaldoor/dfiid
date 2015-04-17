@@ -1,4 +1,3 @@
-from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
@@ -36,7 +35,10 @@ class CreatePostView(CreateView):
 		obj = form.save(commit=False)
 		obj.user = self.request.user
 		obj.save()
-		return HttpResponseRedirect(obj.get_edit_url())
+		return super(CreatePostView, self).form_valid(form)
+
+	def get_success_url(self):
+		return self.object.get_edit_url()
 
 
 class EditPostView(UpdateView):
@@ -45,7 +47,6 @@ class EditPostView(UpdateView):
 	form_class = PostForm
 
 	def get_success_url(self):
-		# Añadir mensaje cambios guardados
 		return self.object.get_edit_url()
 
 
