@@ -38,7 +38,7 @@ a {
 }
 
 a:hover { text-decoration: underline; }
-a:visited { color: #007AFF; }
+a:visited { color: #C644FC; }
 
 h4 { font-weight: normal; }
 
@@ -190,7 +190,7 @@ nav a { display: inline-block; }
 #panel_test_content {
 	width: 100%;
 	height: 100%;
-	background-color: #ecf0f1;
+	border: 1px solid #ecf0f1;
 }
 
 #mid_panel {
