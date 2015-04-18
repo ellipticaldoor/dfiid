@@ -23,7 +23,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
 	def get_avatar(instance, filename):
-		return 's/media/img/user/avatar/%s_%s' % (str(time()).replace('.', '_'), filename)
+		return 's/media/img/avatar/%s.jpg' % (instance.username)
 
 	username = models.CharField(primary_key=True, max_length=16)
 	USERNAME_FIELD = 'username'
@@ -34,7 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	is_admin = models.BooleanField(default=False)
 	is_staff = models.BooleanField(default=False)
 
-	avatar = models.FileField(upload_to=get_avatar, default='s/img/default_avatar.jpg')
+	avatar = models.FileField(upload_to=get_avatar)
 	bio = models.TextField(max_length=500, default=':3')
 	bio_html = models.TextField(blank=True, null=True)
 
@@ -53,4 +53,5 @@ class User(AbstractBaseUser, PermissionsMixin):
 		else: user = self.user.decode('utf-8')
 		return '/user/%s' % (user)
 
-	def __str__(self): return str(self.user)
+	class Meta: ordering = ['-created']
+ 

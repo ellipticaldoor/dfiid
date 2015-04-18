@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from user.models import User
 from content.models import Post
 from user.forms import SignUpForm
+from core.core import random_avatar
 
 
 class SignUpView(CreateView):
@@ -14,7 +15,10 @@ class SignUpView(CreateView):
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.set_password(obj.password)
+		obj.avatar = 's/media/img/avatar/%s.jpg' % (obj.username)
 		obj.save()
+
+		random_avatar(obj.username)
 
 		username = self.request.POST['username']
 		password = self.request.POST['password']
@@ -25,13 +29,16 @@ class SignUpView(CreateView):
 		return super(SignUpView, self).form_valid(form)
 
 
-class ProfileView(DetailView):
+class ProfileView(ListView):
 	template_name = 'user/profile.html'
-	model = User
+
+	def get_queryset(self):
+		queryset = Post.objects.by_user(user=self.kwargs['profile'])
+		return queryset
 
 	def get_context_data(self, **kwargs):
 		context = super(ProfileView, self).get_context_data(**kwargs)
-		context['posts'] = Post.objects.by_user(self.kwargs['pk'])
+		context['profile'] = User.objects.get(username=self.kwargs['profile'])
 		return context
 
 

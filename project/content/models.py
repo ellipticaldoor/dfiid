@@ -55,8 +55,7 @@ class Post(models.Model):
 
 	def __str__(self): return str(self.title)
 
-	class Meta:
-		ordering = ['-pub_date']
+	class Meta: ordering = ['-pub_date']
 
 
 class Comment(models.Model):

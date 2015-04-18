@@ -116,7 +116,7 @@ input {
 	box-shadow: none;
 }
 
-input:focus { border: 1px solid #34AADC }
+input:focus { border: 1px solid #34AADC; }
 
 input[type="submit"] {
 	color: white;
@@ -129,7 +129,10 @@ input[type="submit"] {
 }
 
 input[type="button"] { background-color: white; }
-input[type="checkbox"] { margin-right: 3px; }
+input[type="checkbox"] {
+	margin-right: 3px;
+	-webkit-appearance: checkbox;
+}
 
 ::-webkit-input-placeholder { color: #C7C7CC; }
 :-moz-placeholder { color: #C7C7CC; opacity: 1; }
@@ -378,7 +381,6 @@ div.fluidvids iframe {
 
 /* Editor
 ========================================================================== */
-
 
 #edit_form_button { margin-left: 5px; }
 
