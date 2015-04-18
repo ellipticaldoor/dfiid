@@ -3,7 +3,7 @@
 	<div class="post_content">{{ object.body_html|safe }}</div>
 
 	<div class="post_info">
-		<a href="/user/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="/s/media/img/avatar/{{ object.user_id }}.jpg"></a>
+		<a href="/user/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="/s/media/img/avatar/{{ object.user_id }}.png"></a>
 		<span> por <a href="/user/{{ object.user_id }}">{{ object.user_id }}</a> en <a href="/sub/{{ object.sub_id }}">{{ object.sub_id }}</a> </span>
 		<span>{{ object.pub_date | date:"d/m/Y H:i" }} </span>
 		{% ifequal user.username  object.user_id|slugify %}

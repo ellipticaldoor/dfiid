@@ -15,7 +15,7 @@ class SignUpView(CreateView):
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.set_password(obj.password)
-		obj.avatar = 's/media/img/avatar/%s.jpg' % (obj.username)
+		obj.avatar = 's/media/img/avatar/%s.png' % (obj.username)
 		obj.save()
 
 		random_avatar(obj.username)

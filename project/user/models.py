@@ -23,7 +23,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
 	def get_avatar(instance, filename):
-		return 's/media/img/avatar/%s.jpg' % (instance.username)
+		return 's/media/img/avatar/%s.png' % (instance.username)
 
 	username = models.CharField(primary_key=True, max_length=16)
 	USERNAME_FIELD = 'username'
