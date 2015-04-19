@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView, FormMixin
+from django.views.generic.edit import CreateView, UpdateView
 
 from content.models import Sub, Post, Comment
 from content.forms import SubForm, PostForm, CommentForm

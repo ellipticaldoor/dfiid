@@ -41,8 +41,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 	objects = UserManager()
 
 	def save(self, *args, **kwargs):
+		print('uuuuuuuuuuuuuuuuuuuuuuuuuser')
 		self.bio_html = markdown(self.bio, safe_mode=True)
-		super(User, self).save()
+		super(User, self).save(*args, **kwargs)
 
 	def get_short_name(self): return self.username
 

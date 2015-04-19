@@ -1,4 +1,5 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.http import HttpResponseRedirect
+from django.views.generic import ListView, CreateView
 from django.contrib.auth import authenticate, login
 
 from user.models import User
@@ -18,15 +19,15 @@ class SignUpView(CreateView):
 		obj.avatar = 's/media/img/avatar/%s.png' % (obj.username)
 		obj.save()
 
-		random_avatar(obj.username)
-
 		username = self.request.POST['username']
 		password = self.request.POST['password']
+
+		random_avatar(username)
 
 		user = authenticate(username=username, password=password)
 		login(self.request, user)
 
-		return super(SignUpView, self).form_valid(form)
+		return HttpResponseRedirect('/')
 
 
 class ProfileView(ListView):
