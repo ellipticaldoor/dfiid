@@ -36,7 +36,7 @@ class FrontView(ListView):
 
 
 class PostView(DetailView, CreateView):
-	template_name = 'content/post_view.html'
+	template_name = 'content/post_detail.html'
 	form_class = CommentForm
 
 	def get_queryset(self):

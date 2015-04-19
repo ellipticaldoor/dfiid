@@ -63,7 +63,7 @@ class Comment(models.Model):
 	comment_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
 	user = models.ForeignKey(User, related_name="comments")
 	post = models.ForeignKey(Post, related_name="comments")
-	body = models.TextField(max_length=500, default='', blank=True)
+	body = models.TextField(max_length=500, default='')
 	body_html  = models.TextField(blank=True, null=True)
 	created = models.DateTimeField(auto_now_add=True)
 

@@ -38,11 +38,7 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-	def __init__(self, *args, **kwargs):
-		super(CommentForm, self).__init__(*args, **kwargs)
-		self.fields['body'].widget.attrs.update({ 'required': 'required' })
-
-	body = forms.CharField(label="", max_length=500, widget=forms.Textarea)
+	body = forms.CharField(label="", max_length=500, widget=forms.Textarea, required=False)
 
 	class Meta:
 		model = Comment
