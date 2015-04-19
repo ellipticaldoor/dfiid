@@ -6,14 +6,12 @@ var view_section = document.getElementById('view_section');
 var id_title = document.getElementById('id_title');
 var id_body = document.getElementById('id_body');
 var id_sub = document.getElementById('id_sub');
-var id_pub_date = document.getElementById('id_pub_date');
 var editor_hidden = false;
 
 // post view variables
 var post_title = document.getElementById('post_title');
 var post_content = document.getElementById('post_content');
 var post_sub = document.getElementById('post_sub');
-var post_pub_date = document.getElementById('post_pub_date');
 
 
 document.addEventListener('keydown', function(event) {
@@ -39,5 +37,4 @@ function update_preview() {
 	post_title.innerHTML = id_title.value;
 	post_sub.innerHTML = id_sub.value;
 	post_sub.setAttribute('href', '/sub/' + id_sub.value);
-	post_pub_date.innerHTML = id_pub_date.value;
 }

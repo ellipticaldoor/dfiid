@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, FormMixin
 
@@ -35,9 +36,8 @@ class FrontView(ListView):
 		return super(FrontView, self).get(request, *args, **kwargs)
 
 
-class PostView(DetailView, CreateView):
+class PostView(DetailView):
 	template_name = 'content/post_detail.html'
-	form_class = CommentForm
 
 	def get_queryset(self):
 		pk, slug = self.kwargs['pk'], self.kwargs['slug']
@@ -49,12 +49,20 @@ class PostView(DetailView, CreateView):
 		context['form'] = CommentForm
 		return context
 
+
+class PostCommentView(CreateView):
+	model = Comment
+	form_class = CommentForm
+
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.user = self.request.user
 		obj.post = Post.objects.get(post_id=self.kwargs['pk'])
 		obj.save()
-		return super(PostView, self).form_valid(form)
+		obj.post.last_commented = obj.created
+		obj.post.comment_number += 1
+		obj.post.save()
+		return HttpResponseRedirect(obj.get_absolute_url())
 
 
 class CreatePostView(CreateView):
@@ -66,11 +74,7 @@ class CreatePostView(CreateView):
 		obj = form.save(commit=False)
 		obj.user = self.request.user
 		obj.save()
-		return super(CreatePostView, self).form_valid(form)
-
-	def get_success_url(self):
-		return self.object.get_edit_url()
-
+		return HttpResponseRedirect(obj.get_edit_url())
 
 class EditPostView(UpdateView):
 	template_name = 'content/create_edit.html'

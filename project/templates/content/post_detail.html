@@ -4,13 +4,13 @@
 {% block content %}
 	{% include "content/layouts/post.html" %}
 
-{# 	{% if user.is_authenticated %} #}
-		<form action="{{  object.get_absolute_url }}" method="post">
+	{% if user.is_authenticated %}
+		<form action="{{  object.get_comment_url }}" method="post">
 			{% csrf_token %}
 			{{ form }}
 			<input type="submit" value="comentar" />
 		</form>
-{# 	{% endif %} #}
+	{% endif %}
 
 	{% for comment in object.comments.all %}
 		{{ comment.comment_id|safe }}

@@ -10,7 +10,7 @@
 				{% if forloop.counter0 == 5 %}
 					<p>anteriores</p>
 				{% endif %}
-				<li><p><a href="{{ object.get_absolute_url }}" class="post_title">{{ object.title }}</a><span class="list_date"> {{ object.pub_date | date:"d/m/Y H:i" }}</span></p>
+				<li><p><a href="{{ object.get_absolute_url }}" class="post_title">{{ object.title }}</a><span class="list_date"> {{ object.created | date:"d/m/Y H:i" }}</span></p>
 			{% endif %}
 		{% endfor %}
 	{% else %}

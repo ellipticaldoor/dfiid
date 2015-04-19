@@ -17,7 +17,6 @@
 						{{ form.body.errors }}
 					</div>
 					<div id="edit_options">
-						<p>{{ form.pub_date }}{{ form.pub_date.errors }}</p>
 						<p>{{ form.sub }}{{ form.sub.errors }} {{ form.draft }}{{ form.draft.errors }} <span>draft</span></p>
 					</div>
 					<input id="edit_form_button" type="submit" value="Submit" />
@@ -31,15 +30,11 @@
 					<div class="post_info">
 						<a href="/user/{{ user.username }}"><img alt="{{ user.username }}" src="/{{ user.avatar }}"></a>
 						<span> por <a href="/user/{{ user.username }}">{{ user.username }}</a> en <a id="post_sub" href=""></a> </span>
-						<span id="post_pub_date" class="post_info_highlight"></span>
+						<span id="post_created" class="post_info_highlight"></span>
 					</div>
 				</div>
 		</section>
 	</div>
-{% endblock %}
-
-{% block css %}
-	<link rel="stylesheet" href="/s/css/edit.css" type="text/css" charset="utf-8">
 {% endblock %}
 
 {% block js %}

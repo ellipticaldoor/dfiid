@@ -410,8 +410,6 @@ div.fluidvids iframe {
 	margin-bottom: 5px; 
 }
 
-#id_pub_date { width: 165px;  }
-
 #edit_form textarea {
 	height: calc(100vh - 260px);
 	min-height: 50vh;

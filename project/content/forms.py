@@ -26,15 +26,11 @@ class PostForm(forms.ModelForm):
 			'placeholder': 'título'
 			})
 		self.fields['body'].widget.attrs.update({'required': 'required'})
-		self.fields['pub_date'].widget.attrs.update({
-			'required': 'required',
-			'placeholder': 'yyyy-mm-dd hh:mm:ss'
-			})
 		self.fields['sub'].widget.attrs.update({'required': 'required'})
 
 	class Meta:
 		model = Post
-		fields = ('title', 'body', 'pub_date', 'sub', 'draft')
+		fields = ('title', 'body', 'sub', 'draft')
 
 
 class CommentForm(forms.ModelForm):

@@ -31,7 +31,7 @@ class ContentSitemap(Sitemap):
 		return Post.objects.published()
 
 	def lastmod(self, obj):
-		return obj.pub_date
+		return obj.created
 
 	def location(self, obj):
 		return obj.get_absolute_url()
