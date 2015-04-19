@@ -34,8 +34,7 @@ class ProfileView(ListView):
 	template_name = 'user/profile.html'
 
 	def get_queryset(self):
-		queryset = Post.objects.by_user(user=self.kwargs['profile'])
-		return queryset
+		return Post.objects.by_user(user=self.kwargs['profile'])
 
 	def get_context_data(self, **kwargs):
 		context = super(ProfileView, self).get_context_data(**kwargs)

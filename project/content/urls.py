@@ -1,6 +1,5 @@
 from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.http import require_POST
 
 from content import views
 
@@ -14,7 +13,7 @@ urlpatterns = patterns(
 	url(r'^sub/(?P<sub>\S+)/$', views.SubContentView.as_view(), name='sub_view'),
 	
 	url(r'^create/$', login_required(views.CreatePostView.as_view()), name='create'),
-	url(r'^created/$', login_required(views.ListPostView.as_view()), name='created'),
+	url(r'^created/$', login_required(views.PostUserCreatedView.as_view()), name='created'),
 	
 	url(r'^(?P<pk>[-\w]+)/(?P<slug>\S+)/edit/$', login_required(views.EditPostView.as_view()), name='edit'),
 	url(r'^(?P<pk>[-\w]+)/(?P<slug>\S+)/comment/$', login_required(views.PostCommentView.as_view()), name='edit'),

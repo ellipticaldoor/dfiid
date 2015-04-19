@@ -1,20 +1,11 @@
 {% extends "base.html" %}
-{% block title %}portada{% endblock %}
-{% block front_select %}selected{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
 	{% if object_list %}
-		<div class="max_width">
-			{% for object in object_list %}
+		{% for object in object_list %}
 				{% include "content/layouts/post.html" %}
-			{% endfor %}
-
-			<div id="loading">
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-		</div>
+		{% endfor %}
 	{% else %}
 		{% include "layouts/no_content.html" %}
 	{% endif %}

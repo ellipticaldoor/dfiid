@@ -41,18 +41,21 @@ class User(AbstractBaseUser, PermissionsMixin):
 	objects = UserManager()
 
 	def save(self, *args, **kwargs):
-		print('uuuuuuuuuuuuuuuuuuuuuuuuuser')
 		self.bio_html = markdown(self.bio, safe_mode=True)
 		super(User, self).save(*args, **kwargs)
 
-	def get_short_name(self): return self.username
+	def get_short_name(self):
+		return self.username
 
-	def get_full_name(self): return self.username
+	def get_full_name(self):
+		return self.username
 
 	def get_absolute_url(self):
-		if not hasattr(self.user, 'decode'): user = self.user
-		else: user = self.user.decode('utf-8')
+		if not hasattr(self.user, 'decode'):
+			user = self.user
+		else:
+			user = self.user.decode('utf-8')
 		return '/user/%s' % (user)
 
-	class Meta: ordering = ['-created']
- 
+	class Meta:
+		ordering = ['-created']

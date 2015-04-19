@@ -1,4 +1,6 @@
-from django.http import HttpResponseRedirect
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
@@ -7,9 +9,8 @@ from content.forms import SubForm, PostForm, CommentForm
 
 
 class CreateSubView(CreateView):
-	template_name = 'content/create_sub.html'
+	template_name = 'content/sub_create.html'
 	success_url = '/sub'
-	model = Sub
 	form_class = SubForm
 
 
@@ -19,20 +20,26 @@ class SubView(ListView):
 
 
 class SubContentView(ListView):
-	template_name = 'content/post_list.html'
+	template_name = 'content/sub_content_list.html'
+	paginate_by = 5
 
 	def get_queryset(self):
-		queryset = Post.objects.by_sub(self.kwargs['sub'])
-		return queryset
+		return Post.objects.by_sub(self.kwargs['sub'])
+
+	def get(self, request, *args, **kwargs):
+		if request.is_ajax():
+			self.template_name = 'content/ajax/posts.html'
+		return super(SubContentView, self).get(request, *args, **kwargs)
 
 
 class FrontView(ListView):
 	template_name = 'content/front.html'
 	queryset = Post.objects.published()
-	paginate_by = 3
+	paginate_by = 5
 
 	def get(self, request, *args, **kwargs):
-		if request.is_ajax(): self.template_name = 'content/ajax/posts.html'
+		if request.is_ajax():
+			self.template_name = 'content/ajax/posts.html'
 		return super(FrontView, self).get(request, *args, **kwargs)
 
 
@@ -51,7 +58,6 @@ class PostView(DetailView):
 
 
 class PostCommentView(CreateView):
-	model = Comment
 	form_class = CommentForm
 
 	def form_valid(self, form):
@@ -66,8 +72,7 @@ class PostCommentView(CreateView):
 
 
 class CreatePostView(CreateView):
-	template_name = 'content/create_edit.html'
-	model = Post
+	template_name = 'content/post_create.html'
 	form_class = PostForm
 
 	def form_valid(self, form):
@@ -76,20 +81,21 @@ class CreatePostView(CreateView):
 		obj.save()
 		return HttpResponseRedirect(obj.get_edit_url())
 
+
 class EditPostView(UpdateView):
 	template_name = 'content/create_edit.html'
-	model = Post
 	form_class = PostForm
+
+	def get_queryset(self):
+		return Post.objects.by_user(self.request.user)
 
 	def get_success_url(self):
 		return self.object.get_edit_url()
 
 
-class ListPostView(ListView):
-	template_name = 'content/created.html'
-	queryset = Post.objects.all()
+class PostUserCreatedView(ListView):
+	template_name = 'content/post_user_created.html'
 	paginate_by = 14
 
 	def get_queryset(self):
-		queryset = Post.objects.created(self.request.user)
-		return queryset
+		return Post.objects.by_user(self.request.user)

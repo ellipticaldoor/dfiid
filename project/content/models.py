@@ -10,20 +10,25 @@ from core.core import _createId
 
 
 class Sub(models.Model):
-	slug = models.SlugField(max_length=100, primary_key=True)
+	slug = models.SlugField(primary_key=True, max_length=100)
 	created = models.DateTimeField(auto_now_add=True)
 
-	def get_absolute_url(self): return '/sub/%s' % (str(self.slug))
+	def get_absolute_url(self):
+		return '/sub/%s' % (str(self.slug))
 
-	def __str__(self): return str(self.slug)
+	def __str__(self):
+		return str(self.slug)
 
 
 class PostQuerySet(models.QuerySet):
-	def published(self): return self.filter(draft=False)
-	def created(self, user): return self.filter(user=user)
-	def by_post(self, pk, slug): return self.filter(pk=pk, slug=slug, draft=False)
-	def by_user(self, user): return self.filter(user=user, draft=False)
-	def by_sub(self, sub): return self.filter(sub=sub, draft=False)
+	def published(self):
+		return self.filter(draft=False)
+	def by_sub(self, sub):
+		return self.filter(sub=sub, draft=False)
+	def by_user(self, user):
+		return self.filter(user=user)
+	def by_post(self, pk, slug):
+		return self.filter(pk=pk, slug=slug)
 
 
 class Post(models.Model):
@@ -53,8 +58,10 @@ class Post(models.Model):
 		else: post_id = self.post_id.decode('utf-8')
 		return '/%s/%s/' % (post_id, self.slug)
 
-	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
-	def get_comment_url(self): return '%scomment/' % (self.get_absolute_url())
+	def get_edit_url(self):
+		return '%sedit/' % (self.get_absolute_url())
+	def get_comment_url(self):
+		return '%scomment/' % (self.get_absolute_url())
 
 	def __str__(self): return self.title
 
@@ -73,11 +80,14 @@ class Comment(models.Model):
 		self.body_html = markdown(self.body, safe_mode=True)
 		super(Comment, self).save(*args, **kwargs)
 
-	def get_absolute_url(self): return self.post.get_absolute_url()
+	def get_absolute_url(self):
+		return self.post.get_absolute_url()
 
-	def __str__(self): return '%s, %s' % (self.post, self.comment_id)
+	def __str__(self): 
+		return '%s, %s' % (self.post, self.comment_id)
 
-	class Meta: ordering = ['-created']
+	class Meta:
+		ordering = ['-created']
 
 
 class Photo(models.Model):
@@ -88,4 +98,5 @@ class Photo(models.Model):
 	photo = models.FileField(upload_to=get_post_image)
 	post = models.ForeignKey(Post, related_name='photo')
 
-	def __str__(self): return self.photo
+	def __str__(self):
+		return self.photo
