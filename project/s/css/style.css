@@ -110,6 +110,7 @@ input {
 	border-radius: 2px;
 	border: 1px solid #C7C7CC;
 	outline: none;
+	-moz-appearance: none;
 	-webkit-appearance: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
@@ -132,6 +133,7 @@ input[type="button"] { background-color: white; }
 input[type="checkbox"] {
 	margin-right: 3px;
 	-webkit-appearance: checkbox;
+	-moz-appearance: checkbox;
 }
 
 ::-webkit-input-placeholder { color: #C7C7CC; }
@@ -140,6 +142,8 @@ input[type="checkbox"] {
 :-ms-input-placeholder { color: #C7C7CC; }
 
 select {
+	-moz-appearance: button;
+	outline: none;
 	margin: 5px 5px 0px 0px;
 	color: #8E8E93;
 	background-color: white;
@@ -147,6 +151,21 @@ select {
 	border: 1px solid #C7C7CC;
 	border-radius: 2px;
 }
+
+select:focus { border: 1px solid #34AADC; }
+
+textarea {
+	padding: 20px;
+	border: 1px solid #D7D7D7;
+	border-radius: 2px;
+	font-size: 110%;
+	width: 100%;
+	height: 111px;
+	resize: none;
+	outline: none;
+}
+
+textarea:focus { border: 1px solid #34AADC; }
 
 
 /* Nav
@@ -184,7 +203,7 @@ nav a { display: inline-block; }
 #info_panel {
 	width: 280px;
 	height: 500px;
-	border-left: 1px solid #C7C7CC;
+	border-left: 1px solid #D7D7D7;
 }
 
 #panel_test_content {
@@ -217,9 +236,7 @@ nav a { display: inline-block; }
 	color: #007AFF;
 }
 
-#dfiid a {
-	color: #34AADC;
-}
+#dfiid a { color: #34AADC; }
 
 #dfiid img {
 	height: 19px;
@@ -236,9 +253,7 @@ nav a { display: inline-block; }
 #create_panel_link { color: #EF4DB6 !important; }
 #github_panel_link { color: #8E8E93 !important; }
 
-.nav_link {
-	width: 50px;
-}
+.nav_link { width: 50px; }
 
 #link_nav_link { display: none; }
 #mid_nav_link { display: none; }
@@ -333,9 +348,7 @@ div.fluidvids iframe {
 
 .profile_image { height: 150px; }
 
-.profile_list_title {
-	font-size: 120%;
-}
+.profile_list_title { font-size: 120%; }
 
 .profile_list_date {
 	font-size: 90%;
@@ -399,19 +412,13 @@ div.fluidvids iframe {
 
 #id_pub_date { width: 165px;  }
 
-textarea {
-	padding: 20px;
-	border: 1px solid #E7E7E7;
-	font-size: 110%;
-	max-width: 100%;
-	min-width: 100%;
+#edit_form textarea {
 	height: calc(100vh - 260px);
 	min-height: 50vh;
-	resize: none;
-	outline: none;
 }
 
-textarea:focus { border: 1px solid #D1EEFC; }
+#edit_form textarea:focus { border: 1px solid #D1EEFC; }
+
 
 
 /* Animations

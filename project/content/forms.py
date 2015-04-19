@@ -1,6 +1,20 @@
 from django import forms
 
-from content.models import Post, Sub
+from content.models import Sub, Post, Comment
+
+
+class SubForm(forms.ModelForm):
+	def __init__(self, *args, **kwargs):
+		super(SubForm, self).__init__(*args, **kwargs)
+		self.fields['slug'].widget.attrs.update({
+			'autofocus': 'autofocus',
+			'required': 'required',
+			'placeholder': 'sub'
+			})
+		
+	class Meta:
+		model = Sub
+		fields = ('slug',)
 
 
 class PostForm(forms.ModelForm):
@@ -23,15 +37,13 @@ class PostForm(forms.ModelForm):
 		fields = ('title', 'body', 'pub_date', 'sub', 'draft')
 
 
-class SubForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
-		super(SubForm, self).__init__(*args, **kwargs)
-		self.fields['slug'].widget.attrs.update({
-			'autofocus': 'autofocus',
-			'required': 'required',
-			'placeholder': 'sub'
-			})
-		
+		super(CommentForm, self).__init__(*args, **kwargs)
+		self.fields['body'].widget.attrs.update({ 'required': 'required' })
+
+	body = forms.CharField(label="", max_length=500, widget=forms.Textarea)
+
 	class Meta:
-		model = Sub
-		fields = ('slug',)
+		model = Comment
+		fields = ('body',)

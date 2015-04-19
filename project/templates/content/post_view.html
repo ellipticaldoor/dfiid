@@ -2,9 +2,17 @@
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block content %}
-	{% if object %}
-		{% include "content/layouts/post.html" %}
-	{% else %}
-		{% include "layouts/no_content.html" %}
-	{% endif %}
+	{% include "content/layouts/post.html" %}
+
+{# 	{% if user.is_authenticated %} #}
+		<form action="{{  object.get_absolute_url }}" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<input type="submit" value="comentar" />
+		</form>
+{# 	{% endif %} #}
+
+	{% for comment in object.comments.all %}
+		{{ comment.body_html|safe }}
+	{% endfor %}
 {% endblock %}

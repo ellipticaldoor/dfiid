@@ -49,9 +49,10 @@ class Post(models.Model):
 	def get_absolute_url(self):
 		if not hasattr(self.post_id, 'decode'): post_id = self.post_id
 		else: post_id = self.post_id.decode('utf-8')
-		return '/%s/%s' % (post_id, str(self.slug))
+		return '/%s/%s/' % (post_id, str(self.slug))
 
-	def get_edit_url(self): return str(self.get_absolute_url() + '/edit')
+	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
+	def get_comment_url(self): return '%scomment/' % (self.get_absolute_url())
 
 	def __str__(self): return str(self.title)
 
@@ -60,15 +61,19 @@ class Post(models.Model):
 
 class Comment(models.Model):
 	comment_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
-	creator = models.ForeignKey(User, related_name="comments")
+	user = models.ForeignKey(User, related_name="comments")
 	post = models.ForeignKey(Post, related_name="comments")
-	body = models.TextField(max_length=3000, default='', blank=True)
+	body = models.TextField(max_length=500, default='', blank=True)
 	body_html  = models.TextField(blank=True, null=True)
 	created = models.DateTimeField(auto_now_add=True)
 
 	def save(self):
 		self.body_html = markdown(self.body, safe_mode=True)
 		super(Comment, self).save()
+
+	def get_absolute_url(self): return self.post.get_absolute_url()
+
+	def __str__(self): return '%s, %s' % (self.post, self.comment_id)
 
 
 class Photo(models.Model):
