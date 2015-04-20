@@ -23,10 +23,13 @@ class Sub(models.Model):
 class PostQuerySet(models.QuerySet):
 	def published(self):
 		return self.filter(draft=False)
+
 	def by_sub(self, sub):
 		return self.filter(sub=sub, draft=False)
+
 	def by_user(self, user):
 		return self.filter(user=user)
+
 	def by_post(self, pk, slug):
 		return self.filter(pk=pk, slug=slug)
 

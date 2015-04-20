@@ -10,7 +10,6 @@ from content.forms import SubForm, PostForm, CommentForm
 
 class CreateSubView(CreateView):
 	template_name = 'content/sub_create.html'
-	success_url = '/sub'
 	form_class = SubForm
 
 
