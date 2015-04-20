@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block user_select %}selected{% endblock %}
+
+{% block content %}
+	{% for object in object_list %}
+		<div class="profile_image">
+			<a href="/user/{{ object.username }}" title="{{ object.username }}">
+				<img src="/{{ object.avatar }}" alt="{{ object.user }}">
+			</a>
+		</div>
+	{% endfor %}
+{% endblock %}
+
+{% block title %}usuarios{% endblock %}

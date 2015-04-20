@@ -11,5 +11,5 @@ urlpatterns = patterns(
 		name = "login"),
 	url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name = "logout"),
 	url(r'^user/(?P<profile>[-\w]+)/$', views.ProfileView.as_view(), name='profile'),
-	url(r'^users/$', views.UsersView.as_view(), name='users'),
+	url(r'^user/$', views.UsersView.as_view(), name='user'),
 )

@@ -43,5 +43,5 @@ class ProfileView(ListView):
 
 
 class UsersView(ListView):
-	template_name = 'user/users.html'
+	template_name = 'user/user.html'
 	model = User

@@ -30,7 +30,7 @@
 		<ul>
 			<li id="dfiid"><a href="/" class="{% block front_select %}{% endblock %}"><img src="/s/img/dfiid_logo_small.png" alt="dfiid">dfiid</a></li>
 			<li><a href="/sub" class="{% block sub_select %}{% endblock %}">sub</a></li>
-			<li><a href="/users" class="{% block users_select %}{% endblock %}">user</a></li>
+			<li><a href="/user" class="{% block user_select %}{% endblock %}">user</a></li>
 			<li><a id="anon_panel_link" href="#">anon</a></li>
 
 			<li><h4>Cuenta</h4></li>
@@ -60,9 +60,7 @@
 	</div>
 
 	<div id="mid_panel" class="panel">
-		<div class="container">
-			{% block content %}{% endblock %}
-		</div>
+		{% block content %}{% endblock %}
 	</div>
 
 	<div id="info_panel" class="panel side_panel">

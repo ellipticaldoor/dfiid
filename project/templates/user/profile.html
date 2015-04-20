@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block title %}{{ profile.user }}{% endblock %}
 {% block profile_select %}{% ifequal user.username  profile.username|slugify %}selected{% endifequal %}{% endblock %}
-{% block users_select %}{% ifnotequal user.username  profile.username|slugify %}selected{% endifnotequal %}{% endblock %}
+{% block user_select %}{% ifnotequal user.username  profile.username|slugify %}selected{% endifnotequal %}{% endblock %}
 
 {% block content %}
 	<div id="profile_container">
 		<span id="profile_username">{{ profile.username }}</span>
-		<img class="profile_image"src="/{{ profile.avatar }}" alt="{{ profile.username }}">
+		<img id="profile_image_view"src="/{{ profile.avatar }}" alt="{{ profile.username }}">
 		{{ profile.bio_html|safe }}
 	</div>
 

@@ -4,16 +4,14 @@
 
 {% block content %}
 	{% if object_list %}
-		<div class="max_width">
-			{% for object in object_list %}
-				{% include "content/layouts/post.html" %}
-			{% endfor %}
+		{% for object in object_list %}
+			{% include "content/layouts/post.html" %}
+		{% endfor %}
 
-			<div id="loading">
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
+		<div id="loading">
+			<div></div>
+			<div></div>
+			<div></div>
 		</div>
 	{% else %}
 		{% include "layouts/no_content.html" %}

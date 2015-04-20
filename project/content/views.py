@@ -71,7 +71,7 @@ class PostCommentView(CreateView):
 
 
 class CreatePostView(CreateView):
-	template_name = 'content/post_create.html'
+	template_name = 'content/post_create_update.html'
 	form_class = PostForm
 
 	def form_valid(self, form):
@@ -81,8 +81,8 @@ class CreatePostView(CreateView):
 		return HttpResponseRedirect(obj.get_edit_url())
 
 
-class EditPostView(UpdateView):
-	template_name = 'content/create_edit.html'
+class UpdatePostView(UpdateView):
+	template_name = 'content/post_create_update.html'
 	form_class = PostForm
 
 	def get_queryset(self):

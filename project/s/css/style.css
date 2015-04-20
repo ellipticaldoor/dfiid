@@ -57,25 +57,6 @@ ul {
 /* Resources
 ========================================================================== */
 
-.error {
-	margin-top: 25px;
-	border-radius: 2px;
-	color: white;
-	font-size: 1000%;
-	text-align: center;
-	background-color: #34AADC;
-	-webkit-animation: bg_change 60s infinite alternate;
-	-ms-animation: bg_change 60s infinite alternate;
-	animation: bg_change 60s infinite alternate;
-}
-
-#error404 { font-size: 1000%; }
-
-#nopost {
-	font-size: 250%;
-	padding: 30px;
-}
-
 .def_button {
 	/*margin-right: 5px;
 	padding: 3px 6px 3px 6px;
@@ -289,7 +270,10 @@ div.fluidvids iframe {
 	margin-bottom: 10px;
 }
 
-.post { margin-bottom: 30px; }
+.post {
+	margin-bottom: 30px;
+	max-width: 600px;
+}
 
 .post_title { font-size: 150%; }
 
@@ -320,8 +304,6 @@ div.fluidvids iframe {
 
 #paginate { padding: 25px 4px 0px 0px; }
 
-.archive_title.previous_posts { margin: 30px 0px 10px 0px; }
-
 .fluidvids { margin: 20px 0px 20px 0px; }
 
 
@@ -335,7 +317,7 @@ div.fluidvids iframe {
 
 #profile_username {
 	display: block;
-	margin-bottom: 15px;
+	margin: 0px 0px 10px 0px;
 	padding: 5px 8px 5px 8px;
 	border-radius: 2px;
 	font-size: 160%;
@@ -346,7 +328,30 @@ div.fluidvids iframe {
 	animation: bg_change 60s infinite alternate;
 }
 
-.profile_image { height: 150px; }
+.profile_image {
+	float: left;
+	display: block;
+	width: calc(10% - 4px);
+	height: calc(10% - 4px);
+	margin: 0px 2px 0px 2px;
+}
+
+@media (max-width: 1000px) {
+	.profile_image {
+		width: calc(20% - 4px);
+		height: calc(20% - 4px);
+	}
+}
+
+#profile_image_view {
+	width: 150px;
+	height: 150px;
+}
+
+.profile_image img {
+	width: auto;
+	margin: 0;
+}
 
 .profile_list_title { font-size: 120%; }
 
@@ -453,4 +458,16 @@ div.fluidvids iframe {
 	-webkit-animation: bg_change 0.5s infinite alternate;
 	-ms-animation: bg_change 0.5s infinite alternate;
 	animation: bg_change 0.5s infinite alternate;
+}
+
+/* django-debug-toolbar
+========================================================================== */
+
+#djDebugToolbarHandle { border-width: 0 !important; }
+
+#djShowToolBarButton {
+    background-color: white !important;
+    background-image: none !important;
+    height: 20px !important;
+    width: 50px !important;
 }
