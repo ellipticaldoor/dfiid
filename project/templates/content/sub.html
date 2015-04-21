@@ -5,9 +5,12 @@
 {% block content %}	
 	{% if object_list %}
 		{% for object in object_list %}
-			<div class="create_table">
-				<a href="/sub/{{ object.slug }}">{{ object.slug }}</a>
+			<a href="/sub/{{ object.slug }}">
+			<div class="sub_container">
+				<p>{{ object.slug }}</p>
+				<img src="/{{ object.image }}">
 			</div>
+			</a>
 		{% endfor %}
 	{% else %}
 		{% include "layouts/no_content.html" %}

@@ -300,6 +300,34 @@ div.fluidvids iframe {
 
 .fluidvids { margin: 20px 0px 20px 0px; }
 
+.sub_container {
+	overflow: auto;
+	width: 100%;
+	line-height: 50px;
+	margin-bottom: 10px;
+	border: 1px solid #D7D7D7;
+	border-radius: 2px;
+	padding: 5px;
+}
+
+.sub_container:hover {
+	background-color: #efefef;
+
+	.sub_container p { text-decoration: underline; }
+}
+
+.sub_container img {
+	height: 50px;
+	margin: 0;
+	float: right;
+}
+
+.sub_container p {
+	margin: 0px 10px 0px 10px;
+	float: left;
+}
+
+
 
 /* Profile
    ========================================================================== */
