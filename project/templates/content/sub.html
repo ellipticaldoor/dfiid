@@ -2,11 +2,7 @@
 {% block title %}sub{% endblock %}
 {% block sub_select %}selected{% endblock %}
 
-{% block content %}
-	<div id="create_menu">
-		<span class="def_button"><a href="/create_sub">crear sub</a></span>
-	</div>
-	
+{% block content %}	
 	{% if object_list %}
 		{% for object in object_list %}
 			<div class="create_table">
@@ -16,4 +12,8 @@
 	{% else %}
 		{% include "layouts/no_content.html" %}
 	{% endif %}
+{% endblock %}
+
+{% block info_panel %}
+	<span class="def_button"><a href="/create_sub">crear sub</a></span>
 {% endblock %}
