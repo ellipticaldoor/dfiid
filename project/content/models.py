@@ -10,14 +10,27 @@ from core.core import _createId
 
 
 class Sub(models.Model):
+	def get_image(instance, filename):
+		return 's/media/sub/image/%s.png' % (instance.slug)
+
 	slug = models.SlugField(primary_key=True, max_length=100)
+	image = models.FileField(upload_to=get_image)
 	created = models.DateTimeField(auto_now_add=True)
+	last_commented = models.DateTimeField(auto_now_add=True)
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.slug.replace(' ', '_'))
+		if not self.slug: self.slug = '_'
+		super(Sub, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
 		return '/sub/%s' % (str(self.slug))
 
 	def __str__(self):
 		return str(self.slug)
+
+	class Meta:
+		ordering = ['-last_commented']
 
 
 class PostQuerySet(models.QuerySet):
@@ -63,12 +76,14 @@ class Post(models.Model):
 
 	def get_edit_url(self):
 		return '%sedit/' % (self.get_absolute_url())
+
 	def get_comment_url(self):
 		return '%scomment/' % (self.get_absolute_url())
 
 	def __str__(self): return self.title
 
-	class Meta: ordering = ['-last_commented']
+	class Meta:
+		ordering = ['-last_commented']
 
 
 class Comment(models.Model):

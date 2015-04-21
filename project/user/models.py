@@ -23,12 +23,13 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
 	def get_avatar(instance, filename):
-		return 's/media/img/avatar/%s.png' % (instance.username)
+		return 's/media/img/user/avatar/%s.png' % (instance.username)
 
 	username = models.CharField(primary_key=True, max_length=16)
 	USERNAME_FIELD = 'username'
 
 	created = models.DateTimeField(auto_now_add=True)
+	last_commented = models.DateTimeField(auto_now_add=True)
 
 	is_active = models.BooleanField(default=True)
 	is_admin = models.BooleanField(default=False)
@@ -58,4 +59,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 		return '/user/%s' % (user)
 
 	class Meta:
-		ordering = ['-created']
+		ordering = ['-last_commented']

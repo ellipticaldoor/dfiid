@@ -2,15 +2,16 @@ from django import forms
 
 from content.models import Sub, Post, Comment
 
-
 class SubForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(SubForm, self).__init__(*args, **kwargs)
 		self.fields['slug'].widget.attrs.update({
 			'autofocus': 'autofocus',
 			'required': 'required',
-			'placeholder': 'sub'
+			'placeholder': 'nombre del sub'
 			})
+
+	slug = forms.CharField(label="")
 		
 	class Meta:
 		model = Sub
