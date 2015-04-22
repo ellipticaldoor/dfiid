@@ -85,7 +85,7 @@ class Post(models.Model):
 
 	# Don't use it until refactor!!
 	def get_avatar_url(self):
-		return '/s/media/img/avatar/%s.png' % (self.user)
+		return '/s/media/user/avatar/%s.png' % (self.user)
 
 	def __str__(self): return self.title
 
@@ -117,11 +117,12 @@ class Comment(models.Model):
 
 class Photo(models.Model):
 	def get_post_image(instance, filename):
-		return 's/media/img/content/%s_%s' % (str(time()).replace('.', '_'), filename)
+		return 's/media/photo/%s.png' % (instance.photo_id)
 
 	photo_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
 	photo = models.FileField(upload_to=get_post_image)
 	post = models.ForeignKey(Post, related_name='photo')
+	created = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
 		return self.photo

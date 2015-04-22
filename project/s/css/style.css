@@ -27,7 +27,6 @@
 		overflow: auto;
 		width: calc(650px + 280px + 200px);
 		margin: 0 auto;
-		/*margin-left: 200px;*/
 	}
 }
 
@@ -48,7 +47,6 @@ a {
 }
 
 a:hover { text-decoration: underline; }
-a:visited { color: #C644FC; }
 
 h4 { font-weight: normal; }
 
@@ -272,15 +270,16 @@ div.fluidvids iframe {
 }
 
 .post {
-	border: 1px solid #D7D7D7;
+	border: 1px solid #ecf0f1;
 	border-radius: 2px;
 	padding: 10px 15px 18px 15px;
 	margin-bottom: 15px;
 }
 
-.post:hover { border: 1px solid #34AADC; }
+.post:hover { border: 1px solid white; }
 
 .post_title { font-size: 145%; }
+.post_title:visited { color: #C86EDF; }
 
 .post_content {
 	padding: 3px;
@@ -314,29 +313,25 @@ div.fluidvids iframe {
 
 .sub_container {
 	overflow: auto;
-	max-width: 600px;
-	width: 100%;
+	max-width: 300px;
+	width: 50%;
 	line-height: 50px;
 	margin-bottom: 10px;
-	border: 1px solid #D7D7D7;
 	border-radius: 2px;
 	padding: 5px;
+	float: left;
+	border: 2px solid white;
 }
 
-.sub_container:hover { border: 1px solid #34AADC; }
+.sub_container:hover {
+	border: 2px solid #34AADC;
+}
 
 .sub_container img {
 	height: 50px;
-	margin: 0;
-	float: right;
-}
-
-.sub_container p {
-	margin: 0px 10px 0px 10px;
+	margin: 0px 8px 0px 0px;
 	float: left;
 }
-
-.sub_container p:hover { text-decoration: underline; }
 
 
 /* Profile
@@ -344,7 +339,6 @@ div.fluidvids iframe {
 
 #profile_container {
 	overflow: auto;
-	border: 1px solid black;
 	border-radius: 2px;
 }
 
@@ -360,13 +354,11 @@ div.fluidvids iframe {
 	width: calc(100% - 150px);
 	border-radius: 2px;
 	font-size: 160%;
-	border: 1px solid black;
 }
 
 #profile_description {
 	float: left;
 	width: calc(100% - 150px);
-	border: 1px solid blue;
 }
 
 .profile_list_title { font-size: 120%; }

@@ -6,11 +6,20 @@ from django.views.generic.edit import CreateView, UpdateView
 
 from content.models import Sub, Post, Comment
 from content.forms import SubForm, PostForm, CommentForm
+from core.core import random_fractal
 
 
 class CreateSubView(CreateView):
 	template_name = 'content/sub_create.html'
 	form_class = SubForm
+
+	def form_valid(self, form):
+		obj = form.save(commit=False)
+		obj.save()
+		obj.image = 's/media/sub/image/%s.png' % (obj.slug)
+		obj.save()
+		random_fractal(obj.slug)
+		return HttpResponseRedirect('/sub')
 
 
 class SubView(ListView):
