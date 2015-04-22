@@ -5,9 +5,9 @@
 
 {% block content %}
 	<div id="profile_container">
-		<span id="profile_username">{{ profile.username }}</span>
 		<img id="profile_image_view"src="/{{ profile.avatar }}" alt="{{ profile.username }}">
-		{{ profile.bio_html|safe }}
+		<span id="profile_username">{{ profile.username }}</span>
+		<div id="profile_description">{{ profile.bio_html|safe }}</div>
 	</div>
 
 	<p class="def_title" href="/user/posts/{{ profile.username }}">Posts</p>

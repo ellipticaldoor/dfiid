@@ -1,15 +1,14 @@
-<div class="post">
+<div class="post max_width">
 	<a href="{{ object.get_absolute_url }}" class="post_title">{{ object.title }}</a>
 	<div class="post_content">{{ object.body_html|safe }}</div>
 
 	<div class="post_info">
 		<a href="/user/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="/s/media/img/avatar/{{ object.user_id }}.png"></a>
 		<span> por <a href="/user/{{ object.user_id }}">{{ object.user_id }}</a> en <a href="/sub/{{ object.sub_id }}">{{ object.sub_id }}</a> </span>
-		<span>{{ object.created | date:"d/m/Y H:i" }} </span>
 		{% ifequal user.username  object.user_id|slugify %}
 			<span class="post_info_highlight"><a href="{{ object.get_edit_url }}">editar</a></span>
 		{% endifequal %}
 	</div>
 
-	<div>{{ object.comment_number }} comments</div>
+	<div class="comment_link">{{ object.comment_number }} comments</div>
 </div>

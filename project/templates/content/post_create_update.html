@@ -4,7 +4,7 @@
 {% block created_select %}{% if object.title %}selected{% endif %}{% endblock %}
 
 {% block content %}
-	<div id="edit_form" class="container">
+	<div id="edit_form" class="max_width">
 		{{ form.non_field_errors }}
 		<section id="editor_section">
 			<form class="form-horizontal" action="{% if object.get_edit_url %}{{  object.get_edit_url }}{% else %}/create/{% endif %}" method="post">

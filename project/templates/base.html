@@ -18,54 +18,62 @@
 	{% block js_head %}{% endblock %}
 </head>
 <body>
-	<nav class="no-select">
-		<ul>
-			<li><a id="link_nav_link" class="nav_link" href="#" onClick="return false;">link</a></li>
-			<li><a id="mid_nav_link" class="nav_link" href="#" onClick="return false;">mid</a></li>
-			<li><a id="info_nav_link" class="nav_link" href="#" onClick="return false;">info</a></li>
-		</ul>
-	</nav>
+	<span id="app_container">
+		<nav class="no-select">
+			<ul>
+				<li><a id="link_nav_link" class="nav_link" href="#" onClick="return false;">link</a></li>
+				<li><a id="mid_nav_link" class="nav_link" href="#" onClick="return false;">mid</a></li>
+				<li><a id="info_nav_link" class="nav_link" href="#" onClick="return false;">info</a></li>
+			</ul>
+		</nav>
 
-	<div id="link_panel" class="panel side_panel">
-		<ul>
-			<li id="dfiid"><a href="/" class="{% block front_select %}{% endblock %}"><img src="/s/img/dfiid_logo_small.png" alt="dfiid">dfiid</a></li>
-			<li><a href="/sub" class="{% block sub_select %}{% endblock %}">sub</a></li>
-			<li><a href="/user" class="{% block user_select %}{% endblock %}">user</a></li>
-			<li><a id="anon_panel_link" href="#">anon</a></li>
+		<div id="link_panel" class="panel side_panel">
+			<ul>
+				<li id="dfiid"><a href="/" class="{% block front_select %}{% endblock %}"><img src="/s/img/dfiid_logo_small.png" alt="dfiid">dfiid</a></li>
+				<li><a href="/sub" class="{% block sub_select %}{% endblock %}">sub</a></li>
+				<li><a href="/user" class="{% block user_select %}{% endblock %}">user</a></li>
+				<li><a id="anon_panel_link" href="#">anon</a></li>
 
-			<li><h4>Cuenta</h4></li>
-			{% if user.is_authenticated %}
-				<li><a id="auth_panel_link" href="/user/{{ user.username }}" class="{% block profile_select %}{% endblock %}"><img class="panel_avatar" src="/{{ user.avatar}}" alt="{{ user.username }}">perfil</a></li>
-				<li><a href="#">preferencias</a></li>
-				<li><a href="/logout">logout</a></li>
-			{% else %}
-				<li><a id="auth_panel_link" href="/login" class="{% block login_select %}{% endblock %}">login</a></li>
-				<li><a href="/signup" class="{% block signup_select %}{% endblock %}">signup</a></li>
-			{% endif %}
+				<li><h4>Cuenta</h4></li>
+				{% if user.is_authenticated %}
+					<li><a id="auth_panel_link" href="/user/{{ user.username }}" class="{% block profile_select %}{% endblock %}"><img class="panel_avatar" src="/{{ user.avatar}}" alt="{{ user.username }}">perfil</a></li>
+					<li><a href="#">preferencias</a></li>
+					<li><a href="/logout">logout</a></li>
+				{% else %}
+					<li><a id="auth_panel_link" href="/login" class="{% block login_select %}{% endblock %}">login</a></li>
+					<li><a href="/signup" class="{% block signup_select %}{% endblock %}">signup</a></li>
+				{% endif %}
 
-			<li><h4>Contenido</h4></li>
-			<li><a id="create_panel_link"  href="/create" class="{% block create_select %}{% endblock %}">crear</a></li>
-			{% if user.is_authenticated %}
-				<li><a href="/created" class="{% block created_select %}{% endblock %}">creado</a></li>
-				<li><a href="#">comentado</a></li>
-			{% endif %}
+				<li><h4>Contenido</h4></li>
+				<li><a id="create_panel_link"  href="/create" class="{% block create_select %}{% endblock %}">crear</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="/created" class="{% block created_select %}{% endblock %}">creado</a></li>
+					<li><a href="#">comentado</a></li>
+				{% endif %}
 
-			<li><h4>Otros</h4></li>
-			<li><a href="/feed">feed</a></li>
-			<li><a href="#">blog</a></li>
-			<li><a href="#">acerca</a></li>
-			<li><a href="mailto:dortamiguel@gmail.com">contacto</a></li>
-			<li><a id="github_panel_link" href="https://github.com/ellipticaldoor/dfiid">github</a></li>
-		</ul>
-	</div>
+				<li><h4>Otros</h4></li>
+				<li><a href="/feed">feed</a></li>
+				<li><a href="#">blog</a></li>
+				<li><a href="#">acerca</a></li>
+				<li><a href="mailto:dortamiguel@gmail.com">contacto</a></li>
+				<li><a id="github_panel_link" href="https://github.com/ellipticaldoor/dfiid">github</a></li>
+			</ul>
+		</div>
 
-	<div id="mid_panel" class="panel">
-		{% block content %}{% endblock %}
-	</div>
+		<div id="mid_panel" class="panel">
+			{% block content %}{% endblock %}
+		</div>
 
-	<div id="info_panel" class="panel side_panel">
-		{% block info_panel %}{% endblock %}
-	</div>
+		<div id="info_panel" class="panel side_panel">
+			{% block info_panel %}{% endblock %}
+			<ul>
+				<li>fav</li>
+				<li>sub</li>
+				<li>user</li>
+				<li>post</li>
+			</ul>
+		</div>
+	</span>
 
 	{% compress js inline %}
 		<script src="/s/js/lib/zepto_1.1.6.min.js"></script>
