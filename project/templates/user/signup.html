@@ -8,7 +8,7 @@
 			<img src="/s/img/dfiid_logo_with_text.jpg">
 
 			{{ form.non_field_errors }}
-			<form id="auth_form" class="max_width" action="/signup/" method="post">
+			<form id="auth_form" action="/signup/" method="post">
 				{% csrf_token %}
 				{{ form }}
 				<input type="submit" value="crear cuenta" />

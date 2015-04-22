@@ -64,9 +64,13 @@ class PostCommentView(CreateView):
 		obj.user = self.request.user
 		obj.post = Post.objects.get(post_id=self.kwargs['pk'])
 		obj.save()
+		obj.user.last_commented = obj.created
+		obj.user.save()
 		obj.post.last_commented = obj.created
 		obj.post.comment_number += 1
 		obj.post.save()
+		obj.post.sub.last_commented = obj.created
+		obj.post.sub.save()
 		return HttpResponseRedirect(obj.get_absolute_url())
 
 

@@ -16,9 +16,6 @@
 	user-select: none;
 }
 
-.container { margin: 0px auto 0px auto; }
-
-
 @media (min-width: 1130px) {
 	body {
 		overflow: auto;
@@ -277,13 +274,13 @@ div.fluidvids iframe {
 .post {
 	border: 1px solid #D7D7D7;
 	border-radius: 2px;
-	padding: 9px 15px 15px 15px;
+	padding: 10px 15px 18px 15px;
 	margin-bottom: 15px;
 }
 
 .post:hover { border: 1px solid #34AADC; }
 
-.post_title { font-size: 150%; }
+.post_title { font-size: 145%; }
 
 .post_content {
 	padding: 3px;

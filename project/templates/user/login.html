@@ -4,7 +4,7 @@
 
 {% block content %}
 	{% if not user.is_authenticated %}
-		<div id="auth_form_container" class="max_width">
+		<div id="auth_form_container">
 			<img src="/s/img/dfiid_logo_with_text.jpg">
 			{% if next %}
 			<form id="auth_form" action="/login/?next={{next}}" method="post" >
