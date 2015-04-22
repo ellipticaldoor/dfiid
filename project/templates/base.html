@@ -49,11 +49,9 @@
 				<li><a id="create_panel_link"  href="/create" class="{% block create_select %}{% endblock %}">crear</a></li>
 				{% if user.is_authenticated %}
 					<li><a href="/created" class="{% block created_select %}{% endblock %}">creado</a></li>
-					<li><a href="#">comentado</a></li>
 				{% endif %}
 
 				<li><h4>Otros</h4></li>
-				<li><a href="#">acerca</a></li>
 				<li><a href="mailto:dortamiguel@gmail.com">contacto</a></li>
 				<li><a id="github_panel_link" href="https://github.com/ellipticaldoor/dfiid">github</a></li>
 			</ul>

@@ -349,12 +349,6 @@ div.fluidvids iframe {
 	border-radius: 2px;
 }
 
-#profile_username {
-	border-radius: 2px;
-	font-size: 160%;
-	border: 1px solid black;
-}
-
 #profile_image_view {
 	float: left;
 	margin: 0;
@@ -362,13 +356,21 @@ div.fluidvids iframe {
 	height: 150px;
 }
 
-.profile_list_title { font-size: 120%; }
-
-.profile_list_date {
-	font-size: 90%;
-	color: #8E8E93;
-	margin-left: 2px;
+#profile_username {
+	float: left;
+	width: calc(100% - 150px);
+	border-radius: 2px;
+	font-size: 160%;
+	border: 1px solid black;
 }
+
+#profile_description {
+	float: left;
+	width: calc(100% - 150px);
+	border: 1px solid blue;
+}
+
+.profile_list_title { font-size: 120%; }
 
 .profile_image {
 	float: left;

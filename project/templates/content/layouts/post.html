@@ -8,6 +8,13 @@
 		{% ifequal user.username  object.user_id|slugify %}
 			<span><a href="{{ object.get_edit_url }}">editar</a></span>
 		{% endifequal %}
-		<a class="comments_link" href="{{ object.get_view_comments_url }}">{{ object.comment_number }} commits</a>
+		<a class="comments_link" href="{{ object.get_view_comments_url }}">
+		{% with total=object.comment_number %}
+			{% ifequal total 0 %}
+    			commit
+			{% else %}
+				{{ total }} commit{{ total|pluralize }}
+			{% endifequal %}
+		{% endwith %}
 	</div>
 </div>
