@@ -18,10 +18,20 @@
 
 .container { margin: 0px auto 0px auto; }
 
-#app_container {
-	float: left;
-	margin-left: 200px;
-	/*border: 2px solid red;*/
+
+@media (min-width: 1130px) {
+	body {
+		overflow: auto;
+		width: 100%;
+	}
+
+	#app{
+		display: block;
+		overflow: auto;
+		width: calc(650px + 280px + 200px);
+		margin: 0 auto;
+		/*margin-left: 200px;*/
+	}
 }
 
 
@@ -187,7 +197,7 @@ nav a { display: inline-block; }
 }
 
 #mid_panel {
-	width: calc(100vw - 200px - 280px );
+	width: calc(100vw - 200px - 280px);
 	max-width: 650px;
 	padding: 0px 16px 0px 16px;
 }
