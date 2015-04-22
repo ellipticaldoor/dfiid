@@ -6,10 +6,10 @@
 	{% if object_list %}
 		{% for object in object_list %}
 			<a href="/sub/{{ object.slug }}">
-			<div class="sub_container">
-				<p>{{ object.slug }}</p>
-				<img src="/{{ object.image }}">
-			</div>
+				<div class="sub_container">
+					<p>{{ object.slug }}</p>
+					<img src="/{{ object.image }}">
+				</div>
 			</a>
 		{% endfor %}
 	{% else %}

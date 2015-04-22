@@ -323,10 +323,7 @@ div.fluidvids iframe {
 	padding: 5px;
 }
 
-.sub_container:hover {
-	border: 1px solid #34AADC;
-	.sub_container p { text-decoration: underline; }
-}
+.sub_container:hover { border: 1px solid #34AADC; }
 
 .sub_container img {
 	height: 50px;
@@ -338,6 +335,8 @@ div.fluidvids iframe {
 	margin: 0px 10px 0px 10px;
 	float: left;
 }
+
+.sub_container p:hover { text-decoration: underline; }
 
 
 /* Profile
