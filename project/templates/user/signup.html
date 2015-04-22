@@ -3,23 +3,21 @@
 {% block signup_select %}selected{% endblock %}
 
 {% block content %}
-	<div id="auth_form_container" class="max_width">
-		{% if not user.is_authenticated %}
+	{% if not user.is_authenticated %}
+		<div id="auth_form_container">
 			<img src="/s/img/dfiid_logo_with_text.jpg">
 
 			{{ form.non_field_errors }}
 			<form id="auth_form" class="max_width" action="/signup/" method="post">
 				{% csrf_token %}
-				<p id="message_auth_form">:D</p>
 				{{ form }}
 				<input type="submit" value="crear cuenta" />
 			</form>
-
-			<a href="/login">login</a>
-		{% else %}
-			<a href="/logout">logout</a>
-		{% endif %}
-	</div>
+			</div>
+		<a href="/login">login</a>
+	{% else %}
+		<a href="/logout">logout</a>
+	{% endif %}
 {% endblock %}
 
 {% block js_head %}

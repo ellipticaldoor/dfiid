@@ -3,8 +3,8 @@
 {% block login_select %}selected{% endblock %}
 
 {% block content %}
-	<div id="auth_form_container" class="max_width">
-		{% if not user.is_authenticated %}
+	{% if not user.is_authenticated %}
+		<div id="auth_form_container" class="max_width">
 			<img src="/s/img/dfiid_logo_with_text.jpg">
 			{% if next %}
 			<form id="auth_form" action="/login/?next={{next}}" method="post" >
@@ -12,14 +12,12 @@
 			<form id="auth_form" action="/login/" method="post">
 			{% endif %}
 				{% csrf_token %}
-				<p id="message_auth_form">:)</p>
 				{{ form }}
 				<input type="submit" value="login" />
 			</form>
-
-			<a href="/signup">signup</a>
-		{% else %}
-			<a href="/logout">logout</a>
-		{% endif %}
-	</div>
+		</div>
+		<a href="/signup">signup</a>
+	{% else %}
+		<a href="/logout">logout</a>
+	{% endif %}
 {% endblock %}

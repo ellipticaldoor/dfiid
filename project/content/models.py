@@ -80,6 +80,13 @@ class Post(models.Model):
 	def get_comment_url(self):
 		return '%scomment/' % (self.get_absolute_url())
 
+	def get_view_comments_url(self):
+		return '%s#comments' % (self.get_absolute_url())
+
+	# Don't use it until refactor!!
+	def get_avatar_url(self):
+		return '/s/media/img/avatar/%s.png' % (self.user)
+
 	def __str__(self): return self.title
 
 	class Meta:
