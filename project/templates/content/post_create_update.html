@@ -16,10 +16,12 @@
 						{{ form.body }}
 						{{ form.body.errors }}
 					</div>
+					
 					<div id="edit_options">
-						<p>{{ form.sub }}{{ form.sub.errors }} {{ form.draft }}{{ form.draft.errors }} <span>draft</span></p>
+						<input id="edit_form_button" type="submit" value="Submit" />
+						<span id="draft_chekcbox">{{ form.draft }}{{ form.draft.errors }}draft</span>
+						<span id="sub_select">{{ form.sub }}{{ form.sub.errors }}</span>
 					</div>
-					<input id="edit_form_button" type="submit" value="Submit" />
 			</form>
 		</section>
 		<section id="view_section">

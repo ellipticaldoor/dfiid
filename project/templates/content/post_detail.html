@@ -4,16 +4,26 @@
 {% block content %}
 	{% include "content/layouts/post.html" %}
 
-	{% if user.is_authenticated %}
-		<form action="{{  object.get_comment_url }}" method="post">
-			{% csrf_token %}
-			{{ form }}
-			<input type="submit" value="commit" />
-		</form>
-	{% endif %}
+	<div id="comments">
+		{% if user.is_authenticated %}
+			<form action="{{  object.get_comment_url }}" method="post">
+				{% csrf_token %}
+				{{ form }}
+				<input type="submit" value="commit" />
+			</form>
+		{% endif %}
 
-	{% for comment in object.comments.all %}
-		{{ comment.comment_id|safe }}
-		{{ comment.body_html|safe }}
-	{% endfor %}
+		{% for comment in object.comments.all %}
+			<div id="{{ comment.comment_id}}" class="commit">
+				<div class="commit_content">{{ comment.body_html|safe }}</div>
+				<div class="commit_info">
+					<a href="/user/{{ comment.user_id }}">
+						<img alt="{{ object.user_id }}" src="/s/media/user/avatar/{{ object.user_id }}.png">
+						{{ comment.user_id }}
+					</a>
+					<a class="commit_link" href="#{{ comment.comment_id}}">#{{ comment.comment_id}}</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}

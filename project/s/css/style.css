@@ -133,7 +133,7 @@ input[type="checkbox"] {
 select {
 	-moz-appearance: button;
 	outline: none;
-	margin: 5px 5px 0px 0px;
+	margin: 0px;
 	color: #8E8E93;
 	background-color: white;
 	padding: 5px;
@@ -334,6 +334,36 @@ div.fluidvids iframe {
 }
 
 
+/* Commits
+   ========================================================================== */
+
+.commit {
+	overflow: auto;
+	padding: 15px;
+	border-radius: 2px;
+	margin: 0px 0px 10px 0px;
+}
+
+.commit:nth-child(odd) { background-color: #e8f1f9; }
+.commit:nth-child(even) { background-color: #f4f8fc; }
+
+.commit_content {
+	margin-bottom: 10px;
+}
+
+.commit_info {
+	overflow: auto;
+	width: 100%;
+	line-height: 25px;
+}
+
+.commit_info img {
+	float: left;
+	height: 25px;
+	margin: 0;
+}
+
+
 /* Profile
    ========================================================================== */
 
@@ -421,14 +451,16 @@ div.fluidvids iframe {
 
 /* Editor
 ========================================================================== */
+#edit_options { color: #8E8E93; }
 
-#edit_form_button { margin-left: 5px; }
+#edit_form_button { float: left; }
 
-#edit_options {
+#draft_chekcbox {
 	float: left;
-	color: #8E8E93;
-	margin-bottom: 5px;
+	margin: 0px 10px 0px 10px;
 }
+
+#sub_select { float: right; }
 
 #view_section { display: none; }
 
