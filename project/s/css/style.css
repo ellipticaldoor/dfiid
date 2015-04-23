@@ -306,6 +306,11 @@ div.fluidvids iframe {
 .post_info img, .post_info span { float: left; }
 .post_info span { margin-left: 8px; }
 .comments_link { float: right; }
+.comments_link img {
+	float: right;
+	width: 20px;
+	height: 20px;
+}
 
 #paginate { padding: 25px 4px 0px 0px; }
 
