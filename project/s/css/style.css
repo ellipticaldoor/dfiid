@@ -337,6 +337,11 @@ div.fluidvids iframe {
 /* Commits
    ========================================================================== */
 
+#commit_form {
+	width: 95%;
+	margin: 0px auto 15px auto;
+}
+
 .commit {
 	overflow: auto;
 	padding: 15px;
@@ -358,7 +363,7 @@ div.fluidvids iframe {
 }
 
 .commit_info img {
-	float: left;c
+	float: left;
 	height: 25px;
 	margin: 0px 6px 0px 0px;
 }
