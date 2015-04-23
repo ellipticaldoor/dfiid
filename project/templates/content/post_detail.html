@@ -18,7 +18,7 @@
 				<div class="commit_content">{{ comment.body_html|safe }}</div>
 				<div class="commit_info">
 					<a href="/user/{{ comment.user_id }}">
-						<img alt="{{ object.user_id }}" src="/s/media/user/avatar/{{ object.user_id }}.png">
+						<img alt="{{ comment.user_id }}" src="/s/media/user/avatar/{{ comment.user_id }}.png">
 						{{ comment.user_id }}
 					</a>
 					<a class="commit_link" href="#{{ comment.comment_id}}">#{{ comment.comment_id}}</a>

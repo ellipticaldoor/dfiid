@@ -344,8 +344,8 @@ div.fluidvids iframe {
 	margin: 0px 0px 10px 0px;
 }
 
-.commit:nth-child(odd) { background-color: #e8f1f9; }
 .commit:nth-child(even) { background-color: #f4f8fc; }
+.commit:nth-child(odd) { background-color: #eff5fa; }
 
 .commit_content {
 	margin-bottom: 10px;
@@ -358,11 +358,12 @@ div.fluidvids iframe {
 }
 
 .commit_info img {
-	float: left;
+	float: left;c
 	height: 25px;
-	margin: 0;
+	margin: 0px 6px 0px 0px;
 }
 
+.commit_link { float: right; }
 
 /* Profile
    ========================================================================== */
