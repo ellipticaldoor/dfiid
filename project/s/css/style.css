@@ -8,14 +8,6 @@
 	margin: 0;
 }
 
-.no-select {
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: -moz-none;
-	-o-user-select: none;
-	user-select: none;
-}
-
 @media (min-width: 1130px) {
 	body {
 		overflow: auto;
@@ -62,32 +54,6 @@ ul {
 }
 
 
-/* Resources
-========================================================================== */
-
-.def_button {
-	/*margin-right: 5px;
-	padding: 3px 6px 3px 6px;
-	border-radius: 2px;
-	-webkit-animation: bg_change 60s infinite alternate;
-	-ms-animation: bg_change 60s infinite alternate;
-	animation: bg_change 60s infinite alternate;*/
-}
-
-span.def_button a { /*color: #ffffff; */}
-
-.def_title {
-	color: white;
-	padding: 4px 8px 4px 8px;
-	border-radius: 2px;
-	margin: 10px 0px 6px 0px;
-	background-color: #34AADC;
-	-webkit-animation: bg_change 60s infinite alternate;
-	-ms-animation: bg_change 60s infinite alternate;
-	animation: bg_change 60s infinite alternate;
-}
-
-
 /* Input
 ========================================================================== */
 
@@ -109,18 +75,24 @@ input {
 input:focus { border: 1px solid #34AADC; }
 
 input[type="submit"] {
-	color: white;
-	border: 1px solid #34AADC;
-	background-color: #34AADC;
 	cursor: pointer;
-	-webkit-animation: bg_change 60s infinite alternate;
-	-ms-animation: bg_change 60s infinite alternate;
-	animation: bg_change 60s infinite alternate;
+	color: white;
+	border: 2px solid #34AADC;
+	border-bottom: 2px solid #007AFF;
+	border-radius: 2px;
+	background-color: #34AADC;
+}
+
+input[type="submit"]:hover {
+	background-color: #007AFF;
+	border: 2px solid #007AFF;
 }
 
 input[type="button"] { background-color: white; }
+
 input[type="checkbox"] {
 	margin-right: 3px;
+	cursor: pointer;
 	-webkit-appearance: checkbox;
 	-moz-appearance: checkbox;
 }
@@ -139,6 +111,7 @@ select {
 	padding: 5px;
 	border: 1px solid #C7C7CC;
 	border-radius: 2px;
+	cursor: pointer;
 }
 
 select:focus { border: 1px solid #34AADC; }
@@ -219,7 +192,7 @@ nav a { display: inline-block; }
 #dfiid a { color: #34AADC; }
 
 #dfiid img {
-	height: 19px;
+	height: 20px;
 	margin: 0px 5px -3px 0px;
 }
 
@@ -276,9 +249,7 @@ div.fluidvids iframe {
 	margin-bottom: 15px;
 }
 
-.post:hover { border: 1px solid white; }
-
-.post_title { font-size: 145%; }
+.post_title { font-size: 135%; }
 .post_title:visited { color: #C86EDF; }
 
 .post_content {
@@ -305,11 +276,18 @@ div.fluidvids iframe {
 
 .post_info img, .post_info span { float: left; }
 .post_info span { margin-left: 8px; }
-.comments_link { float: right; }
+
+.comments_link {
+	overflow: auto;
+	float: right;
+	line-height: 30px;
+}
+
 .comments_link img {
 	float: right;
-	width: 20px;
-	height: 20px;
+	width: 17px;
+	height: 17px;
+	margin: 6px 0px 7px 5px;
 }
 
 #paginate { padding: 25px 4px 0px 0px; }
@@ -320,21 +298,19 @@ div.fluidvids iframe {
 	overflow: auto;
 	max-width: 300px;
 	width: 50%;
-	line-height: 50px;
+	line-height: 42px;
 	margin-bottom: 10px;
 	border-radius: 2px;
 	padding: 5px;
 	float: left;
-	border: 2px solid white;
+	border: 1px solid white;
 }
 
-.sub_container:hover {
-	border: 2px solid #34AADC;
-}
+.sub_container:hover { border: 1px solid #34AADC; }
 
 .sub_container img {
-	height: 50px;
-	margin: 0px 8px 0px 0px;
+	height: 42px;
+	margin: 0px 10px 0px 0px;
 	float: left;
 }
 
@@ -357,9 +333,7 @@ div.fluidvids iframe {
 .commit:nth-child(even) { background-color: #f4f8fc; }
 .commit:nth-child(odd) { background-color: #eff5fa; }
 
-.commit_content {
-	margin-bottom: 10px;
-}
+.commit_content { margin-bottom: 10px; }
 
 .commit_info {
 	overflow: auto;
@@ -374,6 +348,7 @@ div.fluidvids iframe {
 }
 
 .commit_link { float: right; }
+
 
 /* Profile
    ========================================================================== */
@@ -407,13 +382,14 @@ div.fluidvids iframe {
 .profile_image {
 	float: left;
 	display: block;
-	width: 20%;
-	height: 20%;
-	padding: 3px;
+	width: 10%;
+	height: 10%;
 	border-radius: 3px;
+	margin: 3px;
+	padding: 1px
 }
 
-.profile_image:hover { background-color: #34aadc; }
+.profile_image:hover { background-color: #34AADC; }
 
 .profile_image img {
 	width: auto;
@@ -429,7 +405,7 @@ div.fluidvids iframe {
 	text-align: center;
 	border: 1px solid #D7D7D7;
 	border-radius: 2px;
-	margin-bottom: 5px;
+	margin-bottom: 15px;
 }
 
 #auth_form { margin-bottom: 40px; }
@@ -448,6 +424,11 @@ div.fluidvids iframe {
 	padding: 8px;
 }
 
+#login_signup_link {
+	font-size: 110%;
+	text-align: center;
+}
+
 .g-recaptcha {
 	overflow: hidden;
 	width: 235px !important;
@@ -462,6 +443,7 @@ div.fluidvids iframe {
 
 /* Editor
 ========================================================================== */
+
 #edit_options { color: #8E8E93; }
 
 #edit_form_button { float: left; }
@@ -488,24 +470,8 @@ div.fluidvids iframe {
 #edit_form textarea:focus { border: 1px solid #D1EEFC; }
 
 
-
 /* Animations
 ========================================================================== */
-
-@-webkit-keyframes bg_change {
-	0% { background-color: #34AADC; }
-	100% { background-color: #007AFF; }
-}
-
-@-ms-keyframes bg_change {
-	0% { background-color: #34AADC; }
-	100% { background-color: #007AFF; }
-}
-
-@keyframes bg_change {
-	0% { background-color: #34AADC; }
-	100% { background-color: #007AFF; }
-}
 
 #loading {
 	overflow: auto;
@@ -520,9 +486,6 @@ div.fluidvids iframe {
 	height: 15px;
 	border-radius: 100px;
 	background-color: #34AADC;
-	-webkit-animation: bg_change 0.5s infinite alternate;
-	-ms-animation: bg_change 0.5s infinite alternate;
-	animation: bg_change 0.5s infinite alternate;
 }
 
 /* django-debug-toolbar

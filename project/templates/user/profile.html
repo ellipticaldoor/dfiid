@@ -10,7 +10,7 @@
 		<div id="profile_description">{{ profile.bio_html|safe }}</div>
 	</div>
 
-	<p class="def_title" href="/user/posts/{{ profile.username }}">Posts</p>
+	<p href="/user/posts/{{ profile.username }}">Posts</p>
 	<ul>
 		{% for post in object_list %}
 			<li><p><a class="profile_list_title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></p></li>

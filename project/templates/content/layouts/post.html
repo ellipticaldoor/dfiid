@@ -8,9 +8,6 @@
 		{% ifequal user.username  object.user_id|slugify %}
 			<span><a href="{{ object.get_edit_url }}">editar</a></span>
 		{% endifequal %}
-		<a class="comments_link" href="{{ object.get_view_comments_url }}">
-			<img src="/s/img/dfiid_logo_small.png">
-			{{ object.comment_number }}
-		</a>
+		<a class="comments_link" href="{{ object.get_view_comments_url }}"><img src="/s/img/dfiid_logo_small.png">{{ object.comment_number }}</a>
 	</div>
 </div>

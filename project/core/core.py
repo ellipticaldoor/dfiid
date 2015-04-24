@@ -15,7 +15,7 @@ def random_avatar(username):
 
 
 def random_fractal(sub_slug):
-	a = random.rand(7,7,3) * 255
+	a = random.rand(5,5,3) * 255
 	avatar = Image.fromarray(a.astype('uint8')).convert('RGB').resize((100,100))
 	avatar_dir = '%s/s/media/sub/image/%s.png' % (settings.BASE_DIR, sub_slug)
 	avatar.save(avatar_dir, 'PNG')

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block title %}registro{% endblock %}
-{% block signup_select %}selected{% endblock %}
 
 {% block content %}
 	{% if not user.is_authenticated %}
@@ -14,7 +13,8 @@
 				<input type="submit" value="crear cuenta" />
 			</form>
 			</div>
-		<a href="/login">login</a>
+
+		<div id="login_signup_link"><a href="/login">login</a></div>
 	{% else %}
 		<a href="/logout">logout</a>
 	{% endif %}
