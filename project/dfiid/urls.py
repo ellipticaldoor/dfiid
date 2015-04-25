@@ -19,6 +19,7 @@ urlpatterns = patterns(
 	url(r'^admin/', include(admin.site.urls)),
 
 	url(r'^', include('user.urls')),
+	url(r'^', include('anon.urls')),
 	url(r'^', include('content.urls')),
 )
 

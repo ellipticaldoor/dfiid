@@ -7,7 +7,7 @@ from core.core import _createId
 
 
 class AnonPostQuerySet(models.QuerySet):
-	def published(self, pk, slug):
+	def published(self):
 		return self.filter(show=True)
 
 	def by_post(self, pk, slug):
@@ -36,7 +36,7 @@ class AnonPost(models.Model):
 	def get_absolute_url(self):
 		if not hasattr(self.post_id, 'decode'): post_id = self.post_id
 		else: post_id = self.post_id.decode('utf-8')
-		return '/%s/%s/' % (post_id, self.slug)
+		return '/anon/%s/%s/' % (post_id, self.slug)
 
 	def get_commit_url(self):
 		return '%scommit/' % (self.get_absolute_url())
