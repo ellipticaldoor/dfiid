@@ -91,7 +91,11 @@ class CreatePostView(CreateView):
 		obj = form.save(commit=False)
 		obj.user = self.request.user
 		obj.save()
-		return HttpResponseRedirect(obj.get_edit_url())
+
+		if obj.draft:
+			return HttpResponseRedirect('/created')
+		else:
+			return HttpResponseRedirect(obj.get_absolute_url())
 
 
 class UpdatePostView(UpdateView):
@@ -101,8 +105,13 @@ class UpdatePostView(UpdateView):
 	def get_queryset(self):
 		return Post.objects.by_user(self.request.user)
 
-	def get_success_url(self):
-		return self.object.get_edit_url()
+	def form_valid(self, form):
+		obj = form.save()
+
+		if obj.draft:
+			return HttpResponseRedirect('/created')
+		else:
+			return HttpResponseRedirect(obj.get_absolute_url())
 
 
 class PostUserCreatedView(ListView):

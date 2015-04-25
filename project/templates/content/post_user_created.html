@@ -6,14 +6,14 @@
 	{% if object_list %}
 		{% for object in object_list %}
 			{% if object.draft %}
-				<a class="created_link created_draft" href="{{ object.get_absolute_url }}/edit">
+				<a class="created_link created_draft" href="{{ object.get_edit_url }}">
 					{{ object.title }}
 				</a>
 			{% endif %}
 		{% endfor %}
 		{% for object in object_list %}
 			{% if not object.draft %}
-				<a class="created_link" href="{{ object.get_absolute_url }}/edit">
+				<a class="created_link" href="{{ object.get_edit_url }}">
 					{{ object.title }}
 					<span class="comments_link"><img src="/s/img/dfiid_logo_small.png">{{ object.comment_number }}</span>
 				</a>
