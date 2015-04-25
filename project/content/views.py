@@ -1,5 +1,4 @@
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView

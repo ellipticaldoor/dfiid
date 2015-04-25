@@ -43,6 +43,7 @@ INSTALLED_APPS = (
 	'core',
 	'user',
 	'content',
+	'anon',
 )
 
 MIDDLEWARE_CLASSES = (

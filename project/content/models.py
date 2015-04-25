@@ -1,7 +1,5 @@
-from time import time
 from markdown import markdown
 
-from django.conf import settings
 from django.db import models
 from django.utils.text import slugify
 
@@ -30,16 +28,16 @@ class Sub(models.Model):
 
 class PostQuerySet(models.QuerySet):
 	def published(self):
-		return self.filter(draft=False)
+		return self.filter(draft=False, show=True)
 
 	def by_sub(self, sub):
-		return self.filter(sub=sub, draft=False)
+		return self.filter(sub=sub, draft=False, show=True)
 
 	def by_user(self, user):
-		return self.filter(user=user)
+		return self.filter(user=user, show=True)
 
 	def by_post(self, pk, slug):
-		return self.filter(pk=pk, slug=slug)
+		return self.filter(pk=pk, slug=slug, draft=False, show=True)
 
 
 class Post(models.Model):
