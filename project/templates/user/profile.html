@@ -3,7 +3,7 @@
 {% block profile_select %}{% ifequal user.username  profile.username|slugify %}selected{% endifequal %}{% endblock %}
 {% block user_select %}{% ifnotequal user.username  profile.username|slugify %}selected{% endifnotequal %}{% endblock %}
 
-{% block content %}
+{% block mid_panel %}
 	<div id="profile_container">
 		<img id="profile_image_view"src="/{{ profile.avatar }}" alt="{{ profile.username }}">
 		<span id="profile_username">{{ profile.username }}</span>

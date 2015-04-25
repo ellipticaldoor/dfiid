@@ -2,7 +2,7 @@
 {% block title %}portada{% endblock %}
 {% block front_select %}selected{% endblock %}
 
-{% block content %}
+{% block mid_panel %}
 	{% if object_list %}
 		{% for object in object_list %}
 			{% include "content/layouts/post.html" %}

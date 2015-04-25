@@ -2,7 +2,7 @@
 {% block title %}sub{% endblock %}
 {% block sub_select %}selected{% endblock %}
 
-{% block content %}	
+{% block mid_panel %}	
 	{% if object_list %}
 		{% for object in object_list %}
 			<a class="sub_container" href="/sub/{{ object.slug }}">

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block user_select %}selected{% endblock %}
 
-{% block content %}
+{% block mid_panel %}
 	{% for object in object_list %}
 		<div class="profile_image">
 			<a href="/user/{{ object.username }}" title="{{ object.username }}">
