@@ -229,7 +229,7 @@ nav a { display: inline-block; }
 
 
 /* Content
-   ========================================================================== */
+========================================================================== */
 
 img {
 	max-width: 100%;
@@ -280,7 +280,6 @@ div.fluidvids iframe {
 .comments_link {
 	overflow: auto;
 	float: right;
-	line-height: 30px;
 }
 
 .comments_link img {
@@ -293,6 +292,10 @@ div.fluidvids iframe {
 #paginate { padding: 25px 4px 0px 0px; }
 
 .fluidvids { margin: 20px 0px 20px 0px; }
+
+
+/* subs
+========================================================================== */
 
 .sub_container {
 	overflow: auto;
@@ -316,7 +319,7 @@ div.fluidvids iframe {
 
 
 /* Commits
-   ========================================================================== */
+========================================================================== */
 
 #commit_form {
 	width: 95%;
@@ -351,7 +354,7 @@ div.fluidvids iframe {
 
 
 /* Profile
-   ========================================================================== */
+========================================================================== */
 
 #profile_container {
 	overflow: auto;
@@ -397,9 +400,25 @@ div.fluidvids iframe {
 	float: left;
 }
 
+/* Created
+========================================================================== */
+
+.created_link {
+	overflow: auto;
+	float: left;
+	width: 100%;
+	padding: 10px;
+	margin: 4px;
+	border: 1px solid #ecf0f1;
+	border-radius: 2px;
+}
+
+.created_link .comments_link img { margin: 2px 0px 0px 5px; }
+
+.created_draft { color: #EF4DB6; }
 
 /* Auth form
-   ========================================================================== */
+========================================================================== */
 
 #auth_form_container {
 	text-align: center;

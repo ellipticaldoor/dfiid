@@ -2,18 +2,22 @@
 {% block title %}creado{% endblock %}
 {% block created_select %}selected{% endblock %}
 
-{% block content %}
-	<div id="create_menu">
-		<span class="def_button"><a href="/create">crear post</a></span>
-	</div>
-	
+{% block content %}	
 	{% if object_list %}
 		{% for object in object_list %}
-			<div class="table">
-				<a href="{{ object.get_absolute_url }}/edit">{{ object.title }}</a>
-				{% if object.draft %}<span class="cms_draft">borrador</span>{% endif %}
-				<span class="cms_date">{{ object.created | date:"d/m/Y H:i" }}</span>
-			</div>
+			{% if object.draft %}
+				<a class="created_link created_draft" href="{{ object.get_absolute_url }}/edit">
+					{{ object.title }}
+				</a>
+			{% endif %}
+		{% endfor %}
+		{% for object in object_list %}
+			{% if not object.draft %}
+				<a class="created_link" href="{{ object.get_absolute_url }}/edit">
+					{{ object.title }}
+					<span class="comments_link"><img src="/s/img/dfiid_logo_small.png">{{ object.comment_number }}</span>
+				</a>
+			{% endif %}
 		{% endfor %}
 	{% else %}
 		{% include "layouts/no_content.html" %}

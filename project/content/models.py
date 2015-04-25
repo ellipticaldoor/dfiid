@@ -18,11 +18,6 @@ class Sub(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	last_commented = models.DateTimeField(auto_now_add=True)
 
-	def save(self, *args, **kwargs):
-		self.slug = slugify(self.slug.replace(' ', '_'))
-		if not self.slug: self.slug = '_'
-		super(Sub, self).save(*args, **kwargs)
-
 	def get_absolute_url(self):
 		return '/sub/%s' % (str(self.slug))
 
