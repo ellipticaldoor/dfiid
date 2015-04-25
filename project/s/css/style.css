@@ -277,12 +277,12 @@ div.fluidvids iframe {
 .post_info img, .post_info span { float: left; }
 .post_info span { margin-left: 8px; }
 
-.comments_link {
+.commits_link {
 	overflow: auto;
 	float: right;
 }
 
-.comments_link img {
+.commits_link img {
 	float: right;
 	width: 17px;
 	height: 17px;
@@ -414,7 +414,7 @@ div.fluidvids iframe {
 	border-radius: 2px;
 }
 
-.created_link .comments_link img { margin: 2px 0px 0px 5px; }
+.created_link .commits_link img { margin: 2px 0px 0px 5px; }
 
 .created_draft { color: #EF4DB6; }
 

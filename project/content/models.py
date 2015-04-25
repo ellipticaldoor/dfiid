@@ -16,7 +16,7 @@ class Sub(models.Model):
 	slug = models.SlugField(primary_key=True, max_length=100)
 	image = models.FileField(upload_to=get_image)
 	created = models.DateTimeField(auto_now_add=True)
-	last_commented = models.DateTimeField(auto_now_add=True)
+	last_commited = models.DateTimeField(auto_now_add=True)
 
 	def get_absolute_url(self):
 		return '/sub/%s' % (str(self.slug))
@@ -25,7 +25,7 @@ class Sub(models.Model):
 		return str(self.slug)
 
 	class Meta:
-		ordering = ['-last_commented']
+		ordering = ['-last_commited']
 
 
 class PostQuerySet(models.QuerySet):
@@ -52,8 +52,8 @@ class Post(models.Model):
 	body_html  = models.TextField(blank=True, null=True)
 	draft = models.BooleanField(default=False)
 	created = models.DateTimeField(auto_now_add=True)
-	last_commented = models.DateTimeField(auto_now_add=True)
-	comment_number = models.IntegerField(default=0)
+	last_commited = models.DateTimeField(auto_now_add=True)
+	commit_number = models.IntegerField(default=0)
 	show = models.BooleanField(default=True)
 
 	objects = PostQuerySet.as_manager()
@@ -72,11 +72,11 @@ class Post(models.Model):
 	def get_edit_url(self):
 		return '%sedit/' % (self.get_absolute_url())
 
-	def get_comment_url(self):
-		return '%scomment/' % (self.get_absolute_url())
+	def get_commit_url(self):
+		return '%scommit/' % (self.get_absolute_url())
 
-	def get_view_comments_url(self):
-		return '%s#comments' % (self.get_absolute_url())
+	def get_view_commits_url(self):
+		return '%s#commits' % (self.get_absolute_url())
 
 	# Don't use it until refactor!!
 	def get_avatar_url(self):
@@ -85,26 +85,26 @@ class Post(models.Model):
 	def __str__(self): return self.title
 
 	class Meta:
-		ordering = ['-last_commented']
+		ordering = ['-last_commited']
 
 
-class Comment(models.Model):
-	comment_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
-	user = models.ForeignKey(User, related_name="comments")
-	post = models.ForeignKey(Post, related_name="comments")
+class Commit(models.Model):
+	commit_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
+	user = models.ForeignKey(User, related_name="commits")
+	post = models.ForeignKey(Post, related_name="commits")
 	body = models.TextField(max_length=500, default='')
 	body_html  = models.TextField(blank=True, null=True)
 	created = models.DateTimeField(auto_now_add=True)
 
 	def save(self, *args, **kwargs):
 		self.body_html = markdown(self.body, safe_mode=True)
-		super(Comment, self).save(*args, **kwargs)
+		super(Commit, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
 		return self.post.get_absolute_url()
 
 	def __str__(self): 
-		return '%s, %s' % (self.post, self.comment_id)
+		return '%s, %s' % (self.post, self.commit_id)
 
 	class Meta:
 		ordering = ['-created']

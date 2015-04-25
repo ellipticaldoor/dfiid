@@ -15,7 +15,7 @@
 			{% if not object.draft %}
 				<a class="created_link" href="{{ object.get_edit_url }}">
 					{{ object.title }}
-					<span class="comments_link"><img src="/s/img/dfiid_logo_small.png">{{ object.comment_number }}</span>
+					<span class="commits_link"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</span>
 				</a>
 			{% endif %}
 		{% endfor %}

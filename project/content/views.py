@@ -4,8 +4,8 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
-from content.models import Sub, Post, Comment
-from content.forms import SubForm, PostForm, CommentForm
+from content.models import Sub, Post, Commit
+from content.forms import SubForm, PostForm, CommitForm
 from core.core import random_fractal
 
 
@@ -61,24 +61,24 @@ class PostView(DetailView):
 
 	def get_context_data(self, **kwargs):
 		context = super(PostView, self).get_context_data(**kwargs)
-		context['form'] = CommentForm
+		context['form'] = CommitForm
 		return context
 
 
-class PostCommentView(CreateView):
-	form_class = CommentForm
+class PostCommitView(CreateView):
+	form_class = CommitForm
 
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.user = self.request.user
 		obj.post = Post.objects.get(post_id=self.kwargs['pk'])
 		obj.save()
-		obj.user.last_commented = obj.created
+		obj.user.last_commited = obj.created
 		obj.user.save()
-		obj.post.last_commented = obj.created
-		obj.post.comment_number += 1
+		obj.post.last_commited = obj.created
+		obj.post.commit_number += 1
 		obj.post.save()
-		obj.post.sub.last_commented = obj.created
+		obj.post.sub.last_commited = obj.created
 		obj.post.sub.save()
 		return HttpResponseRedirect(obj.get_absolute_url())
 

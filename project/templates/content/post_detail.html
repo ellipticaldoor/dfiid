@@ -4,24 +4,24 @@
 {% block mid_panel %}
 	{% include "content/layouts/post.html" %}
 
-	<div id="comments">
+	<div id="commits">
 		{% if user.is_authenticated %}
-			<form id="commit_form" action="{{  object.get_comment_url }}" method="post">
+			<form id="commit_form" action="{{  object.get_commit_url }}" method="post">
 				{% csrf_token %}
 				{{ form }}
 				<input type="submit" value="commit" />
 			</form>
 		{% endif %}
 
-		{% for comment in object.comments.all %}
-			<div id="{{ comment.comment_id}}" class="commit">
-				<div class="commit_content">{{ comment.body_html|safe }}</div>
+		{% for commit in object.commits.all %}
+			<div id="{{ commit.commit_id}}" class="commit">
+				<div class="commit_content">{{ commit.body_html|safe }}</div>
 				<div class="commit_info">
-					<a href="/user/{{ comment.user_id }}">
-						<img alt="{{ comment.user_id }}" src="/s/media/user/avatar/{{ comment.user_id }}.png">
-						{{ comment.user_id }}
+					<a href="/user/{{ commit.user_id }}">
+						<img alt="{{ commit.user_id }}" src="/s/media/user/avatar/{{ commit.user_id }}.png">
+						{{ commit.user_id }}
 					</a>
-					<a class="commit_link" href="#{{ comment.comment_id}}"># {{ comment.comment_id}}</a>
+					<a class="commit_link" href="#{{ commit.commit_id}}"># {{ commit.commit_id}}</a>
 				</div>
 			</div>
 		{% endfor %}

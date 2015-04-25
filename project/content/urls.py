@@ -16,6 +16,6 @@ urlpatterns = patterns(
 	url(r'^created/$', login_required(views.PostUserCreatedView.as_view()), name='created'),
 	
 	url(r'^(?P<pk>[-\w]+)/(?P<slug>\S+)/edit/$', login_required(views.UpdatePostView.as_view()), name='edit'),
-	url(r'^(?P<pk>[-\w]+)/(?P<slug>\S+)/comment/$', login_required(views.PostCommentView.as_view()), name='edit'),
+	url(r'^(?P<pk>[-\w]+)/(?P<slug>\S+)/commit/$', login_required(views.PostCommitView.as_view()), name='edit'),
 	url(r'^(?P<pk>[-\w]+)/(?P<slug>.*)/$', views.PostView.as_view(), name='post_view'),
 )

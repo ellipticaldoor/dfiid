@@ -1,6 +1,6 @@
 from django import forms
 
-from content.models import Sub, Post, Comment
+from content.models import Sub, Post, Commit
 
 class SubForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
@@ -34,9 +34,9 @@ class PostForm(forms.ModelForm):
 		fields = ('title', 'body', 'sub', 'draft')
 
 
-class CommentForm(forms.ModelForm):
+class CommitForm(forms.ModelForm):
 	body = forms.CharField(label="", max_length=500, widget=forms.Textarea, required=False)
 
 	class Meta:
-		model = Comment
+		model = Commit
 		fields = ('body',)

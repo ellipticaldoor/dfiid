@@ -29,7 +29,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	USERNAME_FIELD = 'username'
 
 	created = models.DateTimeField(auto_now_add=True)
-	last_commented = models.DateTimeField(auto_now_add=True)
+	last_commited = models.DateTimeField(auto_now_add=True)
 
 	is_active = models.BooleanField(default=True)
 	is_admin = models.BooleanField(default=False)
@@ -59,4 +59,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 		return '/user/%s' % (user)
 
 	class Meta:
-		ordering = ['-last_commented']
+		ordering = ['-last_commited']
