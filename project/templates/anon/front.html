@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}anon{% endblock %}
+{% block anon_select %}selected{% endblock %}
+
+{% block mid_panel %}
+	{% if object_list %}
+		{% for object in object_list %}
+			{% include "content/layouts/post.html" %}
+		{% endfor %}
+
+		<div id="loading">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	{% else %}
+		{% include "layouts/no_content.html" %}
+	{% endif %}
+{% endblock %}
+
+{% block js %}
+	<script src="/s/js/scroll.js"></script>
+{% endblock %}

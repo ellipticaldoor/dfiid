@@ -4,7 +4,7 @@
 {% block mid_panel %}
 	{% if not user.is_authenticated %}
 		<div id="auth_form_container">
-			<img src="/s/img/dfiid_logo_with_text.jpg">
+			<img src="/s/img/dfiid_logo_text.jpg">
 
 			{{ form.non_field_errors }}
 			<form id="auth_form" action="/signup/" method="post">

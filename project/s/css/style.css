@@ -22,6 +22,13 @@
 	}
 }
 
+.separator {
+	height: 1px;
+	width: 100%;
+	background-color: #ecf0f1;
+	margin: 18px 0px 18px 0px;
+}
+
 
 /* Typography
 ========================================================================== */
@@ -30,7 +37,6 @@ html, body, textarea {
 	font-family: 'Open Sans';
 	text-rendering: optimizeLegibility;
 	font-size: 100%;
-	color: #1F1F21;
 }
 
 a {
@@ -363,21 +369,38 @@ div.fluidvids iframe {
 
 #profile_image_view {
 	float: left;
-	margin: 0;
-	width: 150px;
-	height: 150px;
+	margin: 0px 8px 0px 0px;
+	width: 100px;
+	height: 100px;
 }
 
 #profile_username {
 	float: left;
-	width: calc(100% - 150px);
 	border-radius: 2px;
 	font-size: 160%;
 }
 
+#feed img {
+	width: 15px;
+	height: 15px;
+	margin: 12px 0px 0px 5px;
+}
+
+#profile_option {
+	float: right;
+	padding: 5px 10px 5px 10px;
+	border: 1px solid #34AADC;
+	border-radius: 2px;
+}
+
+#profile_option:hover {
+	border: 1px solid #007AFF;
+	color: #007AFF;
+}
+
 #profile_description {
-	float: left;
-	width: calc(100% - 150px);
+	padding: 12px;
+	color: #8E8E93;
 }
 
 .profile_list_title { font-size: 120%; }

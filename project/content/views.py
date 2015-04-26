@@ -28,7 +28,7 @@ class SubView(ListView):
 
 class SubContentView(ListView):
 	template_name = 'content/sub_content_list.html'
-	paginate_by = 5
+	paginate_by = 10
 
 	def get_queryset(self):
 		return Post.objects.by_sub(self.kwargs['sub'])
@@ -42,7 +42,7 @@ class SubContentView(ListView):
 class FrontView(ListView):
 	template_name = 'content/front.html'
 	queryset = Post.objects.published()
-	paginate_by = 5
+	paginate_by = 10
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax():

@@ -5,15 +5,23 @@
 
 {% block mid_panel %}
 	<div id="profile_container">
-		<img id="profile_image_view"src="/{{ profile.avatar }}" alt="{{ profile.username }}">
-		<span id="profile_username">{{ profile.username }}</span>
-		<div id="profile_description">{{ profile.bio_html|safe }}</div>
-	</div>
+		<a id="profile_username" href="/user/{{ profile.username }}"><img id="profile_image_view" src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
+		<a id="profile_username" href="/user/{{ profile.username }}">{{ profile.username }}</a>
+		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
 
-	<p href="/user/posts/{{ profile.username }}">Posts</p>
-	<ul>
-		{% for post in object_list %}
-			<li><p><a class="profile_list_title" href="{{ post.get_absolute_url }}">{{ post.title }}</a></p></li>
-		{% endfor %}
-	</ul>
+		{% ifequal user.username  profile.username|slugify %}
+			<a id="profile_option" href="#">editar</a>
+		{% else %}
+			<a id="profile_option" href="#">follow</a>
+		{% endifequal %}
+	</div>
+	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
+	<div id="profile_description">{{ profile.bio_html|safe }}</div>
+
+	{% for object in object_list %}
+		<a class="created_link" href="{{ object.get_absolute_url }}">
+			{{ object.title }}
+			<span class="commits_link"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</span>
+		</a>
+	{% endfor %}
 {% endblock %}
