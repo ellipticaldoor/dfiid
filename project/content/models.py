@@ -106,16 +106,3 @@ class Commit(models.Model):
 
 	class Meta:
 		ordering = ['-created']
-
-
-class Photo(models.Model):
-	def get_post_image(instance, filename):
-		return 's/media/photo/%s.png' % (instance.photo_id)
-
-	photo_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
-	photo = models.FileField(upload_to=get_post_image)
-	post = models.ForeignKey(Post, related_name='photo')
-	created = models.DateTimeField(auto_now_add=True)
-
-	def __str__(self):
-		return self.photo

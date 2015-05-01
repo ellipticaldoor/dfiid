@@ -16,6 +16,11 @@ class AnonFrontView(ListView):
 			self.template_name = 'content/ajax/posts.html'
 		return super(AnonFrontView, self).get(request, *args, **kwargs)
 
+	def get_context_data(self, **kwargs):
+		context = super(AnonFrontView, self).get_context_data(**kwargs)
+		context['form'] = AnonPostForm
+		return context
+
 
 class AnonPostView(DetailView):
 	template_name = 'content/post_detail.html'

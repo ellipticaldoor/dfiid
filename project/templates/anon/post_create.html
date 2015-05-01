@@ -4,21 +4,11 @@
 
 {% block mid_panel %}
 	<div id="edit_form">
-		{{ form.non_field_errors }}
 		<section id="editor_section">
 			<form class="form-horizontal" action="/anon/create/" method="post">
 				{% csrf_token %}
-					<div id="main_edit">
-						<p>{{ form.title }}</p>
-						{{ form.title.errors }}
-
-						{{ form.body }}
-						{{ form.body.errors }}
-					</div>
-					
-					<div id="edit_options">
-						<input id="edit_form_button" type="submit" value="Submit" />
-					</div>
+				{{ form }}
+				<input id="edit_form_button" type="submit" value="Submit" />
 			</form>
 		</section>
 		<section id="view_section">

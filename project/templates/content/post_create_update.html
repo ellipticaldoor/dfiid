@@ -9,21 +9,22 @@
 		<section id="editor_section">
 			<form class="form-horizontal" action="{% if object.get_edit_url %}{{  object.get_edit_url }}{% else %}/create/{% endif %}" method="post">
 				{% csrf_token %}
-					<div id="main_edit">
-						<p>{{ form.title }}</p>
-						{{ form.title.errors }}
+				<div id="main_edit">
+					<p>{{ form.title }}</p>
+					{{ form.title.errors }}
 
-						{{ form.body }}
-						{{ form.body.errors }}
-					</div>
-					
-					<div id="edit_options">
-						<input id="edit_form_button" type="submit" value="Submit" />
-						<span id="draft_chekcbox">{{ form.draft }}{{ form.draft.errors }}draft</span>
-						<span id="sub_select">{{ form.sub }}{{ form.sub.errors }}</span>
-					</div>
+					{{ form.body }}
+					{{ form.body.errors }}
+				</div>
+				
+				<div id="edit_options">
+					<input id="edit_form_button" type="submit" value="Submit" />
+					<span id="draft_chekcbox">{{ form.draft }}{{ form.draft.errors }}draft</span>
+					<span id="sub_select">{{ form.sub }}{{ form.sub.errors }}</span>
+				</div>
 			</form>
 		</section>
+
 		<section id="view_section">
 				<div class="post">
 					<a href="#" onClick="return false;" id="post_title" class="post_title"></a>
