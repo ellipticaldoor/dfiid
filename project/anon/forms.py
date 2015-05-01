@@ -13,6 +13,9 @@ class AnonPostForm(forms.ModelForm):
 			})
 		self.fields['body'].widget.attrs.update({'required': 'required'})
 
+	title = forms.CharField(label="")
+	body = forms.CharField(label="", widget=forms.Textarea)
+
 	class Meta:
 		model = AnonPost
 		fields = ('title', 'body')

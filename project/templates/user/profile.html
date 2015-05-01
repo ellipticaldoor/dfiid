@@ -10,9 +10,9 @@
 		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
 
 		{% ifequal user.username  profile.username|slugify %}
-			<a id="profile_option" href="#">editar</a>
+			<a id="profile_option" class="action_link" href="#">editar</a>
 		{% else %}
-			<a id="profile_option" href="#">follow</a>
+			<a id="profile_option" class="action_link" href="#">follow</a>
 		{% endifequal %}
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}

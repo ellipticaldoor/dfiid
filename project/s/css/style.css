@@ -135,6 +135,17 @@ textarea {
 
 textarea:focus { border: 1px solid #34AADC; }
 
+.action_link {
+	padding: 5px 10px 5px 10px;
+	border: 1px solid #34AADC;
+	border-radius: 2px;
+}
+
+li .action_link {
+	display: inline-block;
+	margin: 1px 0px 5px 0px;
+}
+
 
 /* Nav
 ========================================================================== */
@@ -386,12 +397,7 @@ div.fluidvids iframe {
 	margin: 12px 0px 0px 5px;
 }
 
-#profile_option {
-	float: right;
-	padding: 5px 10px 5px 10px;
-	border: 1px solid #34AADC;
-	border-radius: 2px;
-}
+#profile_option { float: right; }
 
 #profile_option:hover {
 	border: 1px solid #007AFF;
