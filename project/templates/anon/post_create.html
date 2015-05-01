@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}anon{% endblock %}
+{% block anon_select %}selected{% endblock %}
+
+{% block mid_panel %}
+	<div id="edit_form">
+		{{ form.non_field_errors }}
+		<section id="editor_section">
+			<form class="form-horizontal" action="/anon/create/" method="post">
+				{% csrf_token %}
+					<div id="main_edit">
+						<p>{{ form.title }}</p>
+						{{ form.title.errors }}
+
+						{{ form.body }}
+						{{ form.body.errors }}
+					</div>
+					
+					<div id="edit_options">
+						<input id="edit_form_button" type="submit" value="Submit" />
+					</div>
+			</form>
+		</section>
+		<section id="view_section">
+				<div class="post">
+					<a href="#" onClick="return false;" id="post_title" class="post_title"></a>
+					<div id="post_content" class="post_content"></div>
+
+					<div class="post_info">
+						<a href="/user/{{ user.username }}"><img alt="{{ user.username }}" src="/{{ user.avatar }}"></a>
+						<span> por <a href="/user/{{ user.username }}">{{ user.username }}</a> en <a id="post_sub" href=""></a> </span>
+						<span id="post_created" class="post_info_highlight"></span>
+					</div>
+				</div>
+		</section>
+	</div>
+{% endblock %}
+
+{% block js %}
+	<script src="/s/js/lib/marked_0.3.2.min.js"></script>
+	<script src="/s/js/anon_editor.js"></script>
+{% endblock %}

@@ -5,7 +5,7 @@ from anon.models import AnonPost, AnonCommit
 
 class AnonPostForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
-		super(PostForm, self).__init__(*args, **kwargs)
+		super(AnonPostForm, self).__init__(*args, **kwargs)
 		self.fields['title'].widget.attrs.update({
 			'autofocus': 'autofocus',
 			'required': 'required',

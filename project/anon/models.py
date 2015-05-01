@@ -31,7 +31,7 @@ class AnonPost(models.Model):
 		self.slug = slugify(self.title.replace(' ', '_'))
 		if not self.slug: self.slug = '_'
 		self.body_html = markdown(self.body, safe_mode=True)
-		super(Post, self).save(*args, **kwargs)
+		super(AnonPost, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
 		if not hasattr(self.post_id, 'decode'): post_id = self.post_id

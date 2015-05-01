@@ -26,13 +26,13 @@ class AnonPostView(DetailView):
 		return queryset
 
 	def get_context_data(self, **kwargs):
-		context = super(PostView, self).get_context_data(**kwargs)
+		context = super(AnonPostView, self).get_context_data(**kwargs)
 		context['form'] = AnonCommitForm
 		return context
 
 
 class AnonCreatePostView(CreateView):
-	template_name = 'content/post_create_update.html'
+	template_name = 'anon/post_create.html'
 	form_class = AnonPostForm
 
 
