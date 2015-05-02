@@ -17,7 +17,7 @@ class AnonPostQuerySet(models.QuerySet):
 class AnonPost(models.Model):
 	post_id = models.CharField(primary_key=True, max_length=16, default=_createId)
 	title = models.CharField(max_length=100)
-	slug = models.CharField(max_length=100)
+	slug = models.SlugField(max_length=100)
 	body = models.TextField(max_length=3000, default='', blank=True)
 	body_html  = models.TextField(blank=True, null=True)
 	created = models.DateTimeField(auto_now_add=True)
@@ -44,7 +44,8 @@ class AnonPost(models.Model):
 	def get_view_commits_url(self):
 		return '%s#commits' % (self.get_absolute_url())
 
-	def __str__(self): return self.title
+	def __str__(self):
+		return self.title
 
 	class Meta:
 		ordering = ['-last_commited']

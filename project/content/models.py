@@ -45,7 +45,7 @@ class Post(models.Model):
 	user = models.ForeignKey(User, related_name="posts")
 	sub = models.ForeignKey(Sub, related_name="posts")
 	title = models.CharField(max_length=100)
-	slug = models.CharField(max_length=100)
+	slug = models.SlugField(max_length=100)
 	body = models.TextField(max_length=3000, default='', blank=True)
 	body_html  = models.TextField(blank=True, null=True)
 	draft = models.BooleanField(default=False)
@@ -80,7 +80,8 @@ class Post(models.Model):
 	def get_avatar_url(self):
 		return '/s/media/user/avatar/%s.png' % (self.user)
 
-	def __str__(self): return self.title
+	def __str__(self):
+		return self.title
 
 	class Meta:
 		ordering = ['-last_commited']

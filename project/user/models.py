@@ -25,7 +25,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	def get_avatar(instance, filename):
 		return 's/media/user/avatar/%s.png' % (instance.username)
 
-	username = models.CharField(primary_key=True, max_length=16)
+	username = models.SlugField(primary_key=True, max_length=16)
 	USERNAME_FIELD = 'username'
 
 	created = models.DateTimeField(auto_now_add=True)

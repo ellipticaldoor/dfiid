@@ -40,10 +40,11 @@ INSTALLED_APPS = (
 	'django.contrib.sitemaps',
 	'compressor',
 	'nocaptcha_recaptcha',
-	'core',
-	'user',
-	'content',
 	'anon',
+	'content',
+	'core',
+	'info',
+	'user',
 )
 
 MIDDLEWARE_CLASSES = (
