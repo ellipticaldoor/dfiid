@@ -2,7 +2,11 @@
 {% block title %}sub{% endblock %}
 {% block sub_select %}selected{% endblock %}
 
-{% block mid_panel %}	
+{% block mid_panel %}
+	<ul>
+		<li><a href="/create_sub" class="action_link">crear sub</a></li>
+	</ul>
+
 	{% if object_list %}
 		{% for object in object_list %}
 			<a class="sub_container" href="/sub/{{ object.slug }}">
@@ -13,8 +17,4 @@
 	{% else %}
 		{% include "layouts/no_content.html" %}
 	{% endif %}
-{% endblock %}
-
-{% block info_panel %}
-	<li><a href="/create_sub" class="action_link">crear sub</a></li>
 {% endblock %}

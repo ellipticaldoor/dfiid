@@ -12,7 +12,7 @@
 		{% ifequal user.username  profile.username|slugify %}
 			<a id="profile_option" class="action_link" href="#">editar</a>
 		{% else %}
-			<a id="profile_option" class="action_link" href="#">follow</a>
+			<a id="profile_option" class="action_link" href="#">seguir</a>
 		{% endifequal %}
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}

@@ -26,6 +26,19 @@ class Sub(models.Model):
 		ordering = ['-last_commited']
 
 
+class SubFollow(models.Model):
+	sub_follow_id = models.CharField(primary_key=True, max_length=33, blank=True)
+	follower = models.ForeignKey(User, related_name='sub_follower')
+	sub = models.ForeignKey(Sub, related_name='sub_followed')
+
+	def save(self, *args, **kwargs):
+		self.sub_follow_id = '%s>%s' % (self.follower, self.sub)
+		super(SubFollow, self).save(*args, **kwargs)
+
+	def __str__(self):
+		return self.sub_follow_id
+
+
 class PostQuerySet(models.QuerySet):
 	def published(self):
 		return self.filter(draft=False, show=True)

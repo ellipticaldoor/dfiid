@@ -66,10 +66,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Follow(models.Model):
 	follow_id = models.CharField(primary_key=True, max_length=33, blank=True)
 	follower = models.ForeignKey(User, related_name='follower')
-	following = models.ForeignKey(User, related_name='following')
+	followed = models.ForeignKey(User, related_name='followed')
 
 	def save(self, *args, **kwargs):
-		self.follow_id = '%s>%s' % (self.follower, self.following)
+		self.follow_id = '%s>%s' % (self.follower, self.followed)
 		super(Follow, self).save(*args, **kwargs)
 
 	def __str__(self):

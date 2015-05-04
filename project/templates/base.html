@@ -40,7 +40,7 @@
 				<li><a href="/create" id="create_panel_link" class="{% block create_select %}{% endblock %}">crear</a></li>
 				{% if user.is_authenticated %}
 					<li><a href="/created" class="{% block created_select %}{% endblock %}">creado</a></li>
-					<li><a href="/user/{{ user.username }}" id="auth_panel_link" class="{% block profile_select %}{% endblock %}"><img class="panel_avatar" src="/{{ user.avatar}}" alt="{{ user.username }}">perfil</a></li>
+					<li><a href="/user/{{ user.username }}" id="auth_panel_link" class="{% block profile_select %}{% endblock %}"><img class="panel_avatar" src="/{{ user.avatar}}">perfil</a></li>
 				{% else %}
 					<li><a href="/login" id="auth_panel_link" class="{% block login_select %}{% endblock %}">login</a></li>
 				{% endif %}
@@ -58,10 +58,13 @@
 
 		<div id="info_panel" class="panel side_panel">
 			<ul>
-				{% block info_panel %}{% endblock %}
-				<li><b>siguiendo</b></li>
-				{% for follower in user.follower.all %}
-					<li><a href="/user/{{ follower.following_id }}">{{ follower.following_id }}</a></li>
+				<li>siguiendo</li>
+				{% for follow in user.follower.all %}
+					<li><a href="/user/{{ follow.followed_id }}"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</a></li>
+				{% endfor %}
+				<li>mis subs</li>
+				{% for sub_follow in user.sub_follower.all %}
+					<li><a href="/sub/{{ sub_follow.sub_id }}"><img class="panel_avatar" src="s/media/sub/image/{{ sub_follow.sub_id }}.png">{{ sub_follow.sub_id }}</a></li>
 				{% endfor %}
 			</ul>
 		</div>
