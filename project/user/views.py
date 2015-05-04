@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 
 from user.models import User
 from content.models import Post
-from user.forms import SignUpForm
+from user.forms import SignUpForm, UserFollowForm
 from core.core import random_avatar
 
 
@@ -39,9 +39,21 @@ class ProfileView(ListView):
 	def get_context_data(self, **kwargs):
 		context = super(ProfileView, self).get_context_data(**kwargs)
 		context['profile'] = User.objects.get(username=self.kwargs['profile'])
+		context['form'] = UserFollowForm
 		return context
 
 
 class UsersView(ListView):
 	template_name = 'user/user.html'
 	model = User
+
+
+class UserFollow(CreateView):
+	form_class = UserFollowForm
+
+	def form_valid(self, form):
+		obj = form.save(commit=False)
+		obj.follower = self.request.user
+		obj.followed = User.objects.get(username=self.kwargs['followed'])
+		obj.save()
+		return HttpResponseRedirect(obj.get_absolute_url())

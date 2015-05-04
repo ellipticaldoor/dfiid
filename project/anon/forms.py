@@ -22,7 +22,7 @@ class AnonPostForm(forms.ModelForm):
 
 
 class AnonCommitForm(forms.ModelForm):
-	body = forms.CharField(label="", max_length=500, widget=forms.Textarea, required=False)
+	body = forms.CharField(label='', max_length=500, widget=forms.Textarea, required=False)
 
 	class Meta:
 		model = AnonCommit

@@ -35,7 +35,7 @@ class PostForm(forms.ModelForm):
 
 
 class CommitForm(forms.ModelForm):
-	body = forms.CharField(label="", max_length=500, widget=forms.Textarea, required=False)
+	body = forms.CharField(label='', max_length=500, widget=forms.Textarea, required=False)
 
 	class Meta:
 		model = Commit

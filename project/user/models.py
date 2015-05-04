@@ -53,24 +53,23 @@ class User(AbstractBaseUser, PermissionsMixin):
 		return self.username
 
 	def get_absolute_url(self):
-		if not hasattr(self.user, 'decode'):
-			user = self.user
-		else:
-			user = self.user.decode('utf-8')
-		return '/user/%s' % (user)
+		return '/user/%s' % (self.user)
 
 	class Meta:
 		ordering = ['-last_commited']
 
 
-class Follow(models.Model):
+class UserFollow(models.Model):
 	follow_id = models.CharField(primary_key=True, max_length=33, blank=True)
 	follower = models.ForeignKey(User, related_name='follower')
 	followed = models.ForeignKey(User, related_name='followed')
 
 	def save(self, *args, **kwargs):
 		self.follow_id = '%s>%s' % (self.follower, self.followed)
-		super(Follow, self).save(*args, **kwargs)
+		super(UserFollow, self).save(*args, **kwargs)
+
+	def get_absolute_url(self):
+		return '/user/%s' % (self.followed)
 
 	def __str__(self):
 		return self.follow_id

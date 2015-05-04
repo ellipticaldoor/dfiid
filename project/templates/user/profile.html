@@ -12,10 +12,15 @@
 		{% ifequal user.username  profile.username|slugify %}
 			<a id="profile_option" class="action_link" href="#">editar</a>
 		{% else %}
-			<a id="profile_option" class="action_link" href="#">seguir</a>
+			<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
+				{% csrf_token %}
+				{{ form }}
+				<input type="submit" class="action_link" value="seguir" />
+			</form>
 		{% endifequal %}
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
+
 	<div id="profile_description">{{ profile.bio_html|safe }}</div>
 
 	{% for object in object_list %}

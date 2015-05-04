@@ -33,7 +33,7 @@
 /* Typography
 ========================================================================== */
 
-html, body, textarea {
+html, body, textarea, input {
 	font-family: 'Open Sans';
 	text-rendering: optimizeLegibility;
 	font-size: 100%;
@@ -64,8 +64,6 @@ ul {
 ========================================================================== */
 
 input {
-	font-size: 100%;
-	text-rendering: optimizeLegibility;
 	color: #8E8E93;
 	padding: 5px;
 	border-radius: 2px;
@@ -80,7 +78,7 @@ input {
 
 input:focus { border: 1px solid #34AADC; }
 
-input[type="submit"] {
+.submit {
 	cursor: pointer;
 	color: white;
 	border: 2px solid #34AADC;
@@ -89,7 +87,7 @@ input[type="submit"] {
 	background-color: #34AADC;
 }
 
-input[type="submit"]:hover {
+.submit:hover {
 	background-color: #007AFF;
 	border: 2px solid #007AFF;
 }
@@ -136,14 +134,18 @@ textarea {
 textarea:focus { border: 1px solid #34AADC; }
 
 .action_link {
+	width: auto !important;
 	padding: 5px 10px 5px 10px;
+	color: #34AADC;
 	border: 1px solid #34AADC;
 	border-radius: 2px;
+	background-color: white;
 }
 
-li .action_link {
-	display: inline-block;
-	margin: 1px 0px 5px 0px;
+.action_link:hover {
+	color: #007AFF;
+	border: 1px solid #007AFF;
+	cursor: pointer;
 }
 
 
@@ -398,11 +400,6 @@ div.fluidvids iframe {
 }
 
 #profile_option { float: right; }
-
-#profile_option:hover {
-	border: 1px solid #007AFF;
-	color: #007AFF;
-}
 
 #profile_description {
 	padding: 12px;
