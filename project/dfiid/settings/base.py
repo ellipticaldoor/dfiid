@@ -43,7 +43,6 @@ INSTALLED_APPS = (
 	'anon',
 	'content',
 	'core',
-	'info',
 	'user',
 )
 

@@ -59,9 +59,10 @@
 		<div id="info_panel" class="panel side_panel">
 			<ul>
 				{% block info_panel %}{% endblock %}
-				<li>sub</li>
-				<li>user</li>
-				<li>post</li>
+				<li><b>siguiendo</b></li>
+				{% for follower in user.follower.all %}
+					<li><a href="/user/{{ follower.following_id }}">{{ follower.following_id }}</a></li>
+				{% endfor %}
 			</ul>
 		</div>
 	</span>

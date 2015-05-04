@@ -22,7 +22,6 @@ Remember to fill it with your on configuration.
 ```
 workon dfiid
 pip install -r requirements/dev
-pip install -e ~/fractal-bot/
 python manage.py makemigrations user content
 python manage.py migrate
 python manage.py syncdb

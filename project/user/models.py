@@ -3,6 +3,7 @@ from markdown import markdown
 
 from django.conf import settings
 from django.db import models
+from django.db.utils import IntegrityError
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
@@ -60,3 +61,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 	class Meta:
 		ordering = ['-last_commited']
+
+
+class Follow(models.Model):
+	follow_id = models.CharField(primary_key=True, max_length=33, blank=True)
+	follower = models.ForeignKey(User, related_name='follower')
+	following = models.ForeignKey(User, related_name='following')
+
+	def save(self, *args, **kwargs):
+		self.follow_id = '%s>%s' % (self.follower, self.following)
+		super(Follow, self).save(*args, **kwargs)
+
+	def __str__(self):
+		return self.follow_id
