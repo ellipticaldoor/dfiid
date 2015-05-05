@@ -9,7 +9,7 @@
 			<form id="commit_form" action="{{  object.get_commit_url }}" method="post">
 				{% csrf_token %}
 				{{ form }}
-				<input type="submit" value="commit" />
+				<input class="submit" type="submit" value="commit" />
 			</form>
 		{% endif %}
 

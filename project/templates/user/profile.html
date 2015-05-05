@@ -15,7 +15,7 @@
 			<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
 				{% csrf_token %}
 				{{ form }}
-				<input type="submit" class="action_link" value="seguir" />
+				<input class="action_link" type="submit" value="seguir" />
 			</form>
 		{% endifequal %}
 	</div>
