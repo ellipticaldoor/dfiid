@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import ListView, CreateView
 from django.contrib.auth import authenticate, login
 
-from user.models import User
+from user.models import User, UserFollow
 from content.models import Post
 from user.forms import SignUpForm, UserFollowForm
 from core.core import random_avatar
@@ -38,17 +38,31 @@ class ProfileView(ListView):
 
 	def get_context_data(self, **kwargs):
 		context = super(ProfileView, self).get_context_data(**kwargs)
-		context['profile'] = User.objects.get(username=self.kwargs['profile'])
+		username = self.request.user.username
+		profile = self.kwargs['profile']
+
 		context['form'] = UserFollowForm
+		context['profile'] = User.objects.get(username=profile)
+
+		context['profile_action'] = 'follow'
+
+		if self.request.user.is_authenticated():
+			if username == profile:
+				context['profile_action'] = 'edit'
+			else:
+				follow_state = UserFollow.objects.by_id(follow_id='%s>%s' % (username, profile))
+				if follow_state: context['profile_action'] = 'unfollow'
+				else: context['profile_action'] = 'follow'
+
 		return context
 
 
-class UsersView(ListView):
+class UserView(ListView):
 	template_name = 'user/user.html'
 	model = User
 
 
-class UserFollow(CreateView):
+class UserFollowSet(CreateView):
 	form_class = UserFollowForm
 
 	def form_valid(self, form):

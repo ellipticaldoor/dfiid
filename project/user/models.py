@@ -55,14 +55,20 @@ class User(AbstractBaseUser, PermissionsMixin):
 	def get_absolute_url(self):
 		return '/user/%s' % (self.user)
 
-	class Meta:
-		ordering = ['-last_commited']
+	class Meta: ordering = ['-last_commited']
+
+
+class UserFollowQuerySet(models.QuerySet):
+	def by_id(self, follow_id):
+		return self.filter(follow_id=follow_id)
 
 
 class UserFollow(models.Model):
 	follow_id = models.CharField(primary_key=True, max_length=33, blank=True)
 	follower = models.ForeignKey(User, related_name='follower')
 	followed = models.ForeignKey(User, related_name='followed')
+
+	objects = UserFollowQuerySet.as_manager()
 
 	def save(self, *args, **kwargs):
 		self.follow_id = '%s>%s' % (self.follower, self.followed)

@@ -9,15 +9,17 @@
 		<a id="profile_username" href="/user/{{ profile.username }}">{{ profile.username }}</a>
 		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
 
-		{% ifequal user.username  profile.username|slugify %}
-			<a id="profile_option" class="action_link" href="#">editar</a>
-		{% else %}
+		{% if profile_action == 'follow' %}
 			<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
 				{% csrf_token %}
 				{{ form }}
 				<input class="action_link" type="submit" value="seguir" />
 			</form>
-		{% endifequal %}
+		{% elif profile_action == 'unfollow' %}
+			<a id="profile_option" class="action_link" href="#">dejar de seguir</a>
+		{% elif profile_action == 'edit' %}
+			<a id="profile_option" class="action_link" href="#">editar</a>
+		{% endif %}
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
 
