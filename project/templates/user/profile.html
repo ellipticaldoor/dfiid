@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block title %}{{ profile.username }}{% endblock %}
 {% block profile_select %}{% ifequal user.username  profile.username|slugify %}selected{% endifequal %}{% endblock %}
 {% block user_select %}{% ifnotequal user.username  profile.username|slugify %}selected{% endifnotequal %}{% endblock %}
@@ -23,7 +23,7 @@
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
 
-	<div id="profile_description">{{ profile.bio_html|safe }}</div>
+	<div class="separator"></div>
 
 	{% for object in object_list %}
 		<a class="created_link" href="{{ object.get_absolute_url }}">

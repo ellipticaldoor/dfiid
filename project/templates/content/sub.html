@@ -3,9 +3,9 @@
 {% block sub_select %}selected{% endblock %}
 
 {% block mid_panel %}
-	<ul>
-		<li><a href="/create_sub" class="action_link">crear sub</a></li>
-	</ul>
+	<ul><li><a href="/create_sub" class="action_link">crear sub</a></li></ul>
+
+	<div class="separator"></div>
 
 	{% if object_list %}
 		{% for object in object_list %}
