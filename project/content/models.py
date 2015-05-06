@@ -16,14 +16,11 @@ class Sub(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	last_commited = models.DateTimeField(auto_now_add=True)
 
-	def get_absolute_url(self):
-		return '/sub/%s' % (str(self.slug))
+	def get_absolute_url(self): return '/sub/%s' % (str(self.slug))
 
-	def __str__(self):
-		return str(self.slug)
+	def __str__(self): return str(self.slug)
 
-	class Meta:
-		ordering = ['-last_commited']
+	class Meta: ordering = ['-last_commited']
 
 
 class SubFollow(models.Model):
@@ -35,8 +32,7 @@ class SubFollow(models.Model):
 		self.sub_follow_id = '%s>%s' % (self.follower, self.sub)
 		super(SubFollow, self).save(*args, **kwargs)
 
-	def __str__(self):
-		return self.sub_follow_id
+	def __str__(self): return self.sub_follow_id
 
 
 class PostQuerySet(models.QuerySet):
@@ -80,24 +76,18 @@ class Post(models.Model):
 		else: post_id = self.post_id.decode('utf-8')
 		return '/%s/%s/' % (post_id, self.slug)
 
-	def get_edit_url(self):
-		return '%sedit/' % (self.get_absolute_url())
+	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
 
-	def get_commit_url(self):
-		return '%scommit/' % (self.get_absolute_url())
+	def get_commit_url(self): return '%scommit/' % (self.get_absolute_url())
 
-	def get_view_commits_url(self):
-		return '%s#commits' % (self.get_absolute_url())
+	def get_view_commits_url(self): return '%s#commits' % (self.get_absolute_url())
 
 	# Don't use it until refactor!!
-	def get_avatar_url(self):
-		return '/s/media/user/avatar/%s.png' % (self.user)
+	def get_avatar_url(self): return '/s/media/user/avatar/%s.png' % (self.user)
 
-	def __str__(self):
-		return self.title
+	def __str__(self): return self.title
 
-	class Meta:
-		ordering = ['-last_commited']
+	class Meta: ordering = ['-last_commited']
 
 
 class Commit(models.Model):
@@ -112,11 +102,8 @@ class Commit(models.Model):
 		self.body_html = markdown(self.body, safe_mode=True)
 		super(Commit, self).save(*args, **kwargs)
 
-	def get_absolute_url(self):
-		return self.post.get_absolute_url()
+	def get_absolute_url(self): return self.post.get_absolute_url()
 
-	def __str__(self): 
-		return '%s, %s' % (self.post, self.commit_id)
+	def __str__(self): return '%s, %s' % (self.post, self.commit_id)
 
-	class Meta:
-		ordering = ['-created']
+	class Meta: ordering = ['-created']

@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView
 
 from content.models import Sub, Post, Commit
 from content.forms import SubForm, PostForm, CommitForm
-from core.core import random_fractal
+from core.core import random_avatar_sub
 
 
 class CreateSubView(CreateView):
@@ -17,7 +17,7 @@ class CreateSubView(CreateView):
 		obj.save()
 		obj.image = 's/media/sub/image/%s.png' % (obj.slug)
 		obj.save()
-		random_fractal(obj.slug)
+		random_avatar_sub(obj.slug)
 		return HttpResponseRedirect('/sub')
 
 
@@ -26,28 +26,16 @@ class SubView(ListView):
 	model = Sub
 
 
-class SubContentView(ListView):
-	template_name = 'content/sub_content_list.html'
+class PostListView(ListView):
+	template_name = 'layouts/post_list.html'
 	paginate_by = 10
 
 	def get_queryset(self):
 		return Post.objects.by_sub(self.kwargs['sub'])
 
 	def get(self, request, *args, **kwargs):
-		if request.is_ajax():
-			self.template_name = 'content/ajax/posts.html'
-		return super(SubContentView, self).get(request, *args, **kwargs)
-
-
-class FrontView(ListView):
-	template_name = 'content/front.html'
-	queryset = Post.objects.published()
-	paginate_by = 10
-
-	def get(self, request, *args, **kwargs):
-		if request.is_ajax():
-			self.template_name = 'content/ajax/posts.html'
-		return super(FrontView, self).get(request, *args, **kwargs)
+		if request.is_ajax(): self.template_name = 'content/ajax/posts.html'
+		return super(PostListView, self).get(request, *args, **kwargs)
 
 
 class PostView(DetailView):
@@ -91,10 +79,8 @@ class CreatePostView(CreateView):
 		obj.user = self.request.user
 		obj.save()
 
-		if obj.draft:
-			return HttpResponseRedirect('/created')
-		else:
-			return HttpResponseRedirect(obj.get_absolute_url())
+		if obj.draft: return HttpResponseRedirect('/created')
+		else: return HttpResponseRedirect(obj.get_absolute_url())
 
 
 class UpdatePostView(UpdateView):
@@ -107,15 +93,12 @@ class UpdatePostView(UpdateView):
 	def form_valid(self, form):
 		obj = form.save()
 
-		if obj.draft:
-			return HttpResponseRedirect('/created')
-		else:
-			return HttpResponseRedirect(obj.get_absolute_url())
+		if obj.draft: return HttpResponseRedirect('/created')
+		else: return HttpResponseRedirect(obj.get_absolute_url())
 
 
 class PostUserCreatedView(ListView):
 	template_name = 'content/post_user_created.html'
-	paginate_by = 14
 
 	def get_queryset(self):
 		return Post.objects.by_user(self.request.user)

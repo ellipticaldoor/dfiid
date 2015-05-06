@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block mid_panel %}
+	{% if object_list %}
+		{% for object in object_list %}
+			<div class="post">
+				<a class="post_title" href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+				<div class="post_content">{{ object.body_html|safe }}</div>
+
+				<div class="post_info">
+					<a href="/user/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="/s/media/user/avatar/{{ object.user_id }}.png"></a>
+					<span><a href="/user/{{ object.user_id }}">{{ object.user_id }}</a> / <a href="/sub/{{ object.sub_id }}">{{ object.sub_id }}</a></span>
+					{% ifequal user.username  object.user_id|slugify %}
+						<span><a href="{{ object.get_edit_url }}"> editar</a></span>
+					{% endifequal %}
+					<a class="commits_link" href="{{ object.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</a>
+				</div>
+			</div>
+		{% endfor %}
+
+		<div id="loading">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	{% else %}
+		<p>no content</p>
+	{% endif %}
+{% endblock %}
+
+{% block js %}
+	<script src="/s/js/scroll.js"></script>
+{% endblock %}
