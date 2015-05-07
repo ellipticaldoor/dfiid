@@ -17,7 +17,7 @@ __________________________________________________________________________ */
 	#app{
 		display: block;
 		overflow: auto;
-		width: calc(650px + 280px + 200px);
+		width: calc(650px + 400px);
 		margin: 0 auto;
 	}
 }
@@ -52,6 +52,11 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+}
+
+.selected {
+	text-decoration: underline;
+	font-weight: bold;
 }
 
 
@@ -175,12 +180,12 @@ __________________________________________________________________________ */
 #link_panel { width: 200px; }
 
 #info_panel {
-	width: 280px;
+	width: 200px;
 	height: 500px;
 }
 
 #mid_panel {
-	width: calc(100vw - 200px - 280px);
+	width: calc(100vw - 400px);
 	max-width: 650px;
 	padding: 0px 16px 0px 16px;
 }
@@ -226,6 +231,12 @@ __________________________________________________________________________ */
 #link_nav_link { display: none; }
 #mid_nav_link { display: none; }
 #info_nav_link { display: none; }
+
+
+/* panel info
+__________________________________________________________________________ */
+
+div.panel.side_panel ul li { margin: -3px 0px 10px 0px; }
 
 
 /* panel @media
@@ -537,8 +548,8 @@ __________________________________________________________________________ */
 #djDebugToolbarHandle { border-width: 0 !important; }
 
 #djShowToolBarButton {
-    background-color: white !important;
-    background-image: none !important;
-    height: 20px !important;
-    width: 50px !important;
+	background-color: white !important;
+	background-image: none !important;
+	height: 20px !important;
+	width: 50px !important;
 }

@@ -18,7 +18,6 @@
 	{% block js_head %}{% endblock %}
 </head>
 <body>
-
 	<span id="app">
 		<nav class="no-select">
 			<ul>
@@ -31,11 +30,11 @@
 		<div id="link_panel" class="panel side_panel">
 			<ul>
 				<li id="dfiid"><a href="/"><img src="/s/img/dfiid_logo_small.png" alt="dfiid">dfiid</a></li>
-				<li><a href="/user">blog</a></li>
 				<li><a href="/sub">sub</a></li>
+				<li><a href="/user">blog</a></li>
 				<li><a href="/anon" id="anon_panel_link">anon</a></li>
 
-				<li><div class="separator"></div></li>
+				<div class="separator"></div>
 
 				<li><a href="/create" id="create_panel_link">crear</a></li>
 				{% if user.is_authenticated %}
@@ -45,7 +44,7 @@
 					<li><a href="/login" id="auth_panel_link">login</a></li>
 				{% endif %}
 
-				<li><div class="separator"></div></li>
+				<div class="separator"></div>
 
 				<li><a href="mailto:dortamiguel@gmail.com" target="_blank">contacto</a></li>
 				<li><a href="https://github.com/ellipticaldoor/dfiid" id="github_panel_link" target="_blank">github</a></li>
@@ -68,7 +67,7 @@
 					{% endif %}
 				{% endwith %}
 
-				<li><div class="separator"></div></li>
+				<div class="separator"></div>
 
 				{% with user.sub_follower.all as sub_follows %}   
 					{% if sub_follows %}
