@@ -48,11 +48,6 @@ a:hover { text-decoration: underline; }
 
 h4 { font-weight: normal; }
 
-.selected {
-	text-decoration: underline;
-	font-weight: bold;
-}
-
 ul {
 	list-style-type: none;
 	margin: 0;

@@ -32,6 +32,7 @@ class SignUpView(CreateView):
 
 class ProfileView(ListView):
 	template_name = 'user/profile.html'
+	paginate_by = 10
 
 	def get_queryset(self):
 		return Post.objects.by_user(user=self.kwargs['profile'])

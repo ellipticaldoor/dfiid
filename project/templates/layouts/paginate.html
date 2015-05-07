@@ -1,8 +1,0 @@
-<div id="paginate">
-	{% if page_obj.has_previous %}
-		<span class="def_button"><a href="?page={{ page_obj.previous_page_number }}">Anterior</a></span>
-	{% endif %}
-	{% if page_obj.has_next %}
-		<span class="def_button"><a href="?page={{ page_obj.next_page_number }}">Siguiente</a></span>
-	{% endif %}
-</div>

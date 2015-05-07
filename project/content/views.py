@@ -26,6 +26,19 @@ class SubView(ListView):
 	model = Sub
 
 
+class FrontView(ListView):
+	template_name = 'layouts/post_list.html'
+	paginate_by = 10
+
+	def get_queryset(self):
+		return Post.objects.published()
+
+	def get_context_data(self, **kwargs):
+		context = super(FrontView, self).get_context_data(**kwargs)
+		context['view_title'] = 'front'
+		return context
+
+
 class PostListView(ListView):
 	template_name = 'layouts/post_list.html'
 	paginate_by = 10
@@ -33,13 +46,14 @@ class PostListView(ListView):
 	def get_queryset(self):
 		return Post.objects.by_sub(self.kwargs['sub'])
 
-	def get(self, request, *args, **kwargs):
-		if request.is_ajax(): self.template_name = 'content/ajax/posts.html'
-		return super(PostListView, self).get(request, *args, **kwargs)
+	def get_context_data(self, **kwargs):
+		context = super(PostListView, self).get_context_data(**kwargs)
+		context['view_title'] = self.kwargs['sub']
+		return context
 
 
 class PostView(DetailView):
-	template_name = 'content/post_detail.html'
+	template_name = 'layouts/post_detail.html'
 
 	def get_queryset(self):
 		pk, slug = self.kwargs['pk'], self.kwargs['slug']
@@ -99,6 +113,7 @@ class UpdatePostView(UpdateView):
 
 class PostUserCreatedView(ListView):
 	template_name = 'content/post_user_created.html'
+	paginate_by = 10
 
 	def get_queryset(self):
 		return Post.objects.by_user(self.request.user)

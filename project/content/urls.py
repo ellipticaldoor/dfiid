@@ -6,7 +6,7 @@ from content import views
 
 urlpatterns = patterns(
 	'',
-	url(r'^$', views.PostListView.as_view(), name='front'),
+	url(r'^$', views.FrontView.as_view(), name='front'),
 
 	url(r'^sub/$', views.SubView.as_view(), name="sub"),
 	url(r'^sub/(?P<sub>\S+)/$', views.PostListView.as_view(), name='sub_view'),

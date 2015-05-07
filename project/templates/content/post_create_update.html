@@ -1,7 +1,5 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block title %}{% if object.title %}editar{% else %}crear{% endif %}{% endblock %}
-{% block create_select %}{% if not object.title %}selected{% endif %}{% endblock %}
-{% block created_select %}{% if object.title %}selected{% endif %}{% endblock %}
 
 {% block mid_panel %}
 	<div id="edit_form">

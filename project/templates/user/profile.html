@@ -1,9 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'layouts/post_list.html' %}
 {% block title %}{{ profile.username }}{% endblock %}
-{% block profile_select %}{% ifequal user.username  profile.username|slugify %}selected{% endifequal %}{% endblock %}
-{% block user_select %}{% ifnotequal user.username  profile.username|slugify %}selected{% endifnotequal %}{% endblock %}
 
-{% block mid_panel %}
+{% block extra %}
 	<div id="profile_container">
 		<a id="profile_username" href="/user/{{ profile.username }}"><img id="profile_image_view" src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
 		<a id="profile_username" href="/user/{{ profile.username }}">{{ profile.username }}</a>
@@ -24,11 +22,4 @@
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
 
 	<div class="separator"></div>
-
-	{% for object in object_list %}
-		<a class="created_link" href="{{ object.get_absolute_url }}">
-			{{ object.title }}
-			<span class="commits_link"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</span>
-		</a>
-	{% endfor %}
 {% endblock %}

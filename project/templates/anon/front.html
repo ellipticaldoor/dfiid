@@ -1,14 +1,10 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block title %}anon{% endblock %}
-{% block anon_select %}selected{% endblock %}
 
 {% block mid_panel %}
-	<form class="form-horizontal" action="/anon/create/" method="post">
-		{% csrf_token %}
-		{{ form }}
-		<input id="edit_form_button" class="submit" type="submit" value="post" />
-	</form>
-	<br><br>
+	<ul><li><a href="/anon/create" class="action_link">crear anon post</a></li></ul>
+
+	<div class="separator"></div>
 
 	{% if object_list %}
 		{% for object in object_list %}
@@ -23,13 +19,9 @@
 			</div>
 		{% endfor %}
 
-		<div id="loading">
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
+		<div id="loading"><div></div><div></div><div></div></div>
 	{% else %}
-		{% include "layouts/no_content.html" %}
+		<p>no content</p>
 	{% endif %}
 {% endblock %}
 

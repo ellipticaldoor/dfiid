@@ -12,15 +12,8 @@ class AnonFrontView(ListView):
 	paginate_by = 5
 
 	def get(self, request, *args, **kwargs):
-		if request.is_ajax():
-			self.template_name = 'content/ajax/posts.html'
+		if request.is_ajax(): self.template_name = 'content/ajax/posts.html'
 		return super(AnonFrontView, self).get(request, *args, **kwargs)
-
-	def get_context_data(self, **kwargs):
-		context = super(AnonFrontView, self).get_context_data(**kwargs)
-		context['form'] = AnonPostForm
-		return context
-
 
 class AnonPostView(DetailView):
 	template_name = 'content/post_detail.html'
