@@ -7,20 +7,22 @@
 			<a class="post_title" href="{{ object.get_absolute_url }}">{{ object.title }}</a>
 			<div class="post_content">{{ object.body_html|safe }}</div>
 
-			<div class="post_info">
-				<a href="/user/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="/s/media/user/avatar/{{ object.user_id }}.png"></a>
-				<span><a href="/user/{{ object.user_id }}">{{ object.user_id }}</a> / <a href="/sub/{{ object.sub_id }}">{{ object.sub_id }}</a></span>
-				{% ifequal user.username  object.user_id|slugify %}
-					<span><a class="selected" href="{{ object.get_edit_url }}"> edit</a></span>
-				{% endifequal %}
-				<a class="commits_link" href="{{ object.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</a>
-			</div>
+			{% block post_info %}
+				<div class="post_info">
+					<a href="/user/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="/s/media/user/avatar/{{ object.user_id }}.png"></a>
+					<span><a href="/user/{{ object.user_id }}">{{ object.user_id }}</a> / <a href="/sub/{{ object.sub_id }}">{{ object.sub_id }}</a></span>
+					{% ifequal user.username  object.user_id|slugify %}
+						<span><a class="selected" href="{{ object.get_edit_url }}"> edit</a></span>
+					{% endifequal %}
+					<a class="commits_link" href="{{ object.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</a>
+				</div>
+			{% endblock %}
 		</div>
 	{% endblock %}
 
 	<div id="commits">
 		{% if user.is_authenticated %}
-			<form id="commit_form" action="{{  object.get_commit_url }}" method="post">
+			<form id="commit_form" action="{{ object.get_commit_url }}" method="post">
 				{% csrf_token %}
 				{{ form }}
 				<input class="submit" type="submit" value="commit" />
@@ -35,7 +37,7 @@
 						<img alt="{{ commit.user_id }}" src="/s/media/user/avatar/{{ commit.user_id }}.png">
 						{{ commit.user_id }}
 					</a>
-					<a class="commit_link" href="#{{ commit.commit_id}}"># {{ commit.commit_id}}</a>
+					<a class="commit_link" href="#{{ commit.commit_id}}">#{{ commit.commit_id}}</a>
 				</div>
 			</div>
 		{% endfor %}

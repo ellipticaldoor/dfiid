@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}crear post anon{% endblock %}
+{% block title %}crear - anon{% endblock %}
 
 {% block mid_panel %}
 	<div id="edit_form">
@@ -7,7 +7,7 @@
 			<form class="form-horizontal" action="/anon/create/" method="post">
 				{% csrf_token %}
 				{{ form }}
-				<input id="edit_form_button" class="submit" type="submit" value="post" />
+				<input id="edit_form_button" class="submit" type="submit" value="anon post" />
 			</form>
 		</section>
 		<section id="view_section">

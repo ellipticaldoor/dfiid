@@ -38,17 +38,13 @@ class AnonPost(models.Model):
 		else: post_id = self.post_id.decode('utf-8')
 		return '/anon/%s/%s/' % (post_id, self.slug)
 
-	def get_commit_url(self):
-		return '%scommit/' % (self.get_absolute_url())
+	def get_commit_url(self): return '%scommit/' % (self.get_absolute_url())
 
-	def get_view_commits_url(self):
-		return '%s#commits' % (self.get_absolute_url())
+	def get_view_commits_url(self): return '%s#commits' % (self.get_absolute_url())
 
-	def __str__(self):
-		return self.title
+	def __str__(self): return self.title
 
-	class Meta:
-		ordering = ['-last_commited']
+	class Meta: ordering = ['-last_commited']
 
 
 class AnonCommit(models.Model):
@@ -62,11 +58,8 @@ class AnonCommit(models.Model):
 		self.body_html = markdown(self.body, safe_mode=True)
 		super(Commit, self).save(*args, **kwargs)
 
-	def get_absolute_url(self):
-		return self.post.get_absolute_url()
+	def get_absolute_url(self): return self.post.get_absolute_url()
 
-	def __str__(self): 
-		return '%s, %s' % (self.post, self.commit_id)
+	def __str__(self): return '%s, %s' % (self.post, self.commit_id)
 
-	class Meta:
-		ordering = ['-created']
+	class Meta: ordering = ['-created']

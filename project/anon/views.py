@@ -16,7 +16,7 @@ class AnonFrontView(ListView):
 		return super(AnonFrontView, self).get(request, *args, **kwargs)
 
 class AnonPostView(DetailView):
-	template_name = 'content/post_detail.html'
+	template_name = 'anon/post_detail.html'
 
 	def get_queryset(self):
 		pk, slug = self.kwargs['pk'], self.kwargs['slug']
