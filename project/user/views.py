@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView, CreateView
+from django.views.generic import View, CreateView, ListView
 from django.contrib.auth import authenticate, login
 
 from user.models import User, UserFollow
@@ -63,7 +63,7 @@ class UserView(ListView):
 	model = User
 
 
-class UserFollowSet(CreateView):
+class UserFollowCreate(CreateView):
 	form_class = UserFollowForm
 
 	def form_valid(self, form):
@@ -72,3 +72,12 @@ class UserFollowSet(CreateView):
 		obj.followed = User.objects.get(username=self.kwargs['followed'])
 		obj.save()
 		return HttpResponseRedirect(obj.get_absolute_url())
+
+
+class UserFollowDelete(View):
+	def post(self, *args, **kwargs):
+		unfollowed = self.kwargs['unfollowed']
+		follow_id = '%s>%s' % (self.request.user, unfollowed)
+		follow = UserFollow.objects.get(follow_id=follow_id)
+		follow.delete()
+		return HttpResponseRedirect('/user/%s' % (unfollowed))

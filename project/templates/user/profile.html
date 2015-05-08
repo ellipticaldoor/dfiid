@@ -14,7 +14,11 @@
 				<input class="action_link" type="submit" value="follow" />
 			</form>
 		{% elif profile_action == 'unfollow' %}
-			<a id="profile_option" class="action_link" href="#">unfollow</a>
+			<form id="profile_option" action="/user_unfollow/{{ profile.username }}/" method="post">
+				{% csrf_token %}
+				{{ form }}
+				<input class="action_link" type="submit" value="unfollow" />
+			</form>
 		{% elif profile_action == 'edit' %}
 			<a id="profile_option" class="action_link" href="#">editar</a>
 		{% endif %}
