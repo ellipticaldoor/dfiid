@@ -68,8 +68,6 @@ class UserFollow(models.Model):
 		self.follow_id = '%s>%s' % (self.follower, self.followed)
 		super(UserFollow, self).save(*args, **kwargs)
 
-	def get_absolute_url(self):
-		return '/user/%s' % (self.followed)
+	def get_absolute_url(self): return '/user/%s' % (self.followed)
 
-	def __str__(self):
-		return self.follow_id
+	def __str__(self): return self.follow_id

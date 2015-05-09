@@ -15,7 +15,10 @@ urlpatterns = patterns(
 	url(r'^create/$', login_required(views.CreatePostView.as_view()), name='create'),
 	url(r'^created/$', login_required(views.PostUserCreatedView.as_view()), name='created'),
 	
+	url(r'^sub_follow/(?P<followed>[-\w]+)/$', login_required(views.SubFollowCreate.as_view()), name='sub_follow'),
+	url(r'^sub_unfollow/(?P<unfollowed>[-\w]+)/$', login_required(views.SubFollowDelete.as_view()), name='sub_unfollow'),
+
 	url(r'^(?P<pk>[-\w]+)/(?P<slug>\S+)/edit/$', login_required(views.UpdatePostView.as_view()), name='edit'),
-	url(r'^(?P<pk>[-\w]+)/(?P<slug>\S+)/commit/$', login_required(views.PostCommitView.as_view()), name='edit'),
+	url(r'^(?P<pk>[-\w]+)/(?P<slug>\S+)/commit/$', login_required(views.PostCommitView.as_view()), name='commit'),
 	url(r'^(?P<pk>[-\w]+)/(?P<slug>.*)/$', views.PostView.as_view(), name='post_view'),
 )

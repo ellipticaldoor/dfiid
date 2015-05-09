@@ -1,15 +1,29 @@
 {% extends 'layouts/post_list.html' %}
 {% block title %}{{ profile.username }}{% endblock %}
 
-{% block extra %}
+{% block mid_panel %}
 	<div id="profile_container">
 		<a id="profile_username" href="/user/{{ profile.username }}"><img id="profile_image_view" src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
 		<a id="profile_username" href="/user/{{ profile.username }}">{{ profile.username }}</a>
 		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
 
-		{{ block.super }}
+		{% if action == 'follow' %}
+			<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
+				{% csrf_token %}{{ form }}
+				<input class="action_link" type="submit" value="follow" />
+			</form>
+		{% elif action == 'unfollow' %}
+			<form id="profile_option" action="/user_unfollow/{{ profile.username }}/" method="post">
+				{% csrf_token %}{{ form }}
+				<input class="action_link" type="submit" value="unfollow" />
+			</form>
+		{% elif action == 'edit' %}
+			<a id="profile_option" class="action_link" href="#">editar</a>
+		{% endif %}
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
 
 	<div class="separator"></div>
+
+	{{ block.super }}
 {% endblock %}

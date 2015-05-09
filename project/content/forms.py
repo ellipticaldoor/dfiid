@@ -1,6 +1,7 @@
 from django import forms
 
-from content.models import Sub, Post, Commit
+from content.models import Sub, SubFollow, Post, Commit
+
 
 class SubForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
@@ -16,6 +17,12 @@ class SubForm(forms.ModelForm):
 	class Meta:
 		model = Sub
 		fields = ('slug',)
+
+
+class SubFollowForm(forms.ModelForm):
+	class Meta:
+		model = SubFollow
+		fields = []
 
 
 class PostForm(forms.ModelForm):

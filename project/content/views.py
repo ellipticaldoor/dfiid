@@ -1,10 +1,10 @@
 
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import View, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
 from content.models import Sub, SubFollow, Post, Commit
-from content.forms import SubForm, PostForm, CommitForm
+from content.forms import SubForm, SubFollowForm, PostForm, CommitForm
 from core.core import random_avatar_sub
 
 
@@ -60,6 +60,27 @@ class SubPostListView(ListView):
 			else: context['action'] = 'follow'
 
 		return context
+
+
+class SubFollowCreate(CreateView):
+	form_class = SubFollowForm
+
+	def form_valid(self, form):
+		followed = self.kwargs['followed']
+		obj = form.save(commit=False)
+		obj.follower = self.request.user
+		obj.sub = Sub.objects.get(slug=followed)
+		obj.save()
+		return HttpResponseRedirect('/sub/%s' % (followed))
+
+
+class SubFollowDelete(View):
+	def post(self, *args, **kwargs):
+		unfollowed = self.kwargs['unfollowed']
+		sub_follow_id = '%s>%s' % (self.request.user, unfollowed)
+		follow = SubFollow.objects.get(sub_follow_id=sub_follow_id)
+		follow.delete()
+		return HttpResponseRedirect('/sub/%s' % (unfollowed))
 
 
 class PostView(DetailView):
