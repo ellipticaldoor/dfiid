@@ -7,21 +7,7 @@
 		<a id="profile_username" href="/user/{{ profile.username }}">{{ profile.username }}</a>
 		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
 
-		{% if profile_action == 'follow' %}
-			<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
-				{% csrf_token %}
-				{{ form }}
-				<input class="action_link" type="submit" value="follow" />
-			</form>
-		{% elif profile_action == 'unfollow' %}
-			<form id="profile_option" action="/user_unfollow/{{ profile.username }}/" method="post">
-				{% csrf_token %}
-				{{ form }}
-				<input class="action_link" type="submit" value="unfollow" />
-			</form>
-		{% elif profile_action == 'edit' %}
-			<a id="profile_option" class="action_link" href="#">editar</a>
-		{% endif %}
+		{{ block.super }}
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
 

@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
-from content.models import Sub, Post, Commit
+from content.models import Sub, SubFollow, Post, Commit
 from content.forms import SubForm, PostForm, CommitForm
 from core.core import random_avatar_sub
 
@@ -39,16 +39,26 @@ class FrontView(ListView):
 		return context
 
 
-class PostListView(ListView):
-	template_name = 'layouts/post_list.html'
+class SubPostListView(ListView):
+	template_name = 'content/sub_post_list.html'
 	paginate_by = 10
 
 	def get_queryset(self):
 		return Post.objects.by_sub(self.kwargs['sub'])
 
 	def get_context_data(self, **kwargs):
-		context = super(PostListView, self).get_context_data(**kwargs)
-		context['view_title'] = self.kwargs['sub']
+		context = super(SubPostListView, self).get_context_data(**kwargs)
+		sub = self.kwargs['sub']
+		user = self.request.user
+
+		context['view_title'] = sub
+		context['action'] = 'follow'
+
+		if user.is_authenticated():
+			follow_state = SubFollow.objects.by_id(sub_follow_id='%s>%s' % (user.username, sub))
+			if follow_state: context['action'] = 'unfollow'
+			else: context['action'] = 'follow'
+
 		return context
 
 

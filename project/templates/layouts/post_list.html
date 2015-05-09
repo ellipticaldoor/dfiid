@@ -2,7 +2,23 @@
 {% block title %}{{ view_title }}{% endblock %}
 
 {% block mid_panel %}
-	{% block extra %}{% endblock %}
+	{% block extra %}
+		{% if action == 'follow' %}
+			<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
+				{% csrf_token %}
+				{{ form }}
+				<input class="action_link" type="submit" value="follow" />
+			</form>
+		{% elif action == 'unfollow' %}
+			<form id="profile_option" action="/user_unfollow/{{ profile.username }}/" method="post">
+				{% csrf_token %}
+				{{ form }}
+				<input class="action_link" type="submit" value="unfollow" />
+			</form>
+		{% elif action == 'edit' %}
+			<a id="profile_option" class="action_link" href="#">editar</a>
+		{% endif %}
+	{% endblock %}
 
 	{% for object in object_list %}
 		{% block post_detail %}{{ block.super }}{% endblock %}

@@ -44,16 +44,15 @@ class ProfileView(ListView):
 
 		context['form'] = UserFollowForm
 		context['profile'] = User.objects.get(username=profile)
-
-		context['profile_action'] = 'follow'
+		context['action'] = 'follow'
 
 		if self.request.user.is_authenticated():
 			if username == profile:
-				context['profile_action'] = 'edit'
+				context['action'] = 'edit'
 			else:
 				follow_state = UserFollow.objects.by_id(follow_id='%s>%s' % (username, profile))
-				if follow_state: context['profile_action'] = 'unfollow'
-				else: context['profile_action'] = 'follow'
+				if follow_state: context['action'] = 'unfollow'
+				else: context['action'] = 'follow'
 
 		return context
 

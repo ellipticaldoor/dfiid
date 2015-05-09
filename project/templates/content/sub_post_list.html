@@ -1,0 +1,12 @@
+{% extends 'layouts/post_list.html' %}
+
+{% block extra %}
+	<div id="profile_container">
+		<a id="profile_username" href="/user/{{ profile.username }}"><img id="profile_image_view" src="/s/media/sub/image/{{ view_title }}.png" alt="{{ view_title }}"></a>
+		<a id="profile_username" href="/sub/{{ view_title }}">{{ view_title }}</a>
+
+		{{ block.super }}
+	</div>
+
+	<div class="separator"></div>
+{% endblock %}

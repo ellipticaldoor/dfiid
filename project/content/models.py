@@ -22,11 +22,16 @@ class Sub(models.Model):
 
 	class Meta: ordering = ['-last_commited']
 
+class SubFollowQuerySet(models.QuerySet):
+	def by_id(self, sub_follow_id):
+		return self.filter(sub_follow_id=sub_follow_id)
 
 class SubFollow(models.Model):
 	sub_follow_id = models.CharField(primary_key=True, max_length=33, blank=True)
 	follower = models.ForeignKey(User, related_name='sub_follower')
 	sub = models.ForeignKey(Sub, related_name='sub_followed')
+
+	objects = SubFollowQuerySet.as_manager()
 
 	def save(self, *args, **kwargs):
 		self.sub_follow_id = '%s>%s' % (self.follower, self.sub)

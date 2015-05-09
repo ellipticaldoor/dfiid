@@ -18,7 +18,7 @@ vim ~/.virtualenvs/dfiid/bin/predeactivate
 You can find an example of this files in the docs folder on the root of the repo.
 Remember to fill it with your on configuration.
 
-# On /dfiif/project/ folder
+# On /dfiid/project/ folder
 ```
 workon dfiid
 pip install -r requirements/dev
