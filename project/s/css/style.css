@@ -238,7 +238,13 @@ __________________________________________________________________________ */
 /* panel info
 __________________________________________________________________________ */
 
-div.panel.side_panel ul li { margin: -3px 0px 10px 0px; }
+.visit {
+	border: 1px solid white;
+	border-radius: 2px;
+	padding: 2px 5px 5px 5px;
+}
+
+.visit:hover { border: 1px solid #007AFF; }
 
 
 /* panel @media

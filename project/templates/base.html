@@ -60,7 +60,7 @@
 				{% with user.follower.all as follows %}     
 					{% if follows %}
 						{% for follow in follows %}
-							<li><a href="/user/{{ follow.followed_id }}"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</a></li>
+							<a href="/user/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
 						{% endfor %}
 					{% else %}
 						<li><a href="/user">blog follow</a></li>
@@ -72,7 +72,9 @@
 				{% with user.sub_follower.all as sub_follows %}   
 					{% if sub_follows %}
 						{% for sub_follow in sub_follows %}
-							<li><a href="/sub/{{ sub_follow.sub_id }}"><img class="panel_avatar" src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">{{ sub_follow.sub_id }}</a></li>
+							<a href="/sub/{{ sub_follow.sub_id }}">
+								<li class="visit"><img class="panel_avatar" src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">{{ sub_follow.sub_id }}</li>
+							</a>
 						{% endfor %}
 					{% else %}
 						<li><a href="/sub">sub follow</a></li>
