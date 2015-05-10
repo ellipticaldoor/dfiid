@@ -35,7 +35,7 @@ class FrontView(ListView):
 
 	def get_context_data(self, **kwargs):
 		context = super(FrontView, self).get_context_data(**kwargs)
-		context['view_title'] = 'front'
+		context['view_title'] = 'portada'
 		return context
 
 

@@ -354,15 +354,13 @@ __________________________________________________________________________ */
 
 .commit {
 	overflow: auto;
-	padding: 15px;
+	padding: 18px 15px 18px 15px;
+	border: 1px solid #ecf0f1;
 	border-radius: 2px;
-	margin: 0px 0px 10px 0px;
+	margin: 0px 5px 10px 5px;
 }
 
-.commit:nth-child(even) { background-color: #f4f8fc; }
-.commit:nth-child(odd) { background-color: #eff5fa; }
-
-.commit_content { margin-bottom: 10px; }
+.commit_content { margin: -8px 0px 8px 0px; }
 
 .commit_info {
 	overflow: auto;

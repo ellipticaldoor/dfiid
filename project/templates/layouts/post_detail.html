@@ -31,7 +31,9 @@
 
 		{% for commit in object.commits.all %}
 			<div id="{{ commit.commit_id}}" class="commit">
-				<div class="commit_content">{{ commit.body_html|safe }}</div>
+				{% if commit.body_html %}
+					<div class="commit_content">{{ commit.body_html|safe }}</div>
+				{% endif %}
 				<div class="commit_info">
 					<a href="/user/{{ commit.user_id }}">
 						<img alt="{{ commit.user_id }}" src="/s/media/user/avatar/{{ commit.user_id }}.png">
