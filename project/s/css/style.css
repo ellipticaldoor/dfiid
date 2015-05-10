@@ -67,7 +67,7 @@ input {
 	color: #8E8E93;
 	padding: 5px;
 	border-radius: 2px;
-	border: 1px solid #C7C7CC;
+	border: 1px solid #DBDDDE;
 	outline: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
@@ -101,10 +101,10 @@ input[type="checkbox"] {
 	-moz-appearance: checkbox;
 }
 
-::-webkit-input-placeholder { color: #C7C7CC; }
-:-moz-placeholder { color: #C7C7CC; opacity: 1; }
-::-moz-placeholder { color: #C7C7CC; opacity: 1; }
-:-ms-input-placeholder { color: #C7C7CC; }
+::-webkit-input-placeholder { color: #DBDDDE; }
+:-moz-placeholder { color: #DBDDDE; opacity: 1; }
+::-moz-placeholder { color: #DBDDDE; opacity: 1; }
+:-ms-input-placeholder { color: #DBDDDE; }
 
 select {
 	-moz-appearance: button;
@@ -113,7 +113,7 @@ select {
 	color: #8E8E93;
 	background-color: white;
 	padding: 5px;
-	border: 1px solid #C7C7CC;
+	border: 1px solid #DBDDDE;
 	border-radius: 2px;
 	cursor: pointer;
 }
@@ -122,7 +122,7 @@ select:focus { border: 1px solid #34AADC; }
 
 textarea {
 	padding: 20px;
-	border: 1px solid #D7D7D7;
+	border: 1px solid #DBDDDE;
 	border-radius: 2px;
 	font-size: 110%;
 	width: 100%;
@@ -130,6 +130,8 @@ textarea {
 	resize: none;
 	outline: none;
 }
+
+@-moz-document url-prefix() { textarea { margin-bottom: 5px; } }
 
 textarea:focus { border: 1px solid #34AADC; }
 
@@ -310,12 +312,14 @@ div.fluidvids iframe {
 
 .commits_link img {
 	float: right;
-	width: 17px;
-	height: 17px;
-	margin: 6px 0px 7px 5px;
+	width: 14px;
+	height: 14px;
+	margin: 8px 0px 0px 5px;
 }
 
 #paginate { padding: 25px 4px 0px 0px; }
+
+.edit { color: #EF4DB6; }
 
 .fluidvids { margin: 20px 0px 20px 0px; }
 
@@ -455,7 +459,7 @@ __________________________________________________________________________ */
 
 #auth_form_container {
 	text-align: center;
-	border: 1px solid #D7D7D7;
+	border: 1px solid #DBDDDE;
 	border-radius: 2px;
 	margin-bottom: 15px;
 }
@@ -514,13 +518,6 @@ __________________________________________________________________________ */
 	margin-bottom: 5px; 
 }
 
-#edit_form textarea {
-	height: calc(100vh - 260px);
-	min-height: 50vh;
-}
-
-#edit_form textarea:focus { border: 1px solid #D1EEFC; }
-
 
 /* Animations
 __________________________________________________________________________ */
@@ -539,6 +536,7 @@ __________________________________________________________________________ */
 	border-radius: 100px;
 	background-color: #34AADC;
 }
+
 
 /* django-debug-toolbar
 __________________________________________________________________________ */

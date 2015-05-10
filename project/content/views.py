@@ -116,7 +116,7 @@ class PostCommitView(CreateView):
 
 
 class CreatePostView(CreateView):
-	template_name = 'content/post_create_update.html'
+	template_name = 'layouts/post_create.html'
 	form_class = PostForm
 
 	def form_valid(self, form):
@@ -129,7 +129,7 @@ class CreatePostView(CreateView):
 
 
 class UpdatePostView(UpdateView):
-	template_name = 'content/post_create_update.html'
+	template_name = 'layouts/post_create.html'
 	form_class = PostForm
 
 	def get_queryset(self):

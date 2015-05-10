@@ -1,26 +1,24 @@
 {% extends 'layouts/post_list.html' %}
 
 {% block mid_panel %}
-	{% block extra %}
-		<div id="profile_container">
-			<a id="profile_username" href="/sub/{{ view_title }}"><img id="profile_image_view" src="/s/media/sub/image/{{ view_title }}.png" alt="{{ view_title }}"></a>
-			<a id="profile_username" href="/sub/{{ view_title }}">{{ view_title }}</a>
+	<div id="profile_container">
+		<a id="profile_username" href="/sub/{{ view_title }}"><img id="profile_image_view" src="/s/media/sub/image/{{ view_title }}.png" alt="{{ view_title }}"></a>
+		<a id="profile_username" href="/sub/{{ view_title }}">{{ view_title }}</a>
 
-			{% if action == 'follow' %}
-				<form id="profile_option" action="/sub_follow/{{ view_title }}/" method="post">
-					{% csrf_token %}{{ form }}
-					<input class="action_link" type="submit" value="follow" />
-				</form>
-			{% elif action == 'unfollow' %}
-				<form id="profile_option" action="/sub_unfollow/{{ view_title }}/" method="post">
-					{% csrf_token %}{{ form }}
-					<input class="action_link" type="submit" value="unfollow" />
-				</form>
-			{% endif %}
-		</div>
+		{% if action == 'follow' %}
+			<form id="profile_option" action="/sub_follow/{{ view_title }}/" method="post">
+				{% csrf_token %}{{ form }}
+				<input class="action_link" type="submit" value="follow" />
+			</form>
+		{% elif action == 'unfollow' %}
+			<form id="profile_option" action="/sub_unfollow/{{ view_title }}/" method="post">
+				{% csrf_token %}{{ form }}
+				<input class="action_link" type="submit" value="unfollow" />
+			</form>
+		{% endif %}
+	</div>
 
-		<div class="separator"></div>
-	{% endblock %}
+	<div class="separator"></div>
 
 	{{ block.super }}
 {% endblock %}

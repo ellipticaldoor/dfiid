@@ -1,10 +1,12 @@
 {% extends 'layouts/post_list.html' %}
 {% block title %}anon{% endblock %}
 
-{% block extra %}
-	<ul><li><a href="/anon/create" class="action_link">crear - anon</a></li></ul>
+{% block mid_panel %}
+	<a href="/anon/create" class="action_link">crear - anon</a>
 
 	<div class="separator"></div>
+
+	{{ block.super }}
 {% endblock %}
 
 {% block post_info %}
