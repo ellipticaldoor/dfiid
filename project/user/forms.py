@@ -27,6 +27,12 @@ class LoginForm(AuthenticationForm):
 	password = forms.CharField(label='', widget=forms.PasswordInput)
 
 
+class UserEditForm(forms.ModelForm):	
+	class Meta:
+		model = User
+		fields = ['avatar', 'password']
+
+
 class SignUpForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(SignUpForm, self).__init__(*args, **kwargs)

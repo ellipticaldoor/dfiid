@@ -511,6 +511,8 @@ __________________________________________________________________________ */
 /* Editor
 __________________________________________________________________________ */
 
+#anon_edit_options { margin-top: 5px; }
+
 #edit_options {
 	color: #8E8E93;
 	margin-bottom: 5px;
@@ -521,17 +523,9 @@ __________________________________________________________________________ */
 
 #edit_form_button { float: left; }
 
-#draft_chekcbox {
-	float: left;
-	margin: 0px 10px 0px 0px;
-}
+#draft_chekcbox { float: right;}
 
-#sub_select {
-	float: right;
-	margin-top: -5px;
-}
-
-@-moz-document url-prefix() { #sub_select { margin-top: 0px; } }
+#sub_select {margin-left: -5px;}
 
 #view_section { display: none; }
 

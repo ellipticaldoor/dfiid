@@ -18,7 +18,7 @@
 				<input class="action_link" type="submit" value="unfollow" />
 			</form>
 		{% elif action == 'edit' %}
-			<a id="profile_option" class="action_link" href="#">editar</a>
+			<a id="profile_option" class="action_link" href="/user/{{ profile.username }}/edit">editar</a>
 		{% endif %}
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}

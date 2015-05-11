@@ -39,6 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	avatar = models.ImageField(upload_to=get_avatar)
 	bio = models.TextField(max_length=500, default=':D')
 	bio_html = models.TextField(blank=True, null=True)
+	follower_number = models.IntegerField(default=0)
 
 	objects = UserManager()
 

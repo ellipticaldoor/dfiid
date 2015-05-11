@@ -1,3 +1,5 @@
+
+
 from django import forms
 
 from content.models import Sub, SubFollow, Post, Commit
@@ -12,7 +14,7 @@ class SubForm(forms.ModelForm):
 			'placeholder': 'nombre del sub'
 			})
 
-	slug = forms.CharField(label="")
+	slug = forms.CharField(label="", max_length=16)
 		
 	class Meta:
 		model = Sub

@@ -1,10 +1,10 @@
 from django.http import HttpResponseRedirect
-from django.views.generic import View, CreateView, ListView
+from django.views.generic import View, UpdateView, CreateView, ListView
 from django.contrib.auth import authenticate, login
 
 from user.models import User, UserFollow
 from content.models import Post
-from user.forms import SignUpForm, UserFollowForm
+from user.forms import UserEditForm, SignUpForm, UserFollowForm
 from core.core import random_avatar
 
 
@@ -60,6 +60,14 @@ class ProfileView(ListView):
 class UserView(ListView):
 	template_name = 'user/user.html'
 	model = User
+
+
+class UserEdit(UpdateView):
+	template_name = 'user/user_update.html'
+	form_class = UserEditForm
+
+	def get_queryset(self):
+		return User.objects.filter(username=self.request.user)
 
 
 class UserFollowCreate(CreateView):
