@@ -4,7 +4,7 @@
 {% block mid_panel %}
 	<div id="edit_form">
 		<section id="editor_section">
-			<form class="form-horizontal" action="/anon/create/" method="post">
+			<form class="form-horizontal" action="/anon/create/" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{ form }}
 				<input id="edit_form_button" class="submit" type="submit" value="anon post" />

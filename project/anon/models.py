@@ -15,11 +15,15 @@ class AnonPostQuerySet(models.QuerySet):
 
 
 class AnonPost(models.Model):
+	def get_image(instance, filename):
+		return 's/media/anon/post/%s.png' % (instance.post_id)
+
 	post_id = models.CharField(primary_key=True, max_length=16, default=_createId)
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=100)
 	body = models.TextField(max_length=3000, default='', blank=True)
 	body_html  = models.TextField(blank=True, null=True)
+	image = models.ImageField(upload_to=get_image, null=True)
 	created = models.DateTimeField(auto_now_add=True)
 	last_commited = models.DateTimeField(auto_now_add=True)
 	commit_number = models.IntegerField(default=0)

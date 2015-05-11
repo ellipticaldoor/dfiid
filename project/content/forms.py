@@ -25,6 +25,14 @@ class SubFollowForm(forms.ModelForm):
 		fields = []
 
 
+class ImageInput(forms.ClearableFileInput):
+	template_with_initial = (
+		'<div id="image_post_edit"><div><img src="/%(initial_url)s"></div>'
+		'<input id="image-clear_id" name="image-clear" type="checkbox"> <label for="image-clear_id">borrar</label></div>'
+		'%(input)s'
+	)
+
+
 class PostForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(PostForm, self).__init__(*args, **kwargs)
@@ -36,9 +44,11 @@ class PostForm(forms.ModelForm):
 		self.fields['body'].widget.attrs.update({'required': 'required'})
 		self.fields['sub'].widget.attrs.update({'required': 'required'})
 
+	image = forms.ImageField(widget=ImageInput, required=False)
+
 	class Meta:
 		model = Post
-		fields = ('title', 'body', 'sub', 'draft')
+		fields = ('title', 'body', 'image', 'sub', 'draft')
 
 
 class CommitForm(forms.ModelForm):

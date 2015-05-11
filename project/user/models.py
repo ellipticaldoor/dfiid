@@ -36,18 +36,19 @@ class User(AbstractBaseUser, PermissionsMixin):
 	is_admin = models.BooleanField(default=False)
 	is_staff = models.BooleanField(default=False)
 
-	avatar = models.FileField(upload_to=get_avatar)
+	avatar = models.ImageField(upload_to=get_avatar)
+	bio = models.TextField(max_length=500, default=':D')
+	bio_html = models.TextField(blank=True, null=True)
 
 	objects = UserManager()
 
-	def get_short_name(self):
-		return self.username
+	def save(self, *args, **kwargs):
+		self.bio_html = markdown(self.bio, safe_mode=True)
+		super(User, self).save(*args, **kwargs)
 
-	def get_full_name(self):
-		return self.username
-
-	def get_absolute_url(self):
-		return '/user/%s' % (self.user)
+	def get_short_name(self): return self.username
+	def get_full_name(self): return self.username
+	def get_absolute_url(self): return '/user/%s' % (self.user)
 
 	class Meta: ordering = ['-last_commited']
 

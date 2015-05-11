@@ -5,11 +5,16 @@
 	{% block post_detail %}
 		<div class="post">
 			<a class="post_title" href="{{ object.get_absolute_url }}">{{ object.title }}</a>
-			<div class="post_content">{{ object.body_html|safe }}</div>
+			<div class="post_content">
+				{{ object.body_html|safe }}
+				{% if object.image   %}
+					<p><img src="/{{ object.image }}"></p>
+				{% endif %}
+			</div>
 
 			{% block post_info %}
 				<div class="post_info">
-					<a href="/user/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="/s/media/user/avatar/{{ object.user_id }}.png"></a>
+					<a href="/user/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="{{ object.get_avatar_url }}"></a>
 					<span><a href="/user/{{ object.user_id }}">{{ object.user_id }}</a> / <a href="/sub/{{ object.sub_id }}">{{ object.sub_id }}</a></span>
 					{% ifequal user.username  object.user_id|slugify %}
 						<span><a class="edit" href="{{ object.get_edit_url }}"> edit</a></span>
@@ -36,7 +41,7 @@
 				{% endif %}
 				<div class="commit_info">
 					<a href="/user/{{ commit.user_id }}">
-						<img alt="{{ commit.user_id }}" src="/s/media/user/avatar/{{ commit.user_id }}.png">
+						<img alt="{{ commit.user_id }}" src="{{ commit.get_avatar_url }}">
 						{{ commit.user_id }}
 					</a>
 					<a class="commit_link" href="#{{ commit.commit_id}}">#{{ commit.commit_id}}</a>

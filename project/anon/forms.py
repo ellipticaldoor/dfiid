@@ -18,7 +18,7 @@ class AnonPostForm(forms.ModelForm):
 
 	class Meta:
 		model = AnonPost
-		fields = ('title', 'body')
+		fields = ('title', 'body', 'image')
 
 
 class AnonCommitForm(forms.ModelForm):

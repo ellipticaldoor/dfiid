@@ -32,7 +32,7 @@ class SignUpForm(forms.ModelForm):
 		super(SignUpForm, self).__init__(*args, **kwargs)
 		set_user_form_attrs(self)
 
-	username = forms.CharField(label='', max_length=16, )
+	username = forms.CharField(label='', max_length=16)
 	password = forms.CharField(label='', widget=forms.PasswordInput)
 	captcha = NoReCaptchaField(label='')
 	

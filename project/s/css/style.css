@@ -181,10 +181,7 @@ __________________________________________________________________________ */
 
 #link_panel { width: 200px; }
 
-#info_panel {
-	width: 200px;
-	height: 500px;
-}
+#info_panel { width: 200px; }
 
 #mid_panel {
 	width: calc(100vw - 400px);
@@ -267,6 +264,7 @@ __________________________________________________________________________ */
 
 img {
 	max-width: 100%;
+	max-height: 500px;
 	border-radius: 2px;
 	margin-top: 5px;
 }
@@ -522,6 +520,20 @@ __________________________________________________________________________ */
 #id_title { 
 	width: 100%;
 	margin-bottom: 5px; 
+}
+
+#id_image { margin-bottom: 5px; }
+
+#image_post_edit {
+	padding: 0px 5px 5px 5px;
+	margin-bottom: 5px;
+	border: 1px solid #DBDDDE;
+	border-radius: 2px;
+}
+
+#image_post_edit img {
+	max-height: 100px;
+	max-width: 100%;
 }
 
 
