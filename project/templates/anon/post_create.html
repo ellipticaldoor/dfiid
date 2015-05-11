@@ -1,15 +1,27 @@
 {% extends 'base.html' %}
-{% block title %}crear - anon{% endblock %}
+{% block title %}crear anon post{% endblock %}
 
 {% block mid_panel %}
 	<div id="edit_form">
 		<section id="editor_section">
+			{{ form.non_field_errors }}
 			<form class="form-horizontal" action="/anon/create/" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
-				{{ form }}
-				<input id="edit_form_button" class="submit" type="submit" value="anon post" />
+				<p>{{ form.title }}</p>
+				{{ form.title.errors }}
+
+				{{ form.body }}
+				{{ form.body.errors }}
+
+				{{ form.image }}
+				{{ form.image.errors }}
+
+				<div id="edit_options">
+					<input id="edit_form_button" class="submit" type="submit" value="anon post" />
+				</div>
 			</form>
 		</section>
+
 		<section id="view_section">
 				<div class="post">
 					<a href="#" onClick="return false;" id="post_title" class="post_title"></a>

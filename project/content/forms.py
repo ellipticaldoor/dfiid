@@ -41,7 +41,10 @@ class PostForm(forms.ModelForm):
 			'required': 'required',
 			'placeholder': 'título'
 			})
-		self.fields['body'].widget.attrs.update({'required': 'required'})
+		self.fields['body'].widget.attrs.update({
+			'required': 'required',
+			'placeholder': 'markdown'
+			})
 		self.fields['sub'].widget.attrs.update({'required': 'required'})
 
 	image = forms.ImageField(widget=ImageInput, required=False)

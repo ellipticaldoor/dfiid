@@ -11,7 +11,10 @@ class AnonPostForm(forms.ModelForm):
 			'required': 'required',
 			'placeholder': 'título'
 			})
-		self.fields['body'].widget.attrs.update({'required': 'required'})
+		self.fields['body'].widget.attrs.update({
+			'required': 'required',
+			'placeholder': 'markdown'
+			})
 
 	title = forms.CharField(label="")
 	body = forms.CharField(label="", widget=forms.Textarea)

@@ -29,6 +29,13 @@ __________________________________________________________________________ */
 	margin: 18px 0px 18px 0px;
 }
 
+.form_separator {
+	height: 1px;
+	width: 100%;
+	background-color: #ecf0f1;
+	margin: 0px 0px 5px 0px;
+}
+
 
 /* typography
 __________________________________________________________________________ */
@@ -504,16 +511,27 @@ __________________________________________________________________________ */
 /* Editor
 __________________________________________________________________________ */
 
-#edit_options { color: #8E8E93; }
+#edit_options {
+	color: #8E8E93;
+	margin-bottom: 5px;
+	padding: 5px;
+	margin: 2px 0px 7px 0px;
+	border-radius: 2px;
+}
 
 #edit_form_button { float: left; }
 
 #draft_chekcbox {
 	float: left;
-	margin: 0px 10px 0px 10px;
+	margin: 0px 10px 0px 0px;
 }
 
-#sub_select { float: right; }
+#sub_select {
+	float: right;
+	margin-top: -5px;
+}
+
+@-moz-document url-prefix() { #sub_select { margin-top: 0px; } }
 
 #view_section { display: none; }
 
@@ -522,7 +540,17 @@ __________________________________________________________________________ */
 	margin-bottom: 5px; 
 }
 
-#id_image { margin-bottom: 5px; }
+#optional_image {
+	color: #C7C7CC;
+	margin-bottom: 2px;
+}
+
+#id_image {
+	margin-bottom: 5px;
+	border: 0px;
+	padding: 0px;
+	color: #C7C7CC;
+}
 
 #image_post_edit {
 	padding: 0px 5px 5px 5px;
@@ -535,6 +563,8 @@ __________________________________________________________________________ */
 	max-height: 100px;
 	max-width: 100%;
 }
+
+#edit_form_button { width: 100px; }
 
 
 /* Animations
