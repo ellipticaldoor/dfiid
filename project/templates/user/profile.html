@@ -23,7 +23,21 @@
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
 
-	<div class="separator"></div>
+	<div class="separator"></div><br>
 
-	{{ block.super }}
+	<div>
+		<a href="/user/{{ profile.username }}">posts</a>
+		<a href="/user/{{ profile.username }}/commits">commits</a>
+		<a href="/user/{{ profile.username }}/bio">bio</a>
+	</div>
+
+	{% if profile_show = 'posts' %}
+		{{ block.super }}
+	{% elif profile_show = 'commits' %}
+		commits
+	{% elif profile_show == 'bio' %}
+		<div class="post_content">
+			{{ profile.bio_html|safe }}
+		</div>
+	{% endif %}
 {% endblock %}

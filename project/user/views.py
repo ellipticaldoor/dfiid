@@ -41,6 +41,8 @@ class ProfileView(ListView):
 		context = super(ProfileView, self).get_context_data(**kwargs)
 		username = self.request.user.username
 		profile = self.kwargs['profile']
+		try: show = self.kwargs['show']
+		except: show = False
 
 		context['form'] = UserFollowForm
 		context['profile'] = User.objects.get(username=profile)
@@ -54,6 +56,11 @@ class ProfileView(ListView):
 				if follow_state: context['action'] = 'unfollow'
 				else: context['action'] = 'follow'
 
+		if show:
+			if show == 'commits': context['profile_show'] = 'commits'
+			else: context['profile_show'] = 'bio'
+		else: context['profile_show'] = 'posts'
+
 		return context
 
 
@@ -65,9 +72,14 @@ class UserView(ListView):
 class UserEdit(UpdateView):
 	template_name = 'user/user_update.html'
 	form_class = UserEditForm
+	get_absolute_url = '/'
 
 	def get_queryset(self):
 		return User.objects.filter(username=self.request.user)
+
+	def form_valid(self, form):
+		form.save()
+		return HttpResponseRedirect('/user/%s/bio' % (self.kwargs['pk']))
 
 
 class UserFollowCreate(CreateView):

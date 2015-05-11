@@ -30,7 +30,7 @@ class LoginForm(AuthenticationForm):
 class UserEditForm(forms.ModelForm):	
 	class Meta:
 		model = User
-		fields = ['avatar', 'password']
+		fields = ['avatar', 'bio', 'password']
 
 
 class SignUpForm(forms.ModelForm):

@@ -271,7 +271,7 @@ __________________________________________________________________________ */
 
 img {
 	max-width: 100%;
-	max-height: 500px;
+	max-height: 300px;
 	border-radius: 2px;
 	margin-top: 5px;
 }
@@ -431,11 +431,18 @@ __________________________________________________________________________ */
 .profile_image {
 	float: left;
 	display: block;
-	width: 10%;
-	height: 10%;
+	width: calc(12.5% - 8px);
+	height: calc(12.5% - 8px);
 	border-radius: 3px;
 	margin: 3px;
-	padding: 1px
+	padding: 1px;
+}
+
+@media (max-width: 700px) {
+	.profile_image {
+		width: calc(20% - 8px);
+		height: calc(20% - 8px);
+	}
 }
 
 .profile_image:hover { background-color: #34AADC; }
