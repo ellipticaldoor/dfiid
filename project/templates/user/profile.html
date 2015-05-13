@@ -33,17 +33,20 @@
 		{{ block.super }}
 	{% elif profile_show == 'commits' %}
 		{% for commit in profile.commits.all %}
-			<div id="{{ commit.commit_id}}" class="commit">
+			
 				{% if commit.body_html %}
-					<div class="commit_content">{{ commit.body_html|safe }}</div>
+					<div id="{{ commit.commit_id}}" class="post">
+						<div class="post_content">{{ commit.body_html|safe }}</div>
+					
+						<div class="post_info">
+							<a href="{{ commit.get_absolute_url }}#{{ commit.commit_id}}">
+								{{ commit.post.title }}
+							</a>
+							<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
+						</div>
+					</div>
 				{% endif %}
-				<div class="post_info">
-					<a href="{{ commit.get_absolute_url }}#{{ commit.commit_id}}">
-						{{ commit.post.title }}
-					</a>
-					<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
-				</div>
-			</div>
+			
 		{% endfor %}
 	{% elif profile_show == 'bio' %}
 		<div class="post">

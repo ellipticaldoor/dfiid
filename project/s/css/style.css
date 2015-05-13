@@ -328,6 +328,13 @@ div.fluidvids iframe {
 	margin: 8px 0px 0px 5px;
 }
 
+#commit_form {
+	width: 95%;
+	margin: 0px auto 15px auto;
+}
+
+.commit_link { float: right; }
+
 #paginate { padding: 25px 4px 0px 0px; }
 
 .edit { color: #EF4DB6; }
@@ -357,39 +364,6 @@ __________________________________________________________________________ */
 	margin: 0px 10px 0px 0px;
 	float: left;
 }
-
-
-/* commits
-__________________________________________________________________________ */
-
-#commit_form {
-	width: 95%;
-	margin: 0px auto 15px auto;
-}
-
-.commit {
-	overflow: auto;
-	padding: 18px 15px 18px 15px;
-	border: 1px solid #ecf0f1;
-	border-radius: 2px;
-	margin: 0px 5px 10px 5px;
-}
-
-.commit_content { margin: -8px 0px 8px 0px; }
-
-.commit_info {
-	overflow: auto;
-	width: 100%;
-	line-height: 25px;
-}
-
-.commit_info img {
-	float: left;
-	height: 25px;
-	margin: 0px 6px 0px 0px;
-}
-
-.commit_link { float: right; }
 
 
 /* profile
