@@ -400,6 +400,7 @@ __________________________________________________________________________ */
 	border-radius: 2px;
 }
 
+
 #profile_image_view {
 	float: left;
 	margin: 0px 8px 0px 0px;
@@ -421,10 +422,23 @@ __________________________________________________________________________ */
 
 #profile_option { float: right; }
 
-#profile_description {
-	padding: 12px;
-	color: #8E8E93;
+#profile_selector {
+	display: inline-block;
+	width: 100%;
+	margin: 10px 0px 22px 0px;
+	text-align: center;
 }
+
+#profile_selector a {
+	margin: 0px 4px 0px 4px;
+	border: 1px solid #ecf0f1;
+	border-radius: 2px;
+	padding: 5px 8px 5px 8px;
+}
+
+#profile_selector a:hover { border: 1px solid #007AFF; }
+
+.profile_selected { border: 1px solid #34AADC !important; }
 
 .profile_list_title { font-size: 120%; }
 

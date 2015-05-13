@@ -23,21 +23,33 @@
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
 
-	<div class="separator"></div><br>
-
-	<div>
-		<a href="/user/{{ profile.username }}">posts</a>
-		<a href="/user/{{ profile.username }}/commits">commits</a>
-		<a href="/user/{{ profile.username }}/bio">bio</a>
+	<div id="profile_selector">
+		<a class="{% if profile_show == 'posts' %}profile_selected{% endif %}" href="/user/{{ profile.username }}">posts</a>
+		<a class="{% if profile_show == 'commits' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/commits">commits</a>
+		<a class="{% if profile_show == 'bio' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/bio">bio</a>
 	</div>
 
-	{% if profile_show = 'posts' %}
+	{% if profile_show == 'posts' %}
 		{{ block.super }}
-	{% elif profile_show = 'commits' %}
-		commits
+	{% elif profile_show == 'commits' %}
+		{% for commit in profile.commits.all %}
+			<div id="{{ commit.commit_id}}" class="commit">
+				{% if commit.body_html %}
+					<div class="commit_content">{{ commit.body_html|safe }}</div>
+				{% endif %}
+				<div class="post_info">
+					<a href="{{ commit.get_absolute_url }}#{{ commit.commit_id}}">
+						{{ commit.post.title }}
+					</a>
+					<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
+				</div>
+			</div>
+		{% endfor %}
 	{% elif profile_show == 'bio' %}
-		<div class="post_content">
-			{{ profile.bio_html|safe }}
+		<div class="post">
+			<div class="post_content">
+				{{ profile.bio_html|safe }}
+			</div>
 		</div>
 	{% endif %}
 {% endblock %}
