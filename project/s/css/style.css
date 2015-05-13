@@ -410,9 +410,17 @@ __________________________________________________________________________ */
 	padding: 5px 8px 5px 8px;
 }
 
-#profile_selector a:hover { border: 1px solid #007AFF; }
+#profile_selector a:hover {
+	border: 1px solid #007AFF;
+	background-color: #007AFF;
+	color: white;
+}
 
-.profile_selected { border: 1px solid #34AADC !important; }
+.profile_selected {
+	border: 1px solid #34AADC !important;
+	background-color: #34AADC;
+	color: white;
+}
 
 .profile_list_title { font-size: 120%; }
 

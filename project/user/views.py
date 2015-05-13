@@ -57,9 +57,9 @@ class ProfileView(ListView):
 				else: context['action'] = 'follow'
 
 		if show:
-			if show == 'commits': context['profile_show'] = 'commits'
+			if show == 'commit': context['profile_show'] = 'commit'
 			else: context['profile_show'] = 'bio'
-		else: context['profile_show'] = 'posts'
+		else: context['profile_show'] = 'post'
 
 		return context
 

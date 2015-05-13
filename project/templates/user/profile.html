@@ -24,14 +24,14 @@
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
 
 	<div id="profile_selector">
-		<a class="{% if profile_show == 'posts' %}profile_selected{% endif %}" href="/user/{{ profile.username }}">posts</a>
-		<a class="{% if profile_show == 'commits' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/commits">commits</a>
+		<a class="{% if profile_show == 'post' %}profile_selected{% endif %}" href="/user/{{ profile.username }}">post</a>
+		<a class="{% if profile_show == 'commit' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/commit">commit</a>
 		<a class="{% if profile_show == 'bio' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/bio">bio</a>
 	</div>
 
-	{% if profile_show == 'posts' %}
+	{% if profile_show == 'post' %}
 		{{ block.super }}
-	{% elif profile_show == 'commits' %}
+	{% elif profile_show == 'commit' %}
 		{% for commit in profile.commits.all %}
 			
 				{% if commit.body_html %}
