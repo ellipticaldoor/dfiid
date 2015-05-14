@@ -8,7 +8,7 @@ __________________________________________________________________________ */
 	margin: 0;
 }
 
-@media (min-width: 1130px) {
+@media (min-width: 1000px) {
 	body {
 		overflow: auto;
 		width: 100%;
@@ -17,7 +17,7 @@ __________________________________________________________________________ */
 	#app{
 		display: block;
 		overflow: auto;
-		width: calc(650px + 400px);
+		width: calc(650px + 350px);
 		margin: 0 auto;
 	}
 }
@@ -186,12 +186,12 @@ __________________________________________________________________________ */
 
 .side_panel { padding: 5px 20px 5px 20px; }
 
-#link_panel { width: 200px; }
+#link_panel { width: 150px; }
 
 #info_panel { width: 200px; }
 
 #mid_panel {
-	width: calc(100vw - 400px);
+	width: calc(100vw - 350px);
 	max-width: 650px;
 	padding: 0px 16px 0px 16px;
 }
@@ -254,14 +254,15 @@ __________________________________________________________________________ */
 /* panel @media
 __________________________________________________________________________ */
 
-@media (max-width: 890px) {
+@media (max-width: 799px) {
 	nav { display: block; }
 	#info_nav_link, #mid_nav_link { display: inline-block; }
-	#mid_panel { width: calc(100vw - 200px); }
+	#info_panel { display: none; }
+	#mid_panel { width: calc(100vw - 150px); }
 }
 
-@media (max-width: 480px) {
-	#link_nav_link { display: inline-block; }
+@media (max-width: 598px) {
+	#link_panel { display: none; }
 	#mid_panel { width: 100vw; }
 }
 
@@ -351,9 +352,9 @@ div.fluidvids iframe {
 __________________________________________________________________________ */
 
 .sub_container {
-	overflow: auto;
+	overflow: hidden;
 	max-width: 300px;
-	width: 50%;
+	width: 100%;
 	line-height: 42px;
 	margin-bottom: 10px;
 	border-radius: 2px;
@@ -369,6 +370,9 @@ __________________________________________________________________________ */
 	margin: 0px 10px 0px 0px;
 	float: left;
 }
+
+.sub_container a { overflow: auto; }
+
 
 #sub_profile_container {
 	overflow: auto;
@@ -402,6 +406,12 @@ __________________________________________________________________________ */
 	float: left;
 	border-radius: 2px;
 	font-size: 160%;
+}
+
+
+#profile_username span {
+	position: absolute;
+	left: 0;
 }
 
 #feed img {

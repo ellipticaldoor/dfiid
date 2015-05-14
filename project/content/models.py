@@ -11,7 +11,7 @@ class Sub(models.Model):
 	def get_image(instance, filename):
 		return 's/media/sub/image/%s.png' % (instance.slug)
 
-	slug = models.SlugField(primary_key=True, max_length=16)
+	slug = models.SlugField(primary_key=True, max_length=10)
 	image = models.ImageField(upload_to=get_image)
 	created = models.DateTimeField(auto_now_add=True)
 	last_commited = models.DateTimeField(auto_now_add=True)

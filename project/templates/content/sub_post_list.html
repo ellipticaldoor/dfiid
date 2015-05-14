@@ -4,12 +4,14 @@
 	<div id="sub_profile_container">
 		{% if action == 'follow' %}
 			<form id="profile_option" action="/sub_follow/{{ view_title }}/" method="post">
-				{% csrf_token %}{{ form }}
+				{% csrf_token %}
+				{{ form }}
 				<input class="action_link" type="submit" value="follow" />
 			</form>
 		{% elif action == 'unfollow' %}
 			<form id="profile_option" action="/sub_unfollow/{{ view_title }}/" method="post">
-				{% csrf_token %}{{ form }}
+				{% csrf_token %}
+				{{ form }}
 				<input class="action_link" type="submit" value="unfollow" />
 			</form>
 		{% endif %}

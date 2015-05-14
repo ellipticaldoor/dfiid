@@ -10,7 +10,7 @@
 		{% for object in object_list %}
 			<a class="sub_container" href="/sub/{{ object.slug }}">
 				<img src="/{{ object.image }}">
-				{{ object.slug }}
+				<span>{{ object.slug }}</span>
 			</a>
 		{% endfor %}
 	{% else %}

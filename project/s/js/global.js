@@ -20,10 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	set_show_mode();
 });
 
+
 window.addEventListener('resize', function(event){
 	window_width = window.innerWidth;
 	set_show_mode();
 });
+
 
 $(document).swipeLeft(function(){
 	if ( main_panel == 1 ) {
@@ -36,6 +38,7 @@ $(document).swipeLeft(function(){
 	}
 })
 
+
 $(document).swipeRight(function(){
 	if ( main_panel == 3 ) {
 		main_panel = 2;
@@ -46,6 +49,7 @@ $(document).swipeRight(function(){
 		set_panel_visibility();
 	}
 })
+
 
 link_nav_link.addEventListener('click', function() {
 	main_panel = 1;
@@ -66,12 +70,13 @@ info_nav_link.addEventListener('click', function() {
 
 
 function set_show_mode() {
-	if (window_width >= 890) { show_mode = 3; }
-	else if ( window_width > 400 && window_width < 890) { show_mode = 2; }
-	else if ( window_width <= 400) { show_mode = 1; }
+	if (window_width >= 800) { show_mode = 3; }
+	else if ( window_width > 598 && window_width < 800) { show_mode = 2; }
+	else if ( window_width <= 598) { show_mode = 1; }
 
 	set_panel_visibility();
 }
+
 
 function set_selected() {
 	if (show_mode == 2 ) {
@@ -102,6 +107,7 @@ function set_selected() {
 		}
 	}
 }
+
 
 function set_panel_visibility() {
 	if (show_mode == 3) {
