@@ -282,13 +282,18 @@ div.fluidvids iframe {
 }
 
 .post {
+	overflow: hidden;
 	border: 1px solid #ecf0f1;
 	border-radius: 2px;
 	padding: 10px 15px 18px 15px;
 	margin-bottom: 15px;
 }
 
-.post_title { font-size: 135%; }
+.post_title {
+	font-size: 135%;
+	max-width: 100%;
+}
+
 .post_title:visited { color: #C86EDF; }
 
 .post_content {
@@ -365,15 +370,26 @@ __________________________________________________________________________ */
 	float: left;
 }
 
+#sub_profile_container {
+	overflow: auto;
+	margin-bottom: 20px;
+}
+
+#sub_image_view {
+	float: left;
+	margin: 0px 8px 0px 0px;
+	width: 50px;
+	height: 50px;
+}
+
 
 /* profile
 __________________________________________________________________________ */
 
 #profile_container {
-	overflow: auto;
+	overflow: hidden;
 	border-radius: 2px;
 }
-
 
 #profile_image_view {
 	float: left;
@@ -399,7 +415,7 @@ __________________________________________________________________________ */
 #profile_selector {
 	display: inline-block;
 	width: 100%;
-	margin: 10px 0px 22px 0px;
+	margin: 20px 0px 22px 0px;
 	text-align: center;
 }
 
