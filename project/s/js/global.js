@@ -71,8 +71,8 @@ info_nav_link.addEventListener('click', function() {
 
 function set_show_mode() {
 	if (window_width >= 800) { show_mode = 3; }
-	else if ( window_width > 598 && window_width < 800) { show_mode = 2; }
-	else if ( window_width <= 598) { show_mode = 1; }
+	else if ( window_width > 650 && window_width < 800) { show_mode = 2; }
+	else if ( window_width <= 650) { show_mode = 1; }
 
 	set_panel_visibility();
 }

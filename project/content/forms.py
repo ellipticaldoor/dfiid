@@ -57,6 +57,12 @@ class PostForm(forms.ModelForm):
 
 
 class CommitForm(forms.ModelForm):
+	def __init__(self, *args, **kwargs):
+		super(CommitForm, self).__init__(*args, **kwargs)
+		self.fields['body'].widget.attrs.update({
+			'placeholder': 'markdown'
+			})
+
 	body = forms.CharField(label='', max_length=500, widget=forms.Textarea, required=False)
 
 	class Meta:

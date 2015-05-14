@@ -14,7 +14,7 @@ __________________________________________________________________________ */
 		width: 100%;
 	}
 
-	#app{
+	#app {
 		display: block;
 		overflow: auto;
 		width: calc(650px + 350px);
@@ -261,7 +261,8 @@ __________________________________________________________________________ */
 	#mid_panel { width: calc(100vw - 150px); }
 }
 
-@media (max-width: 598px) {
+@media (max-width: 650px) {
+	#link_nav_link { display: inline-block; }
 	#link_panel { display: none; }
 	#mid_panel { width: 100vw; }
 }

@@ -4,14 +4,14 @@ DEBUG = True
 
 COMPRESS_ENABLED = False
 
-INSTALLED_APPS += (
-	'debug_toolbar',
-)
+# INSTALLED_APPS += (
+# 	'debug_toolbar',
+# )
 
-MIDDLEWARE_CLASSES += (
-	'debug_toolbar.middleware.DebugToolbarMiddleware',
-)
+# MIDDLEWARE_CLASSES += (
+# 	'debug_toolbar.middleware.DebugToolbarMiddleware',
+# )
 
-DEBUG_TOOLBAR_CONFIG = {
-	'JQUERY_URL': '/s/js/lib/jquery_2.1.3.min.js',
-}
+# DEBUG_TOOLBAR_CONFIG = {
+# 	'JQUERY_URL': '/s/js/lib/jquery_2.1.3.min.js',
+# }
