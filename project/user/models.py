@@ -40,6 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	bio = models.TextField(max_length=500, default=':D')
 	bio_html = models.TextField(blank=True, null=True)
 	follower_number = models.IntegerField(default=0)
+	following_number = models.IntegerField(default=0)
 
 	objects = UserManager()
 
@@ -55,21 +56,21 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class UserFollowQuerySet(models.QuerySet):
-	def by_id(self, follow_id):
-		return self.filter(follow_id=follow_id)
+	def by_id(self, followid):
+		return self.filter(followid=followid)
 
 
 class UserFollow(models.Model):
-	follow_id = models.CharField(primary_key=True, max_length=33, blank=True)
+	followid = models.CharField(primary_key=True, max_length=33, blank=True)
 	follower = models.ForeignKey(User, related_name='follower')
 	followed = models.ForeignKey(User, related_name='followed')
 
 	objects = UserFollowQuerySet.as_manager()
 
 	def save(self, *args, **kwargs):
-		self.follow_id = '%s>%s' % (self.follower, self.followed)
+		self.followid = '%s>%s' % (self.follower, self.followed)
 		super(UserFollow, self).save(*args, **kwargs)
 
 	def get_absolute_url(self): return '/user/%s' % (self.followed)
 
-	def __str__(self): return self.follow_id
+	def __str__(self): return self.followid

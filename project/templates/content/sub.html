@@ -6,14 +6,10 @@
 
 	<div class="separator"></div>
 
-	{% if object_list %}
-		{% for object in object_list %}
-			<a class="sub_container" href="/sub/{{ object.slug }}">
-				<img src="/{{ object.image }}">
-				<span>{{ object.slug }}</span>
-			</a>
-		{% endfor %}
-	{% else %}
-		<p>no content</p>
-	{% endif %}
+	{% for object in object_list %}
+		<a class="sub_container" href="/sub/{{ object.slug }}">
+			<img src="/{{ object.image }}">
+			<span>{{ object.slug }}</span>
+		</a>
+	{% endfor %}
 {% endblock %}

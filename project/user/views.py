@@ -52,7 +52,7 @@ class ProfileView(ListView):
 			if username == profile:
 				context['action'] = 'edit'
 			else:
-				follow_state = UserFollow.objects.by_id(follow_id='%s>%s' % (username, profile))
+				follow_state = UserFollow.objects.by_id(followid='%s>%s' % (username, profile))
 				if follow_state: context['action'] = 'unfollow'
 				else: context['action'] = 'follow'
 
@@ -83,24 +83,24 @@ class UserFollowCreate(CreateView):
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.follower = self.request.user
+		obj.follower.following_number += 1
+		obj.follower.save()
 		obj.followed = User.objects.get(username=self.kwargs['followed'])
+		obj.followed.follower_number += 1
+		obj.followed.save()
 		obj.save()
 		return HttpResponseRedirect(obj.get_absolute_url())
 
 
 class UserFollowDelete(View):
 	def post(self, *args, **kwargs):
-		unfollowed = self.kwargs['unfollowed']
-		follow_id = '%s>%s' % (self.request.user, unfollowed)
-		follow = UserFollow.objects.get(follow_id=follow_id)
+		follower = self.request.user
+		followed = User.objects.get(username=self.kwargs['unfollowed'])
+		followid = '%s>%s' % (follower.pk, followed.pk)
+		follow = UserFollow.objects.get(followid=followid)
 		follow.delete()
-		return HttpResponseRedirect('/user/%s' % (unfollowed))
-
-
-class UserFollowersList(ListView):
-	template_name = 'user/followers_following.html'
-	model = UserFollow
-
-
-class UserFollowingList(ProfileView):
-	template_name = 'user/followers_following.html'
+		follower.following_number -= 1
+		follower.save()
+		followed.follower_number -= 1
+		followed.save()
+		return HttpResponseRedirect('/user/%s' % (followed.pk))

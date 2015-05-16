@@ -40,11 +40,11 @@ class SignUpForm(forms.ModelForm):
 
 	username = forms.CharField(label='', max_length=16)
 	password = forms.CharField(label='', widget=forms.PasswordInput)
-
+	captcha = NoReCaptchaField(label='')
 	
 	class Meta:
 		model = User
-		fields = ['username', 'password' ]
+		fields = ['username', 'password', 'captcha' ]
 
 
 class UserFollowForm(forms.ModelForm):

@@ -24,22 +24,22 @@ class Sub(models.Model):
 
 
 class SubFollowQuerySet(models.QuerySet):
-	def by_id(self, sub_follow_id):
-		return self.filter(sub_follow_id=sub_follow_id)
+	def by_id(self, sub_followid):
+		return self.filter(sub_followid=sub_followid)
 
 
 class SubFollow(models.Model):
-	sub_follow_id = models.CharField(primary_key=True, max_length=33, blank=True)
+	sub_followid = models.CharField(primary_key=True, max_length=33, blank=True)
 	follower = models.ForeignKey(User, related_name='sub_follower')
 	sub = models.ForeignKey(Sub, related_name='sub_followed')
 
 	objects = SubFollowQuerySet.as_manager()
 
 	def save(self, *args, **kwargs):
-		self.sub_follow_id = '%s>%s' % (self.follower, self.sub)
+		self.sub_followid = '%s>%s' % (self.follower, self.sub)
 		super(SubFollow, self).save(*args, **kwargs)
 
-	def __str__(self): return self.sub_follow_id
+	def __str__(self): return self.sub_followid
 
 
 class PostQuerySet(models.QuerySet):

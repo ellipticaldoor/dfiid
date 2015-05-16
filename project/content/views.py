@@ -55,7 +55,7 @@ class SubPostListView(ListView):
 		context['action'] = 'follow'
 
 		if user.is_authenticated():
-			follow_state = SubFollow.objects.by_id(sub_follow_id='%s>%s' % (user.username, sub))
+			follow_state = SubFollow.objects.by_id(sub_followid='%s>%s' % (user.username, sub))
 			if follow_state: context['action'] = 'unfollow'
 			else: context['action'] = 'follow'
 
@@ -77,8 +77,8 @@ class SubFollowCreate(CreateView):
 class SubFollowDelete(View):
 	def post(self, *args, **kwargs):
 		unfollowed = self.kwargs['unfollowed']
-		sub_follow_id = '%s>%s' % (self.request.user, unfollowed)
-		follow = SubFollow.objects.get(sub_follow_id=sub_follow_id)
+		sub_followid = '%s>%s' % (self.request.user, unfollowed)
+		follow = SubFollow.objects.get(sub_followid=sub_followid)
 		follow.delete()
 		return HttpResponseRedirect('/sub/%s' % (unfollowed))
 

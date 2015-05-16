@@ -67,6 +67,13 @@ ul {
 	padding: 0;
 }
 
+.normal_selected {
+	text-decoration: underline;
+	color: #34AADC;
+}
+
+.normal_selected span { color: #34AADC !important; }
+
 .selected {
 	text-decoration: underline;
 	font-weight: bold;
@@ -265,6 +272,13 @@ __________________________________________________________________________ */
 
 .visit:hover { border: 1px solid #007AFF; }
 
+.visit_profile { padding: 5px 5px 8px 5px; }
+
+.visit_profile img {
+	height: 29px;
+	margin: 0px 6px -10px 0px;
+}
+
 
 /* panel @media
 __________________________________________________________________________ */
@@ -436,7 +450,7 @@ __________________________________________________________________________ */
 	margin: 12px 0px 0px 5px;
 }
 
-#profile_option { float: right; }
+#profile_option { float: left; }
 
 #profile_selector {
 	display: inline-block;
@@ -493,21 +507,26 @@ __________________________________________________________________________ */
 
 #follow_action_container {
 	overflow: auto;
+	margin-bottom: 15px;
 }
 
 #follow_container {
 	display: inline-block;
-	float: left;
+	float: right;
 	border: 1px solid #34AADC;
 	border-radius: 2px;
-	padding: 5px;
+	padding: 5px 10px 5px 10px;
 }
 
 #follow_container a:first-child {
 	border-right: 1px solid #8E8E93;
-	padding-right: 7px;
+	padding-right: 5px;
 	margin-right: 1px;
 }
+
+#follow_container a:hover { color: #007AFF; }
+
+#follow_container span:hover { color: #007AFF !important; }
 
 #follow_container span { color: #8E8E93;}
 
