@@ -63,7 +63,7 @@
 							<a href="/user/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
 						{% endfor %}
 					{% else %}
-						<li><a href="/user">blog follow</a></li>
+						<li class="add_follow_link"><a href="/user">blog follow</a></li>
 					{% endif %}
 				{% endwith %}
 
@@ -77,7 +77,7 @@
 							</a>
 						{% endfor %}
 					{% else %}
-						<li><a href="/sub">sub follow</a></li>
+						<li class="add_follow_link2"><a href="/sub">sub follow</a></li>
 					{% endif %}
 				{% endwith %}
 			</ul>

@@ -23,7 +23,7 @@ class AnonPost(models.Model):
 	slug = models.SlugField(max_length=100)
 	body = models.TextField(max_length=3000, default='', blank=True)
 	body_html  = models.TextField(blank=True, null=True)
-	image = models.ImageField(upload_to=get_image, null=True)
+	image = models.ImageField(upload_to=get_image, blank=True, null=True)
 	created = models.DateTimeField(auto_now_add=True)
 	last_commited = models.DateTimeField(auto_now_add=True)
 	commit_number = models.IntegerField(default=0)

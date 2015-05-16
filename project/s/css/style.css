@@ -8,7 +8,7 @@ __________________________________________________________________________ */
 	margin: 0;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1050px) {
 	body {
 		overflow: auto;
 		width: 100%;
@@ -17,7 +17,7 @@ __________________________________________________________________________ */
 	#app {
 		display: block;
 		overflow: auto;
-		width: calc(650px + 350px);
+		width: calc(650px + 400px);
 		margin: 0 auto;
 	}
 }
@@ -34,6 +34,12 @@ __________________________________________________________________________ */
 	width: 100%;
 	background-color: #ecf0f1;
 	margin: 0px 0px 5px 0px;
+}
+
+.mid_separator {
+	height: 1px;
+	width: 100%;
+	margin: 10px 0px 10px 0px;
 }
 
 
@@ -186,12 +192,21 @@ __________________________________________________________________________ */
 
 .side_panel { padding: 5px 20px 5px 20px; }
 
-#link_panel { width: 150px; }
+#link_panel {
+	width: 200px;
+	padding-top: 3px;
+}
+
+#link_panel .separator { margin: 20px 0px 16px 0px; }
 
 #info_panel { width: 200px; }
 
+.add_follow_link { margin: 2px 0px 20px 0px; }
+
+.add_follow_link2 { margin: -2px 0px 20px 0px; }
+
 #mid_panel {
-	width: calc(100vw - 350px);
+	width: calc(100vw - 400px);
 	max-width: 650px;
 	padding: 0px 16px 0px 16px;
 }
@@ -201,7 +216,7 @@ __________________________________________________________________________ */
 __________________________________________________________________________ */
 
 #link_panel li {
-	margin-top: 6px;
+	margin: 6px 0px 0px 5px;
 	font-size: 115%;
 }
 
@@ -258,7 +273,7 @@ __________________________________________________________________________ */
 	nav { display: block; }
 	#info_nav_link, #mid_nav_link { display: inline-block; }
 	#info_panel { display: none; }
-	#mid_panel { width: calc(100vw - 150px); }
+	#mid_panel { width: calc(100vw - 200px); }
 }
 
 @media (max-width: 650px) {
