@@ -2,7 +2,12 @@
 {% block title %}{{ profile.username }}{% endblock %}
 
 {% block mid_panel %}
-	<div id="profile_container">
+	<div id="follow_action_container">
+		<div id="follow_container">
+			<a href="/user/{{ profile.username }}/followers">10 <span>followers</span></a>
+			<a href="/user/{{ profile.username }}/following">10 <span>following</span></a>
+		</div>
+
 		{% if action == 'follow' %}
 			<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
 				{% csrf_token %}{{ form }}
@@ -16,7 +21,11 @@
 		{% elif action == 'edit' %}
 			<a id="profile_option" class="action_link" href="/user/{{ profile.username }}/edit">editar</a>
 		{% endif %}
+	</div>
 
+	<div class="separator"></div>
+
+	<div id="profile_container">
 		<a id="profile_username" href="/user/{{ profile.username }}"><img id="profile_image_view" src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
 		<a id="profile_username" href="/user/{{ profile.username }}">{{ profile.username }}</a>
 		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
@@ -25,28 +34,26 @@
 
 	<div id="profile_selector">
 		<a class="{% if profile_show == 'post' %}profile_selected{% endif %}" href="/user/{{ profile.username }}">post</a>
-		<a class="{% if profile_show == 'commit' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/commit">commit</a>
 		<a class="{% if profile_show == 'bio' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/bio">bio</a>
+		<a class="{% if profile_show == 'commit' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/commit">commit</a>
 	</div>
 
 	{% if profile_show == 'post' %}
 		{{ block.super }}
 	{% elif profile_show == 'commit' %}
 		{% for commit in profile.commits.all %}
-			
-				{% if commit.body_html %}
-					<div id="{{ commit.commit_id}}" class="post">
-						<div class="post_content">{{ commit.body_html|safe }}</div>
-					
-						<div class="post_info">
-							<a href="{{ commit.get_absolute_url }}#{{ commit.commit_id}}">
-								{{ commit.post.title }}
-							</a>
-							<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
-						</div>
+			{% if commit.body_html %}
+				<div id="{{ commit.commit_id}}" class="post">
+					<div class="post_content">{{ commit.body_html|safe }}</div>
+				
+					<div class="post_info">
+						<a href="{{ commit.get_absolute_url }}#{{ commit.commit_id}}">
+							{{ commit.post.title }}
+						</a>
+						<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
 					</div>
-				{% endif %}
-			
+				</div>
+			{% endif %}
 		{% endfor %}
 	{% elif profile_show == 'bio' %}
 		<div class="post">
@@ -54,5 +61,10 @@
 				{{ profile.bio_html|safe }}
 			</div>
 		</div>
+	{% elif profile_show == 'followers' %}
+		followers
+	{% elif profile_show == 'following' %}
+		following
 	{% endif %}
+
 {% endblock %}

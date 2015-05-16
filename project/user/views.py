@@ -41,8 +41,8 @@ class ProfileView(ListView):
 		context = super(ProfileView, self).get_context_data(**kwargs)
 		username = self.request.user.username
 		profile = self.kwargs['profile']
-		try: show = self.kwargs['show']
-		except: show = False
+		try: context['profile_show'] = self.kwargs['show']
+		except: context['profile_show'] = 'post'
 
 		context['form'] = UserFollowForm
 		context['profile'] = User.objects.get(username=profile)
@@ -55,11 +55,6 @@ class ProfileView(ListView):
 				follow_state = UserFollow.objects.by_id(follow_id='%s>%s' % (username, profile))
 				if follow_state: context['action'] = 'unfollow'
 				else: context['action'] = 'follow'
-
-		if show:
-			if show == 'commit': context['profile_show'] = 'commit'
-			else: context['profile_show'] = 'bio'
-		else: context['profile_show'] = 'post'
 
 		return context
 
@@ -100,3 +95,12 @@ class UserFollowDelete(View):
 		follow = UserFollow.objects.get(follow_id=follow_id)
 		follow.delete()
 		return HttpResponseRedirect('/user/%s' % (unfollowed))
+
+
+class UserFollowersList(ListView):
+	template_name = 'user/followers_following.html'
+	model = UserFollow
+
+
+class UserFollowingList(ProfileView):
+	template_name = 'user/followers_following.html'

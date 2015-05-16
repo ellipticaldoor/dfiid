@@ -49,7 +49,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 	def get_short_name(self): return self.username
 	def get_full_name(self): return self.username
-	def get_absolute_url(self): return '/user/%s' % (self.user)
+	def get_absolute_url(self): return '/user/%s' % (self.username)
 
 	class Meta: ordering = ['-last_commited']
 

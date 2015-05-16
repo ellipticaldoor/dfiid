@@ -491,6 +491,26 @@ __________________________________________________________________________ */
 	float: left;
 }
 
+#follow_action_container {
+	overflow: auto;
+}
+
+#follow_container {
+	display: inline-block;
+	float: left;
+	border: 1px solid #34AADC;
+	border-radius: 2px;
+	padding: 5px;
+}
+
+#follow_container a:first-child {
+	border-right: 1px solid #8E8E93;
+	padding-right: 7px;
+	margin-right: 1px;
+}
+
+#follow_container span { color: #8E8E93;}
+
 
 /* created
 __________________________________________________________________________ */
