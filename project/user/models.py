@@ -41,6 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	bio_html = models.TextField(blank=True, null=True)
 	follower_number = models.IntegerField(default=0)
 	following_number = models.IntegerField(default=0)
+	sub_following_number = models.IntegerField(default=0)
 
 	objects = UserManager()
 

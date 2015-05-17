@@ -75,17 +75,22 @@ class SubFollowCreate(CreateView):
 		obj.save()
 		obj.sub.follower_number += 1
 		obj.sub.save()
+		obj.follower.sub_following_number+= 1
+		obj.follower.save()
 		return HttpResponseRedirect('/sub/%s' % (obj.sub.slug))
 
 
 class SubFollowDelete(View):
 	def post(self, *args, **kwargs):
+		user = self.request.user
 		unfollowed = Sub.objects.get(slug=self.kwargs['unfollowed'])
-		sub_followid = '%s>%s' % (self.request.user, unfollowed.slug)
+		sub_followid = '%s>%s' % (user.username, unfollowed.slug)
 		follow = SubFollow.objects.get(sub_followid=sub_followid)
 		follow.delete()
 		unfollowed.follower_number -= 1
 		unfollowed.save()
+		user.sub_following_number -= 1
+		user.save()
 		return HttpResponseRedirect('/sub/%s' % (unfollowed.slug))
 
 

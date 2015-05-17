@@ -68,11 +68,13 @@ ul {
 }
 
 .normal_selected {
-	text-decoration: underline;
 	color: #34AADC;
+	font-weight: bold;
 }
 
 .normal_selected span { color: #34AADC !important; }
+
+.normal_selected span { display: inline !important;}
 
 .selected {
 	text-decoration: underline;
@@ -429,14 +431,14 @@ __________________________________________________________________________ */
 #profile_image_view {
 	float: left;
 	margin: 0px 8px 0px 0px;
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 }
 
 #profile_username {
 	float: left;
 	border-radius: 2px;
-	font-size: 160%;
+	font-size: 150%;
 }
 
 
@@ -448,7 +450,7 @@ __________________________________________________________________________ */
 #feed img {
 	width: 15px;
 	height: 15px;
-	margin: 12px 0px 0px 5px;
+	margin: 10px 0px 0px 5px;
 }
 
 #profile_option { float: left; }
@@ -521,15 +523,30 @@ __________________________________________________________________________ */
 
 #follow_container a:nth-child(2) {
 	border-left: 1px solid #8E8E93;
-	padding-left: 6px;
-	margin-left: 2px;
+	border-right: 1px solid #8E8E93;
+	padding: 0px 7px 0px 7px;
+	margin: 0px 3px 0px 3px;
 }
 
 #follow_container a:hover { color: #007AFF; }
 
 #follow_container span:hover { color: #007AFF !important; }
 
-#follow_container span { color: #8E8E93;}
+#follow_container span { color: #C7C7CC;}
+
+@media (max-width: 500px) {
+	#follow_container span { display: none; }
+
+	#follow_container a:nth-child(2) {
+		padding: 0px 12px 0px 12px;
+		margin: 0px 8px 0px 8px;
+	}
+
+	#follow_container {
+		padding: 5px 14px 5px 14px;
+	}
+}
+
 
 
 /* created
