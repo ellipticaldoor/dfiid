@@ -34,7 +34,6 @@
 	<div id="profile_selector">
 		<a class="{% if profile_show == 'post' %}profile_selected{% endif %}" href="/user/{{ profile.username }}">post</a>
 		<a class="{% if profile_show == 'commit' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/commit">commit</a>
-		<a class="{% if profile_show == 'bio' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/bio">bio</a>
 	</div>
 
 	{% if profile_show == 'post' %}
@@ -54,12 +53,6 @@
 				</div>
 			{% endif %}
 		{% endfor %}
-	{% elif profile_show == 'bio' %}
-		<div class="post">
-			<div class="post_content">
-				{{ profile.bio_html|safe }}
-			</div>
-		</div>
 	{% elif profile_show == 'followers' %}
 		{% for follow in profile.followed.all %}
 			<a class="sub_container" href="/user/{{ follow.follower_id }}">

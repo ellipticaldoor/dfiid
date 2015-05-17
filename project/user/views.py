@@ -74,7 +74,7 @@ class UserEdit(UpdateView):
 
 	def form_valid(self, form):
 		form.save()
-		return HttpResponseRedirect('/user/%s/bio' % (self.kwargs['pk']))
+		return HttpResponseRedirect('/user/%s' % (self.kwargs['pk']))
 
 
 class UserFollowCreate(CreateView):

@@ -37,17 +37,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 	is_staff = models.BooleanField(default=False)
 
 	avatar = models.ImageField(upload_to=get_avatar)
-	bio = models.TextField(max_length=500, default=':D')
-	bio_html = models.TextField(blank=True, null=True)
 	follower_number = models.IntegerField(default=0)
 	following_number = models.IntegerField(default=0)
 	sub_following_number = models.IntegerField(default=0)
 
 	objects = UserManager()
-
-	def save(self, *args, **kwargs):
-		self.bio_html = markdown(self.bio, safe_mode=True)
-		super(User, self).save(*args, **kwargs)
 
 	def get_short_name(self): return self.username
 	def get_full_name(self): return self.username
