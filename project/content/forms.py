@@ -9,9 +9,9 @@ class SubForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(SubForm, self).__init__(*args, **kwargs)
 		self.fields['slug'].widget.attrs.update({
-			'autofocus': 'autofocus',
-			'required': 'required',
-			'placeholder': 'nombre del sub'
+				'autofocus': 'autofocus',
+				'required': 'required',
+				'placeholder': 'nombre del sub'
 			})
 
 	slug = forms.CharField(label="", max_length=16)
@@ -39,13 +39,13 @@ class PostForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(PostForm, self).__init__(*args, **kwargs)
 		self.fields['title'].widget.attrs.update({
-			'autofocus': 'autofocus',
-			'required': 'required',
-			'placeholder': 'título'
+				'autofocus': 'autofocus',
+				'required': 'required',
+				'placeholder': 'título'
 			})
 		self.fields['body'].widget.attrs.update({
-			'required': 'required',
-			'placeholder': 'markdown'
+				'required': 'required',
+				'placeholder': 'markdown'
 			})
 		self.fields['sub'].widget.attrs.update({'required': 'required'})
 
@@ -60,7 +60,8 @@ class CommitForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(CommitForm, self).__init__(*args, **kwargs)
 		self.fields['body'].widget.attrs.update({
-			'placeholder': 'markdown'
+				'placeholder': 'markdown',
+				'rows': '3',
 			})
 
 	body = forms.CharField(label='', max_length=500, widget=forms.Textarea, required=False)
