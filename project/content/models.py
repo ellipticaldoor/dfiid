@@ -80,7 +80,7 @@ class Post(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title.replace(' ', '_'))
 		if not self.slug: self.slug = '_'
-		self.body_html = markdown(self.body, safe_mode=True)
+		self.body_html = markdown(self.body, safe_mode=True, extensions=['video'])
 		super(Post, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
@@ -107,7 +107,7 @@ class Commit(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 
 	def save(self, *args, **kwargs):
-		self.body_html = markdown(self.body, safe_mode=True)
+		self.body_html = markdown(self.body, safe_mode=True, extensions=['video'])
 		super(Commit, self).save(*args, **kwargs)
 
 	def get_absolute_url(self): return self.post.get_absolute_url()

@@ -536,7 +536,7 @@ __________________________________________________________________________ */
 	border-radius: 2px;
 }
 
-.created_link .commits_link img { margin: 2px 0px 0px 5px; }
+.created_link .commits_link img { margin: 4px 0px 0px 5px; }
 
 .created_draft { color: #EF4DB6; }
 
