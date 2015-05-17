@@ -32,7 +32,7 @@
 				<li id="dfiid"><a href="/"><img src="/s/img/dfiid_logo_small.png" alt="dfiid">dfiid</a></li>
 				<li><a href="/anon" id="anon_panel_link">anon</a></li>
 				<li><a href="/sub">sub</a></li>
-				<li><a href="/user">blog</a></li>
+				<li><a href="/user">user</a></li>
 
 				<div class="separator"></div>
 
@@ -63,7 +63,7 @@
 							<a href="/user/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
 						{% endfor %}
 					{% else %}
-						<li class="add_follow_link"><a href="/user">blog follow</a></li>
+						<li class="add_follow_link"><a href="/user">user follow</a></li>
 					{% endif %}
 				{% endwith %}
 

@@ -388,7 +388,7 @@ __________________________________________________________________________ */
 	max-width: 300px;
 	width: 100%;
 	line-height: 42px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	border-radius: 2px;
 	padding: 5px;
 	float: left;
@@ -482,31 +482,6 @@ __________________________________________________________________________ */
 }
 
 .profile_list_title { font-size: 120%; }
-
-.profile_image {
-	float: left;
-	display: block;
-	width: calc(12.5% - 8px);
-	height: calc(12.5% - 8px);
-	border-radius: 3px;
-	margin: 3px;
-	padding: 1px;
-}
-
-@media (max-width: 700px) {
-	.profile_image {
-		width: calc(20% - 8px);
-		height: calc(20% - 8px);
-	}
-}
-
-.profile_image:hover { background-color: #34AADC; }
-
-.profile_image img {
-	width: auto;
-	margin: 0;
-	float: left;
-}
 
 #follow_action_container {
 	overflow: auto;

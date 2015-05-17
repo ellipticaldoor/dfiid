@@ -1,14 +1,11 @@
 {% extends 'base.html' %}
-{% block user_select %}selected{% endblock %}
+{% block title %}user{% endblock %}
 
 {% block mid_panel %}
 	{% for object in object_list %}
-		<div class="profile_image">
-			<a href="/user/{{ object.username }}" title="{{ object.username }}">
-				<img src="/{{ object.avatar }}" alt="{{ object.user }}">
-			</a>
-		</div>
+		<a class="sub_container" href="/user/{{ object.username }}">
+			<img src="/{{ object.avatar }}" alt="{{ object.username }}">
+			<span>{{ object.username }}</span>
+		</a>
 	{% endfor %}
 {% endblock %}
-
-{% block title %}user{% endblock %}
