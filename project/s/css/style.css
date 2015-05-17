@@ -208,9 +208,9 @@ __________________________________________________________________________ */
 
 #info_panel { width: 200px; }
 
-.add_follow_link { margin: 2px 0px 20px 0px; }
+.add_follow_link { margin: 2px 0px 20px 5px; }
 
-.add_follow_link2 { margin: -2px 0px 20px 0px; }
+.add_follow_link2 { margin: -2px 0px 20px 5px; }
 
 #mid_panel {
 	width: calc(100vw - 400px);
@@ -407,6 +407,7 @@ __________________________________________________________________________ */
 #sub_profile_container {
 	overflow: auto;
 	margin-bottom: 20px;
+	font-size: 85%;
 }
 
 #sub_image_view {
@@ -518,10 +519,10 @@ __________________________________________________________________________ */
 	padding: 5px 10px 5px 10px;
 }
 
-#follow_container a:first-child {
-	border-right: 1px solid #8E8E93;
-	padding-right: 5px;
-	margin-right: 1px;
+#follow_container a:nth-child(2) {
+	border-left: 1px solid #8E8E93;
+	padding-left: 6px;
+	margin-left: 2px;
 }
 
 #follow_container a:hover { color: #007AFF; }

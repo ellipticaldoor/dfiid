@@ -15,6 +15,7 @@ class Sub(models.Model):
 	image = models.ImageField(upload_to=get_image)
 	created = models.DateTimeField(auto_now_add=True)
 	last_commited = models.DateTimeField(auto_now_add=True)
+	follower_number = models.IntegerField(default=0)
 
 	def get_absolute_url(self): return '/sub/%s' % (str(self.slug))
 

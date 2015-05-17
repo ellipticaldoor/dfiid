@@ -35,7 +35,7 @@ class FrontView(ListView):
 
 	def get_context_data(self, **kwargs):
 		context = super(FrontView, self).get_context_data(**kwargs)
-		context['view_title'] = 'portada'
+		context['list'] = 'portada'
 		return context
 
 
@@ -48,14 +48,17 @@ class SubPostListView(ListView):
 
 	def get_context_data(self, **kwargs):
 		context = super(SubPostListView, self).get_context_data(**kwargs)
-		sub = self.kwargs['sub']
+		sub = Sub.objects.get(pk=self.kwargs['sub'])
 		user = self.request.user
+		try: context['followers'] = self.kwargs['followers']
+		except: context['followers'] = False
 
-		context['view_title'] = sub
+
+		context['list'] = sub
 		context['action'] = 'follow'
 
 		if user.is_authenticated():
-			follow_state = SubFollow.objects.by_id(sub_followid='%s>%s' % (user.username, sub))
+			follow_state = SubFollow.objects.by_id(sub_followid='%s>%s' % (user.username, sub.pk))
 			if follow_state: context['action'] = 'unfollow'
 			else: context['action'] = 'follow'
 
@@ -66,21 +69,24 @@ class SubFollowCreate(CreateView):
 	form_class = SubFollowForm
 
 	def form_valid(self, form):
-		followed = self.kwargs['followed']
 		obj = form.save(commit=False)
 		obj.follower = self.request.user
-		obj.sub = Sub.objects.get(slug=followed)
+		obj.sub = Sub.objects.get(slug=self.kwargs['followed'])
 		obj.save()
-		return HttpResponseRedirect('/sub/%s' % (followed))
+		obj.sub.follower_number += 1
+		obj.sub.save()
+		return HttpResponseRedirect('/sub/%s' % (obj.sub.slug))
 
 
 class SubFollowDelete(View):
 	def post(self, *args, **kwargs):
-		unfollowed = self.kwargs['unfollowed']
-		sub_followid = '%s>%s' % (self.request.user, unfollowed)
+		unfollowed = Sub.objects.get(slug=self.kwargs['unfollowed'])
+		sub_followid = '%s>%s' % (self.request.user, unfollowed.slug)
 		follow = SubFollow.objects.get(sub_followid=sub_followid)
 		follow.delete()
-		return HttpResponseRedirect('/sub/%s' % (unfollowed))
+		unfollowed.follower_number -= 1
+		unfollowed.save()
+		return HttpResponseRedirect('/sub/%s' % (unfollowed.slug))
 
 
 class PostView(DetailView):

@@ -1,24 +1,39 @@
 {% extends 'layouts/post_list.html' %}
 
 {% block mid_panel %}
-	<div id="sub_profile_container">
+	<div id="follow_action_container">
+		<div id="follow_container">
+			<a class="{% if followers %}normal_selected{% endif %}" href="/sub/{{ list.slug }}/followers">{{ list.follower_number }}<span> followers</span></a>
+		</div>
 		{% if action == 'follow' %}
-			<form id="profile_option" action="/sub_follow/{{ view_title }}/" method="post">
+			<form id="profile_option" action="/sub_follow/{{ list.slug }}/" method="post">
 				{% csrf_token %}
 				{{ form }}
-				<input class="action_link" type="submit" value="follow" />
+				<input class="action_link" type="submit" value="follow sub" />
 			</form>
 		{% elif action == 'unfollow' %}
-			<form id="profile_option" action="/sub_unfollow/{{ view_title }}/" method="post">
+			<form id="profile_option" action="/sub_unfollow/{{ list.slug }}/" method="post">
 				{% csrf_token %}
 				{{ form }}
-				<input class="action_link" type="submit" value="unfollow" />
+				<input class="action_link" type="submit" value="unfollow sub" />
 			</form>
 		{% endif %}
-
-		<a id="profile_username" href="/sub/{{ view_title }}"><img id="sub_image_view" src="/s/media/sub/image/{{ view_title }}.png" alt="{{ view_title }}"></a>
-		<a id="profile_username" href="/sub/{{ view_title }}">{{ view_title }}</a>
 	</div>
 
-	{{ block.super }}
+	<div id="sub_profile_container">
+		<a id="profile_username" href="/sub/{{ list.slug }}"><img id="sub_image_view" src="/s/media/sub/image/{{ list.slug }}.png" alt="{{ list.slug }}"></a>
+		<a id="profile_username" href="/sub/{{ list.slug }}">{{ list.slug }}</a>
+	</div>
+
+	{% if followers %}
+		{% with list.sub_followed.all as follows %} 
+			<ul>
+				{% for follow in follows %}
+					<a href="/user/{{ follow.follower_id }}"><li class="visit visit_profile"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.follower_id }}.png">{{ follow.follower_id }}</li></a>
+				{% endfor %}
+			</ul>
+		{% endwith %}
+	{% else %}
+		{{ block.super }}
+	{% endif %}
 {% endblock %}
