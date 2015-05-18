@@ -71,7 +71,7 @@ class Post(models.Model):
 	image = models.ImageField(upload_to=get_image, blank=True, null=True)
 	draft = models.BooleanField(default=False)
 	created = models.DateTimeField(auto_now_add=True)
-	last_commited = models.DateTimeField(auto_now_add=True)
+	last_commited = models.DateTimeField(null=True)
 	commit_number = models.IntegerField(default=0)
 	show = models.BooleanField(default=True)
 

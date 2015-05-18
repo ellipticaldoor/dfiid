@@ -1,3 +1,4 @@
+from datetime import datetime
 
 from django.http import HttpResponseRedirect
 from django.views.generic import View, ListView, DetailView
@@ -52,7 +53,6 @@ class SubPostListView(ListView):
 		user = self.request.user
 		try: context['followers'] = self.kwargs['followers']
 		except: context['followers'] = False
-
 
 		context['list'] = sub
 		context['action'] = 'follow'
@@ -133,7 +133,14 @@ class CreatePostView(CreateView):
 		obj.save()
 
 		if obj.draft: return HttpResponseRedirect('/created')
-		else: return HttpResponseRedirect(obj.get_absolute_url())
+		else:
+			obj.user.last_commited = obj.created
+			obj.user.save()
+			obj.sub.last_commited = obj.created
+			obj.sub.save()
+			obj.last_commited = obj.created
+			obj.save()
+			return HttpResponseRedirect(obj.get_absolute_url())
 
 
 class UpdatePostView(UpdateView):
@@ -144,7 +151,15 @@ class UpdatePostView(UpdateView):
 		return Post.objects.by_user(self.request.user)
 
 	def form_valid(self, form):
-		obj = form.save()
+		obj = form.save(commit=False)
+		if not obj.last_commited and not obj.draft:
+			now = datetime.now()
+			obj.last_commited = now	
+			obj.user.last_commited = now
+			obj.user.save()
+			obj.sub.last_commited = now
+			obj.sub.save()
+		obj.save()
 
 		if obj.draft: return HttpResponseRedirect('/created')
 		else: return HttpResponseRedirect(obj.get_absolute_url())

@@ -11,7 +11,6 @@ sitemaps = {
 	'user': sitemaps.UserSitemap,
 }
 
-
 urlpatterns = patterns('',)
 
 if settings.DEBUG:
