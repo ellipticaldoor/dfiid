@@ -29,7 +29,7 @@
 		{% with list.sub_followed.all as follows %} 
 			<ul>
 				{% for follow in follows %}
-					<a href="/user/{{ follow.follower_id }}"><li class="visit visit_profile"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.follower_id }}.png">{{ follow.follower_id }}</li></a>
+					<a href="/{{ follow.follower_id }}"><li class="visit visit_profile"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.follower_id }}.png">{{ follow.follower_id }}</li></a>
 				{% endfor %}
 			</ul>
 		{% endwith %}

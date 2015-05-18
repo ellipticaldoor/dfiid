@@ -45,7 +45,7 @@ class PostForm(forms.ModelForm):
 			})
 		self.fields['body'].widget.attrs.update({
 				'required': 'required',
-				'placeholder': 'markdown'
+				'placeholder': 'post'
 			})
 		self.fields['sub'].widget.attrs.update({'required': 'required'})
 
@@ -60,7 +60,7 @@ class CommitForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(CommitForm, self).__init__(*args, **kwargs)
 		self.fields['body'].widget.attrs.update({
-				'placeholder': 'markdown',
+				'placeholder': 'comentario',
 				'rows': '3',
 			})
 

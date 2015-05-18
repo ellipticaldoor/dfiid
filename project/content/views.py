@@ -114,7 +114,7 @@ class PostCommitView(CreateView):
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.user = self.request.user
-		obj.post = Post.objects.get(post_id=self.kwargs['pk'])
+		obj.post = Post.objects.get(postid=self.kwargs['pk'])
 		obj.save()
 		obj.user.last_commited = obj.created
 		obj.user.save()

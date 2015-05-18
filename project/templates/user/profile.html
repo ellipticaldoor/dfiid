@@ -18,22 +18,22 @@
 		{% endif %}
 
 		<div id="follow_container">
-			<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/user/{{ profile.username }}/followers">{{ profile.follower_number }}<span> follower{{ profile.follower_number|pluralize }}</span></a>
-			<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/user/{{ profile.username }}/following">{{ profile.following_number }}<span> following</span></a>
-			<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/user/{{ profile.username }}/sub_following">{{ profile.sub_following_number }}<span> sub{{ profile.sub_following_number|pluralize }}</span></a>
+			<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.username }}/followers">{{ profile.follower_number }}<span> follower{{ profile.follower_number|pluralize }}</span></a>
+			<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/{{ profile.username }}/following">{{ profile.following_number }}<span> following</span></a>
+			<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/{{ profile.username }}/sub_following">{{ profile.sub_following_number }}<span> sub{{ profile.sub_following_number|pluralize }}</span></a>
 		</div>
 	</div>
 
 	<div id="profile_container">
-		<a id="profile_username" href="/user/{{ profile.username }}"><img id="profile_image_view" src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
-		<a id="profile_username" href="/user/{{ profile.username }}">{{ profile.username }}</a>
+		<a id="profile_username" href="/{{ profile.username }}"><img id="profile_image_view" src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
+		<a id="profile_username" href="/{{ profile.username }}">{{ profile.username }}</a>
 		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
 	</div>
 	{% ifequal user.username  profile.username|slugify %}<a href="/logout">logout</a>{% endifequal %}
 
 	<div id="profile_selector">
-		<a class="{% if profile_show == 'post' %}profile_selected{% endif %}" href="/user/{{ profile.username }}">post</a>
-		<a class="{% if profile_show == 'commit' %}profile_selected{% endif %}" href="/user/{{ profile.username }}/commit">commit</a>
+		<a class="{% if profile_show == 'post' %}profile_selected{% endif %}" href="/{{ profile.username }}">post</a>
+		<a class="{% if profile_show == 'commit' %}profile_selected{% endif %}" href="/{{ profile.username }}/commit">commit</a>
 	</div>
 
 	{% if profile_show == 'post' %}
@@ -55,14 +55,14 @@
 		{% endfor %}
 	{% elif profile_show == 'followers' %}
 		{% for follow in profile.followed.all %}
-			<a class="sub_container" href="/user/{{ follow.follower_id }}">
+			<a class="sub_container" href="/{{ follow.follower_id }}">
 				<img src="/s/media/user/avatar/{{ follow.follower_id }}.png">
 				<span>{{ follow.follower_id }}</span>
 			</a>
 		{% endfor %}
 	{% elif profile_show == 'following' %}
 		{% for follow in profile.follower.all %}
-			<a class="sub_container" href="/user/{{ follow.followed_id }}">
+			<a class="sub_container" href="/{{ follow.followed_id }}">
 				<img src="/s/media/user/avatar/{{ follow.followed_id }}.png">
 				<span>{{ follow.followed_id }}</span>
 			</a>

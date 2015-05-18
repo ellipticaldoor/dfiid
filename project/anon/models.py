@@ -16,9 +16,9 @@ class AnonPostQuerySet(models.QuerySet):
 
 class AnonPost(models.Model):
 	def get_image(instance, filename):
-		return 's/media/anon/post/%s.png' % (instance.post_id)
+		return 's/media/anon/post/%s.png' % (instance.postid)
 
-	post_id = models.CharField(primary_key=True, max_length=16, default=_createId)
+	postid = models.CharField(primary_key=True, max_length=16, default=_createId)
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=100)
 	body = models.TextField(max_length=3000, default='', blank=True)
@@ -38,9 +38,9 @@ class AnonPost(models.Model):
 		super(AnonPost, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
-		if not hasattr(self.post_id, 'decode'): post_id = self.post_id
-		else: post_id = self.post_id.decode('utf-8')
-		return '/anon/%s/%s/' % (post_id, self.slug)
+		if not hasattr(self.postid, 'decode'): postid = self.postid
+		else: postid = self.postid.decode('utf-8')
+		return '/anon/%s/%s/' % (postid, self.slug)
 
 	def get_commit_url(self): return '%scommit/' % (self.get_absolute_url())
 

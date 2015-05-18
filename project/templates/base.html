@@ -15,7 +15,6 @@
 		<link rel="stylesheet" href="/s/css/style.css" type="text/css" charset="utf-8">
 		{% block css %}{% endblock %}
 	{% endcompress %}
-	{% block js_head %}{% endblock %}
 </head>
 <body>
 	<span id="app">
@@ -32,14 +31,14 @@
 				<li id="dfiid"><a href="/"><img src="/s/img/dfiid_logo_small.png" alt="dfiid">dfiid</a></li>
 				<li><a href="/anon" id="anon_panel_link">anon</a></li>
 				<li><a href="/sub">sub</a></li>
-				<li><a href="/user">user</a></li>
+				<li><a href="/blog">blog</a></li>
 
 				<div class="separator"></div>
 
 				<li><a href="/create" id="create_panel_link">crear</a></li>
 				{% if user.is_authenticated %}
 					<li><a href="/created">creado</a></li>
-					<li><a href="/user/{{ user.username }}" id="auth_panel_link"><img class="panel_avatar" src="/{{ user.avatar}}">perfil</a></li>
+					<li><a href="/{{ user.username }}" id="auth_panel_link"><img class="panel_avatar" src="/{{ user.avatar}}">perfil</a></li>
 				{% else %}
 					<li><a href="/login" id="auth_panel_link">login</a></li>
 				{% endif %}
@@ -63,7 +62,7 @@
 							<a href="/user/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
 						{% endfor %}
 					{% else %}
-						<li class="add_follow_link"><a href="/user">user follow</a></li>
+						<li class="add_follow_link"><a href="/blog">blog follow</a></li>
 					{% endif %}
 				{% endwith %}
 

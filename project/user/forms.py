@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from nocaptcha_recaptcha.fields import NoReCaptchaField
 
 from user.models import User, UserFollow
+from core.core import is_reserved
 
 
 def set_user_form_attrs(self):
@@ -40,11 +41,17 @@ class SignUpForm(forms.ModelForm):
 
 	username = forms.CharField(label='', max_length=16)
 	password = forms.CharField(label='', widget=forms.PasswordInput)
-	captcha = NoReCaptchaField(label='')
+	# captcha = NoReCaptchaField(label='')
 	
 	class Meta:
 		model = User
-		fields = ['username', 'password', 'captcha' ]
+		# fields = ['username', 'password', 'captcha' ]
+		fields = ['username', 'password']
+
+	def clean(self):
+		cleaned_data = super(SignUpForm, self).clean()
+		if is_reserved(cleaned_data.get('username')):
+			self.add_error('username', 'nombre de usuario no disponible')
 
 
 class UserFollowForm(forms.ModelForm):

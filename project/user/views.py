@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.views.generic import View, UpdateView, CreateView, ListView
 from django.contrib.auth import authenticate, login
+from django import forms
 
 from user.models import User, UserFollow
 from content.models import Post
@@ -14,13 +15,13 @@ class SignUpView(CreateView):
 	success_url = '/'
 
 	def form_valid(self, form):
+		username = self.request.POST['username']
+		password = self.request.POST['password']
+
 		obj = form.save(commit=False)
 		obj.set_password(obj.password)
 		obj.avatar = 's/media/user/avatar/%s.png' % (obj.username)
 		obj.save()
-
-		username = self.request.POST['username']
-		password = self.request.POST['password']
 
 		random_avatar(username)
 

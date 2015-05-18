@@ -8,20 +8,6 @@ __________________________________________________________________________ */
 	margin: 0;
 }
 
-@media (min-width: 1050px) {
-	body {
-		overflow: auto;
-		width: 100%;
-	}
-
-	#app {
-		display: block;
-		overflow: auto;
-		width: calc(650px + 400px);
-		margin: 0 auto;
-	}
-}
-
 .separator {
 	height: 1px;
 	width: 100%;
@@ -640,6 +626,21 @@ __________________________________________________________________________ */
 /* Animations
 __________________________________________________________________________ */
 
+@-webkit-keyframes bg_change {
+	0% { background-color: #007AFF; }
+	100% { background-color: #34AADC; }
+}
+
+@-ms-keyframes bg_change {
+	0% { background-color: #007AFF; }
+	100% { background-color: #34AADC; }
+}
+
+@keyframes bg_change {
+	0% { background-color: #007AFF; }
+	100% { background-color: #34AADC; }
+}
+
 #loading {
 	overflow: auto;
 	width: 78px;
@@ -653,6 +654,9 @@ __________________________________________________________________________ */
 	height: 15px;
 	border-radius: 100px;
 	background-color: #34AADC;
+	-webkit-animation: bg_change 0.5s infinite alternate;
+	-ms-animation: bg_change 0.5s infinite alternate;
+	animation: bg_change 0.5s infinite alternate;
 }
 
 

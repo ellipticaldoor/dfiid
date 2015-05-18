@@ -59,9 +59,9 @@ class PostQuerySet(models.QuerySet):
 
 class Post(models.Model):
 	def get_image(instance, filename):
-		return 's/media/post/%s.png' % (instance.post_id)
+		return 's/media/post/%s.png' % (instance.postid)
 
-	post_id = models.CharField(primary_key=True, max_length=16, default=_createId)
+	postid = models.CharField(primary_key=True, max_length=16, default=_createId)
 	user = models.ForeignKey(User, related_name="posts")
 	sub = models.ForeignKey(Sub, related_name="posts")
 	title = models.CharField(max_length=100)
@@ -83,11 +83,7 @@ class Post(models.Model):
 		self.body_html = markdown(self.body, safe_mode=True, extensions=['video'])
 		super(Post, self).save(*args, **kwargs)
 
-	def get_absolute_url(self):
-		if not hasattr(self.post_id, 'decode'): post_id = self.post_id
-		else: post_id = self.post_id.decode('utf-8')
-		return '/%s/%s/' % (post_id, self.slug)
-
+	def get_absolute_url(self): return '/post/%s/%s/' % (self.postid, self.slug)
 	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
 	def get_commit_url(self): return '%scommit/' % (self.get_absolute_url())
 	def get_view_commits_url(self): return '%s#commits' % (self.get_absolute_url())

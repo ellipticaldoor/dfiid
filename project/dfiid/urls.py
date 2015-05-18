@@ -18,9 +18,9 @@ urlpatterns = patterns(
 	url(r'^feed/$', feeds.ContentFeed(), name='feed'),
 	url(r'^admin/', include(admin.site.urls)),
 
-	url(r'^', include('user.urls')),
-	url(r'^', include('anon.urls')),
 	url(r'^', include('content.urls')),
+	url(r'^', include('anon.urls')),
+	url(r'^', include('user.urls')),
 )
 
 if settings.DEBUG:

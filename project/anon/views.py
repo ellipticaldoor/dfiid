@@ -39,7 +39,7 @@ class AnonPostCommitView(CreateView):
 
 	def form_valid(self, form):
 		obj = form.save(commit=False)
-		obj.post = AnonPost.objects.get(post_id=self.kwargs['pk'])
+		obj.post = AnonPost.objects.get(postid=self.kwargs['pk'])
 		obj.save()
 		obj.post.last_commited = obj.created
 		obj.post.commit_number += 1
