@@ -111,6 +111,10 @@ class PostView(DetailView):
 class PostCommitView(CreateView):
 	form_class = CommitForm
 
+	def get(self, *args, **kwargs):
+		url_post = '/post/%s/%s/#commits' % (self.kwargs['pk'], self.kwargs['slug'])
+		return HttpResponseRedirect(url_post)
+
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.user = self.request.user

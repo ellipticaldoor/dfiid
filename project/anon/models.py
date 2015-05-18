@@ -11,7 +11,7 @@ class AnonPostQuerySet(models.QuerySet):
 		return self.filter(show=True)
 
 	def by_post(self, pk, slug):
-		return self.filter(pk=pk, slug=slug, show=True)
+		return self.get(pk=pk, slug=slug, show=True)
 
 
 class AnonPost(models.Model):
@@ -60,7 +60,7 @@ class AnonCommit(models.Model):
 
 	def save(self, *args, **kwargs):
 		self.body_html = markdown(self.body, safe_mode=True)
-		super(Commit, self).save(*args, **kwargs)
+		super(AnonCommit, self).save(*args, **kwargs)
 
 	def get_absolute_url(self): return self.post.get_absolute_url()
 

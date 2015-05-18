@@ -13,7 +13,8 @@ def _createId():
 def is_reserved(username):
 	reserved_usernames = ['dfiid', 'admin', 'user', 'sub', 'post', 'anon', 'create',
 						  'sub_follow', 'sub_unfollow', 'signup', 'login', 'logout',
-						  'contact', 'about', 'legal', 'blog', 'rss', 'feed', 'settings']
+						  'contact', 'about', 'legal', 'blog', 'rss', 'feed', 'robots',
+						  'sitemap', 'settings', 'debug']
 
 	for name in reserved_usernames:
 		if name == username: return True

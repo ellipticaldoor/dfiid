@@ -16,6 +16,9 @@
 				{{ form.image }}
 				{{ form.image.errors }}
 
+				{{ form.captcha }}
+				{{ form.captcha.errors }}
+
 				<div id="anon_edit_options">
 					<input id="edit_form_button" class="submit" type="submit" value="anon post" />
 				</div>
@@ -35,6 +38,10 @@
 				</div>
 		</section>
 	</div>
+{% endblock %}
+
+{% block js_head %}
+	<script src='https://www.google.com/recaptcha/api.js' async defer></script>
 {% endblock %}
 
 {% block js %}

@@ -1,20 +1,21 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-from nocaptcha_recaptcha.fields import NoReCaptchaField
 
 from user.models import User, UserFollow
 from core.core import is_reserved
 
+from nocaptcha_recaptcha.fields import NoReCaptchaField
+
 
 def set_user_form_attrs(self):
 		self.fields['username'].widget.attrs.update({
-			'autofocus': 'autofocus',
-			'required': 'required',
-			'placeholder': 'usuario'
+				'autofocus': 'autofocus',
+				'required': 'required',
+				'placeholder': 'usuario'
 			})
 		self.fields['password'].widget.attrs.update({
-			'required': 'required',
-			'placeholder': 'contraseña'
+				'required': 'required',
+				'placeholder': 'contraseña'
 			})
 		return self
 
@@ -41,11 +42,10 @@ class SignUpForm(forms.ModelForm):
 
 	username = forms.CharField(label='', max_length=16)
 	password = forms.CharField(label='', widget=forms.PasswordInput)
-	# captcha = NoReCaptchaField(label='')
+	captcha = NoReCaptchaField(label='')
 	
 	class Meta:
 		model = User
-		# fields = ['username', 'password', 'captcha' ]
 		fields = ['username', 'password']
 
 	def clean(self):

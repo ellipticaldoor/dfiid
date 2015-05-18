@@ -15,27 +15,16 @@ class AnonFrontView(ListView):
 		if request.is_ajax(): self.template_name = 'content/ajax/posts.html'
 		return super(AnonFrontView, self).get(request, *args, **kwargs)
 
-class AnonPostView(DetailView):
-	template_name = 'anon/post_detail.html'
-
-	def get_queryset(self):
-		pk, slug = self.kwargs['pk'], self.kwargs['slug']
-		queryset = AnonPost.objects.by_post(pk, slug)
-		return queryset
-
-	def get_context_data(self, **kwargs):
-		context = super(AnonPostView, self).get_context_data(**kwargs)
-		context['form'] = AnonCommitForm
-		return context
-
-
-class AnonCreatePostView(CreateView):
-	template_name = 'anon/post_create.html'
-	form_class = AnonPostForm
-
 
 class AnonPostCommitView(CreateView):
+	template_name = 'anon/post_detail.html'
 	form_class = AnonCommitForm
+
+	def get_context_data(self, **kwargs):
+		context = super(AnonPostCommitView, self).get_context_data(**kwargs)
+		pk, slug = self.kwargs['pk'], self.kwargs['slug']
+		context['object'] = AnonPost.objects.by_post(pk, slug)
+		return context
 
 	def form_valid(self, form):
 		obj = form.save(commit=False)
@@ -45,3 +34,8 @@ class AnonPostCommitView(CreateView):
 		obj.post.commit_number += 1
 		obj.post.save()
 		return HttpResponseRedirect(obj.get_absolute_url())
+
+
+class AnonCreatePostView(CreateView):
+	template_name = 'anon/post_create.html'
+	form_class = AnonPostForm

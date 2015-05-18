@@ -3,7 +3,18 @@
 
 {% block post_info %}
 	<div class="post_info">
-		anon
-		<a class="commits_link" href="{{ object.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</a>
+		<a class="commits_link" href="{{ object.get_view_commits_url }}">
+			<img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}
+		</a>
 	</div>
+{% endblock %}
+
+{% block commit_post_info %}
+	<div class="post_info">
+		<a class="commit_link" href="#{{ commit.commitid}}">#{{ commit.commitid}}</a>
+	</div>
+{% endblock %}
+
+{% block js_head %}
+	<script src='https://www.google.com/recaptcha/api.js' async defer></script>
 {% endblock %}

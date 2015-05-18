@@ -294,11 +294,6 @@ img {
 	margin-top: 5px;
 }
 
-div.fluidvids iframe {
-	border-width: 0;
-	margin-bottom: 10px;
-}
-
 .post {
 	overflow: hidden;
 	border: 1px solid #ecf0f1;
@@ -564,7 +559,7 @@ __________________________________________________________________________ */
 	height: 55px !important;
 	border-radius: 2px;
 	border: 1px solid #d3d3d3;
-	margin: 0px auto 5px auto;
+	margin: 0px 0px 5px 0px;
 }
 
 .g-recaptcha iframe { margin: -10px 0px 0px -2px; }

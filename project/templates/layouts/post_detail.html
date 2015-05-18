@@ -26,24 +26,24 @@
 	{% endblock %}
 
 	<div id="commits">
-		{% if user.is_authenticated %}
-			<form id="commit_form" action="{{ object.get_commit_url }}" method="post">
-				{% csrf_token %}
-				{{ form }}
-				<input class="submit" type="submit" value="commit" />
-			</form>
-		{% endif %}
+		<form id="commit_form" action="{{ object.get_absolute_url }}" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<input class="submit" type="submit" value="commit" />
+		</form>
 
 		{% for commit in object.commits.all %}
 			<div id="{{ commit.commitid}}" class="post">
-					<div class="post_content">{{ commit.body_html|safe }}</div>
+				<div class="post_content">{{ commit.body_html|safe }}</div>
 
-				<div class="post_info">
-					<a href="/{{ commit.user_id }}"><img alt="{{ commit.user_id }}" src="{{ commit.get_avatar_url }}"></a>
-					<span><a href="/{{ commit.user_id }}">{{ commit.user_id }}</a></span>
+				{% block commit_post_info %}
+					<div class="post_info">
+						<a href="/{{ commit.user_id }}"><img alt="{{ commit.user_id }}" src="{{ commit.get_avatar_url }}"></a>
+						<span><a href="/{{ commit.user_id }}">{{ commit.user_id }}</a></span>
 
-					<a class="commit_link" href="#{{ commit.commitid}}">#{{ commit.commitid}}</a>
-				</div>
+						<a class="commit_link" href="#{{ commit.commitid}}">#{{ commit.commitid}}</a>
+					</div>
+				{% endblock %}
 			</div>
 		{% endfor %}
 	</div>
