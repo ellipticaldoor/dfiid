@@ -81,9 +81,13 @@ class Post(models.Model):
 		self.slug = slugify(self.title.replace(' ', '_'))
 		if not self.slug: self.slug = '_'
 		self.body_html = markdown(self.body, safe_mode=True, extensions=['video'])
-		super(Post, self).save(*args, **kwargs)
+		super(Post, self).save(*args, **kwargs)	
 
-	def get_absolute_url(self): return '/post/%s/%s/' % (self.postid, self.slug)
+	def get_absolute_url(self):
+		if not hasattr(self.postid, 'decode'): postid = self.postid
+		else: postid = self.postid.decode('utf-8')
+		return '/post/%s/%s/' % (postid, self.slug)
+
 	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
 	def get_commit_url(self): return '%scommit/' % (self.get_absolute_url())
 	def get_view_commits_url(self): return '%s#commits' % (self.get_absolute_url())
@@ -95,7 +99,7 @@ class Post(models.Model):
 
 
 class Commit(models.Model):
-	commit_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
+	commitid = models.CharField(primary_key=True, max_length=16, default=_createId) 
 	user = models.ForeignKey(User, related_name="commits")
 	post = models.ForeignKey(Post, related_name="commits")
 	body = models.TextField(max_length=500, default='')
@@ -109,6 +113,6 @@ class Commit(models.Model):
 	def get_absolute_url(self): return self.post.get_absolute_url()
 	def get_avatar_url(self): return '/s/media/user/avatar/%s.png' % (self.user_id)
 
-	def __str__(self): return '%s, %s' % (self.post, self.commit_id)
+	def __str__(self): return '%s, %s' % (self.post, self.commitid)
 
 	class Meta: ordering = ['-created']

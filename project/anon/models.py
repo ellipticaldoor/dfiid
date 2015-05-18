@@ -52,7 +52,7 @@ class AnonPost(models.Model):
 
 
 class AnonCommit(models.Model):
-	commit_id = models.CharField(primary_key=True, max_length=16, default=_createId) 
+	commitid = models.CharField(primary_key=True, max_length=16, default=_createId) 
 	post = models.ForeignKey(AnonPost, related_name="commits")
 	body = models.TextField(max_length=500, default='')
 	body_html  = models.TextField(blank=True, null=True)
@@ -64,6 +64,6 @@ class AnonCommit(models.Model):
 
 	def get_absolute_url(self): return self.post.get_absolute_url()
 
-	def __str__(self): return '%s, %s' % (self.post, self.commit_id)
+	def __str__(self): return '%s, %s' % (self.post, self.commitid)
 
 	class Meta: ordering = ['-created']

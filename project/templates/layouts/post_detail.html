@@ -35,14 +35,14 @@
 		{% endif %}
 
 		{% for commit in object.commits.all %}
-			<div id="{{ commit.commit_id}}" class="post">
+			<div id="{{ commit.commitid}}" class="post">
 					<div class="post_content">{{ commit.body_html|safe }}</div>
 
 				<div class="post_info">
 					<a href="/{{ commit.user_id }}"><img alt="{{ commit.user_id }}" src="{{ commit.get_avatar_url }}"></a>
 					<span><a href="/{{ commit.user_id }}">{{ commit.user_id }}</a></span>
 
-					<a class="commit_link" href="#{{ commit.commit_id}}">#{{ commit.commit_id}}</a>
+					<a class="commit_link" href="#{{ commit.commitid}}">#{{ commit.commitid}}</a>
 				</div>
 			</div>
 		{% endfor %}

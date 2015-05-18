@@ -41,11 +41,11 @@
 	{% elif profile_show == 'commit' %}
 		{% for commit in profile.commits.all %}
 			{% if commit.body_html %}
-				<div id="{{ commit.commit_id}}" class="post">
+				<div id="{{ commit.commitid}}" class="post">
 					<div class="post_content">{{ commit.body_html|safe }}</div>
 				
 					<div class="post_info">
-						<a href="{{ commit.get_absolute_url }}#{{ commit.commit_id}}">
+						<a href="{{ commit.get_absolute_url }}#{{ commit.commitid}}">
 							{{ commit.post.title }}
 						</a>
 						<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
