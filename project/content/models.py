@@ -54,7 +54,7 @@ class PostQuerySet(models.QuerySet):
 		return self.filter(user=user, show=True)
 
 	def by_post(self, pk, slug):
-		return self.filter(pk=pk, slug=slug, draft=False, show=True)
+		return self.get(pk=pk, slug=slug, draft=False, show=True)
 
 
 class Post(models.Model):
@@ -89,7 +89,6 @@ class Post(models.Model):
 		return '/post/%s/%s/' % (postid, self.slug)
 
 	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
-	def get_commit_url(self): return '%scommit/' % (self.get_absolute_url())
 	def get_view_commits_url(self): return '%s#commits' % (self.get_absolute_url())
 	def get_avatar_url(self): return '/s/media/user/avatar/%s.png' % (self.user_id)
 

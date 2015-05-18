@@ -34,15 +34,13 @@ class AnonPost(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title.replace(' ', '_'))
 		if not self.slug: self.slug = '_'
-		self.body_html = markdown(self.body, safe_mode=True)
+		self.body_html = markdown(self.body, safe_mode=True, extensions=['video'])
 		super(AnonPost, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
 		if not hasattr(self.postid, 'decode'): postid = self.postid
 		else: postid = self.postid.decode('utf-8')
 		return '/anon/%s/%s/' % (postid, self.slug)
-
-	def get_commit_url(self): return '%scommit/' % (self.get_absolute_url())
 
 	def get_view_commits_url(self): return '%s#commits' % (self.get_absolute_url())
 
@@ -59,7 +57,7 @@ class AnonCommit(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 
 	def save(self, *args, **kwargs):
-		self.body_html = markdown(self.body, safe_mode=True)
+		self.body_html = markdown(self.body, safe_mode=True, extensions=['video'])
 		super(AnonCommit, self).save(*args, **kwargs)
 
 	def get_absolute_url(self): return self.post.get_absolute_url()

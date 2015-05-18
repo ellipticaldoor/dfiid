@@ -94,40 +94,33 @@ class SubFollowDelete(View):
 		return HttpResponseRedirect('/sub/%s' % (unfollowed.slug))
 
 
-class PostView(DetailView):
-	template_name = 'layouts/post_detail.html'
-
-	def get_queryset(self):
-		pk, slug = self.kwargs['pk'], self.kwargs['slug']
-		queryset = Post.objects.by_post(pk, slug)
-		return queryset
-
-	def get_context_data(self, **kwargs):
-		context = super(PostView, self).get_context_data(**kwargs)
-		context['form'] = CommitForm
-		return context
-
-
 class PostCommitView(CreateView):
+	template_name = 'layouts/post_detail.html'
 	form_class = CommitForm
 
-	def get(self, *args, **kwargs):
-		url_post = '/post/%s/%s/#commits' % (self.kwargs['pk'], self.kwargs['slug'])
-		return HttpResponseRedirect(url_post)
+	def get_context_data(self, **kwargs):
+		context = super(PostCommitView, self).get_context_data(**kwargs)
+		pk, slug = self.kwargs['pk'], self.kwargs['slug']
+		context['object'] = Post.objects.by_post(pk, slug)
+		return context
 
 	def form_valid(self, form):
-		obj = form.save(commit=False)
-		obj.user = self.request.user
-		obj.post = Post.objects.get(postid=self.kwargs['pk'])
-		obj.save()
-		obj.user.last_commited = obj.created
-		obj.user.save()
-		obj.post.last_commited = obj.created
-		obj.post.commit_number += 1
-		obj.post.save()
-		obj.post.sub.last_commited = obj.created
-		obj.post.sub.save()
-		return HttpResponseRedirect(obj.get_absolute_url())
+		if self.request.user.is_authenticated():
+			obj = form.save(commit=False)
+			obj.user = self.request.user
+			obj.post = Post.objects.get(postid=self.kwargs['pk'])
+			obj.save()
+			obj.user.last_commited = obj.created
+			obj.user.save()
+			obj.post.last_commited = obj.created
+			obj.post.commit_number += 1
+			obj.post.save()
+			obj.post.sub.last_commited = obj.created
+			obj.post.sub.save()
+			return HttpResponseRedirect(obj.get_absolute_url())
+		else:
+			commit_url = '/post/%s/%s/' % (self.kwargs['pk'], self.kwargs['slug'])
+			return HttpResponseRedirect('/login/?next=%s' % (commit_url))
 
 
 class CreatePostView(CreateView):

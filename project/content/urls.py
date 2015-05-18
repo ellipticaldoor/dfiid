@@ -20,6 +20,5 @@ urlpatterns = patterns(
 	url(r'^sub_unfollow/(?P<unfollowed>[-\w]+)/$', login_required(views.SubFollowDelete.as_view()), name='sub_unfollow'),
 
 	url(r'^post/(?P<pk>[-\w]+)/(?P<slug>\S+)/edit/$', login_required(views.UpdatePostView.as_view()), name='edit'),
-	url(r'^post/(?P<pk>[-\w]+)/(?P<slug>\S+)/commit/$', login_required(views.PostCommitView.as_view()), name='commit'),
-	url(r'^post/(?P<pk>[-\w]+)/(?P<slug>.*)/$', views.PostView.as_view(), name='post_view'),
+	url(r'^post/(?P<pk>[-\w]+)/(?P<slug>.*)/$', views.PostCommitView.as_view(), name='post_view'),
 )
