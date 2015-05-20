@@ -14,7 +14,7 @@ class SubForm(forms.ModelForm):
 				'placeholder': 'nombre del sub'
 			})
 
-	slug = forms.CharField(label="", max_length=16)
+	slug = forms.CharField(label="", max_length=10)
 		
 	class Meta:
 		model = Sub

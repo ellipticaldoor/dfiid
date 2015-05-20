@@ -84,7 +84,7 @@ input {
 	box-shadow: none;
 }
 
-input:focus { border: 1px solid #34AADC; }
+input:focus { border: 1px solid #007AFF; }
 
 .submit {
 	cursor: pointer;
@@ -96,6 +96,11 @@ input:focus { border: 1px solid #34AADC; }
 }
 
 .submit:hover {
+	background-color: #007AFF;
+	border: 2px solid #007AFF;
+}
+
+.submit:focus {
 	background-color: #007AFF;
 	border: 2px solid #007AFF;
 }
@@ -126,7 +131,7 @@ select {
 	cursor: pointer;
 }
 
-select:focus { border: 1px solid #34AADC; }
+select:focus { border: 1px solid #34AADC;}
 
 textarea {
 	padding: 20px;
@@ -323,7 +328,7 @@ img {
 .post_info {
 	overflow: auto;
 	color: #8E8E93;
-	line-height: 30px;
+	line-height: 34px;
 }
 
 .post_info img {
@@ -335,24 +340,30 @@ img {
 .post_info img, .post_info span { float: left; }
 .post_info span { margin-left: 8px; }
 
+.blog_link {
+	float: left;
+	margin: 4px;
+}
+
 .commits_link {
-	overflow: auto;
+	position: relative;
+	top: -2px;
 	float: right;
+	overflow: auto;
+	margin: 4px 4px 4px 0px;
 }
 
 .commits_link img {
 	float: right;
 	width: 14px;
 	height: 14px;
-	margin: 8px 0px 0px 5px;
+	margin: 10px 5px 5px 5px;
 }
 
 #commit_form {
 	width: 95%;
 	margin: 0px auto 15px auto;
 }
-
-.commit_link { float: right; }
 
 #paginate { padding: 25px 4px 0px 0px; }
 
@@ -366,14 +377,20 @@ __________________________________________________________________________ */
 
 .sub_container {
 	overflow: hidden;
-	max-width: 300px;
-	width: 100%;
+	width: calc(50% - 5px);
 	line-height: 42px;
-	margin-bottom: 5px;
+	margin: 0px 0px 5px 5px;
 	border-radius: 2px;
 	padding: 5px;
 	float: left;
 	border: 1px solid white;
+}
+
+@media (max-width: 500px) {
+	.sub_container {
+		width: 100%;
+		margin: 0px 0px 5px 0px;
+	}
 }
 
 .sub_container:hover { border: 1px solid #34AADC; }
@@ -388,7 +405,6 @@ __________________________________________________________________________ */
 
 
 #sub_profile_container {
-	overflow: auto;
 	margin-bottom: 20px;
 	font-size: 85%;
 }
@@ -405,13 +421,16 @@ __________________________________________________________________________ */
 __________________________________________________________________________ */
 
 #profile_container {
-	overflow: hidden;
+	overflow: auto;
 	border-radius: 2px;
+	padding: 5px;
 }
 
-#profile_image_view {
+#profile_image_view { float: left; }
+
+#profile_image_view img {
 	float: left;
-	margin: 0px 8px 0px 0px;
+	margin: 0px 0px 0px 0px;
 	width: 80px;
 	height: 80px;
 }
@@ -420,6 +439,7 @@ __________________________________________________________________________ */
 	float: left;
 	border-radius: 2px;
 	font-size: 150%;
+	margin: 0px 5px 0px 5px;
 }
 
 
@@ -431,7 +451,7 @@ __________________________________________________________________________ */
 #feed img {
 	width: 15px;
 	height: 15px;
-	margin: 10px 0px 0px 5px;
+	margin-top: 10px;
 }
 
 #profile_option { float: left; }
