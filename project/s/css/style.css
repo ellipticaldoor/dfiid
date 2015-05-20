@@ -187,21 +187,21 @@ __________________________________________________________________________ */
 .side_panel { padding: 5px 20px 5px 20px; }
 
 #link_panel {
-	width: 200px;
+	width: 160px;
 	padding-top: 3px;
 }
 
 #link_panel .separator { margin: 20px 0px 16px 0px; }
 
-#info_panel { width: 200px; }
+#info_panel { width: 240px; }
 
 .add_follow_link { margin: 2px 0px 20px 5px; }
 
 .add_follow_link2 { margin: -2px 0px 20px 5px; }
 
 #mid_panel {
-	width: calc(100vw - 400px);
-	max-width: 650px;
+	width: calc(100vw - 160px - 240px);
+	max-width: 700px;
 	padding: 0px 16px 0px 16px;
 }
 
@@ -270,17 +270,18 @@ __________________________________________________________________________ */
 /* panel @media
 __________________________________________________________________________ */
 
-@media (max-width: 799px) {
+@media (max-width: 950px) {
 	nav { display: block; }
-	#info_nav_link, #mid_nav_link { display: inline-block; }
-	#info_panel { display: none; }
-	#mid_panel { width: calc(100vw - 200px); }
+	#link_nav_link, #mid_nav_link, #info_nav_link { display: inline-block; }
+	#link_panel, #info_panel { display: none; }
+	#mid_panel {
+		width: 100vw;
+		margin-left: calc((100vw - 700px)/2);
+	}
 }
 
-@media (max-width: 650px) {
-	#link_nav_link { display: inline-block; }
-	#link_panel { display: none; }
-	#mid_panel { width: 100vw; }
+@media (max-width: 700px) {
+	#mid_panel { margin-left: 0px; }
 }
 
 
