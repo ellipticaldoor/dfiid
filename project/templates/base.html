@@ -60,10 +60,10 @@
 				{% with user.follower.all as follows %}     
 					{% if follows %}
 						{% for follow in follows %}
-							<a href="/user/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
+							<a href="/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
 						{% endfor %}
 					{% else %}
-						<li class="add_follow_link"><a href="/blog">blog follow</a></li>
+						<li class="add_follow_link"><a class="action_link" href="/blog">blog follow</a></li>
 					{% endif %}
 				{% endwith %}
 
@@ -77,7 +77,7 @@
 							</a>
 						{% endfor %}
 					{% else %}
-						<li class="add_follow_link2"><a href="/sub">sub follow</a></li>
+						<li class="add_follow_link2"><a class="action_link" href="/sub">sub follow</a></li>
 					{% endif %}
 				{% endwith %}
 			</ul>

@@ -2,7 +2,7 @@
 {% block title %}editar {{ object.username }}{% endblock %}
 
 {% block mid_panel %}
-	<form class="form-horizontal" action="/user/{{ object.username }}/edit/" method="post" enctype="multipart/form-data">
+	<form class="form-horizontal" action="/{{ object.username }}/edit/" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{ form }}
 		<br>

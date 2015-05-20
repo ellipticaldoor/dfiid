@@ -107,4 +107,4 @@ class UserFollowDelete(View):
 		follower.save()
 		followed.follower_number -= 1
 		followed.save()
-		return HttpResponseRedirect('/user/%s' % (followed.pk))
+		return HttpResponseRedirect('/%s' % (followed.pk))

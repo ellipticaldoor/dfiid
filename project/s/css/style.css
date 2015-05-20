@@ -151,6 +151,7 @@ textarea:focus { border: 1px solid #34AADC; }
 	display: inline-block;
 	width: auto !important;
 	padding: 5px 10px 5px 10px;
+	margin-top: 5px;
 	color: #34AADC;
 	border: 1px solid #34AADC;
 	border-radius: 2px;
@@ -161,6 +162,11 @@ textarea:focus { border: 1px solid #34AADC; }
 	color: #007AFF;
 	border: 1px solid #007AFF;
 	cursor: pointer;
+}
+
+.action_link:focus {
+	color: #007AFF;
+	font-weight: bold; 
 }
 
 
@@ -304,7 +310,7 @@ img {
 	overflow: hidden;
 	border: 1px solid #ecf0f1;
 	border-radius: 2px;
-	padding: 10px 15px 18px 15px;
+	padding: 10px 15px 6px 15px;
 	margin-bottom: 15px;
 }
 
@@ -326,9 +332,9 @@ img {
 }
 
 .post_info {
-	overflow: auto;
+	overflow: hidden;
 	color: #8E8E93;
-	line-height: 34px;
+	line-height: 37px;
 }
 
 .post_info img {
@@ -349,7 +355,6 @@ img {
 	position: relative;
 	top: -2px;
 	float: right;
-	overflow: auto;
 	margin: 4px 4px 4px 0px;
 }
 
@@ -357,7 +362,7 @@ img {
 	float: right;
 	width: 14px;
 	height: 14px;
-	margin: 10px 5px 5px 5px;
+	margin: 11px 5px 5px 5px;
 }
 
 #commit_form {
@@ -405,6 +410,7 @@ __________________________________________________________________________ */
 
 
 #sub_profile_container {
+	overflow: auto;
 	margin-bottom: 20px;
 	font-size: 85%;
 }
