@@ -68,6 +68,10 @@ class SubPostListView(ListView):
 class SubFollowCreate(CreateView):
 	form_class = SubFollowForm
 
+	def get(self, *args, **kwargs):
+		return HttpResponseRedirect('/sub/%s' % (self.kwargs['followed']))
+
+
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.follower = self.request.user

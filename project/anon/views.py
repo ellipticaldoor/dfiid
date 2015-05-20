@@ -11,10 +11,6 @@ class AnonFrontView(ListView):
 	queryset = AnonPost.objects.published()
 	paginate_by = 5
 
-	def get(self, request, *args, **kwargs):
-		if request.is_ajax(): self.template_name = 'content/ajax/posts.html'
-		return super(AnonFrontView, self).get(request, *args, **kwargs)
-
 
 class AnonPostCommitView(CreateView):
 	template_name = 'anon/post_detail.html'

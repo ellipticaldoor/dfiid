@@ -81,6 +81,9 @@ class UserEdit(UpdateView):
 class UserFollowCreate(CreateView):
 	form_class = UserFollowForm
 
+	def get(self, *args, **kwargs):
+		return HttpResponseRedirect('/%s' % (self.kwargs['followed']))
+
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.follower = self.request.user
