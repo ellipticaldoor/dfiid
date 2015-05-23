@@ -604,6 +604,10 @@ __________________________________________________________________________ */
 	margin: 0px 0px 5px 0px;
 }
 
+#auth_form .g-recaptcha {
+	margin: 0px auto 5px auto;
+}
+
 .g-recaptcha iframe { margin: -10px 0px 0px -2px; }
 
 
