@@ -182,7 +182,6 @@ class UpdatePostView(UpdateView):
 
 class PostUserCreatedView(ListView):
 	template_name = 'content/post_user_created.html'
-	paginate_by = 10
 
 	def get_queryset(self):
 		return Post.objects.by_user(self.request.user)

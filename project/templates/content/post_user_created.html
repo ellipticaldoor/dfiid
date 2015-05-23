@@ -5,17 +5,32 @@
 	{% if object_list %}
 		{% for object in object_list %}
 			{% if object.draft %}
-				<a class="created_link created_draft" href="{{ object.get_edit_url }}">
-					{{ object.title }}
+				<a class="created_draft" href="{{ object.get_edit_url }}">
+					<div class="post created_post_draft">
+						<span class="post_title">{{ object.title }}</span>
+					</div>
 				</a>
 			{% endif %}
 		{% endfor %}
 		{% for object in object_list %}
 			{% if not object.draft %}
 				<a class="created_link" href="{{ object.get_edit_url }}">
-					{{ object.title }}
-					<span class="commits_link"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</span>
+					<div class="post created_post">
+						<span class="post_title">{{ object.title }}</span>
+
+						<div class="post_info created_post_info">
+							<span class="date created_date">{{ object.created |date:"d/m/Y H:i" }}</span>
+						</div>
+					</div>
 				</a>
+
+				<div class="info_created">
+					<a class="commits_link created_commits_link" href="{{ object.get_view_commits_url }}">
+						<img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}
+					</a>
+
+					<a href="{{ object.get_absolute_url }}">visitar</a>
+				</div>
 			{% endif %}
 		{% endfor %}
 

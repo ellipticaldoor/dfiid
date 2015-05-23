@@ -156,6 +156,7 @@ textarea:focus { border: 1px solid #34AADC; }
 	border: 1px solid #34AADC;
 	border-radius: 2px;
 	background-color: white;
+	outline: none !important;
 }
 
 .action_link:hover {
@@ -353,9 +354,7 @@ img {
 	margin: 0px;
 }
 
-.anon_post_info {
-	margin: -9px 0px -8px 0px;
-}
+.anon_post_info { margin: -9px 0px -8px 0px; }
 
 .post_info img, .post_info span { float: left; }
 .post_info span { margin-left: 8px; }
@@ -374,7 +373,7 @@ img {
 	float: right;
 	width: 14px;
 	height: 14px;
-	margin: 11px 5px 5px 5px;
+	margin: 11px 4px 5px 5px;
 }
 
 #commit_form {
@@ -539,29 +538,49 @@ __________________________________________________________________________ */
 		margin: 0px 8px 0px 8px;
 	}
 
-	#follow_container {
-		padding: 5px 14px 5px 14px;
-	}
+	#follow_container { padding: 5px 14px 5px 14px; }
 }
-
 
 
 /* created
 __________________________________________________________________________ */
 
-.created_link {
-	overflow: auto;
-	float: left;
-	width: 100%;
-	padding: 10px;
-	margin: 4px;
-	border: 1px solid #ecf0f1;
-	border-radius: 2px;
+.created_post_draft {
+	margin-bottom: 16px;
+	border: 1px solid #5856D6;
 }
 
-.created_link .commits_link img { margin: 4px 0px 0px 5px; }
+.created_post {
+	margin-bottom: 0px;
+}
 
-.created_draft { color: #EF4DB6; }
+.created_date {
+	position: relative;
+	left: -8px;
+}
+
+.created_post_info { margin: 0px 0px -8px 0px; }
+
+.created_link { color: #34AADC !important; }
+
+.created_draft { color: #5856D6 !important; }
+
+.info_created {
+	overflow: auto;
+	margin: 6px 0px 7px 0px;
+	padding: 0px 16px 0px 16px;
+}
+
+.info_created a { float: right; }
+
+.created_commits_link { margin-left: 20px;}
+
+.created_commits_link img {
+	float: right;
+	width: 14px;
+	height: 14px;
+	margin: 4px 0px 5px 5px;
+}
 
 
 /* auth form
