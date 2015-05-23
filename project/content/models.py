@@ -94,8 +94,6 @@ class Post(models.Model):
 
 	def __str__(self): return self.title
 
-	class Meta: ordering = ['-last_commited']
-
 
 class Commit(models.Model):
 	commitid = models.CharField(primary_key=True, max_length=16, default=_createId) 

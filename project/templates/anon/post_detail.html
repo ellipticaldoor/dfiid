@@ -2,7 +2,8 @@
 {% block title %}anon{% endblock %}
 
 {% block post_info %}
-	<div class="post_info">
+	<div class="post_info anon_post_info">
+		<span class="date anon_date">{{ object.created |date:"d/m/Y H:i" }}</span>
 		<a class="commits_link" href="{{ object.get_view_commits_url }}">
 			<img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}
 		</a>
@@ -10,8 +11,9 @@
 {% endblock %}
 
 {% block commit_post_info %}
-	<div class="post_info">
-		<a class="commit_link" href="#{{ commit.commitid}}">#{{ commit.commitid}}</a>
+	<div class="post_info anon_post_info">
+		<span class="date anon_date">{{ object.created |date:"d/m/Y H:i" }}</span>
+		<a class="commits_link" href="#{{ commit.commitid}}">#{{ commit.commitid}}</a>
 	</div>
 {% endblock %}
 

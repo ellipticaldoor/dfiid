@@ -310,14 +310,18 @@ img {
 	overflow: hidden;
 	border: 1px solid #ecf0f1;
 	border-radius: 2px;
-	padding: 10px 15px 6px 15px;
+	padding: 10px 15px 12px 15px;
 	margin-bottom: 15px;
 }
 
 .date {
 	font-size: 90%;
 	color: #BDBEC2;
-	margin-left: 4px;
+}
+
+.anon_date {
+	position: relative;
+	left: -5px;
 }
 
 .post_title {
@@ -349,6 +353,10 @@ img {
 	margin: 0px;
 }
 
+.anon_post_info {
+	margin: -9px 0px -8px 0px;
+}
+
 .post_info img, .post_info span { float: left; }
 .post_info span { margin-left: 8px; }
 
@@ -358,10 +366,8 @@ img {
 }
 
 .commits_link {
-	position: relative;
-	top: -2px;
 	float: right;
-	margin: 4px 4px 4px 0px;
+/*	margin: 4px 4px 4px 0px;*/
 }
 
 .commits_link img {
@@ -375,6 +381,8 @@ img {
 	width: 95%;
 	margin: 0px auto 15px auto;
 }
+
+.commit_id_title { color: #5856D6; }
 
 #paginate { padding: 25px 4px 0px 0px; }
 
@@ -419,11 +427,12 @@ __________________________________________________________________________ */
 	overflow: auto;
 	margin-bottom: 20px;
 	font-size: 85%;
+	padding: 5px 0px 5px 0px;
 }
 
 #sub_image_view {
 	float: left;
-	margin: 0px 8px 0px 0px;
+	margin: 0px;
 	width: 50px;
 	height: 50px;
 }

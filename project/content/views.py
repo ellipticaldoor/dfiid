@@ -29,7 +29,11 @@ class SubView(ListView):
 
 class FrontView(ListView):
 	template_name = 'layouts/post_list.html'
-	paginate_by = 10
+	paginate_by = 5
+
+	def get(self, request, *args, **kwargs):
+		if request.is_ajax(): self.template_name = 'ajax/post_list.html'
+		return super(FrontView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
 		return Post.objects.published()
@@ -37,12 +41,18 @@ class FrontView(ListView):
 	def get_context_data(self, **kwargs):
 		context = super(FrontView, self).get_context_data(**kwargs)
 		context['list'] = 'portada'
+		context['list_url'] = '/'
 		return context
+
 
 
 class SubPostListView(ListView):
 	template_name = 'content/sub_post_list.html'
-	paginate_by = 10
+	paginate_by = 5
+
+	def get(self, request, *args, **kwargs):
+		if request.is_ajax(): self.template_name = 'ajax/post_list.html'
+		return super(SubPostListView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
 		return Post.objects.by_sub(self.kwargs['sub'])
@@ -55,6 +65,7 @@ class SubPostListView(ListView):
 		except: context['followers'] = False
 
 		context['list'] = sub
+		context['list_url'] = '/sub/%s' % sub
 		context['action'] = 'follow'
 
 		if user.is_authenticated():

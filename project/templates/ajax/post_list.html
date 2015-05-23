@@ -1,0 +1,23 @@
+{% for object in object_list %}
+	<div class="post">
+		<a class="post_title" href="{{ object.get_absolute_url }}">{{ object.title }}</a>
+		<div class="post_content">
+			{{ object.body_html|safe }}
+			{% if object.image   %}
+				<p><img src="/{{ object.image }}"></p>
+			{% endif %}
+		</div>
+
+		{% block post_info %}
+			<div class="post_info">
+				<a class="blog_link" href="/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="{{ object.get_avatar_url }}"></a>
+				<span><a href="/{{ object.user_id }}">{{ object.user_id }}</a> / <a href="/sub/{{ object.sub_id }}">{{ object.sub_id }}</a></span>
+				{% ifequal user.username  object.user_id|slugify %}
+					<span><a class="edit" href="{{ object.get_edit_url }}"> editar</a></span>
+				{% endifequal %}
+				<span class="date">{{ object.created |date:"d/m/Y H:i" }}</span>
+				<a class="commits_link" href="{{ object.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</a>
+			</div>
+		{% endblock %}
+	</div>
+{% endfor %}

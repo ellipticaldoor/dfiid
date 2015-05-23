@@ -10,5 +10,45 @@
 {% endblock %}
 
 {% block js %}
-	<script src="/s/js/scroll.js"></script>
+	<script>
+		var page_number = 2;
+		var scroll = true;
+
+		document.addEventListener('DOMContentLoaded', function() {
+			if ($('#mid_panel').height() < $(window).height()) {
+				ajaxCall();
+			}
+		});
+
+		$(window).scroll(function() {
+			if (scroll) {
+				if($(window).scrollTop() + $(window).height() == $(document).height()) {
+					ajaxCall();
+			  	}
+			}
+		});
+
+		function ajaxCall() {
+			$.ajax({
+				type: 'GET',
+				url: '{{ list_url }}',
+				data: {
+					'page' : page_number,
+				},
+				success: pageSuccess,
+				error: pageError,
+				dataType: 'html'
+			});
+		}
+
+		function pageError() {
+			scroll = false;
+			$('#loading').hide();
+		}
+
+		function pageSuccess(data) {
+			page_number = page_number + 1;
+			$(data).insertAfter($('.post').last());
+		}
+	</script>
 {% endblock %}

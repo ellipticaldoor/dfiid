@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django import forms
 
 from user.models import User, UserFollow
-from content.models import Post
+from content.models import Post, Commit
 from user.forms import UserEditForm, SignUpForm, UserFollowForm
 from core.core import random_avatar
 
@@ -33,7 +33,11 @@ class SignUpView(CreateView):
 
 class ProfileView(ListView):
 	template_name = 'user/profile.html'
-	paginate_by = 10
+	paginate_by = 5
+
+	def get(self, request, *args, **kwargs):
+		if request.is_ajax(): self.template_name = 'ajax/post_list.html'
+		return super(ProfileView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
 		return Post.objects.by_user(user=self.kwargs['profile'])
@@ -43,7 +47,9 @@ class ProfileView(ListView):
 		username = self.request.user.username
 		profile = self.kwargs['profile']
 		try: context['profile_show'] = self.kwargs['show']
-		except: context['profile_show'] = 'post'
+		except:
+			context['profile_show'] = 'post'
+			context['list_url'] = '/%s' % username
 
 		context['form'] = UserFollowForm
 		context['profile'] = User.objects.get(username=profile)
@@ -56,6 +62,9 @@ class ProfileView(ListView):
 				follow_state = UserFollow.objects.by_id(followid='%s>%s' % (username, profile))
 				if follow_state: context['action'] = 'unfollow'
 				else: context['action'] = 'follow'
+
+		if context['profile_show'] == 'commit':
+			context['commits'] = Commit.objects.filter(user_id=profile)
 
 		return context
 
