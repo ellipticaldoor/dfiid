@@ -16,6 +16,7 @@
 				<div class="post_info">
 					<a class="blog_link" href="/{{ object.user_id }}"><img alt="{{ object.user_id }}" src="{{ object.get_avatar_url }}"></a>
 					<span><a href="/{{ object.user_id }}">{{ object.user_id }}</a> / <a href="/sub/{{ object.sub_id }}">{{ object.sub_id }}</a></span>
+					<span class="date">{{ object.created |date:"d/m/Y H:i" }}</span>
 					{% ifequal user.username  object.user_id|slugify %}
 						<span><a class="edit" href="{{ object.get_edit_url }}"> editar</a></span>
 					{% endifequal %}

@@ -314,6 +314,12 @@ img {
 	margin-bottom: 15px;
 }
 
+.date {
+	font-size: 90%;
+	color: #BDBEC2;
+	margin-left: 4px;
+}
+
 .post_title {
 	font-size: 135%;
 	max-width: 100%;
