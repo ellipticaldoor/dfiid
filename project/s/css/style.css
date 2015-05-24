@@ -120,10 +120,10 @@ input[type="checkbox"] {
 	-moz-appearance: checkbox;
 }
 
-::-webkit-input-placeholder { color: #DBDDDE; }
-:-moz-placeholder { color: #DBDDDE; opacity: 1; }
-::-moz-placeholder { color: #DBDDDE; opacity: 1; }
-:-ms-input-placeholder { color: #DBDDDE; }
+::-webkit-input-placeholder { color: #C7C7CC; }
+:-moz-placeholder { color: #C7C7CC; opacity: 1; }
+::-moz-placeholder { color: #C7C7CC; opacity: 1; }
+:-ms-input-placeholder { color: #C7C7CC; }
 
 select {
 	-moz-appearance: button;
@@ -489,7 +489,6 @@ __________________________________________________________________________ */
 	display: inline-block;
 	width: 100%;
 	margin: 20px 0px 22px 0px;
-/*	text-align: center;*/
 }
 
 #profile_selector a {
@@ -547,6 +546,32 @@ __________________________________________________________________________ */
 
 	#follow_container { padding: 5px 14px 5px 14px; }
 }
+
+/* edit
+__________________________________________________________________________ */
+
+#edit_form input { margin-bottom: 5px; }
+
+#edit_form p {
+	color: #34AADC;
+	margin-bottom: 10px;
+	font-size: 120%;
+}
+
+.edit_section {
+	border: 1px solid #DBDDDE;
+	border-radius: 2px;
+	padding: 15px 10px 10px 10px;
+	margin-bottom: 10px;
+}
+
+.edit_section #image_post_edit {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+
+.edit_section #image_post_edit img { margin-top: 0px; }
 
 
 /* created
@@ -693,7 +718,6 @@ __________________________________________________________________________ */
 
 #image_post_edit img {
 	max-height: 100px;
-	max-width: 100%;
 }
 
 #edit_form_button { width: 100px; }

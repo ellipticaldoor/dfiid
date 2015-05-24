@@ -79,7 +79,7 @@ class UserView(ListView):
 
 
 class UserEdit(UpdateView):
-	template_name = 'user/user_update.html'
+	template_name = 'user/edit.html'
 	form_class = UserEditForm
 	get_absolute_url = '/'
 

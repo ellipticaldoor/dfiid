@@ -31,7 +31,7 @@ class LoginForm(AuthenticationForm):
 
 class AvatarInput(forms.ClearableFileInput):
 	template_with_initial = (
-		'<div id="image_post_edit"><div><img src="/%(initial_url)s"></div></div>'
+		'<div id="image_post_edit"><img src="/%(initial_url)s"></div>'
 		'%(input)s'
 	)
 

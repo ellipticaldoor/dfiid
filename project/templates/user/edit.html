@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}editar {{ object.username }}{% endblock %}
+
+{% block mid_panel %}
+	{{ form.non_field_errors }}
+	<form id="edit_form" action="/{{ object.username }}/edit/" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div id="edit_avatar" class="edit_section">
+			<p>cambiar avatar</p>
+			{{ form.avatar }}
+			{{ form.avatar.errors }}
+		</div>
+		<div id="edit_password" class="edit_section">
+			<p>cambiar contraseña</p>
+			{{ form.password }}
+			{{ form.password.errors }}
+			<br>
+			{{ form.new_password }}
+			{{ form.new_password.errors }}
+		</div>
+		<input id="edit_form_button" class="submit" type="submit" value="guardar" />
+	</form>
+{% endblock %}
+
+{% block js %}
+	<script src="/s/js/lib/autosize_3.0.4.min.js"></script>
+{% endblock %}
