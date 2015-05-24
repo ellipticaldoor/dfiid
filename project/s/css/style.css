@@ -15,6 +15,12 @@ __________________________________________________________________________ */
 	margin: 18px 0px 18px 0px;
 }
 
+.sub_separator {
+	height: 1px;
+	width: 100%;
+	margin-top: 15px;
+}
+
 .form_separator {
 	height: 1px;
 	width: 100%;
@@ -150,6 +156,7 @@ textarea:focus { border: 1px solid #34AADC; }
 .action_link {
 	display: inline-block;
 	width: auto !important;
+	width: 100%;
 	padding: 5px 10px 5px 10px;
 	margin-top: 5px;
 	color: #34AADC;
@@ -207,9 +214,9 @@ __________________________________________________________________________ */
 
 #info_panel { width: 240px; }
 
-.add_follow_link { margin: 2px 0px 20px 5px; }
+.add_follow_link { margin: 1px 0px 20px 5px; }
 
-.add_follow_link2 { margin: -2px 0px 20px 5px; }
+.add_follow_link2 { margin: -3px 0px 20px 5px; }
 
 #mid_panel {
 	width: calc(100vw - 160px - 240px);
@@ -545,13 +552,24 @@ __________________________________________________________________________ */
 /* created
 __________________________________________________________________________ */
 
-.created_post_draft {
-	margin-bottom: 16px;
-	border: 1px solid #5856D6;
+.created_container {
+	overflow: auto;
+	margin: 0px 0px 10px 0px;
 }
 
 .created_post {
+	float: left;
 	margin-bottom: 0px;
+	width: calc(100% - 110px);
+}
+
+.created_post:hover {
+	border: 1px solid #007AFF;
+}
+
+.created_post_draft {
+	border: 1px solid #34AADC;
+	width: 100%;
 }
 
 .created_date {
@@ -563,12 +581,10 @@ __________________________________________________________________________ */
 
 .created_link { color: #34AADC !important; }
 
-.created_draft { color: #5856D6 !important; }
+.created_visit_link { color: #C86EDF; }
 
 .info_created {
-	overflow: auto;
-	margin: 6px 0px 7px 0px;
-	padding: 0px 16px 0px 16px;
+	overflow: auto;	padding: 5px;
 }
 
 .info_created a { float: right; }
