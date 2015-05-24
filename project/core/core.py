@@ -35,3 +35,27 @@ def random_avatar_sub(sub_slug):
 	avatar_dir = '%s/s/media/sub/image/%s.png' % (settings.BASE_DIR, sub_slug)
 	avatar.save(avatar_dir, 'PNG')
 	return
+
+
+def avatar_resize(final_avatar_dir):
+	THUMB_SIZE = 300, 300
+	img = Image.open(final_avatar_dir)
+	width, height = img.size
+
+	if width > height:
+		delta = width - height
+		left = int(delta/2)
+		upper = 0
+		right = height + left
+		lower = height
+	else:
+		delta = height - width
+		left = 0
+		upper = int(delta/2)
+		right = width
+		lower = width + upper
+
+	img = img.crop((left, upper, right, lower))
+	img.thumbnail(THUMB_SIZE, Image.ANTIALIAS)
+	img.save(final_avatar_dir, 'PNG')
+	return

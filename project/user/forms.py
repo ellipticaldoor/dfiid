@@ -29,10 +29,30 @@ class LoginForm(AuthenticationForm):
 	password = forms.CharField(label='', widget=forms.PasswordInput)
 
 
-class UserEditForm(forms.ModelForm):	
+class AvatarInput(forms.ClearableFileInput):
+	template_with_initial = (
+		'<div id="image_post_edit"><div><img src="/%(initial_url)s"></div></div>'
+		'%(input)s'
+	)
+
+
+class UserEditForm(forms.ModelForm):
+	def __init__(self, *args, **kwargs):
+		super(UserEditForm, self).__init__(*args, **kwargs)
+		self.fields['password'].widget.attrs.update({
+				'placeholder': 'contraseña actual'
+			})
+		self.fields['new_password'].widget.attrs.update({
+				'placeholder': 'nueva contraseña'
+			})
+
+	avatar = forms.ImageField(label='', widget=AvatarInput)
+	password = forms.CharField(label='', widget=forms.PasswordInput, required=False)
+	new_password = forms.CharField(label='', widget=forms.PasswordInput, required=False)
+
 	class Meta:
 		model = User
-		fields = ['avatar', 'password']
+		fields = ['avatar', 'password', 'new_password']
 
 
 class SignUpForm(forms.ModelForm):

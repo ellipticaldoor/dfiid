@@ -24,7 +24,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
 	def get_avatar(instance, filename):
-		return 's/media/user/avatar/%s.png' % (instance.username)
+		return 's/media/user/avatar/%s.png' % instance.username
 
 	username = models.SlugField(primary_key=True, max_length=16)
 	USERNAME_FIELD = 'username'

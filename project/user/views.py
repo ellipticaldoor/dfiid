@@ -1,3 +1,7 @@
+
+import os
+
+from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.views.generic import View, UpdateView, CreateView, ListView
 from django.contrib.auth import authenticate, login
@@ -6,7 +10,7 @@ from django import forms
 from user.models import User, UserFollow
 from content.models import Post, Commit
 from user.forms import UserEditForm, SignUpForm, UserFollowForm
-from core.core import random_avatar
+from core.core import random_avatar, avatar_resize
 
 
 class SignUpView(CreateView):
@@ -83,15 +87,24 @@ class UserEdit(UpdateView):
 		return User.objects.filter(username=self.request.user)
 
 	def form_valid(self, form):
-		form.save()
-		return HttpResponseRedirect('/user/%s' % (self.kwargs['pk']))
+		obj = form.save(commit=False)
+		obj.save()
+
+		username = self.request.user
+		final_avatar_dir = 's/media/user/avatar/%s.png' % username
+
+		if not obj.avatar == final_avatar_dir:
+			avatar_dir = '%s/%s' % (settings.BASE_DIR, obj.avatar)
+			os.rename(avatar_dir, final_avatar_dir)
+			obj.avatar = final_avatar_dir
+			obj.save()
+			avatar_resize(final_avatar_dir)
+
+		return HttpResponseRedirect('/%s/edit' % self.kwargs['pk'])
 
 
 class UserFollowCreate(CreateView):
 	form_class = UserFollowForm
-
-	def get(self, *args, **kwargs):
-		return HttpResponseRedirect('/%s' % (self.kwargs['followed']))
 
 	def form_valid(self, form):
 		obj = form.save(commit=False)
@@ -116,4 +129,4 @@ class UserFollowDelete(View):
 		follower.save()
 		followed.follower_number -= 1
 		followed.save()
-		return HttpResponseRedirect('/%s' % (followed.pk))
+		return HttpResponseRedirect('/%s' % followed.pk)
