@@ -6,14 +6,12 @@
 		<div id="auth_form_container">
 			<img src="/s/img/dfiid_logo_text.jpg">
 
-			{{ form.non_field_errors }}
 			<form id="auth_form" action="/signup/" method="post">
 				{% csrf_token %}
 				{{ form }}
 				<input class="submit" type="submit" value="crear cuenta" />
 			</form>
-			</div>
-
+		</div>
 		<div id="login_signup_link"><a href="/login">login</a></div>
 	{% else %}
 		<a href="/logout">logout</a>

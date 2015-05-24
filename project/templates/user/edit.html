@@ -3,18 +3,18 @@
 
 {% block mid_panel %}
 	{{ form.non_field_errors }}
-	<form id="edit_form" action="/{{ object.username }}/edit/" method="post" enctype="multipart/form-data">
+	<form id="edit_profile_form" action="/{{ object.username }}/edit/" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
-		<div id="edit_avatar" class="edit_section">
+		<div id="edit_profile_avatar" class="edit_profile_section">
 			<p>cambiar avatar</p>
 			{{ form.avatar }}
 			{{ form.avatar.errors }}
 			<br>
 			<div class="warning">
-				*después de guardar un nuevo avatar a veces es necesario recargar la página.
+				*a veces es necesario recargar la página después de guardar el nuevo avatar.
 			</div>
 		</div>
-		<div id="edit_password" class="edit_section">
+		<div id="edit_profile_password" class="edit_profile_section">
 			<p>cambiar contraseña</p>
 			{{ form.password }}
 			{{ form.password.errors }}
@@ -22,7 +22,7 @@
 			{{ form.new_password }}
 			{{ form.new_password.errors }}
 		</div>
-		<input id="edit_form_button" class="submit" type="submit" value="guardar" />
+		<input id="edit_profile_form_button" class="submit" type="submit" value="guardar" />
 	</form>
 {% endblock %}
 
