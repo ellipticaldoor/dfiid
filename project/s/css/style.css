@@ -481,17 +481,18 @@ __________________________________________________________________________ */
 	margin-top: 10px;
 }
 
+#logout { margin-left: 5px;}
+
 #profile_option { float: left; }
 
 #profile_selector {
 	display: inline-block;
 	width: 100%;
 	margin: 20px 0px 22px 0px;
-	text-align: center;
+/*	text-align: center;*/
 }
 
 #profile_selector a {
-	margin: 0px 4px 0px 4px;
 	border: 1px solid #ecf0f1;
 	border-radius: 2px;
 	padding: 5px 8px 5px 8px;
@@ -499,14 +500,11 @@ __________________________________________________________________________ */
 
 #profile_selector a:hover {
 	border: 1px solid #007AFF;
-	background-color: #007AFF;
-	color: white;
 }
 
 .profile_selected {
 	border: 1px solid #34AADC !important;
-	background-color: #34AADC;
-	color: white;
+	border-bottom: 1px solid white !important;
 }
 
 .profile_list_title { font-size: 120%; }
@@ -523,6 +521,8 @@ __________________________________________________________________________ */
 	border-radius: 2px;
 	padding: 5px 10px 5px 10px;
 }
+
+#follow_container:hover { border: 1px solid #007AFF; }
 
 #follow_container a:nth-child(2) {
 	border-left: 1px solid #8E8E93;
