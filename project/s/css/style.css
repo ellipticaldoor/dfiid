@@ -34,6 +34,14 @@ __________________________________________________________________________ */
 	margin: 10px 0px 10px 0px;
 }
 
+.warning {
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid #FF9500;
+	font-size: 80%;
+	color: #8E8E93;
+}
+
 
 /* typography
 __________________________________________________________________________ */
@@ -566,12 +574,18 @@ __________________________________________________________________________ */
 }
 
 .edit_section #image_post_edit {
-	padding: 0px;
-	margin: 0px;
-	border: 0px;
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
 .edit_section #image_post_edit img { margin-top: 0px; }
+
+#edit_form #id_avatar {
+	border: 0;
+	padding: 0;
+	margin-top: 3px;
+}
 
 
 /* created
