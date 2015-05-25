@@ -2,33 +2,37 @@
 {% block title %}{{ profile.username }}{% endblock %}
 
 {% block mid_panel %}
-	<div id="follow_action_container">
-		{% if action == 'follow' %}
-			<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
-				{% csrf_token %}{{ form }}
-				<input class="action_link" type="submit" value="follow" />
-			</form>
-		{% elif action == 'unfollow' %}
-			<form id="profile_option" action="/user_unfollow/{{ profile.username }}/" method="post">
-				{% csrf_token %}{{ form }}
-				<input class="action_link" type="submit" value="unfollow" />
-			</form>
-		{% elif action == 'edit' %}
-			<a id="profile_option" class="action_link" href="/{{ profile.username }}/edit">editar</a>
-		{% endif %}
+	<div id="profile_head" style="background-image: url('/s/media/user/bg/{{ profile.username }}.png');">
+		<div id="follow_action_container">
+			{% if action == 'follow' %}
+				<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
+					{% csrf_token %}{{ form }}
+					<input class="action_link" type="submit" value="follow" />
+				</form>
+			{% elif action == 'unfollow' %}
+				<form id="profile_option" action="/user_unfollow/{{ profile.username }}/" method="post">
+					{% csrf_token %}{{ form }}
+					<input class="action_link" type="submit" value="unfollow" />
+				</form>
+			{% elif action == 'edit' %}
+				<a id="profile_option" class="action_link" href="/{{ profile.username }}/edit">editar</a>
+			{% endif %}
 
-		<div id="follow_container">
-			<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.username }}/followers">{{ profile.follower_number }}<span> follower{{ profile.follower_number|pluralize }}</span></a>
-			<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/{{ profile.username }}/following">{{ profile.following_number }}<span> following</span></a>
-			<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/{{ profile.username }}/sub_following">{{ profile.sub_following_number }}<span> sub{{ profile.sub_following_number|pluralize }}</span></a>
+			<div id="follow_container">
+				<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.username }}/followers">{{ profile.follower_number }}<span> follower{{ profile.follower_number|pluralize }}</span></a>
+				<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/{{ profile.username }}/following">{{ profile.following_number }}<span> following</span></a>
+				<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/{{ profile.username }}/sub_following">{{ profile.sub_following_number }}<span> sub{{ profile.sub_following_number|pluralize }}</span></a>
+			</div>
+		</div>
+
+		<div id="profile_container">
+			<a id="profile_image_view" href="/{{ profile.username }}"><img src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
 		</div>
 	</div>
-
-	<div id="profile_container">
-		<a id="profile_image_view" href="/{{ profile.username }}"><img src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
+	<span id="username_rss_container">
 		<a id="profile_username" href="/{{ profile.username }}">{{ profile.username }}</a>
 		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
-	</div>
+	</span>
 	{% ifequal user.username  profile.username|slugify %}<a id="logout" href="/logout">logout</a>{% endifequal %}
 
 	<div id="profile_selector">

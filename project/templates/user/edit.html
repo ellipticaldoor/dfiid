@@ -7,11 +7,11 @@
 		{% csrf_token %}
 		<div id="edit_profile_avatar" class="edit_profile_section">
 			<p>cambiar avatar</p>
-			{{ form.avatar }}
 			{{ form.avatar.errors }}
+			{{ form.avatar }}
 			<br>
 			<div class="warning">
-				*a veces es necesario recargar la página después de guardar el nuevo avatar.
+				*a veces es necesario recargar la página después de guardar un nuevo avatar.
 			</div>
 		</div>
 		<div id="edit_profile_password" class="edit_profile_section">
