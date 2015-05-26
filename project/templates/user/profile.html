@@ -1,6 +1,14 @@
 {% extends 'layouts/post_list.html' %}
 {% block title %}{{ profile.username }}{% endblock %}
 
+
+{% block tab %}
+	<div id="tab_selector">
+		<a class="tab_selected" href="/{{ profile.username }}">post</a>
+		<a href="/{{ profile.username }}/commit">commit</a>
+	</div>
+{% endblock %}
+
 {% block mid_panel %}
 	<div id="profile_head" style="background-image: url('/s/media/user/bg/{{ profile.username }}.png');">
 		<div id="follow_action_container">
@@ -35,14 +43,13 @@
 	</span>
 	{% ifequal user.username  profile.username|slugify %}<a id="logout" href="/logout">logout</a>{% endifequal %}
 
-	<div id="profile_selector">
-		<a class="{% if profile_show == 'post' %}profile_selected{% endif %}" href="/{{ profile.username }}">post</a>
-		<a class="{% if profile_show == 'commit' %}profile_selected{% endif %}" href="/{{ profile.username }}/commit">commit</a>
-	</div>
-
 	{% if profile_show == 'post' %}
 		{{ block.super }}
 	{% elif profile_show == 'commit' %}
+		<div id="tab_selector">
+			<a href="/{{ profile.username }}">post</a>
+			<a class="tab_selected" href="/{{ profile.username }}/commit">commit</a>
+		</div>
 		{% for commit in commits %}
 			{% if commit.body_html %}
 				<div class="post">

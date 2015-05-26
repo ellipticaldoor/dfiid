@@ -36,7 +36,7 @@ class FrontView(ListView):
 		return super(FrontView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
-		return Post.objects.published()
+		return Post.objects.last_commited()
 
 	def get_context_data(self, **kwargs):
 		context = super(FrontView, self).get_context_data(**kwargs)

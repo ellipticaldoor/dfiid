@@ -1,7 +1,7 @@
 {% extends 'layouts/post_list.html' %}
 
 {% block mid_panel %}
-	<div id="follow_action_container">
+	<div id="follow_action_container" class="sub_follow_action_container">
 		<div id="follow_container">
 			<a class="{% if followers %}normal_selected{% endif %}" href="/sub/{{ list.slug }}/followers">{{ list.follower_number }}<span> followers</span></a>
 		</div>
@@ -20,10 +20,12 @@
 		{% endif %}
 	</div>
 
-	<div id="sub_profile_container">
+	<div id="profile_container">
 		<a id="profile_username" href="/sub/{{ list.slug }}"><img id="sub_image_view" src="/s/media/sub/image/{{ list.slug }}.png" alt="{{ list.slug }}"></a>
-		<a id="profile_username" href="/sub/{{ list.slug }}">{{ list.slug }}</a>
 	</div>
+	<span id="username_rss_container">
+		<a id="profile_username" href="/sub/{{ list.slug }}">{{ list.slug }}</a>
+	</span>
 
 	{% if followers %}
 		{% with list.sub_followed.all as follows %} 

@@ -84,10 +84,7 @@ ul {
 
 .normal_selected span { display: inline !important;}
 
-.selected {
-	text-decoration: underline;
-	font-weight: bold;
-}
+.selected { text-decoration: underline; }
 
 
 /* input
@@ -188,10 +185,7 @@ textarea:focus { border: 2px solid #34AADC; }
 	cursor: pointer;
 }
 
-.action_link:focus {
-	color: #007AFF;
-	font-weight: bold; 
-}
+.action_link:focus { color: #007AFF; }
 
 
 /* nav
@@ -261,9 +255,19 @@ __________________________________________________________________________ */
 
 #dfiid a { color: #34AADC; }
 
-#dfiid img {
-	height: 20px;
-	margin: 0 5px -3px 0;
+.create_action_link {
+	float: right;
+	margin: 0 0 20px 0;
+}
+
+#dfiid_create_link {
+	border: 2px solid #EF4DB6;
+	color: #EF4DB6;	
+}
+
+#anon_create_link {
+	border: 2px solid #FF9500;
+	color: #FF9500;
 }
 
 .panel_avatar {
@@ -387,10 +391,7 @@ img {
 	margin: 4px;
 }
 
-.commits_link {
-	float: right;
-/*	margin: 4px 4px 4px 0;*/
-}
+.commits_link { float: right; }
 
 .commits_link img {
 	float: right;
@@ -412,15 +413,43 @@ img {
 
 .fluidvids { margin: 20px 0 20px 0; }
 
+/* tabs
+__________________________________________________________________________ */
+
+#tab_selector {
+	display: inline-block;
+	width: 100%;
+	margin: 20px 0 22px 0;
+}
+
+#tab_selector a {
+	border: 2px solid #ecf0f1;
+	border-radius: 2px;
+	padding: 5px 8px 5px 8px;
+	margin-right: 1px;
+}
+
+#tab_selector a:hover { border: 2px solid #007AFF !important; }
+
+.tab_selected {
+	border: 2px solid #34AADC !important;
+	border-bottom: 1px solid white !important;
+}
+
 
 /* subs
 __________________________________________________________________________ */
+
+#user_list_container {
+	overflow: auto;
+	width: 100%;
+}
 
 .sub_container {
 	overflow: hidden;
 	width: calc(50% - 5px);
 	line-height: 42px;
-	margin: 0 0 5px 5px;
+	margin: 0 5px 5px 0;
 	border-radius: 2px;
 	padding: 5px;
 	float: left;
@@ -442,12 +471,10 @@ __________________________________________________________________________ */
 	float: left;
 }
 
-
-#sub_profile_container {
-	overflow: auto;
-	margin-bottom: 20px;
-	font-size: 85%;
-	padding: 5px 0 5px 0;
+#dfiid_image_view {
+	float: left;
+	margin: -10px 0 7px 0;
+	height: 50px;
 }
 
 #sub_image_view {
@@ -515,25 +542,6 @@ __________________________________________________________________________ */
 
 #profile_option .action_link { background-color: rgba(255, 255, 255, 0.8) }
 
-#profile_selector {
-	display: inline-block;
-	width: 100%;
-	margin: 20px 0 20px 0;
-}
-
-#profile_selector a {
-	border: 2px solid #ecf0f1;
-	border-radius: 2px;
-	padding: 5px 8px 5px 8px;
-}
-
-#profile_selector a:hover { border: 2px solid #007AFF !important; }
-
-.profile_selected {
-	border: 2px solid #34AADC !important;
-	border-bottom: 1px solid white !important;
-}
-
 .profile_list_title { font-size: 120%; }
 
 #follow_action_container {
@@ -541,6 +549,8 @@ __________________________________________________________________________ */
 	padding: 10px;
 	background-color: rgba(255, 255, 255, 0.8);
 }
+
+.sub_follow_action_container { padding: 0 0 10px 0 !important;}
 
 #follow_action_container form { margin-top: -5px; }
 
@@ -582,7 +592,7 @@ __________________________________________________________________________ */
 #username_rss_container {
 	float: left;
 	overflow: auto;
-	margin-left: 10px;
+	margin-left: 9px;
 }
 
 

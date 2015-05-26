@@ -2,9 +2,11 @@
 {% block title %}anon{% endblock %}
 
 {% block mid_panel %}
-	<a href="/anon/create" class="action_link">crear anon post</a>
+	<a href="/anon/create" id="anon_create_link" class="action_link create_action_link">crear anon post</a>
 
-	<div class="mid_separator"></div>
+	<div id="profile_container">
+		<a href="/"><img id="dfiid_image_view" src="/s/img/anon_logo_text.jpg" alt="dfiid"></a>
+	</div>
 
 	{{ block.super }}
 {% endblock %}

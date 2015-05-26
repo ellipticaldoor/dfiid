@@ -8,7 +8,7 @@ from anon.forms import AnonPostForm, AnonCommitForm
 
 class AnonFrontView(ListView):
 	template_name = 'anon/front.html'
-	queryset = AnonPost.objects.published()
+	queryset = AnonPost.objects.last_commited()
 	paginate_by = 5
 
 	def get(self, request, *args, **kwargs):

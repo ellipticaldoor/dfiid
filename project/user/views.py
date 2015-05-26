@@ -50,10 +50,9 @@ class ProfileView(ListView):
 		context = super(ProfileView, self).get_context_data(**kwargs)
 		username = self.request.user.username
 		profile = self.kwargs['profile']
+		context['list_url'] = '/%s' % profile
 		try: context['profile_show'] = self.kwargs['show']
-		except:
-			context['profile_show'] = 'post'
-			context['list_url'] = '/%s' % username
+		except: context['profile_show'] = 'post'
 
 		context['form'] = UserFollowForm
 		context['profile'] = User.objects.get(username=profile)

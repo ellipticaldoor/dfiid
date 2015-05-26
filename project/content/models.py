@@ -44,8 +44,8 @@ class SubFollow(models.Model):
 
 
 class PostQuerySet(models.QuerySet):
-	def published(self):
-		return self.filter(draft=False, show=True)
+	def last_commited(self):
+		return self.filter(draft=False, show=True).order_by('-last_commited')
 
 	def by_sub(self, sub):
 		return self.filter(sub=sub, draft=False, show=True)

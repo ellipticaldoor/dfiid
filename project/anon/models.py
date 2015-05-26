@@ -7,8 +7,11 @@ from core.core import _createId
 
 
 class AnonPostQuerySet(models.QuerySet):
-	def published(self):
-		return self.filter(show=True)
+	def last_commited(self):
+		return self.filter(show=True).order_by('-last_commited')
+
+	def created(self):
+		return self.filter(show=True).order_by('-created')
 
 	def by_post(self, pk, slug):
 		return self.get(pk=pk, slug=slug, show=True)
