@@ -57,29 +57,17 @@
 
 		<div id="info_panel" class="panel side_panel">
 			<ul>
-				{% with user.follower.all as follows %}     
-					{% if follows %}
-						{% for follow in follows %}
-							<a href="/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
-						{% endfor %}
-					{% else %}
-						<li class="add_follow_link"><a class="action_link" href="/blog">blog follow</a></li>
-					{% endif %}
-				{% endwith %}
+				{% for follow in user.follower.all %}
+					<a href="/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
+				{% endfor %}
 
 				<div class="separator"></div>
 
-				{% with user.sub_follower.all as sub_follows %}   
-					{% if sub_follows %}
-						{% for sub_follow in sub_follows %}
-							<a href="/sub/{{ sub_follow.sub_id }}">
-								<li class="visit"><img class="panel_avatar" src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">{{ sub_follow.sub_id }}</li>
-							</a>
-						{% endfor %}
-					{% else %}
-						<li class="add_follow_link2"><a class="action_link" href="/sub">sub follow</a></li>
-					{% endif %}
-				{% endwith %}
+				{% for sub_follow in user.sub_follower.all %}
+					<a href="/sub/{{ sub_follow.sub_id }}">
+						<li class="visit"><img class="panel_avatar" src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">{{ sub_follow.sub_id }}</li>
+					</a>
+				{% endfor %}
 			</ul>
 		</div>
 	</span>

@@ -2,7 +2,7 @@
 {% block title %}{{ list }}{% endblock %}
 
 {% block mid_panel %}
-	{% if list_url == '/'%}
+	{% if list_url == '/' or list_url == '/new' %}
 		<a href="/create" id="dfiid_create_link" class="action_link create_action_link">crear post</a>
 
 		<div id="profile_container">
@@ -12,8 +12,8 @@
 
 	{% block tab %}
 		<div id="tab_selector">
-			<a class="tab_selected" href="#">top</a>
-			<a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="#">new</a>
+			<a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/">top</a>
+			<a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/new">new</a>
 		</div>
 	{% endblock %}
 

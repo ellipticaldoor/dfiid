@@ -47,6 +47,9 @@ class PostQuerySet(models.QuerySet):
 	def last_commited(self):
 		return self.filter(draft=False, show=True).order_by('-last_commited')
 
+	def created(self):
+		return self.filter(draft=False, show=True).order_by('-created')
+
 	def by_sub(self, sub):
 		return self.filter(sub=sub, draft=False, show=True)
 

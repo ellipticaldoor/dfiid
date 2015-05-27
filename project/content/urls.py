@@ -6,9 +6,10 @@ from content import views
 
 urlpatterns = patterns(
 	'',
-	url(r'^$', views.FrontView.as_view(), name='front'),
+	url(r'^$', views.FrontView.as_view(), name='front', kwargs={'tab':'top'}),
+	url(r'^new/$', views.FrontView.as_view(), name='new', kwargs={'tab':'new'}),
 
-	url(r'^sub/$', views.SubView.as_view(), name="sub"),
+	url(r'^sub/$', views.SubView.as_view(), name='sub'),
 	url(r'^sub/(?P<sub>\S+)/$', views.SubPostListView.as_view(), name='sub_view'),
 	url(r'^sub/(?P<sub>\S+)/(?P<followers>\S+)$', views.SubPostListView.as_view(), name='sub_followers'),
 	url(r'^create_sub/$', login_required(views.CreateSubView.as_view()), name='create_sub'),

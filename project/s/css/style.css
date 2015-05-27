@@ -224,10 +224,6 @@ __________________________________________________________________________ */
 
 #info_panel { width: 240px; }
 
-.add_follow_link { margin: 1px 0 20px 5px; }
-
-.add_follow_link2 { margin: -3px 0 20px 5px; }
-
 #mid_panel {
 	width: calc(100vw - 160px - 240px);
 	max-width: 700px;
@@ -257,7 +253,7 @@ __________________________________________________________________________ */
 
 .create_action_link {
 	float: right;
-	margin: 0 0 20px 0;
+	margin: 10px 10px 20px 0;
 }
 
 #dfiid_create_link {
@@ -473,7 +469,7 @@ __________________________________________________________________________ */
 
 #dfiid_image_view {
 	float: left;
-	margin: -10px 0 7px 0;
+	margin: 0px 0 7px 0;
 	height: 50px;
 }
 

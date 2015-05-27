@@ -8,16 +8,24 @@ from anon.forms import AnonPostForm, AnonCommitForm
 
 class AnonFrontView(ListView):
 	template_name = 'anon/front.html'
-	queryset = AnonPost.objects.last_commited()
+	# REVISAR!!!!
+	# queryset = AnonPost.objects.last_commited()
 	paginate_by = 5
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax(): self.template_name = 'ajax/anon_post_list.html'
 		return super(AnonFrontView, self).get(request, *args, **kwargs)
 
+	def get_queryset(self):
+		if self.kwargs['tab'] == 'top': return AnonPost.objects.last_commited()
+		else: return AnonPost.objects.created()
+
 	def get_context_data(self, **kwargs):
 		context = super(AnonFrontView, self).get_context_data(**kwargs)
 		context['list_url'] = '/anon'
+		context['tab_show'] = self.kwargs['tab']
+		if self.kwargs['tab'] == 'top': context['list_url'] = '/anon'
+		else: context['list_url'] = '/anon/new'
 		return context
 
 

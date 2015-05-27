@@ -36,14 +36,17 @@ class FrontView(ListView):
 		return super(FrontView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
-		return Post.objects.last_commited()
+		if self.kwargs['tab'] == 'top': return Post.objects.last_commited()
+		else: return Post.objects.created()
+
 
 	def get_context_data(self, **kwargs):
 		context = super(FrontView, self).get_context_data(**kwargs)
 		context['list'] = 'portada'
-		context['list_url'] = '/'
+		context['tab_show'] = self.kwargs['tab']
+		if self.kwargs['tab'] == 'top': context['list_url'] = '/'
+		else: context['list_url'] = '/new'
 		return context
-
 
 
 class SubPostListView(ListView):

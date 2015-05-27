@@ -14,7 +14,7 @@ def is_reserved(username):
 	reserved_usernames = ['dfiid', 'admin', 'user', 'sub', 'post', 'anon', 'create',
 						  'sub_follow', 'sub_unfollow', 'signup', 'login', 'logout',
 						  'contact', 'about', 'legal', 'blog', 'rss', 'feed', 'robots',
-						  'sitemap', 'settings', 'debug']
+						  'sitemap', 'settings', 'debug', 'top', 'new']
 
 	for name in reserved_usernames:
 		if name == username: return True
