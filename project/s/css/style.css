@@ -255,10 +255,11 @@ __________________________________________________________________________ */
 
 #dfiid a { color: #34AADC; }
 
-.create_action_link {
-	float: right;
-	margin: 10px 10px 20px 0;
+#dfiid img {
+	height: 20px;
+	margin: 0px 5px -3px 0px;
 }
+
 
 #dfiid_create_link {
 	border: 2px solid #EF4DB6;
@@ -268,6 +269,11 @@ __________________________________________________________________________ */
 #anon_create_link {
 	border: 2px solid #FF9500;
 	color: #FF9500;
+}
+
+.create_action_link {
+	float: right;
+	margin: 10px 10px 20px 0;
 }
 
 .panel_avatar {
@@ -443,7 +449,7 @@ __________________________________________________________________________ */
 #user_list_container {
 	overflow: auto;
 	width: 100%;
-	padding-top: 20px;
+	padding-top: 15px;
 }
 
 .sub_container {

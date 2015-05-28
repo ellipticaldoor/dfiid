@@ -11,7 +11,7 @@ urlpatterns = patterns(
 		{'template_name':'user/login.html', 'authentication_form': forms.LoginForm}, name = "login"),
 	url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name = "logout"),
 
-	url(r'^blog/$', views.UserView.as_view(), name='blog'),
+	url(r'^blog/$', views.BlogView.as_view(), name='blog'),
 	url(r'^user_follow/(?P<followed>[-\w]+)/$', login_required(views.UserFollowCreate.as_view()), name='follow'),
 	url(r'^user_unfollow/(?P<unfollowed>[-\w]+)/$', login_required(views.UserFollowDelete.as_view()), name='unfollow'),
 

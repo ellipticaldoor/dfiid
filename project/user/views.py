@@ -71,8 +71,8 @@ class ProfileView(ListView):
 		return context
 
 
-class UserView(ListView):
-	template_name = 'user/user.html'
+class BlogView(ListView):
+	template_name = 'user/blog.html'
 	model = User
 
 
