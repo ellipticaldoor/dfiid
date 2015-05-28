@@ -443,11 +443,6 @@ __________________________________________________________________________ */
 #user_list_container {
 	overflow: auto;
 	width: 100%;
-}
-
-#user_profile_list_container {
-	overflow: auto;
-	width: 100%;
 	padding-top: 20px;
 }
 

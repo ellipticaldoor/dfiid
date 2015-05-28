@@ -4,6 +4,10 @@
 {% block mid_panel %}
 	<a href="/create_sub" class="action_link create_action_link">crear sub</a>
 
+	<div id="profile_container">
+		<a href="/"><img id="dfiid_image_view" src="/s/img/sub_logo_text.jpg" alt="dfiid"></a>
+	</div>
+
 	<div id="user_list_container">
 		{% for object in object_list %}
 			<a class="sub_container" href="/sub/{{ object.slug }}">
