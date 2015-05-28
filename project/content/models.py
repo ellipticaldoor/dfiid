@@ -50,8 +50,11 @@ class PostQuerySet(models.QuerySet):
 	def created(self):
 		return self.filter(draft=False, show=True).order_by('-created')
 
-	def by_sub(self, sub):
-		return self.filter(sub=sub, draft=False, show=True)
+	def sub_last_commited(self, slug):
+		return self.filter(draft=False, show=True, sub_id=slug).order_by('-last_commited')
+
+	def sub_created(self, slug):
+		return self.filter(draft=False, show=True, sub_id=slug).order_by('-created')
 
 	def by_user(self, user):
 		return self.filter(user=user, show=True)
@@ -65,8 +68,8 @@ class Post(models.Model):
 		return 's/media/post/%s.png' % (instance.postid)
 
 	postid = models.CharField(primary_key=True, max_length=16, default=_createId)
-	user = models.ForeignKey(User, related_name="posts")
-	sub = models.ForeignKey(Sub, related_name="posts")
+	user = models.ForeignKey(User, related_name='posts')
+	sub = models.ForeignKey(Sub, related_name='posts')
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=100)
 	body = models.TextField(max_length=3000)
@@ -105,6 +108,7 @@ class Commit(models.Model):
 	body = models.TextField(max_length=500, default='')
 	body_html  = models.TextField(blank=True, null=True)
 	created = models.DateTimeField(auto_now_add=True)
+	show = models.BooleanField(default=True)
 
 	def save(self, *args, **kwargs):
 		self.body_html = markdown(self.body, safe_mode=True, extensions=['video'])

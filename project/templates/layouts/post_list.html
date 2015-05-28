@@ -2,24 +2,26 @@
 {% block title %}{{ list }}{% endblock %}
 
 {% block mid_panel %}
-	{% if list_url == '/' or list_url == '/new' %}
+	{% block head %}
 		<a href="/create" id="dfiid_create_link" class="action_link create_action_link">crear post</a>
 
 		<div id="profile_container">
 			<a href="/"><img id="dfiid_image_view" src="/s/img/dfiid_logo_text.jpg" alt="dfiid"></a>
 		</div>
-	{% endif %}
 
-	{% block tab %}
-		<div id="tab_selector">
-			<a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/">top</a>
-			<a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/new">new</a>
-		</div>
+		{% block tab %}
+			<div id="tab_selector">
+				<a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/">top</a>
+				<a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/new">new</a>
+			</div>
+		{% endblock %}
 	{% endblock %}
 
-	{% for object in object_list %}
-		{% block post_detail %}{{ block.super }}{% endblock %}
-	{% endfor %}
+	{% block list_content %}
+		{% for object in object_list %}
+			{% block post_detail %}{{ block.super }}{% endblock %}
+		{% endfor %}
+	{% endblock %}
 
 	<div id="loading"><div></div><div></div><div></div></div>
 {% endblock %}

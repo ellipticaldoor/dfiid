@@ -1,14 +1,6 @@
 {% extends 'layouts/post_list.html' %}
 {% block title %}{{ profile.username }}{% endblock %}
 
-
-{% block tab %}
-	<div id="tab_selector">
-		<a class="tab_selected" href="/{{ profile.username }}">post</a>
-		<a href="/{{ profile.username }}/commit">commit</a>
-	</div>
-{% endblock %}
-
 {% block mid_panel %}
 	<div id="profile_head" style="background-image: url('/s/media/user/bg/{{ profile.username }}.png');">
 		<div id="follow_action_container">
@@ -44,7 +36,11 @@
 	{% ifequal user.username  profile.username|slugify %}<a id="logout" href="/logout">logout</a>{% endifequal %}
 
 	{% if profile_show == 'post' %}
-		{{ block.super }}
+		<div id="tab_selector">
+			<a class="tab_selected" href="/{{ profile.username }}">post</a>
+			<a href="/{{ profile.username }}/commit">commit</a>
+		</div>
+		{% block list_content %}{{ block.super }}{% endblock %}
 	{% elif profile_show == 'commit' %}
 		<div id="tab_selector">
 			<a href="/{{ profile.username }}">post</a>
@@ -64,26 +60,31 @@
 			{% endif %}
 		{% endfor %}
 	{% elif profile_show == 'followers' %}
-		{% for follow in profile.followed.all %}
-			<a class="sub_container" href="/{{ follow.follower_id }}">
-				<img src="/s/media/user/avatar/{{ follow.follower_id }}.png">
-				<span>{{ follow.follower_id }}</span>
-			</a>
-		{% endfor %}
+		<div id="user_profile_list_container">
+			{% for follow in profile.followed.all %}
+				<a class="sub_container" href="/{{ follow.follower_id }}">
+					<img src="/s/media/user/avatar/{{ follow.follower_id }}.png">
+					<span>{{ follow.follower_id }}</span>
+				</a>
+			{% endfor %}
+		</div>
 	{% elif profile_show == 'following' %}
-		{% for follow in profile.follower.all %}
-			<a class="sub_container" href="/{{ follow.followed_id }}">
-				<img src="/s/media/user/avatar/{{ follow.followed_id }}.png">
-				<span>{{ follow.followed_id }}</span>
-			</a>
-		{% endfor %}
+	<div id="user_profile_list_container">
+			{% for follow in profile.follower.all %}
+				<a class="sub_container" href="/{{ follow.followed_id }}">
+					<img src="/s/media/user/avatar/{{ follow.followed_id }}.png">
+					<span>{{ follow.followed_id }}</span>
+				</a>
+			{% endfor %}
+		</div>
 	{% elif profile_show == 'sub_following' %}
-		{% for follow in profile.sub_follower.all %}
-			<a class="sub_container" href="/sub/{{ follow.sub_id }}">
-				<img src="/s/media/sub/image/{{ follow.sub_id }}.png">
-				<span>{{ follow.sub_id }}</span>
-			</a>
-		{% endfor %}
+		<div id="user_profile_list_container">
+			{% for follow in profile.sub_follower.all %}
+				<a class="sub_container" href="/sub/{{ follow.sub_id }}">
+					<img src="/s/media/sub/image/{{ follow.sub_id }}.png">
+					<span>{{ follow.sub_id }}</span>
+				</a>
+			{% endfor %}
+		</div>
 	{% endif %}
-
 {% endblock %}

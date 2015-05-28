@@ -59,15 +59,14 @@ class ProfileView(ListView):
 		context['action'] = 'follow'
 
 		if self.request.user.is_authenticated():
-			if username == profile:
-				context['action'] = 'edit'
+			if username == profile: context['action'] = 'edit'
 			else:
 				follow_state = UserFollow.objects.by_id(followid='%s>%s' % (username, profile))
 				if follow_state: context['action'] = 'unfollow'
 				else: context['action'] = 'follow'
 
 		if context['profile_show'] == 'commit':
-			context['commits'] = Commit.objects.filter(user_id=profile)
+			context['commits'] = Commit.objects.filter(user_id=profile, show=True)
 
 		return context
 

@@ -78,7 +78,11 @@ ul {
 	padding: 0;
 }
 
-.normal_selected { color: #34AADC; }
+.normal_selected {
+	color: #34AADC;
+	font-weight: bold;
+	text-decoration: underline;
+}
 
 .normal_selected span { color: #34AADC !important; }
 
@@ -439,6 +443,12 @@ __________________________________________________________________________ */
 #user_list_container {
 	overflow: auto;
 	width: 100%;
+}
+
+#user_profile_list_container {
+	overflow: auto;
+	width: 100%;
+	padding-top: 20px;
 }
 
 .sub_container {

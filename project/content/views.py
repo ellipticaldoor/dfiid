@@ -39,7 +39,6 @@ class FrontView(ListView):
 		if self.kwargs['tab'] == 'top': return Post.objects.last_commited()
 		else: return Post.objects.created()
 
-
 	def get_context_data(self, **kwargs):
 		context = super(FrontView, self).get_context_data(**kwargs)
 		context['list'] = 'portada'
@@ -58,7 +57,8 @@ class SubPostListView(ListView):
 		return super(SubPostListView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
-		return Post.objects.by_sub(self.kwargs['sub'])
+		if self.kwargs['tab'] == 'top': return Post.objects.sub_last_commited(self.kwargs['sub'])
+		else: return Post.objects.sub_created(self.kwargs['sub'])
 
 	def get_context_data(self, **kwargs):
 		context = super(SubPostListView, self).get_context_data(**kwargs)
@@ -67,8 +67,11 @@ class SubPostListView(ListView):
 		try: context['followers'] = self.kwargs['followers']
 		except: context['followers'] = False
 
+		context['tab_show'] = self.kwargs['tab'] 
 		context['list'] = sub
-		context['list_url'] = '/sub/%s' % sub
+		if self.kwargs['tab'] == 'top': context['list_url'] = '/sub/%s' % sub
+		else: context['list_url'] = '/sub/%s/new' % sub
+		
 		context['action'] = 'follow'
 
 		if user.is_authenticated():

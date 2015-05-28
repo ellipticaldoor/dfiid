@@ -8,7 +8,7 @@ from anon.forms import AnonPostForm, AnonCommitForm
 
 class AnonFrontView(ListView):
 	template_name = 'anon/front.html'
-	# REVISAR!!!!
+	# REVISAR porque funciona y en content no!!!!
 	# queryset = AnonPost.objects.last_commited()
 	paginate_by = 5
 

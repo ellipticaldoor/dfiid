@@ -10,7 +10,8 @@ urlpatterns = patterns(
 	url(r'^new/$', views.FrontView.as_view(), name='new', kwargs={'tab':'new'}),
 
 	url(r'^sub/$', views.SubView.as_view(), name='sub'),
-	url(r'^sub/(?P<sub>\S+)/$', views.SubPostListView.as_view(), name='sub_view'),
+	url(r'^sub/(?P<sub>\S+)/$', views.SubPostListView.as_view(), name='sub_view', kwargs={'tab':'top'}),
+	url(r'^sub/(?P<sub>\S+)/new$', views.SubPostListView.as_view(), name='sub_view_new', kwargs={'tab':'new'}),
 	url(r'^sub/(?P<sub>\S+)/(?P<followers>\S+)$', views.SubPostListView.as_view(), name='sub_followers'),
 	url(r'^create_sub/$', login_required(views.CreateSubView.as_view()), name='create_sub'),
 	
