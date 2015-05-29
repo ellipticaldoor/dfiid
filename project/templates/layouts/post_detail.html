@@ -43,7 +43,7 @@
 						<span><a href="/{{ commit.user_id }}">{{ commit.user_id }}</a></span>
 						<span class="date">{{ object.created |date:"d/m/Y H:i" }}</span>
 
-						<a class="commits_link" href="#{{ commit.commitid}}">#{{ commit.commitid}}</a>
+						<a class="commits_link commit_id" href="#{{ commit.commitid}}">#{{ commit.commitid}}</a>
 					</div>
 				{% endblock %}
 			</div>

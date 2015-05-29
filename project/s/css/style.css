@@ -257,7 +257,7 @@ __________________________________________________________________________ */
 
 #dfiid img {
 	height: 20px;
-	margin: 0px 5px -3px 0px;
+	margin: 0px 3px -3px 0px;
 }
 
 
@@ -376,9 +376,11 @@ img {
 }
 
 .post_info {
+	width: calc(100% + 8px);
 	overflow: hidden;
 	color: #8E8E93;
 	line-height: 37px;
+	margin: 0 0 0 -4px;
 }
 
 .post_info img {
@@ -387,7 +389,7 @@ img {
 	margin: 0;
 }
 
-.anon_post_info { margin: -9px 0 -8px 0; }
+.anon_post_info { margin: -9px 0 -8px -4px; }
 
 .post_info img, .post_info span { float: left; }
 .post_info span { margin-left: 8px; }
@@ -405,6 +407,8 @@ img {
 	height: 14px;
 	margin: 11px 4px 5px 5px;
 }
+
+.commit_id { margin-right: 4px; }
 
 #commit_form {
 	width: 95%;
