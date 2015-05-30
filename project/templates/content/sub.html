@@ -9,11 +9,15 @@
 	</div>
 
 	<div id="user_list_container">
-		{% for object in object_list %}
-			<a class="sub_container" href="/sub/{{ object.slug }}">
-				<img src="/{{ object.image }}">
-				<span>{{ object.slug }}</span>
-			</a>
-		{% endfor %}
+		<ul>
+			{% for object in object_list %}
+				<li>
+					<a class="sub_container" href="/sub/{{ object.slug }}">
+						<img src="/{{ object.image }}">
+						<span>{{ object.slug }}</span>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
 	</div>
 {% endblock %}

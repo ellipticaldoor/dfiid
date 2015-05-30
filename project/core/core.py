@@ -68,12 +68,3 @@ def cover_resize(final_cover_dir):
 	img = img.resize((basewidth,hsize), Image.ANTIALIAS).crop((0, 0, 900, 210))
 	img.save(final_cover_dir, 'PNG')
 	return
-
-def image_resize(image_dir):
-	basewidth = 900
-	img = Image.open(image_dir)
-	wpercent = (basewidth/float(img.size[0]))
-	hsize = int((float(img.size[1])*float(wpercent)))
-	img = img.resize((basewidth,hsize), Image.ANTIALIAS)
-	img.save(image_dir, 'PNG')
-	return

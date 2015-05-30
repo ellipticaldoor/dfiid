@@ -5,7 +5,7 @@ from content.models import Post
 class ContentFeed(Feed):
 	title = "dfiid content"
 	link = "/feed"
-	description = "Latest Trantoor posts"
+	description = "Latest dfiid posts"
 
 	def items(self):
 		return Post.objects.published()[:5]

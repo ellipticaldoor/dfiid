@@ -5,8 +5,10 @@ from dfiid import sitemaps, feeds
 
 
 sitemaps = {
-	'site': sitemaps.SiteSitemap(['front', 'search', 'feed']),
-	'content': sitemaps.ContentSitemap,
+	'site': sitemaps.SiteSitemap(['front', 'new', 'sub', 'anon_front',
+								  'anon_new_front', 'create', 'blog']),
+	'post': sitemaps.PostSitemap,
+	'anon_post': sitemaps.AnonPostSitemap,
 	'sub': sitemaps.SubSitemap,
 	'user': sitemaps.UserSitemap,
 }
@@ -22,7 +24,7 @@ if settings.DEBUG:
 urlpatterns += patterns(
 	'',
 	url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps':sitemaps}),
-	url(r'^feed/$', feeds.ContentFeed(), name='feed'),
+	# url(r'^feed/$', feeds.ContentFeed(), name='feed'),
 	url(r'^admin/', include(admin.site.urls)),
 
 	url(r'^', include('content.urls')),
