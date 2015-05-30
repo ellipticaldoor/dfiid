@@ -2,6 +2,7 @@
 {% block title %}editar {{ object.username }}{% endblock %}
 
 {% block mid_panel %}
+	<div class="warning">*es necesario recargar la página después de subir una nueva imagen :P</div>
 	{{ form.non_field_errors }}
 	<form id="edit_profile_form" action="/{{ object.username }}/edit/" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
@@ -10,17 +11,23 @@
 			{{ form.avatar.errors }}
 			{{ form.avatar }}
 			<br>
-			<div class="warning">
-				*a veces es necesario recargar la página después de guardar un nuevo avatar.
-			</div>
+		</div>
+		<div id="edit_profile_avatar" class="edit_profile_section">
+			<p>cambiar cover</p>
+			{{ form.cover.errors }}
+			{{ form.cover }}
+			<br>
 		</div>
 		<div id="edit_profile_password" class="edit_profile_section">
 			<p>cambiar contraseña</p>
+			<div class="warning">*disponible dentro de poco, ¡hay las prisas!</div>
+			<!--
 			{{ form.password }}
 			{{ form.password.errors }}
 			<br>
 			{{ form.new_password }}
 			{{ form.new_password.errors }}
+			-->
 		</div>
 		<input id="edit_profile_form_button" class="submit" type="submit" value="guardar" />
 	</form>

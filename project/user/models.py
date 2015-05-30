@@ -26,6 +26,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 	def get_avatar(instance, filename):
 		return 's/media/user/avatar/%s.png' % instance.username
 
+	def get_cover(instance, filename):
+		return 's/media/user/cover/%s.png' % instance.username
+
 	username = models.SlugField(primary_key=True, max_length=16)
 	USERNAME_FIELD = 'username'
 
@@ -37,6 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	is_staff = models.BooleanField(default=False)
 
 	avatar = models.ImageField(upload_to=get_avatar)
+	cover = models.ImageField(upload_to=get_cover, blank=True)
 	follower_number = models.IntegerField(default=0)
 	following_number = models.IntegerField(default=0)
 	sub_following_number = models.IntegerField(default=0)

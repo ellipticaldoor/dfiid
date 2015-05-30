@@ -19,7 +19,9 @@ class AnonPostQuerySet(models.QuerySet):
 
 class AnonPost(models.Model):
 	def get_image(instance, filename):
-		return 's/media/anon/post/%s.png' % (instance.postid)
+		if not hasattr(instance.postid, 'decode'): postid = instance.postid
+		else: postid = instance.postid.decode('utf-8')
+		return 's/media/post/%s.png' % (postid)
 
 	postid = models.CharField(primary_key=True, max_length=16, default=_createId)
 	title = models.CharField(max_length=100)

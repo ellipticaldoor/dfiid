@@ -415,7 +415,11 @@ img {
 	margin: 0 auto 15px auto;
 }
 
-.commit_id_title { color: #5856D6; }
+.commit_id_title {
+	color: #5856D6;
+	font-size: 90%;
+	margin-left: 2px;
+}
 
 #paginate { padding: 25px 4px 0 0; }
 
@@ -633,7 +637,7 @@ __________________________________________________________________________ */
 
 .edit_profile_section #image_post_edit img { margin-top: 0; }
 
-#edit_profile_form #id_avatar {
+#edit_profile_form #id_avatar, #edit_profile_form #id_cover{
 	border: 0;
 	padding: 0;
 	margin-top: 3px;

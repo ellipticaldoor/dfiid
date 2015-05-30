@@ -10,7 +10,7 @@ from django import forms
 from user.models import User, UserFollow
 from content.models import Post, Commit
 from user.forms import UserEditForm, SignUpForm, UserFollowForm
-from core.core import random_avatar, avatar_resize
+from core.core import random_avatar, avatar_resize, cover_resize
 
 
 class SignUpView(CreateView):
@@ -85,10 +85,10 @@ class UserEdit(UpdateView):
 		return User.objects.filter(username=self.request.user)
 
 	def form_valid(self, form):
+		username = self.request.user
 		obj = form.save(commit=False)
 		obj.save()
 
-		username = self.request.user
 		final_avatar_dir = 's/media/user/avatar/%s.png' % username
 
 		if not obj.avatar == final_avatar_dir:
@@ -97,6 +97,15 @@ class UserEdit(UpdateView):
 			obj.avatar = final_avatar_dir
 			obj.save()
 			avatar_resize(final_avatar_dir)
+
+		final_cover_dir = 's/media/user/cover/%s.png' % username
+
+		if not obj.cover == final_cover_dir:
+			cover_dir = '%s/%s' % (settings.BASE_DIR, obj.cover)
+			os.rename(cover_dir, final_cover_dir)
+			obj.cover = final_cover_dir
+			obj.save()
+			cover_resize(final_cover_dir)
 
 		return HttpResponseRedirect('/%s/edit' % self.kwargs['pk'])
 

@@ -65,7 +65,9 @@ class PostQuerySet(models.QuerySet):
 
 class Post(models.Model):
 	def get_image(instance, filename):
-		return 's/media/post/%s.png' % (instance.postid)
+		if not hasattr(instance.postid, 'decode'): postid = instance.postid
+		else: postid = instance.postid.decode('utf-8')
+		return 's/media/post/%s.png' % (postid)
 
 	postid = models.CharField(primary_key=True, max_length=16, default=_createId)
 	user = models.ForeignKey(User, related_name='posts')

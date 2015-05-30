@@ -2,7 +2,7 @@
 {% block title %}{{ profile.username }}{% endblock %}
 
 {% block mid_panel %}
-	<div id="profile_head" style="background-image: url('/s/media/user/bg/{{ profile.username }}.png');">
+	<div id="profile_head" style="background-image: url('/{{ profile.cover }}');background-repeat: no-repeat;background-size: auto 100%;">
 		<div id="follow_action_container">
 			{% if action == 'follow' %}
 				<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">

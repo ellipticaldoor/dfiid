@@ -37,22 +37,24 @@ class AvatarInput(forms.ClearableFileInput):
 
 
 class UserEditForm(forms.ModelForm):
-	def __init__(self, *args, **kwargs):
-		super(UserEditForm, self).__init__(*args, **kwargs)
-		self.fields['password'].widget.attrs.update({
-				'placeholder': 'contraseña actual'
-			})
-		self.fields['new_password'].widget.attrs.update({
-				'placeholder': 'nueva contraseña'
-			})
+	# def __init__(self, *args, **kwargs):
+	# 	super(UserEditForm, self).__init__(*args, **kwargs)
+	# 	self.fields['password'].widget.attrs.update({
+	# 			'placeholder': 'contraseña actual'
+	# 		})
+	# 	self.fields['new_password'].widget.attrs.update({
+	# 			'placeholder': 'nueva contraseña'
+	# 		})
 
 	avatar = forms.ImageField(label='', widget=AvatarInput)
-	password = forms.CharField(label='', widget=forms.PasswordInput, required=False)
-	new_password = forms.CharField(label='', widget=forms.PasswordInput, required=False)
+	cover = forms.ImageField(label='', widget=AvatarInput)
+	# password = forms.CharField(label='', widget=forms.PasswordInput, required=False)
+	# new_password = forms.CharField(label='', widget=forms.PasswordInput, required=False)
 
 	class Meta:
 		model = User
-		fields = ['avatar', 'password', 'new_password']
+		# fields = ['avatar', 'cover', 'password', 'new_password']
+		fields = ['avatar', 'cover']
 
 
 class SignUpForm(forms.ModelForm):
