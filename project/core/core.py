@@ -61,10 +61,10 @@ def avatar_resize(final_avatar_dir):
 	return
 
 def cover_resize(final_cover_dir):
-	basewidth = 900
+	basewidth = 951
 	img = Image.open(final_cover_dir)
 	wpercent = (basewidth/float(img.size[0]))
 	hsize = int((float(img.size[1])*float(wpercent)))
-	img = img.resize((basewidth,hsize), Image.ANTIALIAS).crop((0, 0, 900, 210))
+	img = img.resize((basewidth,hsize), Image.ANTIALIAS).crop((0, 0, 951, 215))
 	img.save(final_cover_dir, 'PNG')
 	return

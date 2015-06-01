@@ -349,6 +349,11 @@ __________________________________________________________________________ */
 		height: 30px;
 		margin: 0 9px -8px 0;
 	}
+
+	#dfiid img {
+		height: 26px;
+		margin: 0px 5px -5px 0px;
+	}
 }
 
 @media (max-width: 700px) {
@@ -482,6 +487,7 @@ img.thumb {
 	right: 0;
 	top: 0;
 	height: auto;
+	border-radius: 2px;
 }
 
 div.play_button {
@@ -641,8 +647,6 @@ __________________________________________________________________________ */
 	padding: 10px;
 	background-color: rgba(255, 255, 255, 0.8);
 }
-
-.sub_follow_action_container { padding: 0 0 10px 0 !important;}
 
 #follow_action_container form { margin-top: -5px; }
 
