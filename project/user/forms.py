@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 
 from user.models import User, UserFollow
-from core.core import is_reserved
+from core.core import AvatarInput, is_reserved
 
 from nocaptcha_recaptcha.fields import NoReCaptchaField
 
@@ -29,13 +29,6 @@ class LoginForm(AuthenticationForm):
 	password = forms.CharField(label='', widget=forms.PasswordInput)
 
 
-class AvatarInput(forms.ClearableFileInput):
-	template_with_initial = (
-		'<div id="image_post_edit"><img src="/%(initial_url)s"></div>'
-		'%(input)s'
-	)
-
-
 class UserEditForm(forms.ModelForm):
 	# def __init__(self, *args, **kwargs):
 	# 	super(UserEditForm, self).__init__(*args, **kwargs)
@@ -47,7 +40,7 @@ class UserEditForm(forms.ModelForm):
 	# 		})
 
 	avatar = forms.ImageField(label='', widget=AvatarInput)
-	cover = forms.ImageField(label='', widget=AvatarInput)
+	cover = forms.ImageField(label='', widget=AvatarInput, required=False)
 	# password = forms.CharField(label='', widget=forms.PasswordInput, required=False)
 	# new_password = forms.CharField(label='', widget=forms.PasswordInput, required=False)
 

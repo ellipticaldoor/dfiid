@@ -1,8 +1,7 @@
-
-
 from django import forms
 
 from content.models import Sub, SubFollow, Post, Commit
+from core.core import ImageInput
 
 
 class SubForm(forms.ModelForm):
@@ -25,14 +24,6 @@ class SubFollowForm(forms.ModelForm):
 	class Meta:
 		model = SubFollow
 		fields = []
-
-
-class ImageInput(forms.ClearableFileInput):
-	template_with_initial = (
-		'<div id="image_post_edit"><div><img src="/%(initial_url)s"></div>'
-		'<input id="image-clear_id" name="image-clear" type="checkbox"> <label for="image-clear_id">borrar</label></div>'
-		'%(input)s'
-	)
 
 
 class PostForm(forms.ModelForm):

@@ -9,6 +9,7 @@ __________________________________________________________________________ */
 }
 
 .warning {
+	display: inline-block;
 	margin: 5px 0 5px 0;
 	padding: 5px;
 	border: 2px solid #FF9500;

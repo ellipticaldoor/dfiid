@@ -4,6 +4,7 @@ from PIL import Image, ImageFilter
 from numpy import random
 
 from django.conf import settings
+from django.forms import ClearableFileInput
 
 
 def _createId():
@@ -19,6 +20,21 @@ def is_reserved(username):
 	for name in reserved_usernames:
 		if name == username: return True
 	return False
+
+
+class ImageInput(ClearableFileInput):
+	template_with_initial = (
+		'<div id="image_post_edit"><div><img src="/%(initial_url)s"></div>'
+		'<input id="image-clear_id" name="image-clear" type="checkbox"> <label for="image-clear_id">borrar</label></div>'
+		'%(input)s'
+	)
+
+
+class AvatarInput(ClearableFileInput):
+	template_with_initial = (
+		'<div id="image_post_edit"><img src="/%(initial_url)s"></div>'
+		'%(input)s'
+	)
 
 
 def random_avatar(username):

@@ -86,6 +86,14 @@ class UserEdit(UpdateView):
 
 	def form_valid(self, form):
 		username = self.request.user
+		user_before = User.objects.get(username=username)
+		if user_before.cover:
+			print('hayyyyyyyyyyy')
+			cover_exists = True
+		else:
+			print('no haaaaaaaaaaay')
+			cover_exists = False
+
 		obj = form.save(commit=False)
 		obj.save()
 
@@ -100,12 +108,18 @@ class UserEdit(UpdateView):
 
 		final_cover_dir = 's/media/user/cover/%s.png' % username
 
-		if not obj.cover == final_cover_dir:
+		def create_cover():
 			cover_dir = '%s/%s' % (settings.BASE_DIR, obj.cover)
 			os.rename(cover_dir, final_cover_dir)
 			obj.cover = final_cover_dir
 			obj.save()
 			cover_resize(final_cover_dir)
+
+		if not obj.cover == final_cover_dir:
+			if os.path.isfile(final_cover_dir):
+				create_cover()
+
+		if obj.cover and not cover_exists: create_cover()
 
 		return HttpResponseRedirect('/%s/edit' % self.kwargs['pk'])
 

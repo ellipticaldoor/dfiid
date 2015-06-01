@@ -40,7 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	is_staff = models.BooleanField(default=False)
 
 	avatar = models.ImageField(upload_to=get_avatar)
-	cover = models.ImageField(upload_to=get_cover, blank=True)
+	cover = models.ImageField(upload_to=get_cover, blank=True, null=True)
 	follower_number = models.IntegerField(default=0)
 	following_number = models.IntegerField(default=0)
 	sub_following_number = models.IntegerField(default=0)
