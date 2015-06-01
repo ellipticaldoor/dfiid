@@ -37,7 +37,7 @@ class SignUpView(CreateView):
 
 class ProfileView(ListView):
 	template_name = 'user/profile.html'
-	paginate_by = 5
+	paginate_by = 4
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax(): self.template_name = 'ajax/post_list.html'

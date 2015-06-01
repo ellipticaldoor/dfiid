@@ -29,7 +29,7 @@ class SubView(ListView):
 
 class FrontView(ListView):
 	template_name = 'layouts/post_list.html'
-	paginate_by = 5
+	paginate_by = 4
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax(): self.template_name = 'ajax/post_list.html'
@@ -50,7 +50,7 @@ class FrontView(ListView):
 
 class SubPostListView(ListView):
 	template_name = 'content/sub_post_list.html'
-	paginate_by = 5
+	paginate_by = 4
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax(): self.template_name = 'ajax/post_list.html'

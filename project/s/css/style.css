@@ -1,57 +1,3 @@
-/* embed video
-__________________________________________________________________________ */
-
-.video_container {
-	display: block;
-	margin: 0;
-	width: 100%;
-	max-width: 600px;
-}
-
-.player {
-	display: block; width: 100%;
-	padding-bottom: 56.25%;
-	overflow: hidden;
-	position: relative;
-	width: 100%; height: 100%;
-	cursor: hand;
-	cursor: pointer;
-	display: block;
-}
-
-img.thumb {
-	bottom: 0;
-	display: block;
-	left: 0;
-	margin: auto;
-	max-width: 100%;
-	width: 100%;
-	position: absolute;
-	right: 0;
-	top: 0;
-	height: auto;
-}
-
-div.play_button {
-	height: 72px;
-	width: 72px;
-	left: 50%;
-	top: 50%;
-	margin-left: -36px;
-	margin-top: -36px;
-	position: absolute;
-	background: url('/s/img/play.png') no-repeat;
-}
-
-#iframe {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-
 /* general
 __________________________________________________________________________ */
 
@@ -478,6 +424,58 @@ img {
 #paginate { padding: 25px 4px 0 0; }
 
 .edit { color: #5856D6; }
+
+
+/* embed video
+__________________________________________________________________________ */
+
+.video_container {
+	display: block;
+	width: 100%;
+}
+
+.player {
+	display: block; width: 100%;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+	position: relative;
+	width: 100%; height: 100%;
+	cursor: hand;
+	cursor: pointer;
+	display: block;
+}
+
+img.thumb {
+	bottom: 0;
+	display: block;
+	left: 0;
+	margin: auto;
+	max-width: 100%;
+	width: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: auto;
+}
+
+div.play_button {
+	height: 72px;
+	width: 72px;
+	left: 50%;
+	top: 50%;
+	margin-left: -36px;
+	margin-top: -36px;
+	position: absolute;
+	background: url('/s/img/play.png') no-repeat;
+}
+
+#iframe {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 
 
 /* tabs

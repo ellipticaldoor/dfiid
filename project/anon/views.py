@@ -10,7 +10,7 @@ class AnonFrontView(ListView):
 	template_name = 'anon/front.html'
 	# REVISAR porque funciona y en content no!!!!
 	# queryset = AnonPost.objects.last_commited()
-	paginate_by = 5
+	paginate_by = 4
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax(): self.template_name = 'ajax/anon_post_list.html'
