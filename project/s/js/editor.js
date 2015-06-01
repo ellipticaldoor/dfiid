@@ -22,7 +22,6 @@ document.addEventListener('keydown', function(event) {
 			editor_hidden = true;
 
 			update_preview();
-			fluidvids.init();
 		}
 		else {
 			editor_section.style.display = 'block';

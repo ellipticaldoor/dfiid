@@ -1,10 +1,12 @@
 from markdown import markdown
+from mdx_video import VideoExtension
 
 from django.db import models
 from django.utils.text import slugify
 
 from user.models import User
 from core.core import _createId
+from core.video_embed import CustomVideoExtension
 
 
 class Sub(models.Model):
@@ -88,7 +90,7 @@ class Post(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title.replace(' ', '_'))
 		if not self.slug: self.slug = '_'
-		self.body_html = markdown(self.body, safe_mode=True, extensions=['video'])
+		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
 		super(Post, self).save(*args, **kwargs)	
 
 	def get_absolute_url(self):

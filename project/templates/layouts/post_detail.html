@@ -8,7 +8,7 @@
 			<div class="post_content">
 				{{ object.body_html|safe }}
 				{% if object.image   %}
-					<p><img src="/{{ object.image }}"></p>
+					<p><a href="/{{ object.image }}"><img src="/{{ object.image }}"></a></p>
 				{% endif %}
 			</div>
 
