@@ -289,10 +289,9 @@ __________________________________________________________________________ */
 #create_panel_link { color: #EF4DB6 !important; }
 #github_panel_link { color: #8E8E93 !important; }
 
-.nav_link {
-	width: 50px;
-	text-decoration: none;
-}
+.nav_link { width: 50px; }
+
+.nav_link:focus { text-decoration: none; }
 
 #link_nav_link { display: none; }
 #mid_nav_link { display: none; }
@@ -328,15 +327,12 @@ __________________________________________________________________________ */
 	#link_panel, #info_panel {
 		display: none;
 		width: 100%;
+		margin-top: 10px;
 	}
 
-	#link_panel { margin-top: 0px; }
-
-	#info_panel { margin-top: 10px; }
-
 	#link_panel li {
-		margin: 12px 0 0 10px;
-		font-size: 140%;
+		margin: 15px 0 0 10px;
+		font-size: 125%;
 	}
 
 	.visit {
