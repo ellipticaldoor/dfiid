@@ -39,8 +39,20 @@ function youtubeThumb(id) {
 
 
 function vimeoThumb(id) {
-	var thumb_url = 'http://i.imgur.com/F9MdVFE.jpg'
-	return '<img class="thumb" src="' + thumb_url + '" ><div class="play_button"></div>';
+	var thumb_id = 'thumb_' + id;
+
+	$.ajax({
+		type:'GET',
+		url: 'http://vimeo.com/api/v2/video/' + id + '.json',
+		jsonp: 'callback',
+		dataType: 'jsonp',
+		success: function(data){
+			var thumb_image = document.getElementById(thumb_id);
+			thumb_image.setAttribute('src', data[0].thumbnail_large);
+		}
+	});
+
+	return '<img id="thumb_' + id + '" class="thumb" src="" ><div class="play_button"></div>';
 }
 
 
