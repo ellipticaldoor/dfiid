@@ -39,9 +39,12 @@
 
 		$(window).scroll(function() {
 			if (scroll) {
-				if($(window).scrollTop() + $(window).height() == $(document).height()) {
-					ajaxCall();
-			  	}
+				if ( main_panel == 2) {
+					if($(window).scrollTop() + $(window).height() == $(document).height()) {
+						ajaxCall();
+						console.log(main_panel);
+					}
+				}
 			}
 		});
 

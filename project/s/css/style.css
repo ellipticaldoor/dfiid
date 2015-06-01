@@ -318,7 +318,21 @@ __________________________________________________________________________ */
 @media (max-width: 950px) {
 	nav { display: block; }
 	#link_nav_link, #mid_nav_link, #info_nav_link { display: inline-block; }
+
 	#link_panel, #info_panel { display: none; }
+
+	#link_panel { width: 100%; }
+
+	#link_panel ul {
+		width: 50%;
+		margin: 0 auto;
+	}
+
+	#link_panel li {
+		margin: 12px 0 0 10px;
+		font-size: 140%;
+	}
+
 	#mid_panel {
 		width: 100vw;
 		margin-left: calc((100vw - 700px)/2);
