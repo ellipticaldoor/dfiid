@@ -1,42 +1,42 @@
 {% extends 'layouts/post_list.html' %}
 
-{% block head %}
-	<div id="follow_action_container" class="sub_follow_action_container">
-		<div id="follow_container">
-			<a class="{% if followers %}normal_selected{% endif %}" href="/sub/{{ list.slug }}/followers">{{ list.follower_number }}<span> followers</span></a>
-		</div>
-		{% if action == 'follow' %}
-			<form id="profile_option" action="/sub_follow/{{ list.slug }}/" method="post">
-				{% csrf_token %}
-				{{ form }}
-				<input class="action_link" type="submit" value="follow sub" />
-			</form>
-		{% elif action == 'unfollow' %}
-			<form id="profile_option" action="/sub_unfollow/{{ list.slug }}/" method="post">
-				{% csrf_token %}
-				{{ form }}
-				<input class="action_link" type="submit" value="unfollow sub" />
-			</form>
-		{% endif %}
-	</div>
-
-	<div id="profile_container">
-		<a id="profile_username" href="/sub/{{ list.slug }}"><img id="sub_image_view" src="/s/media/sub/image/{{ list.slug }}.png" alt="{{ list.slug }}"></a>
-	</div>
-	<span id="username_rss_container">
-		<a id="profile_username" href="/sub/{{ list.slug }}">{{ list.slug }}</a>
-	</span>
-
-	{% block tab %}
-		<div id="tab_selector">
-			<a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/sub/{{ list.slug }}">top</a>
-			<a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/sub/{{ list.slug }}/new">new</a>
-		</div>
-	{% endblock %}
-{% endblock %}
-
 {% block mid_panel %}
 	{% if followers %}
+		{% block head %}
+			<div id="follow_action_container" class="sub_follow_action_container">
+				<div id="follow_container">
+					<a class="{% if followers %}normal_selected{% endif %}" href="/sub/{{ list.slug }}/followers">{{ list.follower_number }}<span> followers</span></a>
+				</div>
+				{% if action == 'follow' %}
+					<form id="profile_option" action="/sub_follow/{{ list.slug }}/" method="post">
+						{% csrf_token %}
+						{{ form }}
+						<input class="action_link" type="submit" value="follow sub" />
+					</form>
+				{% elif action == 'unfollow' %}
+					<form id="profile_option" action="/sub_unfollow/{{ list.slug }}/" method="post">
+						{% csrf_token %}
+						{{ form }}
+						<input class="action_link" type="submit" value="unfollow sub" />
+					</form>
+				{% endif %}
+			</div>
+
+			<div id="profile_container">
+				<a id="profile_username" href="/sub/{{ list.slug }}"><img id="sub_image_view" src="/s/media/sub/image/{{ list.slug }}.png" alt="{{ list.slug }}"></a>
+			</div>
+			<span id="username_rss_container">
+				<a id="profile_username" href="/sub/{{ list.slug }}">{{ list.slug }}</a>
+			</span>
+
+			{% block tab %}
+				<div id="tab_selector">
+					<a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/sub/{{ list.slug }}">top</a>
+					<a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/sub/{{ list.slug }}/new">new</a>
+				</div>
+			{% endblock %}
+		{% endblock %}
+
 		{% with list.sub_followed.all as follows %} 
 			<ul>
 				{% for follow in follows %}
