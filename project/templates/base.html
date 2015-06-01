@@ -26,7 +26,12 @@
 			<ul>
 				<li><a id="link_nav_link" class="nav_link" href="#" onClick="return false;">link</a></li>
 				<li><a id="mid_nav_link" class="nav_link" href="#" onClick="return false;">mid</a></li>
-				<li><a id="info_nav_link" class="nav_link" href="#" onClick="return false;">info</a></li>
+
+				{% if user.is_authenticated %}
+					{% if user.following_number > 0 or user.sub_following_number > 0 %}
+						<li><a id="info_nav_link" class="nav_link" href="#" onClick="return false;">info</a></li>
+					{% endif %}
+				{% endif %}
 			</ul>
 		</nav>
 
@@ -58,25 +63,42 @@
 			{% block mid_panel %}{% endblock %}
 		</div>
 
-		<div id="info_panel" class="panel side_panel">
-			<ul>
-				{% for follow in user.follower.all %}
-					<a href="/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
-				{% endfor %}
+		{% if user.is_authenticated %}
+			{% if user.following_number > 0 or user.sub_following_number > 0 %}
+				<div id="info_panel" class="panel side_panel">
+					<ul>
+						{% if user.following_number > 0 %}
+							{% for follow in user.follower.all %}
+								<a href="/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
+							{% endfor %}
+						{% endif %}
 
-				<div class="separator"></div>
+						<div class="separator"></div>
 
-				{% for sub_follow in user.sub_follower.all %}
-					<a href="/sub/{{ sub_follow.sub_id }}">
-						<li class="visit"><img class="panel_avatar" src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">{{ sub_follow.sub_id }}</li>
-					</a>
-				{% endfor %}
-			</ul>
-		</div>
+						{% if user.sub_following_number > 0 %}
+							{% for sub_follow in user.sub_follower.all %}
+								<a href="/sub/{{ sub_follow.sub_id }}">
+									<li class="visit"><img class="panel_avatar" src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">{{ sub_follow.sub_id }}</li>
+								</a>
+							{% endfor %}
+						{% endif %}
+					</ul>
+				</div>
+			{% endif %}
+		{% endif %}
 	</span>
 
 	{% compress js inline %}
 		<script src="/s/js/lib/zepto_1.1.6.min.js"></script>
+		<script>
+			var show_info = false;
+
+			{% if user.is_authenticated %}
+				{% if user.following_number > 0 or user.sub_following_number > 0 %}
+					show_info = true;
+				{% endif %}
+			{% endif %}
+		</script>
 		<script src="/s/js/global.js"></script>
 		<script src="/s/js/video_thumb.js"></script>
 		{% block js %}{% endblock %}

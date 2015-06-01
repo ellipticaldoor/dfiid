@@ -259,8 +259,8 @@ __________________________________________________________________________ */
 #dfiid a { color: #34AADC; }
 
 #dfiid img {
-	height: 20px;
-	margin: 0px 3px -3px 0px;
+	height: 22px;
+	margin: 0px 4px -4px 0px;
 }
 
 
@@ -348,11 +348,6 @@ __________________________________________________________________________ */
 	.panel_avatar {
 		height: 30px;
 		margin: 0 9px -8px 0;
-	}
-
-	#dfiid img {
-		height: 26px;
-		margin: 0px 5px -5px 0px;
 	}
 }
 

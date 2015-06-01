@@ -1,11 +1,11 @@
 // global
 var link_panel = document.getElementById('link_panel');
 var mid_panel = document.getElementById('mid_panel');
-var info_panel = document.getElementById('info_panel');
+if (show_info) { var info_panel = document.getElementById('info_panel'); }
 
 var link_nav_link = document.getElementById('link_nav_link');
 var mid_nav_link = document.getElementById('mid_nav_link');
-var info_nav_link = document.getElementById('info_nav_link');
+if (show_info) { var info_nav_link = document.getElementById('info_nav_link'); }
 
 // UI logic related
 var show_mode = 2;
@@ -60,10 +60,13 @@ mid_nav_link.addEventListener('click', function() {
 	set_panel_visibility();
 });
 
-info_nav_link.addEventListener('click', function() {
-	main_panel = 3;
-	set_panel_visibility();
-});
+if (show_info) {
+	info_nav_link.addEventListener('click', function() {
+		main_panel = 3;
+		set_panel_visibility();
+	});
+}
+
 
 
 function set_show_mode() {
@@ -78,17 +81,17 @@ function set_selected() {
 	if (main_panel == 1) {
 		link_nav_link.classList.add('selected');
 		mid_nav_link.classList.remove('selected');
-		info_nav_link.classList.remove('selected');
+		if (show_info) { info_nav_link.classList.remove('selected'); }
 	}
 	else if (main_panel == 2) {
 		link_nav_link.classList.remove('selected');
 		mid_nav_link.classList.add('selected');
-		info_nav_link.classList.remove('selected');
+		if (show_info) { info_nav_link.classList.remove('selected'); }
 	}
 	else if (main_panel == 3) {
 		link_nav_link.classList.remove('selected');
 		mid_nav_link.classList.remove('selected');
-		info_nav_link.classList.add('selected');
+		if (show_info) { info_nav_link.classList.add('selected'); }
 	}
 }
 
@@ -97,23 +100,23 @@ function set_panel_visibility() {
 	if (show_mode == 2) {
 		link_panel.style.display = 'block';
 		mid_panel.style.display = 'block';
-		info_panel.style.display = 'block';
+		if (show_info) { info_panel.style.display = 'block'; }
 	}
 	else {
 		if (main_panel == 1) {
 			link_panel.style.display = 'block';
 			mid_panel.style.display = 'none';
-			info_panel.style.display = 'none';
+			if (show_info) { info_panel.style.display = 'none'; }
 		}
 		else if (main_panel == 2) {
 			link_panel.style.display = 'none';
 			mid_panel.style.display = 'block';
-			info_panel.style.display = 'none';
+			if (show_info) { info_panel.style.display = 'none'; }
 		}
 		else if (main_panel == 3) {
 			link_panel.style.display = 'none';
 			mid_panel.style.display = 'none';
-			info_panel.style.display = 'block';
+			if (show_info) { info_panel.style.display = 'block'; }
 		}
 		set_selected();
 	}
