@@ -1,5 +1,4 @@
 from markdown import markdown
-from mdx_video import VideoExtension
 
 from django.db import models
 from django.utils.text import slugify
