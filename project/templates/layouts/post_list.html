@@ -66,6 +66,7 @@
 		function pageSuccess(data) {
 			page_number = page_number + 1;
 			$(data).insertAfter($('.post').last());
+			video_thumb();
 		}
 	</script>
 {% endblock %}
