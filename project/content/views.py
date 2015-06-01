@@ -64,8 +64,7 @@ class SubPostListView(ListView):
 		context = super(SubPostListView, self).get_context_data(**kwargs)
 		sub = Sub.objects.get(pk=self.kwargs['sub'])
 		user = self.request.user
-		try: context['followers'] = self.kwargs['followers']
-		except: context['followers'] = False
+		if self.kwargs['tab'] == 'followers': context['followers'] = True
 
 		context['tab_show'] = self.kwargs['tab'] 
 		context['list'] = sub
