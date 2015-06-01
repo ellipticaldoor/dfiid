@@ -1,14 +1,14 @@
 /* embed video
 __________________________________________________________________________ */
 
-.youtube-container {
+.video_container {
 	display: block;
 	margin: 20px 0 20px 0;
 	width: 100%;
 	max-width: 600px;
 }
 
-.youtube-player {
+.player {
 	display: block; width: 100%;
 	padding-bottom: 56.25%;
 	overflow: hidden;
@@ -19,7 +19,7 @@ __________________________________________________________________________ */
 	display: block;
 }
 
-img.youtube-thumb {
+img.thumb {
 	bottom: 0;
 	display: block;
 	left: 0;
@@ -32,7 +32,7 @@ img.youtube-thumb {
 	height: auto;
 }
 
-div.play-button {
+div.play_button {
 	height: 72px;
 	width: 72px;
 	left: 50%;
@@ -40,10 +40,10 @@ div.play-button {
 	margin-left: -36px;
 	margin-top: -36px;
 	position: absolute;
-	background: url('http://i.imgur.com/TxzC70f.png') no-repeat;
+	background: url('/s/img/play.png') no-repeat;
 }
 
-#youtube-iframe {
+#iframe {
 	width: 100%;
 	height: 100%;
 	position: absolute;

@@ -7,7 +7,7 @@ class CustomVideoExtension(markdown.Extension):
 		pattern = klass(re)
 		pattern.md = md
 		pattern.ext = self
-		md.inlinePatterns.add(name, pattern, "<reference")
+		md.inlinePatterns.add(name, pattern, '<reference')
 
 	def extendMarkdown(self, md, md_globals):
 		self.add_inline(md, 'vimeo', Vimeo,
@@ -30,17 +30,12 @@ class Youtube(markdown.inlinepatterns.Pattern):
 
 def render_iframe(data_id, player):
 	div_container = etree.Element('div')
-	div_container.set('class', 'youtube-container')
+	div_container.set('class', 'video_container')
 	div = etree.SubElement(div_container, 'div')
-	div.set('class', '%s-player' % player)
+	div.set('class', '%s_player player' % player)
 	div.set('data-id', data_id)
 	return div_container
 
 
 def makeExtension(**kwargs):
 	return VideoExtension(**kwargs)
-
-
-if __name__ == "__main__":
-	import doctest
-	doctest.testmod()
