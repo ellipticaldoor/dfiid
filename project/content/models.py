@@ -116,7 +116,7 @@ class Commit(models.Model):
 	show = models.BooleanField(default=True)
 
 	def save(self, *args, **kwargs):
-		self.body_html = markdown(self.body, safe_mode=True, extensions=['video'])
+		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
 		super(Commit, self).save(*args, **kwargs)
 
 	def get_absolute_url(self): return self.post.get_absolute_url()
