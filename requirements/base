@@ -6,3 +6,4 @@ psycopg2==2.6
 Markdown==2.6.2
 django-compressor==1.5
 django-nocaptcha-recaptcha==0.0.18
+django_resized==0.3.5

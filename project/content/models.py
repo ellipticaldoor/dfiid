@@ -7,6 +7,8 @@ from user.models import User
 from core.core import _createId
 from core.video_embed import CustomVideoExtension
 
+from django_resized import ResizedImageField
+
 
 class Sub(models.Model):
 	def get_image(instance, filename):
@@ -77,7 +79,7 @@ class Post(models.Model):
 	slug = models.SlugField(max_length=100)
 	body = models.TextField(max_length=3000)
 	body_html  = models.TextField(blank=True, null=True)
-	image = models.ImageField(upload_to=get_image, blank=True, null=True)
+	image = ResizedImageField(size=[950, 950], quality=90, upload_to=get_image, blank=True, null=True)
 	draft = models.BooleanField(default=False)
 	created = models.DateTimeField(auto_now_add=True)
 	last_commited = models.DateTimeField(null=True)
