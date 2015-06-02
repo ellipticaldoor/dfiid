@@ -80,7 +80,7 @@ class Post(models.Model):
 	sub = models.ForeignKey(Sub, related_name='posts')
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=100)
-	body = models.TextField(max_length=3000)
+	body = models.TextField(max_length=5000)
 	body_html  = models.TextField(blank=True, null=True)
 	image = ResizedImageField(size=[950, 950], quality=90, upload_to=get_image, blank=True, null=True)
 	draft = models.BooleanField(default=False)

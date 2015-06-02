@@ -29,7 +29,7 @@ class AnonPost(models.Model):
 	postid = models.CharField(primary_key=True, max_length=16, default=_createId)
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=100)
-	body = models.TextField(max_length=3000)
+	body = models.TextField(max_length=5000)
 	body_html  = models.TextField(blank=True, null=True)
 	image = ResizedImageField(size=[950, 950], upload_to=get_image, blank=True, null=True)
 	created = models.DateTimeField(auto_now_add=True)
