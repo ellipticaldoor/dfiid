@@ -49,17 +49,15 @@
 			<a class="tab_selected" href="/{{ profile.username }}/commit">commit</a>
 		</div>
 		{% for commit in commits %}
-			{% if commit.body_html %}
-				<div class="post">
-					<a class="post_title" href="{{ commit.post.get_absolute_url }}">{{ commit.post.slug }}</a>
-					<a class="commit_id_title" href="{{ commit.post.get_absolute_url }}#{{ commit.commitid }}">#{{ commit.commitid }}</a>
-					<div class="post_content">{{ commit.body_html|safe }}</div>
-					<div class="post_info anon_post_info">
-						<span class="date anon_date">{{ commit.created |date:"d/m/Y H:i" }}</span>
-						<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
-					</div>
+			<div class="post">
+				<a class="post_title" href="{{ commit.post.get_absolute_url }}">{{ commit.post.slug }}</a>
+				<a class="commit_id_title" href="{{ commit.post.get_absolute_url }}#{{ commit.commitid }}">#{{ commit.commitid }}</a>
+				<div class="post_content">{{ commit.body_html|safe }}</div>
+				<div class="post_info anon_post_info">
+					<span class="date anon_date">{{ commit.created |date:"d/m/Y H:i" }}</span>
+					<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
 				</div>
-			{% endif %}
+			</div>
 		{% endfor %}
 	{% elif profile_show == 'followers' %}
 		<div id="user_list_container">

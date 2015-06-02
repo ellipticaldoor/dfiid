@@ -41,7 +41,7 @@
 					<div class="post_info">
 						<a class="blog_link" href="/{{ commit.user_id }}"><img alt="{{ commit.user_id }}" src="{{ commit.get_avatar_url }}"></a>
 						<span><a href="/{{ commit.user_id }}">{{ commit.user_id }}</a></span>
-						<span class="date">{{ object.created |date:"d/m/Y H:i" }}</span>
+						<span class="date">{{ commit.created |date:"d/m/Y H:i" }}</span>
 
 						<a class="commits_link commit_id" href="#{{ commit.commitid}}">#{{ commit.commitid}}</a>
 					</div>
