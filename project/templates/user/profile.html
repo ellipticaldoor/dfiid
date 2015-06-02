@@ -50,7 +50,7 @@
 		</div>
 		{% for commit in commits %}
 			<div class="post">
-				<a class="post_title" href="{{ commit.post.get_absolute_url }}">{{ commit.post.slug }}</a>
+				<a class="post_title" href="{{ commit.post.get_absolute_url }}">{{ commit.post.title }}</a>
 				<a class="commit_id_title" href="{{ commit.post.get_absolute_url }}#{{ commit.commitid }}">#{{ commit.commitid }}</a>
 				<div class="post_content">{{ commit.body_html|safe }}</div>
 				<div class="post_info anon_post_info">
