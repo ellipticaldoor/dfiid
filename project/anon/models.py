@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.text import slugify
 
 from core.core import _createId
+from core.video_embed import CustomVideoExtension
 
 from django_resized import ResizedImageField
 
