@@ -62,6 +62,9 @@ class PostQuerySet(models.QuerySet):
 	def by_user(self, user):
 		return self.filter(user=user, show=True).order_by('-created')
 
+	def by_user_profile(self, user):
+		return self.filter(user=user, draft=False, show=True).order_by('-created')
+
 	def by_post(self, pk, slug):
 		return self.get(pk=pk, slug=slug, draft=False, show=True)
 

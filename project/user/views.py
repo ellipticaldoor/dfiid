@@ -44,7 +44,7 @@ class ProfileView(ListView):
 		return super(ProfileView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
-		return Post.objects.by_user(user=self.kwargs['profile'])
+		return Post.objects.by_user_profile(user=self.kwargs['profile'])
 
 	def get_context_data(self, **kwargs):
 		context = super(ProfileView, self).get_context_data(**kwargs)
