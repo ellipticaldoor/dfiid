@@ -35,7 +35,7 @@
 		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
 		-->
 	</span>
-	{% ifequal user.username  profile.username|slugify %}<a id="logout" href="/logout">logout</a>{% endifequal %}
+	{% ifequal user.username  profile.username %}<a id="logout" href="/logout">logout</a>{% endifequal %}
 
 	{% if profile_show == 'post' %}
 		<div id="tab_selector">
