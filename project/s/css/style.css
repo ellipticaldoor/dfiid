@@ -378,6 +378,7 @@ img {
 .date {
 	font-size: 90%;
 	color: #BDBEC2;
+	margin-top: 0px;
 }
 
 .anon_date {
@@ -423,10 +424,14 @@ img {
 
 .blog_link {
 	float: left;
-	margin: 4px;
+	margin: 4px 0 4px 4px;
 }
 
-.commits_link { float: right; }
+.commits_link {
+	float: right;
+	padding-left: 4px;
+	margin-top: -3px;
+}
 
 .commits_link img {
 	float: right;
