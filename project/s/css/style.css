@@ -430,7 +430,7 @@ img {
 .commits_link {
 	float: right;
 	padding-left: 4px;
-	margin-top: -3px;
+	margin-top: -1px;
 }
 
 .commits_link img {
