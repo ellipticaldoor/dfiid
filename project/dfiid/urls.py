@@ -31,3 +31,7 @@ urlpatterns += patterns(
 	url(r'^', include('anon.urls')),
 	url(r'^', include('user.urls')),
 )
+
+handler404 = 'dfiid.views.handler404'
+
+handler500 = 'dfiid.views.handler500'
