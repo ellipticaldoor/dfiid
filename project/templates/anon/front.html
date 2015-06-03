@@ -1,8 +1,15 @@
 {% extends 'layouts/post_list.html' %}
+{% block title %}{% if tab_show == 'top' %}anon{% endif %}{% if tab_show == 'new' %}anon - new{% endif %}{% endblock %}
 
-{% block title %}
-	{% if tab_show == 'top' %}anon{% endif %}
-	{% if tab_show == 'new' %}anon - new{% endif %}
+{% block facebook_meta_tags %}
+	{% if tab_show == 'top' %}
+		<meta property="og:title" content="anon"/>
+		<meta property="og:url" content="http://dfiid.com/anon"/>
+	{% else %}
+		<meta property="og:title" content="anon - new"/>
+		<meta property="og:url" content="http://dfiid.com/anon/new"/>
+	{% endif %}
+	<meta property="og:image" content="http://dfiid.com/s/img/anon_logo_text.jpg"/>
 {% endblock %}
 
 {% block head %}

@@ -2,7 +2,7 @@
 {% block title %}{{ profile.username }}{% endblock %}
 
 {% block facebook_meta_tags %}
-	<meta property="og:image" content="/{{ profile.avatar }}"/>
+	<meta property="og:image" content="http://dfiid.com/{{ profile.avatar }}"/>
 	{% if profile_show == 'post' %}
 		<meta property="og:title" content="{{ profile.username }} blog" />
 		<meta property="og:url" content="http://dfiid.com/{{ profile.username }}"/>

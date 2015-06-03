@@ -8,8 +8,8 @@
 		<meta property="og:title" content="{{ object.title }}" />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content="http://dfiid.com{{ object.get_absolute_url }}"/>
-		{% if object.image %} <meta property="og:image" content="/{{ object.image }}"/>
-		{% else %} <meta property="og:image" content="{{ object.get_avatar_url }}"/>
+		{% if object.image %} <meta property="og:image" content="http://dfiid.com/{{ object.image }}"/>
+		{% else %} <meta property="og:image" content="http://dfiid.com{{ object.get_avatar_url }}"/>
 		{% endif %}
 	{% endif %}
 {% endblock %}
