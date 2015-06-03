@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}404{% endblock %}
 
+{% block facebook_meta_tags %}
+	<meta property="og:title" content="404" />
+	<meta property="og:url" content="http://dfiid.com/404"/>
+	<meta property="og:image" content="/s/img/dfiid_logo_text.png"/>
+{% endblock %}
+
 {% block mid_panel %}
 	<p class="error" id="error404">404</p>
 {% endblock %}

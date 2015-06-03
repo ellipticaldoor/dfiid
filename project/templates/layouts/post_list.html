@@ -1,5 +1,20 @@
 {% extends 'layouts/post_detail.html' %}
-{% block title %}{{ list }}{% endblock %}
+{% block title %}
+	{% if tab_show == 'top' %}{{ list }}{% endif %}
+	{% if tab_show == 'new' %}{{ list }} - new{% endif %}
+{% endblock %}
+
+{% block facebook_meta_tags %}
+	{% if tab_show == 'top' %}
+		<meta property="og:title" content="portada"/>
+		<meta property="og:url" content="http://dfiid.com/"/>
+	{% else %}
+		<meta property="og:title" content="portada - new"/>
+		<meta property="og:url" content="http://dfiid.com/new"/>
+	{% endif %}
+	<meta property="og:image" content="/s/img/dfiid_logo_text.jpg"/>
+	<meta property="og:description" content="buscar, crear"/>
+{% endblock %}
 
 {% block mid_panel %}
 	{% block head %}

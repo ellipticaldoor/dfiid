@@ -5,16 +5,21 @@
 <head>
 	<meta charset="utf-8">
 	<title>{% block title %}dfiid{% endblock %}</title>
-	<meta name="description" content="dfiid">
-	<meta name="keywords" content="dfiid, videojuegos, tecnología, cine, diseño, random">
+	<meta name="description" content="Buscar, crear.">
+	<meta name="keywords" content="dfiid, buscar, crear, anon, ranomd, videojuegos, tecnología, cine, diseño">
 	<meta name="theme-color" content="#FFFFFF">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	{% block facebook_meta_tags %}{% endblock %}
+
 	<link rel="icon" href="/s/img/dfiid_logo.png">
+
 	{% compress css inline %}
 		<link rel="stylesheet" href="/s/css/open_sans.css" type="text/css" charset="utf-8">
 		<link rel="stylesheet" href="/s/css/style.css" type="text/css" charset="utf-8">
 		{% block css %}{% endblock %}
 	{% endcompress %}
+
 	{% block js_head %}{% endblock %}
 
 	<!-- Google analytics -->
