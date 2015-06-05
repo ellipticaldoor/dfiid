@@ -47,11 +47,9 @@
 					body_post[n].parentNode.insertBefore(show_body_post[n], body_post[n].nextSibling);
 
 					show_body_post[n].addEventListener('click', function() {
-						this.previousSibling.classList.remove('post_body_content_expand');
+						this.previousSibling.classList.remove('post_body_content','post_body_content_expand');
 						this.remove();
 					});
-
-					body_post[n].classList.remove('post_body_content');
 				}
 			}
 		}
