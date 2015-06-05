@@ -410,6 +410,25 @@ img {
 	font-size: 104%;
 }
 
+.post_body_content_expand {
+	overflow: hidden;
+	max-height: 400px;
+	border-radius: 2px;
+
+	background-image: linear-gradient( 
+		to bottom,
+		rgba(52, 170, 220, 0) 95%,
+		rgba(52, 170, 220, 0.1) 100%
+	);
+
+	border-bottom: 2px solid #34AADC;
+}
+
+.action_link_expand {
+	position: relative;
+	margin: 10px 0 10px 0;
+}
+
 .post_info {
 	width: calc(100% + 8px);
 	overflow: hidden;
