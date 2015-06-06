@@ -1,17 +1,5 @@
 {% extends 'layouts/post_list.html' %}
 
-{% block facebook_meta_tags %}
-	{% if tab_show == 'top' %}
-		<meta property="og:title" content="{{ list.slug }}" />
-		<meta property="og:url" content="http://dfiid.com/sub/{{ list.slug }}"/>
-	{% else %}
-		<meta property="og:title" content="{{ list.slug }} new" />
-		<meta property="og:url" content="http://dfiid.com/sub/{{ list.slug }}/new"/>
-	{% endif %}
-
-	<meta property="og:image" content="http://dfiid.com/s/media/sub/image/{{ list.slug }}.png"/>
-{% endblock %}
-
 {% block mid_panel %}
 	{% if followers %}
 		{% block head %}
@@ -42,10 +30,10 @@
 			</span>
 
 			{% block tab %}
-				<div id="tab_selector">
-					<a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/sub/{{ list.slug }}">top</a>
-					<a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/sub/{{ list.slug }}/new">new</a>
-				</div>
+				<ul id="tab_selector">
+					<li><a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/sub/{{ list.slug }}">top</a></li>
+					<li><a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/sub/{{ list.slug }}/new">new</a></li>
+				</ul>
 			{% endblock %}
 		{% endblock %}
 

@@ -10,10 +10,10 @@
 		</div>
 
 		{% block tab %}
-			<div id="tab_selector">
-				<a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/">top</a>
-				<a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/new">new</a>
-			</div>
+			<ul id="tab_selector">
+				<li><a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/">top</a></li>
+				<li><a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/new">new</a></li>
+			</ul>
 		{% endblock %}
 	{% endblock %}
 

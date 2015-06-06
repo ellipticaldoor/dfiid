@@ -271,7 +271,6 @@ __________________________________________________________________________ */
 	margin: 0px 4px -4px 0px;
 }
 
-
 #dfiid_create_link {
 	border: 2px solid #EF4DB6;
 	color: #EF4DB6;	
@@ -554,6 +553,8 @@ __________________________________________________________________________ */
 }
 
 #tab_selector a:hover { border: 2px solid #007AFF !important; }
+
+#tab_selector li { display: inline; }
 
 .tab_selected {
 	border: 2px solid #34AADC !important;

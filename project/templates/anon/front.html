@@ -8,10 +8,10 @@
 		<a href="/anon"><img id="dfiid_image_view" src="/s/img/anon_logo_text.jpg" alt="dfiid"></a>
 	</div>
 
-	<div id="tab_selector">
-		<a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/anon">top</a>
-		<a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/anon/new">new</a>
-	</div>
+	<ul id="tab_selector">
+		<li><a class="{% if tab_show == 'top' %}tab_selected{% endif %}" href="/anon">top</a></li>
+		<li><a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/anon/new">new</a></li>
+	</ul>
 {% endblock %}
 
 {% block mid_panel %}

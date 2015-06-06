@@ -51,16 +51,16 @@
 	{% ifequal user.username  profile.username %}<a id="logout" href="/logout">logout</a>{% endifequal %}
 
 	{% if profile_show == 'post' %}
-		<div id="tab_selector">
-			<a class="tab_selected" href="/{{ profile.username }}">post</a>
-			<a href="/{{ profile.username }}/commit">commit</a>
-		</div>
+		<ul id="tab_selector">
+			<li><a class="tab_selected" href="/{{ profile.username }}">post</a></li>
+			<li><a href="/{{ profile.username }}/commit">commit</a></li>
+		</ul>
 		{% block list_content %}{{ block.super }}{% endblock %}
 	{% elif profile_show == 'commit' %}
-		<div id="tab_selector">
-			<a href="/{{ profile.username }}">post</a>
-			<a class="tab_selected" href="/{{ profile.username }}/commit">commit</a>
-		</div>
+		<ul id="tab_selector">
+			<li><a href="/{{ profile.username }}">post</a></li>
+			<li><a class="tab_selected" href="/{{ profile.username }}/commit">commit</a></li>
+		</ul>
 		{% for commit in commits %}
 			<div class="post">
 				<a class="post_title" href="{{ commit.post.get_absolute_url }}">{{ commit.post.title }}</a>
