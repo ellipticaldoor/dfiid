@@ -57,7 +57,7 @@ def avatar_resize(final_avatar_dir):
 		lower = width + upper
 
 	img = img.crop((left, upper, right, lower))
-	img.thumbnail((300, 300), Image.ANTIALIAS)
+	img.thumbnail((250, 250), Image.ANTIALIAS)
 	img.save(final_avatar_dir, 'PNG')
 
 	img.thumbnail((50, 50), Image.ANTIALIAS)
@@ -80,7 +80,7 @@ def random_avatar(username):
 	avatar_thumb_dir = '%s/s/media/user/avatar/%s_thumb.png' % (settings.BASE_DIR, username)
 	a = random.rand(3,3,3) * 255
 
-	avatar = Image.fromarray(a.astype('uint8')).convert('RGB').resize((300,300))
+	avatar = Image.fromarray(a.astype('uint8')).convert('RGB').resize((250,250))
 	avatar.save(avatar_dir, 'PNG')
 	avatar.save(avatar_thumb_dir, 'PNG')
 	return
