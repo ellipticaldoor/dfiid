@@ -104,7 +104,7 @@ class Post(models.Model):
 
 	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
 	def get_view_commits_url(self): return '%s#commits' % (self.get_absolute_url())
-	def get_avatar_url(self): return '/s/media/user/avatar/%s.png' % (self.user_id)
+	def get_avatar_url(self): return '/s/media/user/avatar/%s_thumb.png' % (self.user_id)
 
 	def __str__(self): return self.title
 
@@ -123,7 +123,7 @@ class Commit(models.Model):
 		super(Commit, self).save(*args, **kwargs)
 
 	def get_absolute_url(self): return self.post.get_absolute_url()
-	def get_avatar_url(self): return '/s/media/user/avatar/%s.png' % (self.user_id)
+	def get_avatar_url(self): return '/s/media/user/avatar/%s_thumb.png' % (self.user_id)
 
 	def __str__(self): return '%s, %s' % (self.post, self.commitid)
 

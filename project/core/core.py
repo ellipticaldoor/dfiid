@@ -38,7 +38,8 @@ def is_reserved(username):
 
 
 def avatar_resize(final_avatar_dir):
-	THUMB_SIZE = 300, 300
+	final_avatar_thumb_dir = final_avatar_dir[:-4] + '_thumb.png'
+
 	img = Image.open(final_avatar_dir)
 	width, height = img.size
 
@@ -56,8 +57,11 @@ def avatar_resize(final_avatar_dir):
 		lower = width + upper
 
 	img = img.crop((left, upper, right, lower))
-	img.thumbnail(THUMB_SIZE, Image.ANTIALIAS)
+	img.thumbnail((300, 300), Image.ANTIALIAS)
 	img.save(final_avatar_dir, 'PNG')
+
+	img.thumbnail((50, 50), Image.ANTIALIAS)
+	img.save(final_avatar_thumb_dir, 'PNG')
 	return
 
 
@@ -72,10 +76,13 @@ def cover_resize(final_cover_dir):
 
 
 def random_avatar(username):
-	a = random.rand(3,3,3) * 255
-	avatar = Image.fromarray(a.astype('uint8')).convert('RGB').resize((300,300))
 	avatar_dir = '%s/s/media/user/avatar/%s.png' % (settings.BASE_DIR, username)
+	avatar_thumb_dir = '%s/s/media/user/avatar/%s_thumb.png' % (settings.BASE_DIR, username)
+	a = random.rand(3,3,3) * 255
+
+	avatar = Image.fromarray(a.astype('uint8')).convert('RGB').resize((300,300))
 	avatar.save(avatar_dir, 'PNG')
+	avatar.save(avatar_thumb_dir, 'PNG')
 	return
 
 

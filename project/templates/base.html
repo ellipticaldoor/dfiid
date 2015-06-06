@@ -49,7 +49,7 @@
 				<li><a href="/create" id="create_panel_link">crear</a></li>
 				{% if user.is_authenticated %}
 					<li><a href="/created">creado</a></li>
-					<li><a href="/{{ user.username }}" id="auth_panel_link"><img class="panel_avatar" src="/{{ user.avatar}}">perfil</a></li>
+					<li><a href="/{{ user.username }}" id="auth_panel_link"><img class="panel_avatar" src="/s/media/user/avatar/{{ user.username }}_thumb.png">perfil</a></li>
 				{% else %}
 					<li><a href="/login" id="auth_panel_link">login</a></li>
 				{% endif %}
@@ -71,7 +71,7 @@
 					<ul>
 						{% if user.following_number > 0 %}
 							{% for follow in user.follower.all %}
-								<a href="/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}.png">{{ follow.followed_id }}</li></a>
+								<a href="/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}_thumb.png">{{ follow.followed_id }}</li></a>
 							{% endfor %}
 						{% endif %}
 
