@@ -87,12 +87,8 @@ class UserEdit(UpdateView):
 	def form_valid(self, form):
 		username = self.request.user
 		user_before = User.objects.get(username=username)
-		if user_before.cover:
-			print('hayyyyyyyyyyy')
-			cover_exists = True
-		else:
-			print('no haaaaaaaaaaay')
-			cover_exists = False
+		if user_before.cover: cover_exists = True
+		else: cover_exists = False
 
 		obj = form.save(commit=False)
 		obj.save()

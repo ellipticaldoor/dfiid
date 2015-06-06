@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from dfiid import sitemaps, feeds
+
+from dfiid import sitemaps, feeds, views
 
 
 sitemaps = {
@@ -27,6 +28,7 @@ urlpatterns += patterns(
 	# url(r'^feed/$', feeds.ContentFeed(), name='feed'),
 	url(r'^admin/', include(admin.site.urls)),
 
+	url(r'^about/', views.About.as_view()),
 	url(r'^', include('content.urls')),
 	url(r'^', include('anon.urls')),
 	url(r'^', include('user.urls')),

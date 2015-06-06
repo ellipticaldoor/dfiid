@@ -1,5 +1,10 @@
+from django.views.generic import TemplateView
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+
+
+class About(TemplateView):
+	template_name = 'dfiid/about.html'
 
 
 def handler404(request):
