@@ -38,7 +38,6 @@ INSTALLED_APPS = (
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'django.contrib.sitemaps',
-	'compressor',
 	'nocaptcha_recaptcha',
 	'anon',
 	'content',
@@ -98,7 +97,6 @@ LOGIN_REDIRECT_URL = '/'
 STATICFILES_FINDERS = (
 	'django.contrib.staticfiles.finders.FileSystemFinder',
 	'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-	'compressor.finders.CompressorFinder',
 )
 
 NORECAPTCHA_SITE_KEY = get_env('NORECAPTCHA_SITE_KEY')
