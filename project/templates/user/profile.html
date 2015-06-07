@@ -1,19 +1,6 @@
 {% extends 'layouts/post_list.html' %}
 {% block title %}{{ profile.username }}{% endblock %}
 
-{% block facebook_meta_tags %}
-	<meta property="og:image" content="http://dfiid.com/{{ profile.avatar }}"/>
-	{% if profile_show == 'post' %}
-		<meta property="og:title" content="{{ profile.username }} blog" />
-		<meta property="og:url" content="http://dfiid.com/{{ profile.username }}"/>
-		<meta property="og:description" content="{{ profile.username }} blog"/>
-	{% else %}
-		<meta property="og:title" content="{{ profile.username }} {{ profile_show }}" />
-		<meta property="og:url" content="http://dfiid.com/{{ profile.username }}/{{ profile_show }}"/>
-		<meta property="og:description" content="{{ profile.username }} {{ profile_show }}"/>
-	{% endif %}
-{% endblock %}
-
 {% block mid_panel %}
 	<div id="profile_head" style="background-image: url('/{{ profile.cover }}');background-repeat: no-repeat;background-size: auto 100%;">
 		<div id="follow_action_container">
