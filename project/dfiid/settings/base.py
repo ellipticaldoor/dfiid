@@ -95,12 +95,6 @@ LOGIN_URL = '/login'
 
 LOGIN_REDIRECT_URL = '/'
 
-COMPRESS_ROOT = os.path.join(BASE_DIR, 's')
-
-COMPRESS_ENABLED = False
-
-COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',  'compressor.filters.cssmin.CSSMinFilter']
-
 STATICFILES_FINDERS = (
 	'django.contrib.staticfiles.finders.FileSystemFinder',
 	'django.contrib.staticfiles.finders.AppDirectoriesFinder',

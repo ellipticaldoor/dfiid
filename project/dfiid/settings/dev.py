@@ -2,8 +2,6 @@ from dfiid.settings.base import *
 
 DEBUG = True
 
-COMPRESS_ENABLED = False
-
 INSTALLED_APPS += (
 	'debug_toolbar',
 )
