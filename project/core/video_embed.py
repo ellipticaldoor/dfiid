@@ -33,7 +33,7 @@ def render_iframe(data_id, player):
 	div_container.set('class', 'video_container')
 	div = etree.SubElement(div_container, 'div')
 	div.set('class', '%s_player player' % player)
-	div.set('data-id', data_id)
+	div.set('data-id', data_id.replace(" ", ""))
 	return div_container
 
 
