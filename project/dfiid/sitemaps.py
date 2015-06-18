@@ -4,7 +4,6 @@ from django.contrib.sitemaps import Sitemap
 from django.core.urlresolvers import reverse
 from user.models import User
 from content.models import Post, Sub
-from anon.models import AnonPost
 
 
 class SiteSitemap(Sitemap):
@@ -30,19 +29,6 @@ class PostSitemap(Sitemap):
 
 	def items(self):
 		return Post.objects.created()
-
-	def lastmod(self, obj):
-		return obj.created
-
-	def location(self, obj):
-		return obj.get_absolute_url()
-
-
-class AnonPostSitemap(Sitemap):
-	changefreq = 'never'
-
-	def items(self):
-		return AnonPost.objects.created()
 
 	def lastmod(self, obj):
 		return obj.created

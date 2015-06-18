@@ -39,7 +39,6 @@ INSTALLED_APPS = (
 	'django.contrib.staticfiles',
 	'django.contrib.sitemaps',
 	'nocaptcha_recaptcha',
-	'anon',
 	'content',
 	'core',
 	'user',

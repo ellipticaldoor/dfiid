@@ -6,10 +6,8 @@ from dfiid import sitemaps, feeds, views
 
 
 sitemaps = {
-	'site': sitemaps.SiteSitemap(['front', 'new', 'sub', 'anon_front',
-								  'anon_new_front', 'create', 'blog']),
+	'site': sitemaps.SiteSitemap(['front', 'new', 'sub', 'create', 'blog']),
 	'post': sitemaps.PostSitemap,
-	'anon_post': sitemaps.AnonPostSitemap,
 	'sub': sitemaps.SubSitemap,
 	'user': sitemaps.UserSitemap,
 }
@@ -30,7 +28,6 @@ urlpatterns += patterns(
 
 	url(r'^about/', views.About.as_view()),
 	url(r'^', include('content.urls')),
-	url(r'^', include('anon.urls')),
 	url(r'^', include('user.urls')),
 )
 

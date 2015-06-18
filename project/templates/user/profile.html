@@ -53,8 +53,8 @@
 				<a class="post_title" href="{{ commit.post.get_absolute_url }}">{{ commit.post.title }}</a>
 				<a class="commit_id_title" href="{{ commit.post.get_absolute_url }}#{{ commit.commitid }}">#{{ commit.commitid }}</a>
 				<div class="post_content">{{ commit.body_html|safe }}</div>
-				<div class="post_info anon_post_info">
-					<span class="date anon_date">{{ commit.created |date:"d/m/Y H:i" }}</span>
+				<div class="post_info commit_post_info">
+					<span class="date commit_date">{{ commit.created |date:"d/m/Y H:i" }}</span>
 					<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
 				</div>
 			</div>
