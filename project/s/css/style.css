@@ -325,12 +325,6 @@ __________________________________________________________________________ */
 	nav { display: block; }
 	#link_nav_link, #mid_nav_link, #info_nav_link { display: inline-block; }
 
-	#link_panel, #info_panel {
-		display: none;
-		width: 100%;
-		margin-top: 10px;
-	}
-
 	#link_panel li {
 		margin: 15px 0 0 10px;
 		font-size: 140%;
