@@ -8,14 +8,13 @@ var mid_nav_link = document.getElementById('mid_nav_link');
 if (show_info) { var info_nav_link = document.getElementById('info_nav_link'); }
 
 // UI logic related
-var show_mode = 2;
 var main_panel = 2; // 1 == link, 2 == mid, 2 == info
-
 var window_width = window.innerWidth;
 
 
 document.addEventListener('DOMContentLoaded', function() {
 	window_width = window.innerWidth;
+	set_show_mode();
 });
 
 
