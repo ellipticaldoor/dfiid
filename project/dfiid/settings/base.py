@@ -71,7 +71,7 @@ DATABASES = {
 
 LANGUAGE_CODE = get_env('LANGUAGE')
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Atlantic/Canary'
 
 USE_I18N = True
 
