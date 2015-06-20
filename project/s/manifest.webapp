@@ -4,7 +4,7 @@
 	"launch_path": "/",
 	"icons": {
 		"512": "/s/img/dfiid_logo.png",
-		"128": "/s/img/dfiid_logo.png"
+		"128": "/s/img/dfiid_logo_128.png"
 	},
 	"developer": {
 		"name": "Miguel Dorta",
