@@ -1,0 +1,14 @@
+{
+	"name": "dfiid",
+	"description": "buscar, crear.",
+	"launch_path": "/",
+	"icons": {
+		"512": "/s/img/dfiid_logo.png",
+		"128": "/s/img/dfiid_logo.png"
+	},
+	"developer": {
+		"name": "Miguel Dorta",
+		"url": "http://dfiid.com/ellipticaldoor/"
+	},
+	"default_locale": "es"
+}
