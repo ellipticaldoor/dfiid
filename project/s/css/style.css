@@ -12,11 +12,12 @@ __________________________________________________________________________ */
 __________________________________________________________________________ */
 
 
+html, body { overflow: auto; }
+
 html, body, textarea, input {
 	font-family: 'Open Sans';
 	text-rendering: optimizeLegibility;
 	font-size: 100%;
-	overflow: auto;
 	max-width: 100vw;
 }
 
@@ -200,9 +201,8 @@ __________________________________________________________________________ */
 
 #app {
 	overflow: auto;
-	margin: 0 auto;
 	display: table;
-	margin-bottom: 45px;
+	margin: 0 auto 45px auto;
 }
 
 #link_panel li {
