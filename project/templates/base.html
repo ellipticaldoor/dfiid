@@ -31,12 +31,12 @@
 	<div id="app">
 		<nav class="no-select">
 			<ul>
-				<li><a id="link_nav_link" class="nav_link" href="#" onClick="return false;">link</a></li>
-				<li><a id="mid_nav_link" class="nav_link" href="#" onClick="return false;">mid</a></li>
+				<li><a id="link_nav_link" class="nav_link" href="#" onClick="return false;">a</a></li>
+				<li><a id="mid_nav_link" class="nav_link" href="#" onClick="return false;">b</a></li>
 
 				{% if user.is_authenticated %}
 					{% if user.following_number > 0 or user.sub_following_number > 0 %}
-						<li><a id="info_nav_link" class="nav_link" href="#" onClick="return false;">info</a></li>
+						<li><a id="info_nav_link" class="nav_link" href="#" onClick="return false;">c</a></li>
 					{% endif %}
 				{% endif %}
 			</ul>
