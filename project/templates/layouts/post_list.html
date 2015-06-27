@@ -21,9 +21,9 @@
 		{% for object in object_list %}
 			{% block post_detail %}{{ block.super }}{% endblock %}
 		{% endfor %}
-	{% endblock %}
 
-	<div id="loading"><div></div><div></div><div></div></div>
+		<div id="loading"><div></div><div></div><div></div></div>
+	{% endblock %}
 {% endblock %}
 
 {% block js %}
