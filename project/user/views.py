@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login
 from django import forms
 
 from user.models import User, UserFollow
-from content.models import Post, Commit
+from content.models import Post, Commit, SubFollow
 from user.forms import UserEditForm, SignUpForm, UserFollowForm
 from core.core import random_avatar, avatar_resize, cover_resize
 
@@ -34,40 +34,72 @@ class SignUpView(CreateView):
 		return HttpResponseRedirect('/')
 
 
-class ProfileView(ListView):
-	template_name = 'user/profile.html'
+def profile_context(self, context, **kwargs):
+	username = self.request.user.username
+	profile = self.kwargs['profile']
+	context['list_url'] = '/%s' % profile
+
+	context['form'] = UserFollowForm
+	context['profile'] = User.objects.get(username=profile)
+	context['action'] = 'follow'
+
+	if self.request.user.is_authenticated():
+		if username == profile: context['action'] = 'edit'
+		else:
+			follow_state = UserFollow.objects.by_id(followid='%s>%s' % (username, profile))
+			if follow_state: context['action'] = 'unfollow'
+			else: context['action'] = 'follow'
+
+	return context
+
+
+class ProfilePostView(ListView):
+	template_name = 'user/profile/post.html'
 	paginate_by = 4
 
 	def get(self, request, *args, **kwargs):
 		if request.is_ajax(): self.template_name = 'ajax/post_list.html'
-		return super(ProfileView, self).get(request, *args, **kwargs)
+		return super(ProfilePostView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
 		return Post.objects.by_user_profile(user=self.kwargs['profile'])
 
 	def get_context_data(self, **kwargs):
-		context = super(ProfileView, self).get_context_data(**kwargs)
-		username = self.request.user.username
-		profile = self.kwargs['profile']
-		context['list_url'] = '/%s' % profile
-		try: context['profile_show'] = self.kwargs['show']
-		except: context['profile_show'] = 'post'
+		context = super(ProfilePostView, self).get_context_data(**kwargs)
+		context['profile_show'] = 'post'
+		return profile_context(self, context, **kwargs)
 
-		context['form'] = UserFollowForm
-		context['profile'] = User.objects.get(username=profile)
-		context['action'] = 'follow'
 
-		if self.request.user.is_authenticated():
-			if username == profile: context['action'] = 'edit'
-			else:
-				follow_state = UserFollow.objects.by_id(followid='%s>%s' % (username, profile))
-				if follow_state: context['action'] = 'unfollow'
-				else: context['action'] = 'follow'
+class ProfileCommitView(ListView):
+	template_name = 'user/profile/commit.html'
+	paginate_by = 5
 
-		if context['profile_show'] == 'commit':
-			context['commits'] = Commit.objects.filter(user_id=profile, show=True)
+	def get_queryset(self):
+		return Commit.objects.filter(user_id=self.kwargs['profile'], show=True)
 
-		return context
+	def get_context_data(self, **kwargs):
+		context = super(ProfileCommitView, self).get_context_data(**kwargs)
+		return profile_context(self, context, **kwargs)
+
+
+class ProfileShowView(ListView):
+	template_name = 'user/profile/show.html'
+	paginate_by = 20
+
+	def get_queryset(self):
+		show = self.kwargs['show']
+
+		if show == 'followers':
+			return UserFollow.objects.filter(followed=self.kwargs['profile'])
+		elif show == 'following':
+			return UserFollow.objects.filter(follower=self.kwargs['profile'])
+		else:
+			return SubFollow.objects.filter(follower=self.kwargs['profile'])
+
+	def get_context_data(self, **kwargs):
+		context = super(ProfileShowView, self).get_context_data(**kwargs)
+		context['profile_show'] = self.kwargs['show']
+		return profile_context(self, context, **kwargs)
 
 
 class BlogView(ListView):

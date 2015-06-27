@@ -1,0 +1,62 @@
+{% extends 'layouts/post_list.html' %}
+{% block title %}{{ profile.username }}{% endblock %}
+
+
+{% block mid_panel %}
+	<div id="profile_head" style="background-image: url('/{{ profile.cover }}');background-repeat: no-repeat;background-size: auto 100%;">
+		<div id="follow_action_container">
+			{% if action == 'follow' %}
+				<form id="profile_option" action="/user_follow/{{ profile.username }}/" method="post">
+					{% csrf_token %}{{ form }}
+					<input class="action_link" type="submit" value="follow" />
+				</form>
+			{% elif action == 'unfollow' %}
+				<form id="profile_option" action="/user_unfollow/{{ profile.username }}/" method="post">
+					{% csrf_token %}{{ form }}
+					<input class="action_link" type="submit" value="unfollow" />
+				</form>
+			{% elif action == 'edit' %}
+				<a id="profile_option" class="action_link" href="/{{ profile.username }}/edit">editar</a>
+			{% endif %}
+
+			<div id="follow_container">
+				<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.username }}/followers">{{ profile.follower_number }}<span> follower{{ profile.follower_number|pluralize }}</span></a>
+				<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/{{ profile.username }}/following">{{ profile.following_number }}<span> following</span></a>
+				<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/{{ profile.username }}/sub_following">{{ profile.sub_following_number }}<span> sub{{ profile.sub_following_number|pluralize }}</span></a>
+			</div>
+		</div>
+
+		<div id="profile_container">
+			<a id="profile_image_view" href="/{{ profile.username }}"><img src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
+		</div>
+	</div>
+	<span id="username_rss_container">
+		<a id="profile_username" href="/{{ profile.username }}">{{ profile.username }}</a>
+		<!--
+		<a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a>
+		-->
+	</span>
+	{% ifequal user.username  profile.username %}<a id="logout" href="/logout">logout</a>{% endifequal %}
+{% endblock %}
+
+
+{% block commit %}
+	{% for commit in object_list %}
+		<div class="post">
+			<a class="post_title" href="{{ commit.post.get_absolute_url }}">{{ commit.post.title }}</a>
+			<a class="commit_id_title" href="{{ commit.post.get_absolute_url }}#{{ commit.commitid }}">#{{ commit.commitid }}</a>
+			<div class="post_content">{{ commit.body_html|safe }}</div>
+			<div class="post_info commit_post_info">
+				<span class="date commit_date">{{ commit.created |date:"d/m/Y H:i" }}</span>
+				<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
+
+
+{% block js %}
+	{% if profile_show == 'post' %}
+		{{ block.super }}
+	{% endif %}
+{% endblock %}

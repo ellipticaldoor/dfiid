@@ -1,0 +1,40 @@
+{% extends 'user/profile/base.html' %}
+
+{% block mid_panel %}
+	{{ block.super }}
+
+	<div id="user_list_container">
+		<ul>
+			{% if profile_show == 'followers' %}
+				{% for follow in object_list %}
+					<li>
+						<a class="sub_container" href="/{{ follow.follower_id }}">
+							<img src="/s/media/user/avatar/{{ follow.follower_id }}.png">
+							<span>{{ follow.follower_id }}</span>
+						</a>
+					</li>
+				{% endfor %}
+
+			{% elif profile_show == 'following' %}
+				{% for follow in object_list %}
+					<li>
+						<a class="sub_container" href="/{{ follow.followed_id }}">
+							<img src="/s/media/user/avatar/{{ follow.followed_id }}.png">
+							<span>{{ follow.followed_id }}</span>
+						</a>
+					</li>
+				{% endfor %}
+
+			{% elif profile_show == 'sub_following' %}
+				{% for sub_follow in object_list %}
+					<li>
+						<a class="sub_container" href="/sub/{{ sub_follow.sub_id }}">
+							<img src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">
+							<span>{{ sub_follow.sub_id }}</span>
+						</a>
+					</li>
+				{% endfor %}
+			{% endif %}
+		</ul>
+	</div>
+{% endblock %}

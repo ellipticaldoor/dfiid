@@ -1,0 +1,14 @@
+{% extends 'user/profile/base.html' %}
+
+{% block mid_panel %}
+	{{ block.super }}
+
+	<ul id="tab_selector">
+		<li><a href="/{{ profile.username }}">post</a></li>
+		<li><a class="tab_selected" href="/{{ profile.username }}/commit">commit</a></li>
+	</ul>
+
+	{% block commit %}
+		{{ block.super }}
+	{% endblock %}
+{% endblock %}
