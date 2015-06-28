@@ -61,12 +61,10 @@ mid_nav_link.addEventListener('click', function() {
 	set_panel_visibility();
 });
 
-if (show_info) {
-	info_nav_link.addEventListener('click', function() {
-		main_panel = 3;
-		set_panel_visibility();
-	});
-}
+info_nav_link.addEventListener('click', function() {
+	main_panel = 3;
+	set_panel_visibility();
+});
 
 
 function set_show_mode() {
@@ -81,17 +79,17 @@ function set_selected() {
 	if (main_panel == 1) {
 		link_nav_link.classList.add('li_selected');
 		mid_nav_link.classList.remove('li_selected');
-		if (show_info) { info_nav_link.classList.remove('li_selected'); }
+		info_nav_link.classList.remove('li_selected');
 	}
 	else if (main_panel == 2) {
 		link_nav_link.classList.remove('li_selected');
 		mid_nav_link.classList.add('li_selected');
-		if (show_info) { info_nav_link.classList.remove('li_selected'); }
+		info_nav_link.classList.remove('li_selected');
 	}
 	else if (main_panel == 3) {
 		link_nav_link.classList.remove('li_selected');
 		mid_nav_link.classList.remove('li_selected');
-		if (show_info) { info_nav_link.classList.add('li_selected'); }
+		info_nav_link.classList.add('li_selected');
 	}
 }
 
@@ -100,23 +98,23 @@ function set_panel_visibility() {
 	if (show_mode == 2) {
 		link_panel.style.display = 'block';
 		mid_panel.style.display = 'block';
-		if (show_info) { info_panel.style.display = 'block'; }
+		info_panel.style.display = 'block';
 	}
 	else {
 		if (main_panel == 1) {
 			link_panel.style.display = 'block';
 			mid_panel.style.display = 'none';
-			if (show_info) { info_panel.style.display = 'none'; }
+			info_panel.style.display = 'none';
 		}
 		else if (main_panel == 2) {
 			link_panel.style.display = 'none';
 			mid_panel.style.display = 'block';
-			if (show_info) { info_panel.style.display = 'none'; }
+			info_panel.style.display = 'none';
 		}
 		else if (main_panel == 3) {
 			link_panel.style.display = 'none';
 			mid_panel.style.display = 'none';
-			if (show_info) { info_panel.style.display = 'block'; }
+			info_panel.style.display = 'block';
 		}
 		set_selected();
 	}
