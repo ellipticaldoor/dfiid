@@ -23,7 +23,7 @@ class SignUpView(CreateView):
 
 		obj = form.save(commit=False)
 		obj.set_password(obj.password)
-		obj.avatar = 's/media/user/avatar/%s.png' % (obj.username)
+		obj.avatar = 'user/avatar/%s.png' % (obj.username)
 		obj.save()
 
 		random_avatar(username)
@@ -123,25 +123,25 @@ class UserEdit(UpdateView):
 		obj = form.save(commit=False)
 		obj.save()
 
-		final_avatar_dir = 's/media/user/avatar/%s.png' % username
+		final_avatar_dir = 'media/user/avatar/%s.png' % username
 
-		if not obj.avatar == final_avatar_dir:
-			avatar_dir = '%s/%s' % (settings.BASE_DIR, obj.avatar)
+		if not 'media/%s' % (obj.avatar) == final_avatar_dir:
+			avatar_dir = '%s/media/%s' % (settings.BASE_DIR, obj.avatar)
 			os.rename(avatar_dir, final_avatar_dir)
-			obj.avatar = final_avatar_dir
+			obj.avatar = final_avatar_dir[6:]
 			obj.save()
 			avatar_resize(final_avatar_dir)
 
-		final_cover_dir = 's/media/user/cover/%s.png' % username
+		final_cover_dir = 'media/user/cover/%s.png' % username
 
 		def create_cover():
-			cover_dir = '%s/%s' % (settings.BASE_DIR, obj.cover)
+			cover_dir = '%s/media/%s' % (settings.BASE_DIR, obj.cover)
 			os.rename(cover_dir, final_cover_dir)
-			obj.cover = final_cover_dir
+			obj.cover = final_cover_dir[6:]
 			obj.save()
 			cover_resize(final_cover_dir)
 
-		if not obj.cover == final_cover_dir:
+		if not 'media/%s' % (obj.cover) == final_cover_dir:
 			if os.path.isfile(final_cover_dir):
 				create_cover()
 

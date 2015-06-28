@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 {% block title %}about{% endblock %}
 
 {% block mid_panel %}
 	<div class="post">
 		<div class="post_content">
 			<div class="post_body_content">
-				<img src="/s/img/dfiid_logo_text.jpg">
+				<img src="{% static "img/dfiid_logo_text.jpg" %}">
 
 				<div class="separator"></div>
 
@@ -14,10 +15,12 @@
 
 				<div class="separator"></div>
 
-				<p><a href="mailto:dortamiguel@gmail.com" target="_blank">contacto</a></p>
+				<p><a href="/">dfiid</a> es software libre:</p>
+				<p><a href="https://github.com/ellipticaldoor/dfiid" target="_blank">https://github.com/ellipticaldoor/dfiid</a></p>
 
 				<div class="separator"></div>
-				<p><a href="https://github.com/ellipticaldoor/dfiid" id="github_panel_link" target="_blank">github</a></p>
+
+				<p><a href="mailto:dortamiguel@gmail.com" target="_blank">dortamiguel@gmail.com</a></p>
 			</div>
 		</div>
 	</div>

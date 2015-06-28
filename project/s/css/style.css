@@ -253,7 +253,6 @@ __________________________________________________________________________ */
 
 #auth_panel_link { color: #0BD318 !important; }
 #create_panel_link { color: #EF4DB6 !important; }
-#github_panel_link { color: #8E8E93 !important; }
 
 .nav_link { width: 50px; }
 
@@ -620,7 +619,7 @@ __________________________________________________________________________ */
 	margin-right: 9px;
 }
 
-#profile_option {
+#profile_option, #profile_option_edit {
 	float: left;
 	margin-top: 0px;
 }

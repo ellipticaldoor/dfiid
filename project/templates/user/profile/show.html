@@ -9,7 +9,7 @@
 				{% for follow in object_list %}
 					<li>
 						<a class="sub_container" href="/{{ follow.follower_id }}">
-							<img src="/s/media/user/avatar/{{ follow.follower_id }}.png">
+							<img src="{{ follow.get_follower_avatar }}">
 							<span>{{ follow.follower_id }}</span>
 						</a>
 					</li>
@@ -19,7 +19,7 @@
 				{% for follow in object_list %}
 					<li>
 						<a class="sub_container" href="/{{ follow.followed_id }}">
-							<img src="/s/media/user/avatar/{{ follow.followed_id }}.png">
+							<img src="{{ follow.get_followed_avatar }}">
 							<span>{{ follow.followed_id }}</span>
 						</a>
 					</li>
@@ -28,8 +28,8 @@
 			{% elif profile_show == 'sub_following' %}
 				{% for sub_follow in object_list %}
 					<li>
-						<a class="sub_container" href="/sub/{{ sub_follow.sub_id }}">
-							<img src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">
+						<a class="sub_container" href="{{ sub_follow.get_sub_url }}">
+							<img src="{{ sub_follow.get_sub_avatar_url }}">
 							<span>{{ sub_follow.sub_id }}</span>
 						</a>
 					</li>

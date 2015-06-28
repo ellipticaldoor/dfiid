@@ -23,7 +23,7 @@
 			</div>
 
 			<div id="profile_container">
-				<a id="profile_username" href="/sub/{{ list.slug }}"><img id="sub_image_view" src="/s/media/sub/image/{{ list.slug }}.png" alt="{{ list.slug }}"></a>
+				<a id="profile_username" href="/sub/{{ list.slug }}"><img id="sub_image_view" src="/m/sub/{{ list.slug }}.png" alt="{{ list.slug }}"></a>
 			</div>
 			<span id="username_rss_container">
 				<a id="profile_username" href="/sub/{{ list.slug }}">{{ list.slug }}</a>
@@ -37,12 +37,12 @@
 			{% endblock %}
 		{% endblock %}
 
-		{% with list.sub_followed.all as follows %} 
+		{% with list.sub_followed.all as follows %}
 			<ul>
 				{% for follow in follows %}
 					<li>
 						<a class="sub_container" href="/{{ follow.follower_id }}">
-							<img src="/s/media/user/avatar/{{ follow.follower_id }}.png" alt="{{ follow.follower_id }}">
+							<img src="{{ follow.get_follower_avatar_url }}" alt="{{ follow.follower_id }}">
 							<span>{{ follow.follower_id }}</span>
 						</a>
 					</li>

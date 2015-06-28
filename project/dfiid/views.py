@@ -4,7 +4,7 @@ from django.template import RequestContext
 
 
 class About(TemplateView):
-	template_name = 'dfiid/about.html'
+	template_name = 'about.html'
 
 
 def handler404(request):

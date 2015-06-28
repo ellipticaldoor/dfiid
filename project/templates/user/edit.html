@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 {% block title %}editar {{ object.username }}{% endblock %}
 
 {% block mid_panel %}
 	<div class="warning">*es necesario recargar la página después de subir una nueva imagen :P</div>
 	{{ form.non_field_errors }}
-	<form id="edit_profile_form" action="/{{ object.username }}/edit/" method="post" enctype="multipart/form-data">
+	<form id="edit_profile_form" action="/{{ object.pk }}/edit/" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 		<div id="edit_profile_avatar" class="edit_profile_section">
 			<p>cambiar avatar</p>
@@ -31,8 +32,4 @@
 		</div>
 		<input id="edit_profile_form_button" class="submit" type="submit" value="guardar" />
 	</form>
-{% endblock %}
-
-{% block js %}
-	<script src="/s/js/lib/autosize_3.0.4.min.js"></script>
 {% endblock %}

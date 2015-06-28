@@ -1,34 +1,35 @@
 {% extends 'layouts/post_list.html' %}
-{% block title %}{{ profile.username }}{% endblock %}
+{% load static from staticfiles %}
+{% block title %}{{ profile.pk }}{% endblock %}
 
 
 {% block mid_panel %}
-	<div id="profile_head" style="background-image: url('/{{ profile.cover }}');background-repeat: no-repeat;background-size: auto 100%;">
+	<div id="profile_head" style="background-image: url('{{ profile.get_cover_url }}');background-repeat: no-repeat;background-size: auto 100%;">
 		<div id="follow_action_container">
 			{% if action == 'follow' %}
 				<span id="profile_option" class="action_link noselect">follow</span>
 			{% elif action == 'unfollow' %}
 				<span id="profile_option" class="action_link noselect">unfollow</span>
 			{% elif action == 'edit' %}
-				<a id="profile_option" class="action_link" href="/{{ profile.username }}/edit">editar</a>
+				<a id="profile_option_edit" class="action_link" href="/{{ profile.pk }}/edit">editar</a>
 			{% endif %}
 
 			<div id="follow_container">
-				<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.username }}/followers"><span id="follower_number">{{ profile.follower_number }}</span><span class="follow_text"> follower{{ profile.follower_number|pluralize }}</span></a>
-				<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/{{ profile.username }}/following">{{ profile.following_number }}<span class="follow_text"> following</span></a>
-				<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/{{ profile.username }}/sub_following">{{ profile.sub_following_number }}<span class="follow_text"> sub{{ profile.sub_following_number|pluralize }}</span></a>
+				<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.pk }}/followers"><span id="follower_number">{{ profile.follower_number }}</span><span class="follow_text"> follower{{ profile.follower_number|pluralize }}</span></a>
+				<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/{{ profile.pk }}/following">{{ profile.following_number }}<span class="follow_text"> following</span></a>
+				<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/{{ profile.pk }}/sub_following">{{ profile.sub_following_number }}<span class="follow_text"> sub{{ profile.sub_following_number|pluralize }}</span></a>
 			</div>
 		</div>
 
 		<div id="profile_container">
-			<a id="profile_image_view" href="/{{ profile.username }}"><img src="/{{ profile.avatar }}" alt="{{ profile.username }}"></a>
+			<a id="profile_image_view" href="/{{ profile.pk }}"><img src="{{ profile.get_avatar_url }}" alt="{{ profile.pk }}"></a>
 		</div>
 	</div>
 	<span id="username_rss_container">
-		<a id="profile_username" href="/{{ profile.username }}">{{ profile.username }}</a>
-		<!-- <a id="feed" href="#" target="_blank"><img src="/s/img/feed.png"></a> -->
+		<a id="profile_username" href="/{{ profile.pk }}">{{ profile.pk }}</a>
+		<!-- <a id="feed" href="#" target="_blank"><img src="{% static "img/feed.png" %}"></a> -->
 	</span>
-	{% ifequal user.username  profile.username %}<a id="logout" href="/logout">logout</a>{% endifequal %}
+	{% ifequal user.pk  profile.pk %}<a id="logout" href="/logout">logout</a>{% endifequal %}
 {% endblock %}
 
 
@@ -40,7 +41,7 @@
 			<div class="post_content">{{ commit.body_html|safe }}</div>
 			<div class="post_info commit_post_info">
 				<span class="date commit_date">{{ commit.created |date:"d/m/Y H:i" }}</span>
-				<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ commit.post.commit_number }}</a>
+				<a class="commits_link" href="{{ commit.post.get_view_commits_url }}"><img src="{% static "img/dfiid_logo_small.png" %}">{{ commit.post.commit_number }}</a>
 			</div>
 		</div>
 	{% endfor %}
@@ -54,13 +55,13 @@
 			var follow_state = profile_option.innerText;
 			var follower_number = document.getElementById('follower_number');
 			var info_panel_users = $('#info_panel_users');
-			var user_html = '<a href="/{{ profile.username }}" id="follow_{{ profile.username }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ profile.username }}_thumb.png">{{ profile.username }}</li></a>'
+			var user_html = '<a href="/{{ profile.pk }}" id="follow_{{ profile.pk }}"><li class="visit"><img class="panel_avatar" src="{{ profile.get_avatar_thumb_url }}">{{ profile.pk }}</li></a>'
 
 
 			profile_option.addEventListener('click', function() {
 				$.ajax({
 					type: 'GET',
-					url: '/' + follow_state + '/{{ profile.username }}',
+					url: '/' + follow_state + '/{{ profile.pk }}',
 					success: followSuccess,
 					error: followError
 				});
@@ -80,7 +81,7 @@
 				}
 				else {
 					follower_number.innerText = parseInt(follower_number.innerText) - 1;
-					document.getElementById('follow_{{ profile.username }}').remove();
+					document.getElementById('follow_{{ profile.pk }}').remove();
 					follow_state = 'follow';
 
 					if (info_panel.offsetHeight < 60) {

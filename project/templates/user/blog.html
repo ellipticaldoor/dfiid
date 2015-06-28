@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 {% block title %}blog{% endblock %}
 
 {% block mid_panel %}
 	<a href="/signup" class="action_link create_action_link">crear blog</a>
 
 	<div id="profile_container">
-		<a href="/blog"><img id="dfiid_image_view" src="/s/img/blog_logo_text.jpg" alt="dfiid"></a>
+		<a href="/blog"><img id="dfiid_image_view" src="{% static "img/blog_logo_text.jpg" %}" alt="dfiid"></a>
 	</div>
 
 	<div id="user_list_container">
 		<ul>
 			{% for object in object_list %}
 				<li>
-					<a class="sub_container" href="/{{ object.username }}">
-						<img src="/{{ object.avatar }}" alt="{{ object.username }}">
-						<span>{{ object.username }}</span>
+					<a class="sub_container" href="{{ object.get_absolute_url }}">
+						<img src="{{ object.get_avatar_url }}" alt="{{ object.pk }}">
+						<span>{{ object.pk }}</span>
 					</a>
 				</li>
 			{% endfor %}

@@ -24,10 +24,10 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
 	def get_avatar(instance, filename):
-		return 's/media/user/avatar/%s.png' % instance.username
+		return 'user/avatar/%s.png' % instance.pk
 
 	def get_cover(instance, filename):
-		return 's/media/user/cover/%s.png' % instance.username
+		return 'user/cover/%s.png' % instance.pk
 
 	username = models.SlugField(primary_key=True, max_length=16)
 	USERNAME_FIELD = 'username'
@@ -47,9 +47,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 	objects = UserManager()
 
-	def get_short_name(self): return self.username
-	def get_full_name(self): return self.username
-	def get_absolute_url(self): return '/%s' % (self.username)
+	def get_short_name(self): return self.pk
+	def get_full_name(self): return self.pk
+	def get_absolute_url(self): return '/%s' % (self.pk)
+	def get_avatar_url(self): return '/m/%s' % (self.avatar)
+	def get_avatar_thumb_url(self): return '/m/user/avatar/%s_thumb.png' % (self.pk)
+	def get_cover_url(self): return '/m/%s' % (self.cover)
 
 	class Meta: ordering = ['-last_commited']
 
@@ -70,6 +73,8 @@ class UserFollow(models.Model):
 		self.followid = '%s>%s' % (self.follower, self.followed)
 		super(UserFollow, self).save(*args, **kwargs)
 
-	def get_absolute_url(self): return '/%s' % (self.followed)
+	def get_follower_avatar(self): return '/m/user/avatar/%s.png' % (self.follower_id)
+	def get_followed_avatar(self): return '/m/user/avatar/%s.png' % (self.followed_id)
+	def get_followed_avatar_thumb(self): return '/m/user/avatar/%s_thumb.png' % (self.followed_id)
 
 	def __str__(self): return self.followid

@@ -12,7 +12,7 @@ from django_resized import ResizedImageField
 
 class Sub(models.Model):
 	def get_image(instance, filename):
-		return 'sub/%s.png' % (instance.slug)
+		return 'sub/%s.png' % (instance.pk)
 
 	slug = models.SlugField(primary_key=True, max_length=10)
 	image = models.ImageField(upload_to=get_image)
@@ -20,10 +20,10 @@ class Sub(models.Model):
 	last_commited = models.DateTimeField(auto_now_add=True)
 	follower_number = models.IntegerField(default=0)
 
-	def get_absolute_url(self): return '/sub/%s' % (str(self.slug))
-	def get_sub_avatar_url(self): return '/m/%s' % (str(self.image))
+	def get_absolute_url(self): return '/sub/%s' % (self.pk)
+	def get_sub_avatar_url(self): return '/m/%s' % (self.image)
 
-	def __str__(self): return str(self.slug)
+	def __str__(self): return str(self.pk)
 
 	class Meta: ordering = ['-last_commited']
 
@@ -43,6 +43,10 @@ class SubFollow(models.Model):
 	def save(self, *args, **kwargs):
 		self.sub_followid = '%s>%s' % (self.follower, self.sub)
 		super(SubFollow, self).save(*args, **kwargs)
+
+	def get_sub_url(self): return '/sub/%s' % (self.sub_id)
+	def get_sub_avatar_url(self): return '/m/sub/%s.png' % (self.sub_id)
+	def get_sub_avatar_thumb_url(self): return '/m/sub/%s.png' % (self.sub_id)
 
 	def __str__(self): return self.sub_followid
 
@@ -99,8 +103,8 @@ class Post(models.Model):
 		super(Post, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
-		if not hasattr(self.postid, 'decode'): postid = self.postid
-		else: postid = self.postid.decode('utf-8')
+		if not hasattr(self.pk, 'decode'): postid = self.pk
+		else: postid = self.pk.decode('utf-8')
 		return '/post/%s/%s/' % (postid, self.slug)
 
 	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())

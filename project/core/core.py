@@ -9,7 +9,7 @@ from django.forms import ClearableFileInput
 
 class ImageInput(ClearableFileInput):
 	template_with_initial = (
-		'<div id="image_post_edit"><div><img src="/%(initial_url)s"></div>'
+		'<div id="image_post_edit"><div><img src="%(initial_url)s"></div>'
 		'<input id="image-clear_id" name="image-clear" type="checkbox"> <label for="image-clear_id">borrar</label></div>'
 		'%(input)s'
 	)
@@ -17,7 +17,7 @@ class ImageInput(ClearableFileInput):
 
 class AvatarInput(ClearableFileInput):
 	template_with_initial = (
-		'<div id="image_post_edit"><img src="/%(initial_url)s"></div>'
+		'<div id="image_post_edit"><img src="%(initial_url)s"></div>'
 		'%(input)s'
 	)
 
@@ -76,8 +76,8 @@ def cover_resize(final_cover_dir):
 
 
 def random_avatar(username):
-	avatar_dir = '%s/s/media/user/avatar/%s.png' % (settings.BASE_DIR, username)
-	avatar_thumb_dir = '%s/s/media/user/avatar/%s_thumb.png' % (settings.BASE_DIR, username)
+	avatar_dir = '%s/media/user/avatar/%s.png' % (settings.BASE_DIR, username)
+	avatar_thumb_dir = '%s/media/user/avatar/%s_thumb.png' % (settings.BASE_DIR, username)
 	a = random.rand(3,3,3) * 255
 
 	avatar = Image.fromarray(a.astype('uint8')).convert('RGB').resize((250,250))
