@@ -1,11 +1,14 @@
 // global
 var link_panel = document.getElementById('link_panel');
 var mid_panel = document.getElementById('mid_panel');
-if (show_info) { var info_panel = document.getElementById('info_panel'); }
+var info_panel = document.getElementById('info_panel');
+if (show_info) { info_panel.style.display = 'block'; }
 
 var link_nav_link = document.getElementById('link_nav_link');
 var mid_nav_link = document.getElementById('mid_nav_link');
-if (show_info) { var info_nav_link = document.getElementById('info_nav_link'); }
+var info_nav_link = document.getElementById('info_nav_link');
+if (show_info) { info_nav_link.style.display = 'inline-block'; }
+
 
 // UI logic related
 var main_panel = 2; // 1 == link, 2 == mid, 2 == info
@@ -76,19 +79,19 @@ function set_show_mode() {
 
 function set_selected() {
 	if (main_panel == 1) {
-		link_nav_link.classList.add('selected');
-		mid_nav_link.classList.remove('selected');
-		if (show_info) { info_nav_link.classList.remove('selected'); }
+		link_nav_link.classList.add('li_selected');
+		mid_nav_link.classList.remove('li_selected');
+		if (show_info) { info_nav_link.classList.remove('li_selected'); }
 	}
 	else if (main_panel == 2) {
-		link_nav_link.classList.remove('selected');
-		mid_nav_link.classList.add('selected');
-		if (show_info) { info_nav_link.classList.remove('selected'); }
+		link_nav_link.classList.remove('li_selected');
+		mid_nav_link.classList.add('li_selected');
+		if (show_info) { info_nav_link.classList.remove('li_selected'); }
 	}
 	else if (main_panel == 3) {
-		link_nav_link.classList.remove('selected');
-		mid_nav_link.classList.remove('selected');
-		if (show_info) { info_nav_link.classList.add('selected'); }
+		link_nav_link.classList.remove('li_selected');
+		mid_nav_link.classList.remove('li_selected');
+		if (show_info) { info_nav_link.classList.add('li_selected'); }
 	}
 }
 

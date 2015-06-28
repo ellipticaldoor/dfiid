@@ -53,6 +53,9 @@
 			var profile_option = document.getElementById('profile_option');
 			var follow_state = profile_option.innerText;
 			var follower_number = document.getElementById('follower_number');
+			var info_panel_users = $('#info_panel_users');
+			var user_html = '<a href="/{{ profile.username }}" id="follow_{{ profile.username }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ profile.username }}_thumb.png">{{ profile.username }}</li></a>'
+
 
 			profile_option.addEventListener('click', function() {
 				$.ajax({
@@ -63,15 +66,19 @@
 				});
 			});
 
+
 			function followSuccess(data) {
 				if (follow_state == 'follow') {
 					follower_number.innerText = parseInt(follower_number.innerText) + 1;
+					info_panel_users.append(user_html);
 					follow_state = 'unfollow';
+					if (!show_info) { info_panel.style.display = 'block'; }
 				}
 				else {
 					follower_number.innerText = parseInt(follower_number.innerText) - 1;
 					document.getElementById('follow_{{ profile.username }}').remove();
 					follow_state = 'follow';
+					if (!show_info) { info_panel.style.display = 'none'; }
 				}
 				profile_option.innerText = follow_state;
 			}

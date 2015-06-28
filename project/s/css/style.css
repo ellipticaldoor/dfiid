@@ -55,7 +55,7 @@ ul {
 
 .normal_selected span { display: inline !important;}
 
-.selected {
+.selected, .li_selected a{
 	text-decoration: underline !important;
 	font-weight: bold;
 }

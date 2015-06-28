@@ -11,7 +11,7 @@
 
 	<style type="text/css">
 		@media (max-width: 950px) {
-		#link_panel, #info_panel {
+			#link_panel, #info_panel {
 				display: none;
 				width: 100%;
 				margin-top: 10px;
@@ -31,14 +31,9 @@
 	<div id="app">
 		<nav class="no-select">
 			<ul>
-				<li><a id="link_nav_link" class="nav_link" href="#" onClick="return false;">a</a></li>
-				<li><a id="mid_nav_link" class="nav_link" href="#" onClick="return false;">b</a></li>
-
-				{% if user.is_authenticated %}
-					{% if user.following_number > 0 or user.sub_following_number > 0 %}
-						<li><a id="info_nav_link" class="nav_link" href="#" onClick="return false;">c</a></li>
-					{% endif %}
-				{% endif %}
+				<li id="link_nav_link"><a class="nav_link" href="#" onClick="return false;">a</a></li>
+				<li id="mid_nav_link"><a class="nav_link" href="#" onClick="return false;">b</a></li>
+				<li id="info_nav_link" style="display:none;"><a class="nav_link" href="#" onClick="return false;">c</a></li>
 			</ul>
 		</nav>
 
@@ -69,27 +64,25 @@
 		</div>
 
 		{% if user.is_authenticated %}
-			{% if user.following_number > 0 or user.sub_following_number > 0 %}
-				<div id="info_panel" class="panel side_panel">
-					<ul>
-						{% if user.following_number > 0 %}
-							{% for follow in user.follower.all %}
-								<a href="/{{ follow.followed_id }}" id="follow_{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}_thumb.png">{{ follow.followed_id }}</li></a>
-							{% endfor %}
-						{% endif %}
-
-						<div class="separator"></div>
-
-						{% if user.sub_following_number > 0 %}
-							{% for sub_follow in user.sub_follower.all %}
-								<a href="/sub/{{ sub_follow.sub_id }}">
-									<li class="visit"><img class="panel_avatar" src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">{{ sub_follow.sub_id }}</li>
-								</a>
-							{% endfor %}
-						{% endif %}
-					</ul>
-				</div>
-			{% endif %}
+			<div id="info_panel" class="panel side_panel" style="display:none;">
+				<ul id="info_panel_users">
+					{% if user.following_number > 0 %}
+						{% for follow in user.follower.all %}
+							<a href="/{{ follow.followed_id }}" id="follow_{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}_thumb.png">{{ follow.followed_id }}</li></a>
+						{% endfor %}
+					{% endif %}
+				</ul>
+				<div class="separator"></div>
+				<ul id="info_panel_subs">
+					{% if user.sub_following_number > 0 %}
+						{% for sub_follow in user.sub_follower.all %}
+							<a href="/sub/{{ sub_follow.sub_id }}">
+								<li class="visit"><img class="panel_avatar" src="/s/media/sub/image/{{ sub_follow.sub_id }}.png">{{ sub_follow.sub_id }}</li>
+							</a>
+						{% endfor %}
+					{% endif %}
+				</ul>
+			</div>
 		{% endif %}
 	</div>
 
