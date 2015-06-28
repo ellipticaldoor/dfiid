@@ -12,7 +12,7 @@ from django_resized import ResizedImageField
 
 class Sub(models.Model):
 	def get_image(instance, filename):
-		return 's/media/sub/image/%s.png' % (instance.slug)
+		return 'sub/%s.png' % (instance.slug)
 
 	slug = models.SlugField(primary_key=True, max_length=10)
 	image = models.ImageField(upload_to=get_image)
@@ -21,6 +21,7 @@ class Sub(models.Model):
 	follower_number = models.IntegerField(default=0)
 
 	def get_absolute_url(self): return '/sub/%s' % (str(self.slug))
+	def get_sub_avatar_url(self): return '/m/%s' % (str(self.image))
 
 	def __str__(self): return str(self.slug)
 
@@ -73,7 +74,7 @@ class Post(models.Model):
 	def get_image(instance, filename):
 		if not hasattr(instance.postid, 'decode'): postid = instance.postid
 		else: postid = instance.postid.decode('utf-8')
-		return 's/media/post/%s.png' % (postid)
+		return 'post/%s.png' % (postid)
 
 	postid = models.CharField(primary_key=True, max_length=16, default=_createId)
 	user = models.ForeignKey(User, related_name='posts')
@@ -95,7 +96,7 @@ class Post(models.Model):
 		self.slug = slugify(self.title.replace(' ', '_'))
 		if not self.slug: self.slug = '_'
 		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
-		super(Post, self).save(*args, **kwargs)	
+		super(Post, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
 		if not hasattr(self.postid, 'decode'): postid = self.postid
@@ -104,13 +105,14 @@ class Post(models.Model):
 
 	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
 	def get_view_commits_url(self): return '%s#commits' % (self.get_absolute_url())
-	def get_avatar_url(self): return '/s/media/user/avatar/%s_thumb.png' % (self.user_id)
+	def get_avatar_url(self): return '/m/user/avatar/%s_thumb.png' % (self.user_id)
+	def get_image_url(self): return '/m/%s' % (self.image)
 
 	def __str__(self): return self.title
 
 
 class Commit(models.Model):
-	commitid = models.CharField(primary_key=True, max_length=16, default=_createId) 
+	commitid = models.CharField(primary_key=True, max_length=16, default=_createId)
 	user = models.ForeignKey(User, related_name="commits")
 	post = models.ForeignKey(Post, related_name="commits")
 	body = models.TextField(max_length=500, default='')
@@ -123,7 +125,7 @@ class Commit(models.Model):
 		super(Commit, self).save(*args, **kwargs)
 
 	def get_absolute_url(self): return self.post.get_absolute_url()
-	def get_avatar_url(self): return '/s/media/user/avatar/%s_thumb.png' % (self.user_id)
+	def get_avatar_url(self): return '/m/user/avatar/%s_thumb.png' % (self.user_id)
 
 	def __str__(self): return '%s, %s' % (self.post, self.commitid)
 

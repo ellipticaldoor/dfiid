@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 {% block title %}creado{% endblock %}
 
-{% block mid_panel %}	
+{% block mid_panel %}
 	{% if object_list %}
 		{% for object in object_list %}
 			{% if object.draft %}
@@ -29,7 +30,7 @@
 
 					<div class="info_created">
 						<a class="commits_link created_commits_link" href="{{ object.get_view_commits_url }}">
-							<img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}
+							<img src="{% static "img/dfiid_logo_small.png" %}">{{ object.commit_number }}
 						</a>
 
 						<a class="created_visit_link" href="{{ object.get_absolute_url }}">visitar</a>
@@ -40,10 +41,10 @@
 
 		<div id="paginate">
 			{% if page_obj.has_previous %}
-				<span class="def_button"><a href="?page={{ page_obj.previous_page_number }}">Anterior</a></span>
+				<span class="def_button"><a href="?page={{ page_obj.previous_page_number }}">anterior</a></span>
 			{% endif %}
 			{% if page_obj.has_next %}
-				<span class="def_button"><a href="?page={{ page_obj.next_page_number }}">Siguiente</a></span>
+				<span class="def_button"><a href="?page={{ page_obj.next_page_number }}">siguiente</a></span>
 			{% endif %}
 		</div>
 	{% else %}

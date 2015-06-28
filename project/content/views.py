@@ -16,7 +16,7 @@ class CreateSubView(CreateView):
 	def form_valid(self, form):
 		obj = form.save(commit=False)
 		obj.save()
-		obj.image = 's/media/sub/image/%s.png' % (obj.slug)
+		obj.image = 'sub/%s.png' % (obj.slug)
 		obj.save()
 		random_avatar_sub(obj.slug)
 		return HttpResponseRedirect('/sub')
@@ -66,11 +66,11 @@ class SubPostListView(ListView):
 		user = self.request.user
 		if self.kwargs['tab'] == 'followers': context['followers'] = True
 
-		context['tab_show'] = self.kwargs['tab'] 
+		context['tab_show'] = self.kwargs['tab']
 		context['list'] = sub
 		if self.kwargs['tab'] == 'top': context['list_url'] = '/sub/%s' % sub
 		else: context['list_url'] = '/sub/%s/new' % sub
-		
+
 		context['action'] = 'follow'
 
 		if user.is_authenticated():
@@ -174,7 +174,7 @@ class UpdatePostView(UpdateView):
 		obj = form.save(commit=False)
 		if not obj.last_commited and not obj.draft:
 			now = datetime.now()
-			obj.last_commited = now	
+			obj.last_commited = now
 			obj.user.last_commited = now
 			obj.user.save()
 			obj.sub.last_commited = now

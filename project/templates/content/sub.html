@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 {% block title %}sub{% endblock %}
 
 {% block mid_panel %}
 	<a href="/create_sub" class="action_link create_action_link">crear sub</a>
 
 	<div id="profile_container">
-		<a href="/"><img id="dfiid_image_view" src="/s/img/sub_logo_text.jpg" alt="dfiid"></a>
+		<a href="/"><img id="dfiid_image_view" src="{% static "img/sub_logo_text.jpg" %}" alt="dfiid"></a>
 	</div>
 
 	<div id="user_list_container">
 		<ul>
 			{% for object in object_list %}
 				<li>
-					<a class="sub_container" href="/sub/{{ object.slug }}">
-						<img src="/{{ object.image }}">
+					<a class="sub_container" href="{{ object.get_absolute_url }}">
+						<img src="{{ object.get_sub_avatar_url }}">
 						<span>{{ object.slug }}</span>
 					</a>
 				</li>

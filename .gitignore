@@ -4,6 +4,7 @@ Thumbs.db
 */s/media
 */s/admin
 static/
+media/
 migrations/
 __pycache__/
 todo.md

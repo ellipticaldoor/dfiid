@@ -87,6 +87,10 @@ STATICFILES_DIRS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/m/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 AUTH_USER_MODEL = 'user.User'

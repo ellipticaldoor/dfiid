@@ -12,13 +12,18 @@ sitemaps = {
 	'user': sitemaps.UserSitemap,
 }
 
+
 urlpatterns = patterns('',)
+
 
 if settings.DEBUG:
 	import debug_toolbar
+	from django.conf.urls.static import static
+
 	urlpatterns += patterns('',
 		url(r'^debug/', include(debug_toolbar.urls)),
-	)
+	) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 urlpatterns += patterns(
 	'',
@@ -31,6 +36,8 @@ urlpatterns += patterns(
 	url(r'^', include('user.urls')),
 )
 
+
 handler404 = 'dfiid.views.handler404'
+
 
 handler500 = 'dfiid.views.handler500'

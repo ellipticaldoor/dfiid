@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block mid_panel %}
@@ -10,7 +11,7 @@
 					{{ object.body_html|safe }}
 				</div>
 				{% if object.image   %}
-					<p><a href="/{{ object.image }}"><img src="/{{ object.image }}"></a></p>
+					<p><a href="{{ object.get_image_url }}"><img src="{{ object.get_image_url }}"></a></p>
 				{% endif %}
 			</div>
 
@@ -22,7 +23,7 @@
 						<span><a class="edit" href="{{ object.get_edit_url }}"> editar</a></span>
 					{% endifequal %}
 					<span class="date">{{ object.created |date:"d/m/Y H:i" }}</span>
-					<a class="commits_link" href="{{ object.get_view_commits_url }}"><img src="/s/img/dfiid_logo_small.png">{{ object.commit_number }}</a>
+					<a class="commits_link" href="{{ object.get_view_commits_url }}"><img src="{% static "img/dfiid_logo_small.png" %}">{{ object.commit_number }}</a>
 				</div>
 			{% endblock %}
 		</div>
