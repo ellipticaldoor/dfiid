@@ -662,7 +662,7 @@ __________________________________________________________________________ */
 #follow_container span { color: #a3a3a3;}
 
 @media (max-width: 500px) {
-	#follow_container span { display: none; }
+	#follow_container .follow_text { display: none; }
 
 	#follow_container a:nth-child(2) {
 		padding: 0 12px 0 12px;

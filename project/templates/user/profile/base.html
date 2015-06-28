@@ -14,9 +14,9 @@
 			{% endif %}
 
 			<div id="follow_container">
-				<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.username }}/followers"><span id="follower_number">{{ profile.follower_number }}</span><span> follower{{ profile.follower_number|pluralize }}</span></a>
-				<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/{{ profile.username }}/following">{{ profile.following_number }}<span> following</span></a>
-				<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/{{ profile.username }}/sub_following">{{ profile.sub_following_number }}<span> sub{{ profile.sub_following_number|pluralize }}</span></a>
+				<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.username }}/followers"><span id="follower_number">{{ profile.follower_number }}</span><span class="follow_text"> follower{{ profile.follower_number|pluralize }}</span></a>
+				<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/{{ profile.username }}/following">{{ profile.following_number }}<span class="follow_text"> following</span></a>
+				<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/{{ profile.username }}/sub_following">{{ profile.sub_following_number }}<span class="follow_text"> sub{{ profile.sub_following_number|pluralize }}</span></a>
 			</div>
 		</div>
 
