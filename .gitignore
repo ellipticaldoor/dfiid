@@ -3,7 +3,7 @@ Thumbs.db
 *.pyc
 */s/media
 */s/admin
-staticfiles/
+static/
 migrations/
 __pycache__/
 todo.md

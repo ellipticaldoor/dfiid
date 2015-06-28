@@ -13,3 +13,5 @@ MIDDLEWARE_CLASSES += (
 DEBUG_TOOLBAR_CONFIG = {
 	'JQUERY_URL': '/s/js/lib/jquery_2.1.3.min.js',
 }
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
