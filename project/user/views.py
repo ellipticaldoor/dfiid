@@ -8,7 +8,7 @@ from django import forms
 
 from user.models import User, UserFollow
 from content.models import Post, Commit, SubFollow
-from user.forms import UserEditForm, SignUpForm, UserFollowForm
+from user.forms import UserEditForm, SignUpForm
 from core.core import random_avatar, avatar_resize, cover_resize
 
 
@@ -34,17 +34,16 @@ class SignUpView(CreateView):
 		return HttpResponseRedirect('/')
 
 
-def profile_context(self, context, **kwargs):
+def profile_context(self, context):
 	username = self.request.user.username
 	profile = self.kwargs['profile']
 	context['list_url'] = '/%s' % profile
-
-	context['form'] = UserFollowForm
 	context['profile'] = User.objects.get(username=profile)
 	context['action'] = 'follow'
 
 	if self.request.user.is_authenticated():
-		if username == profile: context['action'] = 'edit'
+		if username == profile:
+			context['action'] = 'edit'
 		else:
 			follow_state = UserFollow.objects.by_id(followid='%s>%s' % (username, profile))
 			if follow_state: context['action'] = 'unfollow'
@@ -67,7 +66,7 @@ class ProfilePostView(ListView):
 	def get_context_data(self, **kwargs):
 		context = super(ProfilePostView, self).get_context_data(**kwargs)
 		context['profile_show'] = 'post'
-		return profile_context(self, context, **kwargs)
+		return profile_context(self, context)
 
 
 class ProfileCommitView(ListView):
@@ -151,30 +150,29 @@ class UserEdit(UpdateView):
 		return HttpResponseRedirect('/%s/edit' % self.kwargs['pk'])
 
 
-class UserFollowCreate(CreateView):
-	form_class = UserFollowForm
+class UserFollowCreate(View):
+	def get(self, *args, **kwargs):
+		followed = self.kwargs['followed']
 
-	def form_valid(self, form):
-		obj = form.save(commit=False)
-		obj.follower = self.request.user
-		obj.follower.following_number += 1
-		obj.follower.save()
-		obj.followed = User.objects.get(username=self.kwargs['followed'])
-		obj.followed.follower_number += 1
-		obj.followed.save()
-		obj.save()
-		return HttpResponseRedirect(obj.get_absolute_url())
+		followed_obj = UserFollow.objects.create(follower_id=self.request.user, followed_id=followed)
+		followed_obj.save()
+		followed_obj.follower.following_number += 1
+		followed_obj.follower.save()
+		followed_obj.followed.follower_number += 1
+		followed_obj.followed.save()
+
+		return HttpResponseRedirect('/%s' % followed)
 
 
 class UserFollowDelete(View):
-	def post(self, *args, **kwargs):
-		follower = self.request.user
-		followed = User.objects.get(username=self.kwargs['unfollowed'])
-		followid = '%s>%s' % (follower.pk, followed.pk)
-		follow = UserFollow.objects.get(followid=followid)
-		follow.delete()
-		follower.following_number -= 1
-		follower.save()
-		followed.follower_number -= 1
-		followed.save()
-		return HttpResponseRedirect('/%s' % followed.pk)
+	def get(self, *args, **kwargs):
+		unfollowed = self.kwargs['unfollowed']
+
+		unfollowed_obj = UserFollow.objects.get(follower_id=self.request.user, followed_id=unfollowed)
+		unfollowed_obj.follower.following_number -= 1
+		unfollowed_obj.follower.save()
+		unfollowed_obj.followed.follower_number -= 1
+		unfollowed_obj.followed.save()
+		unfollowed_obj.delete()
+
+		return HttpResponseRedirect('/%s' % unfollowed)

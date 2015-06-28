@@ -30,7 +30,7 @@ def is_reserved(username):
 						  'sub_follow', 'sub_unfollow', 'signup', 'login', 'logout',
 						  'contact', 'about', 'legal', 'blog', 'rss', 'feed', 'robots',
 						  'sitemap', 'settings', 'debug', 'top', 'new', '404', '500',
-						  'favicon', 'apple-touch-icon']
+						  'favicon', 'apple-touch-icon', 'follow', 'unfollow']
 
 	for name in reserved_usernames:
 		if name == username: return True

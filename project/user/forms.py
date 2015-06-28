@@ -67,9 +67,3 @@ class SignUpForm(forms.ModelForm):
 		cleaned_data = super(SignUpForm, self).clean()
 		if is_reserved(cleaned_data.get('username')):
 			self.add_error('username', 'nombre de usuario no disponible')
-
-
-class UserFollowForm(forms.ModelForm):
-	class Meta:
-		model = UserFollow
-		fields = []

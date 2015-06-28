@@ -12,8 +12,8 @@ urlpatterns = patterns(
 	url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name="logout"),
 
 	url(r'^blog/$', views.BlogView.as_view(), name='blog'),
-	url(r'^user_follow/(?P<followed>[-\w]+)/$', login_required(views.UserFollowCreate.as_view()), name='follow'),
-	url(r'^user_unfollow/(?P<unfollowed>[-\w]+)/$', login_required(views.UserFollowDelete.as_view()), name='unfollow'),
+	url(r'^follow/(?P<followed>[-\w]+)/$', login_required(views.UserFollowCreate.as_view()), name='follow'),
+	url(r'^unfollow/(?P<unfollowed>[-\w]+)/$', login_required(views.UserFollowDelete.as_view()), name='unfollow'),
 
 	url(r'^(?P<pk>[-\w]+)/edit/$', login_required(views.UserEdit.as_view()), name='profile_edit'),
 	url(r'^(?P<profile>[-\w]+)/commit/$', views.ProfileCommitView.as_view(), name='profile_commit'),

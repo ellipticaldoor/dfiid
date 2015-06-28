@@ -66,7 +66,6 @@ if (show_info) {
 }
 
 
-
 function set_show_mode() {
 	if (window_width > 950) { show_mode = 2; }
 	else { show_mode = 1; }
