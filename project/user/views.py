@@ -1,7 +1,7 @@
 import os
 
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View, UpdateView, CreateView, ListView
 from django.contrib.auth import authenticate, login
 from django import forms
@@ -161,7 +161,7 @@ class UserFollowCreate(View):
 		followed_obj.followed.follower_number += 1
 		followed_obj.followed.save()
 
-		return HttpResponseRedirect('/%s' % followed)
+		return HttpResponse(status=200)
 
 
 class UserFollowDelete(View):
@@ -175,4 +175,4 @@ class UserFollowDelete(View):
 		unfollowed_obj.followed.save()
 		unfollowed_obj.delete()
 
-		return HttpResponseRedirect('/%s' % unfollowed)
+		return HttpResponse(status=200)

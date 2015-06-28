@@ -74,7 +74,7 @@
 					<ul>
 						{% if user.following_number > 0 %}
 							{% for follow in user.follower.all %}
-								<a href="/{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}_thumb.png">{{ follow.followed_id }}</li></a>
+								<a href="/{{ follow.followed_id }}" id="follow_{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="/s/media/user/avatar/{{ follow.followed_id }}_thumb.png">{{ follow.followed_id }}</li></a>
 							{% endfor %}
 						{% endif %}
 

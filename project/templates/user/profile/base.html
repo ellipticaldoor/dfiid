@@ -14,10 +14,7 @@
 			{% endif %}
 
 			<div id="follow_container">
-				<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.username }}/followers">
-					<span id="follower_number">{{ profile.follower_number }}</span>
-					<span> follower{{ profile.follower_number|pluralize }}</span>
-				</a>
+				<a class="{% if profile_show == 'followers' %}normal_selected{% endif %}" href="/{{ profile.username }}/followers"><span id="follower_number">{{ profile.follower_number }}</span><span> follower{{ profile.follower_number|pluralize }}</span></a>
 				<a class="{% if profile_show == 'following' %}normal_selected{% endif %}" href="/{{ profile.username }}/following">{{ profile.following_number }}<span> following</span></a>
 				<a class="{% if profile_show == 'sub_following' %}normal_selected{% endif %}" href="/{{ profile.username }}/sub_following">{{ profile.sub_following_number }}<span> sub{{ profile.sub_following_number|pluralize }}</span></a>
 			</div>
@@ -68,12 +65,13 @@
 
 			function followSuccess(data) {
 				if (follow_state == 'follow') {
-					follow_state = 'unfollow';
 					follower_number.innerText = parseInt(follower_number.innerText) + 1;
+					follow_state = 'unfollow';
 				}
 				else {
-					follow_state = 'follow';
 					follower_number.innerText = parseInt(follower_number.innerText) - 1;
+					document.getElementById('follow_{{ profile.username }}').remove();
+					follow_state = 'follow';
 				}
 				profile_option.innerText = follow_state;
 			}
