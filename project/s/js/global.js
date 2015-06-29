@@ -7,7 +7,6 @@ if (show_info) { info_panel.style.display = 'block'; }
 var link_nav_link = document.getElementById('link_nav_link');
 var mid_nav_link = document.getElementById('mid_nav_link');
 var info_nav_link = document.getElementById('info_nav_link');
-if (show_info) { info_nav_link.style.display = 'inline-block'; }
 
 
 // UI logic related

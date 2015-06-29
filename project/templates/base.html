@@ -34,7 +34,13 @@
 			<ul>
 				<li id="link_nav_link"><a class="nav_link" href="#" onClick="return false;">a</a></li>
 				<li id="mid_nav_link"><a class="nav_link" href="#" onClick="return false;">b</a></li>
-				<li id="info_nav_link" style="display:none;"><a class="nav_link" href="#" onClick="return false;">c</a></li>
+				{% if user.is_authenticated %}
+					{% if user.following_number > 0 or user.sub_following_number > 0 %}
+						<li id="info_nav_link"><a class="nav_link" href="#" onClick="return false;">c</a></li>
+					{% else %}
+						<li id="info_nav_link" style="display:none;"><a class="nav_link" href="#" onClick="return false;">c</a></li>
+					{% endif %}
+				{% endif %}
 			</ul>
 		</nav>
 
