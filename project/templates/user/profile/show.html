@@ -3,38 +3,41 @@
 {% block mid_panel %}
 	{{ block.super }}
 
-	<div id="user_list_container">
-		<ul>
-			{% if profile_show == 'followers' %}
-				{% for follow in object_list %}
-					<li>
-						<a class="sub_container" href="/{{ follow.follower_id }}">
-							<img src="{{ follow.get_follower_avatar }}">
-							<span>{{ follow.follower_id }}</span>
-						</a>
-					</li>
-				{% endfor %}
+	<ul id="tab_selector">
+		<li><a href="/{{ profile.username }}">post</a></li>
+		<li><a href="/{{ profile.username }}/commit">commit</a></li>
+	</ul>
 
-			{% elif profile_show == 'following' %}
-				{% for follow in object_list %}
-					<li>
-						<a class="sub_container" href="/{{ follow.followed_id }}">
-							<img src="{{ follow.get_followed_avatar }}">
-							<span>{{ follow.followed_id }}</span>
-						</a>
-					</li>
-				{% endfor %}
+	<ul>
+		{% if profile_show == 'followers' %}
+			{% for follow in object_list %}
+				<li>
+					<a class="sub_container" href="/{{ follow.follower_id }}">
+						<img src="{{ follow.get_follower_avatar }}">
+						<span>{{ follow.follower_id }}</span>
+					</a>
+				</li>
+			{% endfor %}
 
-			{% elif profile_show == 'sub_following' %}
-				{% for sub_follow in object_list %}
-					<li>
-						<a class="sub_container" href="{{ sub_follow.get_sub_url }}">
-							<img src="{{ sub_follow.get_sub_avatar_url }}">
-							<span>{{ sub_follow.sub_id }}</span>
-						</a>
-					</li>
-				{% endfor %}
-			{% endif %}
-		</ul>
-	</div>
+		{% elif profile_show == 'following' %}
+			{% for follow in object_list %}
+				<li>
+					<a class="sub_container" href="/{{ follow.followed_id }}">
+						<img src="{{ follow.get_followed_avatar }}">
+						<span>{{ follow.followed_id }}</span>
+					</a>
+				</li>
+			{% endfor %}
+
+		{% elif profile_show == 'sub_following' %}
+			{% for sub_follow in object_list %}
+				<li>
+					<a class="sub_container" href="{{ sub_follow.get_sub_url }}">
+						<img src="{{ sub_follow.get_sub_avatar_url }}">
+						<span>{{ sub_follow.sub_id }}</span>
+					</a>
+				</li>
+			{% endfor %}
+		{% endif %}
+	</ul>
 {% endblock %}

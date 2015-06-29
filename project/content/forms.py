@@ -1,6 +1,6 @@
 from django import forms
 
-from content.models import Sub, SubFollow, Post, Commit
+from content.models import Sub, Post, Commit
 from core.core import ImageInput
 
 
@@ -14,16 +14,10 @@ class SubForm(forms.ModelForm):
 			})
 
 	slug = forms.CharField(label="", max_length=10)
-		
+
 	class Meta:
 		model = Sub
 		fields = ('slug',)
-
-
-class SubFollowForm(forms.ModelForm):
-	class Meta:
-		model = SubFollow
-		fields = []
 
 
 class PostForm(forms.ModelForm):

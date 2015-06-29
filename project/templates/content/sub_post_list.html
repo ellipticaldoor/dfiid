@@ -1,25 +1,19 @@
 {% extends 'layouts/post_list.html' %}
+{% block title %}{{ list.slug }} sub{% endblock %}
 
 {% block mid_panel %}
 	{% if followers %}
 		{% block head %}
 			<div id="follow_action_container" class="follow_action_container">
-				<div id="follow_container">
-					<a class="{% if followers %}normal_selected{% endif %}" href="/sub/{{ list.slug }}/followers">{{ list.follower_number }}<span> followers</span></a>
-				</div>
 				{% if action == 'follow' %}
-					<form id="profile_option" action="/sub_follow/{{ list.slug }}/" method="post">
-						{% csrf_token %}
-						{{ form }}
-						<input class="action_link" type="submit" value="follow sub" />
-					</form>
+					<span id="profile_option" class="action_link noselect">follow</span>
 				{% elif action == 'unfollow' %}
-					<form id="profile_option" action="/sub_unfollow/{{ list.slug }}/" method="post">
-						{% csrf_token %}
-						{{ form }}
-						<input class="action_link" type="submit" value="unfollow sub" />
-					</form>
+					<span id="profile_option" class="action_link noselect">unfollow</span>
 				{% endif %}
+
+				<div id="follow_container">
+					<a class="{% if followers %}normal_selected{% endif %}" href="/sub/{{ list.slug }}/followers"><span id="follower_number">{{ list.follower_number }}</span><span> followers</span></a>
+				</div>
 			</div>
 
 			<div id="profile_container">
@@ -52,4 +46,53 @@
 	{% else %}
 		{{ block.super }}
 	{% endif %}
+{% endblock %}
+
+{% block js %}
+	{% if user.is_authenticated %}
+		<script>
+			var profile_option = document.getElementById('profile_option');
+			var follow_state = profile_option.innerText;
+			var follower_number = document.getElementById('follower_number');
+			var info_panel_subs = $('#info_panel_subs');
+			var sub_html = '<a href="/{{ list.slug }}" id="sub_follow_{{ list.slug }}"><li class="visit"><img class="panel_avatar" src="/m/sub/{{ list.slug }}.png">{{ list.slug }}</li></a>'
+
+
+			profile_option.addEventListener('click', function() {
+				$.ajax({
+					type: 'GET',
+					url: '/sub_' + follow_state + '/{{ list.slug }}',
+					success: sub_followSuccess,
+					// error: sub_followError
+				});
+			});
+
+
+			function sub_followSuccess(data) {
+				if (follow_state == 'follow') {
+					follower_number.innerText = parseInt(follower_number.innerText) + 1;
+					info_panel_subs.append(sub_html);
+					follow_state = 'unfollow';
+
+					info_panel.style.display = 'block';
+					info_nav_link.style.display = 'inline-block';
+				}
+				else {
+					follower_number.innerText = parseInt(follower_number.innerText) - 1;
+					document.getElementById('sub_follow_{{ list.slug }}').remove();
+					follow_state = 'follow';
+
+					if (info_panel.offsetHeight < 60) {
+						info_panel.style.display = 'none';
+						info_nav_link.style.display = 'none';
+					}
+				}
+				profile_option.innerText = follow_state;
+			}
+
+			function sub_followError() { location.reload(); }
+		</script>
+	{% endif %}
+
+	<!-- {{ block.super }} -->
 {% endblock %}

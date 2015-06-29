@@ -83,7 +83,7 @@
 				<ul id="info_panel_subs">
 					{% if user.sub_following_number > 0 %}
 						{% for sub_follow in user.sub_follower.all %}
-							<a href="/sub/{{ sub_follow.sub_id }}">
+							<a href="/sub/{{ sub_follow.sub_id }}" id="sub_follow_{{ sub_follow.sub_id }}">
 								<li class="visit"><img class="panel_avatar" src="{{ sub_follow.get_sub_avatar_thumb_url }}">{{ sub_follow.sub_id }}</li>
 							</a>
 						{% endfor %}

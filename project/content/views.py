@@ -1,11 +1,11 @@
 from datetime import datetime
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import View, ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 
 from content.models import Sub, SubFollow, Post, Commit
-from content.forms import SubForm, SubFollowForm, PostForm, CommitForm
+from content.forms import SubForm, PostForm, CommitForm
 from core.core import random_avatar_sub
 
 
@@ -32,19 +32,25 @@ class FrontView(ListView):
 	paginate_by = 4
 
 	def get(self, request, *args, **kwargs):
-		if request.is_ajax(): self.template_name = 'ajax/post_list.html'
+		if request.is_ajax():
+			self.template_name = 'ajax/post_list.html'
 		return super(FrontView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
-		if self.kwargs['tab'] == 'top': return Post.objects.last_commited()
-		else: return Post.objects.created()
+		if self.kwargs['tab'] == 'top':
+			return Post.objects.last_commited()
+		else:
+			return Post.objects.created()
 
 	def get_context_data(self, **kwargs):
 		context = super(FrontView, self).get_context_data(**kwargs)
 		context['list'] = 'portada'
 		context['tab_show'] = self.kwargs['tab']
-		if self.kwargs['tab'] == 'top': context['list_url'] = '/'
-		else: context['list_url'] = '/new'
+
+		if self.kwargs['tab'] == 'top':
+			context['list_url'] = '/'
+		else:
+			context['list_url'] = '/new'
 		return context
 
 
@@ -53,65 +59,70 @@ class SubPostListView(ListView):
 	paginate_by = 4
 
 	def get(self, request, *args, **kwargs):
-		if request.is_ajax(): self.template_name = 'ajax/post_list.html'
+		if request.is_ajax():
+			self.template_name = 'ajax/post_list.html'
 		return super(SubPostListView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
-		if self.kwargs['tab'] == 'top': return Post.objects.sub_last_commited(self.kwargs['sub'])
-		else: return Post.objects.sub_created(self.kwargs['sub'])
+		if self.kwargs['tab'] == 'top':
+			return Post.objects.sub_last_commited(self.kwargs['sub'])
+		else:
+			return Post.objects.sub_created(self.kwargs['sub'])
 
 	def get_context_data(self, **kwargs):
 		context = super(SubPostListView, self).get_context_data(**kwargs)
 		sub = Sub.objects.get(pk=self.kwargs['sub'])
 		user = self.request.user
-		if self.kwargs['tab'] == 'followers': context['followers'] = True
+
+		if self.kwargs['tab'] == 'followers':
+			context['followers'] = True
 
 		context['tab_show'] = self.kwargs['tab']
 		context['list'] = sub
-		if self.kwargs['tab'] == 'top': context['list_url'] = '/sub/%s' % sub
-		else: context['list_url'] = '/sub/%s/new' % sub
+
+		if self.kwargs['tab'] == 'top':
+			context['list_url'] = '/sub/%s' % sub
+		else:
+			context['list_url'] = '/sub/%s/new' % sub
 
 		context['action'] = 'follow'
 
 		if user.is_authenticated():
-			follow_state = SubFollow.objects.by_id(sub_followid='%s>%s' % (user.username, sub.pk))
-			if follow_state: context['action'] = 'unfollow'
-			else: context['action'] = 'follow'
+			follow_state = SubFollow.objects.by_id(sub_followid='%s>%s' % (user.pk, sub.pk))
+			if follow_state:
+				context['action'] = 'unfollow'
+			else:
+				context['action'] = 'follow'
 
 		return context
 
 
-class SubFollowCreate(CreateView):
-	form_class = SubFollowForm
-
+class SubFollowCreate(View):
 	def get(self, *args, **kwargs):
-		return HttpResponseRedirect('/sub/%s' % (self.kwargs['followed']))
+		sub_followed = self.kwargs['followed']
 
+		sub_followed_obj = SubFollow.objects.create(follower=self.request.user,sub_id=sub_followed)
+		sub_followed_obj.save()
+		sub_followed_obj.follower.sub_following_number += 1
+		sub_followed_obj.follower.save()
+		sub_followed_obj.sub.follower_number += 1
+		sub_followed_obj.sub.save()
 
-	def form_valid(self, form):
-		obj = form.save(commit=False)
-		obj.follower = self.request.user
-		obj.sub = Sub.objects.get(slug=self.kwargs['followed'])
-		obj.save()
-		obj.sub.follower_number += 1
-		obj.sub.save()
-		obj.follower.sub_following_number+= 1
-		obj.follower.save()
-		return HttpResponseRedirect('/sub/%s' % (obj.sub.slug))
+		return HttpResponse(status=200)
 
 
 class SubFollowDelete(View):
-	def post(self, *args, **kwargs):
-		user = self.request.user
-		unfollowed = Sub.objects.get(slug=self.kwargs['unfollowed'])
-		sub_followid = '%s>%s' % (user.username, unfollowed.slug)
-		follow = SubFollow.objects.get(sub_followid=sub_followid)
-		follow.delete()
-		unfollowed.follower_number -= 1
-		unfollowed.save()
-		user.sub_following_number -= 1
-		user.save()
-		return HttpResponseRedirect('/sub/%s' % (unfollowed.slug))
+	def get(self, *args, **kwargs):
+		sub_unfollowed = self.kwargs['unfollowed']
+
+		sub_unfollowed_obj = SubFollow.objects.get(follower=self.request.user, sub_id=sub_unfollowed)
+		sub_unfollowed_obj.follower.sub_following_number -= 1
+		sub_unfollowed_obj.follower.save()
+		sub_unfollowed_obj.sub.follower_number -= 1
+		sub_unfollowed_obj.sub.save()
+		sub_unfollowed_obj.delete()
+
+		return HttpResponse(status=200)
 
 
 class PostCommitView(CreateView):

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 
-from user.models import User, UserFollow
+from user.models import User
 from core.core import AvatarInput, is_reserved
 
 from nocaptcha_recaptcha.fields import NoReCaptchaField
@@ -58,7 +58,7 @@ class SignUpForm(forms.ModelForm):
 	username = forms.CharField(label='', max_length=16)
 	password = forms.CharField(label='', widget=forms.PasswordInput)
 	captcha = NoReCaptchaField(label='')
-	
+
 	class Meta:
 		model = User
 		fields = ['username', 'password']

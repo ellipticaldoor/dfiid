@@ -20,12 +20,16 @@ class Sub(models.Model):
 	last_commited = models.DateTimeField(auto_now_add=True)
 	follower_number = models.IntegerField(default=0)
 
-	def get_absolute_url(self): return '/sub/%s' % (self.pk)
-	def get_sub_avatar_url(self): return '/m/%s' % (self.image)
+	def get_absolute_url(self):
+		return '/sub/%s' % (self.pk)
+	def get_sub_avatar_url(self):
+		return '/m/%s' % (self.image)
 
-	def __str__(self): return str(self.pk)
+	def __str__(self):
+		return str(self.pk)
 
-	class Meta: ordering = ['-last_commited']
+	class Meta:
+		ordering = ['-last_commited']
 
 
 class SubFollowQuerySet(models.QuerySet):
@@ -44,11 +48,17 @@ class SubFollow(models.Model):
 		self.sub_followid = '%s>%s' % (self.follower, self.sub)
 		super(SubFollow, self).save(*args, **kwargs)
 
-	def get_sub_url(self): return '/sub/%s' % (self.sub_id)
-	def get_sub_avatar_url(self): return '/m/sub/%s.png' % (self.sub_id)
-	def get_sub_avatar_thumb_url(self): return '/m/sub/%s.png' % (self.sub_id)
+	def get_sub_url(self):
+		return '/sub/%s' % (self.sub_id)
+	def get_sub_avatar_url(self):
+		return '/m/sub/%s.png' % (self.sub_id)
+	def get_sub_avatar_thumb_url(self):
+		return '/m/sub/%s.png' % (self.sub_id)
+	def get_follower_avatar_url(self):
+		return '/m/user/avatar/%s.png' % (self.follower_id)
 
-	def __str__(self): return self.sub_followid
+	def __str__(self):
+		return self.sub_followid
 
 
 class PostQuerySet(models.QuerySet):
@@ -76,8 +86,10 @@ class PostQuerySet(models.QuerySet):
 
 class Post(models.Model):
 	def get_image(instance, filename):
-		if not hasattr(instance.postid, 'decode'): postid = instance.postid
-		else: postid = instance.postid.decode('utf-8')
+		if not hasattr(instance.postid, 'decode'):
+			postid = instance.postid
+		else:
+			postid = instance.postid.decode('utf-8')
 		return 'post/%s.png' % (postid)
 
 	postid = models.CharField(primary_key=True, max_length=16, default=_createId)
@@ -107,12 +119,17 @@ class Post(models.Model):
 		else: postid = self.pk.decode('utf-8')
 		return '/post/%s/%s/' % (postid, self.slug)
 
-	def get_edit_url(self): return '%sedit/' % (self.get_absolute_url())
-	def get_view_commits_url(self): return '%s#commits' % (self.get_absolute_url())
-	def get_avatar_url(self): return '/m/user/avatar/%s_thumb.png' % (self.user_id)
-	def get_image_url(self): return '/m/%s' % (self.image)
+	def get_edit_url(self):
+		return '%sedit/' % (self.get_absolute_url())
+	def get_view_commits_url(self):
+		return '%s#commits' % (self.get_absolute_url())
+	def get_avatar_url(self):
+		return '/m/user/avatar/%s_thumb.png' % (self.user_id)
+	def get_image_url(self):
+		return '/m/%s' % (self.image)
 
-	def __str__(self): return self.title
+	def __str__(self):
+		return self.title
 
 
 class Commit(models.Model):
@@ -128,9 +145,13 @@ class Commit(models.Model):
 		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
 		super(Commit, self).save(*args, **kwargs)
 
-	def get_absolute_url(self): return self.post.get_absolute_url()
-	def get_avatar_url(self): return '/m/user/avatar/%s_thumb.png' % (self.user_id)
+	def get_absolute_url(self):
+		return self.post.get_absolute_url()
+	def get_avatar_url(self):
+		return '/m/user/avatar/%s_thumb.png' % (self.user_id)
 
-	def __str__(self): return '%s, %s' % (self.post, self.commitid)
+	def __str__(self):
+		return '%s, %s' % (self.post, self.commitid)
 
-	class Meta: ordering = ['-created']
+	class Meta:
+		ordering = ['-created']
