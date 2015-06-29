@@ -98,23 +98,23 @@ function set_panel_visibility() {
 	if (show_mode == 2) {
 		link_panel.style.display = 'block';
 		mid_panel.style.display = 'block';
-		info_panel.style.display = 'block';
+		if (show_info) { info_panel.style.display = 'block' };
 	}
 	else {
 		if (main_panel == 1) {
 			link_panel.style.display = 'block';
 			mid_panel.style.display = 'none';
-			info_panel.style.display = 'none';
+			if (show_info) { info_panel.style.display = 'none' };
 		}
 		else if (main_panel == 2) {
 			link_panel.style.display = 'none';
 			mid_panel.style.display = 'block';
-			info_panel.style.display = 'none';
+			if (show_info) { info_panel.style.display = 'none' };
 		}
 		else if (main_panel == 3) {
 			link_panel.style.display = 'none';
 			mid_panel.style.display = 'none';
-			info_panel.style.display = 'block';
+			if (show_info) { info_panel.style.display = 'block' };
 		}
 		set_selected();
 	}
