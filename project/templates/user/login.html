@@ -18,10 +18,9 @@
 		</div>
 		<div id="login_signup_link"><a href="/signup">crear cuenta</a></div>
 	{% else %}
-	<div id="auth_form_container">
-		<img src="{% static "img/dfiid_logo_text.jpg" %}">
-
-	</div>
-	<div id="login_signup_link"><a href="/logout">logout</a></div>
+		<div id="auth_form_container">
+			<img src="{% static "img/dfiid_logo_text.jpg" %}">
+		</div>
+		<div id="login_signup_link"><a href="/logout">logout</a></div>
 	{% endif %}
 {% endblock %}
