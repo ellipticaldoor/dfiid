@@ -147,6 +147,8 @@ class Commit(models.Model):
 
 	def get_absolute_url(self):
 		return self.post.get_absolute_url()
+	def get_commit_url(self):
+		return '%s#commits' % self.post.get_absolute_url()
 	def get_avatar_url(self):
 		return '/m/user/avatar/%s_thumb.png' % (self.user_id)
 

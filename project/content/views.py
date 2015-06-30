@@ -121,7 +121,7 @@ class PostCommitView(CreateView):
 			obj.post.save()
 			obj.post.sub.last_commited = obj.created
 			obj.post.sub.save()
-			return HttpResponseRedirect(obj.get_absolute_url())
+			return HttpResponseRedirect(obj.get_commit_url())
 		else:
 			commit_url = '/post/%s/%s/' % (self.kwargs['pk'], self.kwargs['slug'])
 			return HttpResponseRedirect('/login/?next=%s' % (commit_url))
