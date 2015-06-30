@@ -31,7 +31,7 @@ $(document).swipeLeft(function(){
 		main_panel = 2;
 		set_panel_visibility();
 	}
-	else if ( main_panel == 2 ) {
+	else if ( main_panel == 2 && show_info ) {
 		main_panel = 3;
 		set_panel_visibility();
 	}
