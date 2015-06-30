@@ -7,7 +7,7 @@
 		<div id="auth_form_container">
 			<img src="{% static "img/dfiid_logo_text.jpg" %}">
 			{% if next %}
-			<form id="auth_form" action="/login/?next={{next}}" method="post" >
+				<form id="auth_form" action="/login/?next={{next}}" method="post" >
 			{%else%}
 			<form id="auth_form" action="/login/" method="post">
 			{% endif %}
@@ -18,6 +18,10 @@
 		</div>
 		<div id="login_signup_link"><a href="/signup">crear cuenta</a></div>
 	{% else %}
-		<a href="/logout">logout</a>
+	<div id="auth_form_container">
+		<img src="{% static "img/dfiid_logo_text.jpg" %}">
+
+	</div>
+	<div id="login_signup_link"><a href="/logout">logout</a></div>
 	{% endif %}
 {% endblock %}
