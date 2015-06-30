@@ -14,10 +14,10 @@ urlpatterns = patterns(
 	url(r'^sub/(?P<sub>\S+)/new$', views.SubPostListView.as_view(), name='sub_view_new', kwargs={'tab':'new'}),
 	url(r'^sub/(?P<sub>\S+)/followers$', views.SubPostListView.as_view(), kwargs={'tab':'followers'}, name='sub_followers'),
 	url(r'^create_sub/$', login_required(views.CreateSubView.as_view()), name='create_sub'),
-	
+
 	url(r'^create/$', login_required(views.CreatePostView.as_view()), name='create'),
 	url(r'^created/$', login_required(views.PostUserCreatedView.as_view()), name='created'),
-	
+
 	url(r'^sub_follow/(?P<followed>[-\w]+)/$', login_required(views.SubFollowCreate.as_view()), name='sub_follow'),
 	url(r'^sub_unfollow/(?P<unfollowed>[-\w]+)/$', login_required(views.SubFollowDelete.as_view()), name='sub_unfollow'),
 

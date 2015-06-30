@@ -97,40 +97,6 @@ class SubPostListView(ListView):
 		return context
 
 
-class SubFollowCreate(View):
-	def get(self, request, *args, **kwargs):
-		sub_followed = self.kwargs['followed']
-
-		if request.is_ajax():
-			sub_followed_obj = SubFollow.objects.create(follower=self.request.user,sub_id=sub_followed)
-			sub_followed_obj.save()
-			sub_followed_obj.follower.sub_following_number += 1
-			sub_followed_obj.follower.save()
-			sub_followed_obj.sub.follower_number += 1
-			sub_followed_obj.sub.save()
-
-			return HttpResponse(status=200)
-		else:
-			return HttpResponseRedirect('/sub/%s' % sub_unfollowed)
-
-
-class SubFollowDelete(View):
-	def get(self, request, *args, **kwargs):
-		sub_unfollowed = self.kwargs['unfollowed']
-
-		if request.is_ajax():
-			sub_unfollowed_obj = SubFollow.objects.get(follower=self.request.user, sub_id=sub_unfollowed)
-			sub_unfollowed_obj.follower.sub_following_number -= 1
-			sub_unfollowed_obj.follower.save()
-			sub_unfollowed_obj.sub.follower_number -= 1
-			sub_unfollowed_obj.sub.save()
-			sub_unfollowed_obj.delete()
-
-			return HttpResponse(status=200)
-		else:
-			return HttpResponseRedirect('/sub/%s' % sub_unfollowed)
-
-
 class PostCommitView(CreateView):
 	template_name = 'layouts/post_detail.html'
 	form_class = CommitForm
@@ -207,3 +173,37 @@ class PostUserCreatedView(ListView):
 
 	def get_queryset(self):
 		return Post.objects.by_user(self.request.user)
+
+
+class SubFollowCreate(View):
+	def post(self, request, *args, **kwargs):
+		sub_followed = self.kwargs['followed']
+
+		if request.is_ajax():
+			sub_followed_obj = SubFollow.objects.create(follower=self.request.user,sub_id=sub_followed)
+			sub_followed_obj.save()
+			sub_followed_obj.follower.sub_following_number += 1
+			sub_followed_obj.follower.save()
+			sub_followed_obj.sub.follower_number += 1
+			sub_followed_obj.sub.save()
+
+			return HttpResponse(status=200)
+		else:
+			return HttpResponseRedirect('/sub/%s' % sub_unfollowed)
+
+
+class SubFollowDelete(View):
+	def post(self, request, *args, **kwargs):
+		sub_unfollowed = self.kwargs['unfollowed']
+
+		if request.is_ajax():
+			sub_unfollowed_obj = SubFollow.objects.get(follower=self.request.user, sub_id=sub_unfollowed)
+			sub_unfollowed_obj.follower.sub_following_number -= 1
+			sub_unfollowed_obj.follower.save()
+			sub_unfollowed_obj.sub.follower_number -= 1
+			sub_unfollowed_obj.sub.save()
+			sub_unfollowed_obj.delete()
+
+			return HttpResponse(status=200)
+		else:
+			return HttpResponseRedirect('/sub/%s' % sub_unfollowed)
