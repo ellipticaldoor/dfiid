@@ -167,10 +167,16 @@ __________________________________________________________________________ */
 
 nav {
 	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
 	line-height: 50px;
 	height: 50px;
+	width: 100%;
 	font-size: 18px;
 	border-bottom: 1px solid #D7D7D7;
+	background-color: rgba(255,255,255,0.85);
 }
 
 nav ul { text-align: center; }
@@ -289,6 +295,7 @@ __________________________________________________________________________ */
 	#app {
 		width: 100%;
 		display: block;
+		margin-top: 50px;
 	}
 
 	nav { display: block; }
