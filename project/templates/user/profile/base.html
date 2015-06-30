@@ -60,10 +60,14 @@
 
 			profile_option.addEventListener('click', function() {
 				$.ajax({
-					type: 'GET',
-					url: '/' + follow_state + '/{{ profile.pk }}',
+					type: 'POST',
+					url: '/' + follow_state + '/{{ profile.pk }}/',
+					data: {'csrfmiddlewaretoken': '{{ csrf_token }}',},
 					success: followSuccess,
-					error: followError
+					error: function(xhr, error) {
+						followError();
+						console.debug(xhr); console.debug(error);
+ 					},
 				});
 			});
 

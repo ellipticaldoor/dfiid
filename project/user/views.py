@@ -151,7 +151,7 @@ class UserEdit(UpdateView):
 
 
 class UserFollowCreate(View):
-	def get(self, *args, **kwargs):
+	def post(self, request, *args, **kwargs):
 		followed = self.kwargs['followed']
 
 		followed_obj = UserFollow.objects.create(follower_id=self.request.user, followed_id=followed)
@@ -164,8 +164,9 @@ class UserFollowCreate(View):
 		return HttpResponse(status=200)
 
 
+
 class UserFollowDelete(View):
-	def get(self, *args, **kwargs):
+	def post(self, request, *args, **kwargs):
 		unfollowed = self.kwargs['unfollowed']
 
 		unfollowed_obj = UserFollow.objects.get(follower_id=self.request.user, followed_id=unfollowed)
