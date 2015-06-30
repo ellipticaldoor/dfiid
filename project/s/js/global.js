@@ -2,7 +2,7 @@
 var link_panel = document.getElementById('link_panel');
 var mid_panel = document.getElementById('mid_panel');
 var info_panel = document.getElementById('info_panel');
-if (show_info) { info_panel.style.display = 'block'; }
+if (show_info) { info_panel.style.display = 'block';}
 
 var link_nav_link = document.getElementById('link_nav_link');
 var mid_nav_link = document.getElementById('mid_nav_link');

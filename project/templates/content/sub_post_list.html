@@ -80,6 +80,7 @@
 
 					info_panel.style.display = 'block';
 					info_nav_link.style.display = 'inline-block';
+					show_info = true;
 				}
 				else {
 					follower_number.innerText = parseInt(follower_number.innerText) - 1;
@@ -90,6 +91,7 @@
 					if (info_panel.offsetHeight < 60) {
 						info_panel.style.display = 'none';
 						info_nav_link.style.display = 'none';
+						show_info = false;
 					}
 				}
 				set_panel_visibility();
