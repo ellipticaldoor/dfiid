@@ -80,6 +80,7 @@ class SubPostListView(ListView):
 		context['tab_show'] = self.kwargs['tab']
 		context['list'] = sub
 
+		context['tab'] = self.kwargs['tab']
 		if self.kwargs['tab'] == 'top':
 			context['list_url'] = '/sub/%s' % sub
 		else:

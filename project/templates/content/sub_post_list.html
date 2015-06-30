@@ -98,5 +98,7 @@
 		</script>
 	{% endif %}
 
-	<!-- {{ block.super }} -->
+	{% if tab == 'top' or tab == 'new' %}
+		{{ block.super }}
+	{% endif %}
 {% endblock %}
