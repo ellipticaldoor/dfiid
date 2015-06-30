@@ -11,7 +11,9 @@ def set_user_form_attrs(self):
 		self.fields['username'].widget.attrs.update({
 				'autofocus': 'autofocus',
 				'required': 'required',
-				'placeholder': 'usuario'
+				'placeholder': 'usuario',
+				'autocapitalize': "off",
+				'spellcheck': "off"
 			})
 		self.fields['password'].widget.attrs.update({
 				'required': 'required',
