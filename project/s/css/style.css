@@ -317,6 +317,8 @@ __________________________________________________________________________ */
 		margin-left: calc((100vw - 700px)/2);
 	}
 
+	.post { padding: 10px 8px 12px 8px !important; }
+
 	.panel_avatar {
 		height: 30px;
 		margin: 0 9px -8px 0;
