@@ -23,14 +23,15 @@ class Noty(models.Model):
 	show = models.BooleanField(default=True)
 
 	def save(self, *args, **kwargs):
-		self.user.noty_number += 1
+		user = User.objects.get(username=self.user_id)
+		user.add_noty()
 		super(Noty, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
 		if self.category == 'P':
 			return self.post.get_absolute_url()
 		elif self.category == 'C':
-			return self.commit.get_absolute_url()
+			return self.commit.get_commit_url()
 		elif self.category == 'F':
 			return self.follow.get_absolute_url()
 

@@ -147,12 +147,12 @@ class Commit(models.Model):
 	def get_absolute_url(self):
 		return self.post.get_absolute_url()
 	def get_commit_url(self):
-		return '%s#commits' % self.post.get_absolute_url()
+		return '%s#%s' % (self.post.get_absolute_url(), self.commitid)
 	def get_avatar_url(self):
 		return '/m/user/avatar/%s_thumb.png' % (self.user_id)
 
 	def __str__(self):
 		return '%s, %s' % (self.post, self.commitid)
-		
+
 	class Meta:
 		ordering = ['-created']

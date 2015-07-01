@@ -72,6 +72,12 @@
 
 		{% if user.is_authenticated %}
 			<div id="info_panel" class="panel side_panel" style="display:none;">
+				<ul>
+					<a href="/notify" id="follow_{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="{% static "img/dfiid_logo_small.png" %}">{{ user.noty_number }}</li></a>
+				</ul>
+
+				<div class="separator"></div>
+
 				<ul id="info_panel_users">
 					{% if user.following_number > 0 %}
 						{% for follow in user.follower.all %}
@@ -79,7 +85,9 @@
 						{% endfor %}
 					{% endif %}
 				</ul>
+
 				<div class="separator"></div>
+
 				<ul id="info_panel_subs">
 					{% if user.sub_following_number > 0 %}
 						{% for sub_follow in user.sub_follower.all %}
@@ -95,12 +103,10 @@
 
 	<script src="{% static "js/lib/zepto_1.1.6.min.js" %}"></script>
 	<script>
-		var show_info = false;
-
 		{% if user.is_authenticated %}
-			{% if user.following_number > 0 or user.sub_following_number > 0 %}
-				show_info = true;
-			{% endif %}
+			show_info = true;
+		{% else %}
+			var show_info = false;
 		{% endif %}
 	</script>
 	<script src="{% static "js/global.js" %}"></script>

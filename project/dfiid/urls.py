@@ -32,6 +32,7 @@ urlpatterns += patterns(
 	url(r'^admin/', include(admin.site.urls)),
 
 	url(r'^about/', views.About.as_view()),
+	url(r'^', include('notify.urls')),
 	url(r'^', include('content.urls')),
 	url(r'^', include('user.urls')),
 )
