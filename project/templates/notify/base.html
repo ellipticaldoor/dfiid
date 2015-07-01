@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}notify{% endblock %}
+
+{% block mid_panel %}
+	<h1>notify</h1>
+	<p>you have {{ user.noty_number }} notifications</p>
+
+	{% for noty in object_list %}
+		<div class="noty">
+			<p></p>
+		</div>
+	{% endfor %}
+{% endblock %}

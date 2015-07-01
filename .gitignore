@@ -3,6 +3,5 @@ Thumbs.db
 *.pyc
 s/
 m/
-migrations/
 __pycache__/
 todo.md
