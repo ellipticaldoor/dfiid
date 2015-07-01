@@ -22,6 +22,10 @@ class Noty(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	show = models.BooleanField(default=True)
 
+	def save(self, *args, **kwargs):
+		self.user.noty_number += 1
+		super(Noty, self).save(*args, **kwargs)
+
 	def get_absolute_url(self):
 		if self.category == 'P':
 			return self.post.get_absolute_url()

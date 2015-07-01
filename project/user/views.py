@@ -123,25 +123,25 @@ class UserEdit(UpdateView):
 		obj = form.save(commit=False)
 		obj.save()
 
-		final_avatar_dir = 'media/user/avatar/%s.png' % username
+		final_avatar_dir = 'm/user/avatar/%s.png' % username
 
-		if not 'media/%s' % (obj.avatar) == final_avatar_dir:
-			avatar_dir = '%s/media/%s' % (settings.BASE_DIR, obj.avatar)
+		if not 'm/%s' % (obj.avatar) == final_avatar_dir:
+			avatar_dir = '%s/m/%s' % (settings.BASE_DIR, obj.avatar)
 			os.rename(avatar_dir, final_avatar_dir)
-			obj.avatar = final_avatar_dir[6:]
+			obj.avatar = final_avatar_dir[2:]
 			obj.save()
 			avatar_resize(final_avatar_dir)
 
-		final_cover_dir = 'media/user/cover/%s.png' % username
+		final_cover_dir = 'm/user/cover/%s.png' % username
 
 		def create_cover():
-			cover_dir = '%s/media/%s' % (settings.BASE_DIR, obj.cover)
+			cover_dir = '%s/m/%s' % (settings.BASE_DIR, obj.cover)
 			os.rename(cover_dir, final_cover_dir)
-			obj.cover = final_cover_dir[6:]
+			obj.cover = final_cover_dir[2:]
 			obj.save()
 			cover_resize(final_cover_dir)
 
-		if not 'media/%s' % (obj.cover) == final_cover_dir:
+		if not 'm/%s' % (obj.cover) == final_cover_dir:
 			if os.path.isfile(final_cover_dir):
 				create_cover()
 

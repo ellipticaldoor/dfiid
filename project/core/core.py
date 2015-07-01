@@ -30,7 +30,7 @@ def is_reserved(username):
 						  'sub_follow', 'sub_unfollow', 'signup', 'login', 'logout',
 						  'contact', 'about', 'legal', 'blog', 'rss', 'feed', 'robots',
 						  'sitemap', 'settings', 'debug', 'top', 'new', '404', '500',
-						  'favicon', 'apple-touch-icon', 'follow', 'unfollow']
+						  'favicon', 'apple-touch-icon', 'follow', 'unfollow', 'notify']
 
 	for name in reserved_usernames:
 		if name == username: return True
@@ -62,7 +62,7 @@ def avatar_resize(final_avatar_dir):
 
 	img.thumbnail((50, 50), Image.ANTIALIAS)
 	img.save(final_avatar_thumb_dir, 'PNG')
-	pass
+	return
 
 
 def cover_resize(final_cover_dir):
@@ -72,23 +72,23 @@ def cover_resize(final_cover_dir):
 	hsize = int((float(img.size[1])*float(wpercent)))
 	img = img.resize((basewidth,hsize), Image.ANTIALIAS).crop((0, 0, 951, 215))
 	img.save(final_cover_dir, 'PNG')
-	pass
+	return
 
 
 def random_avatar(username):
-	avatar_dir = '%s/media/user/avatar/%s.png' % (settings.BASE_DIR, username)
-	avatar_thumb_dir = '%s/media/user/avatar/%s_thumb.png' % (settings.BASE_DIR, username)
+	avatar_dir = '%s/m/user/avatar/%s.png' % (settings.BASE_DIR, username)
+	avatar_thumb_dir = '%s/m/user/avatar/%s_thumb.png' % (settings.BASE_DIR, username)
 	a = random.rand(3,3,3) * 255
 
 	avatar = Image.fromarray(a.astype('uint8')).convert('RGB').resize((250,250))
 	avatar.save(avatar_dir, 'PNG')
 	avatar.save(avatar_thumb_dir, 'PNG')
-	pass
+	return
 
 
 def random_avatar_sub(sub_slug):
 	a = random.rand(5,5,3) * 255
 	avatar = Image.fromarray(a.astype('uint8')).convert('RGB').resize((100,100))
-	avatar_dir = '%s/media/sub/%s.png' % (settings.BASE_DIR, sub_slug)
+	avatar_dir = '%s/m/sub/%s.png' % (settings.BASE_DIR, sub_slug)
 	avatar.save(avatar_dir, 'PNG')
-	pass
+	return
