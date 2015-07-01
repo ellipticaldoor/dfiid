@@ -171,17 +171,39 @@ nav {
 	top: 0;
 	left: 0;
 	z-index: 9999;
-	line-height: 50px;
 	height: 50px;
 	width: 100%;
 	font-size: 18px;
 	border-bottom: 1px solid #D7D7D7;
 	background-color: rgba(255,255,255,0.85);
+	padding: 0 13px 0 13px;
 }
 
-nav ul { text-align: center; }
+nav ul { text-align: left; }
 nav li { display: inline; }
 nav a { display: inline-block; }
+
+.nav_link {
+	height: 50px;
+	margin: 0 13px 0 13px;
+	text-align: center;
+}
+
+#envelope_link { float: right; }
+
+.right_nav_link { float: right !important! }
+
+.nav_link img {
+	margin: 13px 0 0 0;
+	height: 24px;
+	text-align: center;
+}
+
+.nav_link:focus { text-decoration: none; }
+
+#link_nav_link { display: none; }
+#mid_nav_link { display: none; }
+#info_nav_link { display: none; }
 
 
 /* panels
@@ -259,14 +281,6 @@ __________________________________________________________________________ */
 
 #auth_panel_link { color: #0BD318 !important; }
 #create_panel_link { color: #EF4DB6 !important; }
-
-.nav_link { width: 50px; }
-
-.nav_link:focus { text-decoration: none; }
-
-#link_nav_link { display: none; }
-#mid_nav_link { display: none; }
-#info_nav_link { display: none; }
 
 
 /* panel info

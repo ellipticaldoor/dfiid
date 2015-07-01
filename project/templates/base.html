@@ -32,14 +32,35 @@
 	<div id="app">
 		<nav class="no-select">
 			<ul>
-				<li id="link_nav_link"><a class="nav_link" href="#" onClick="return false;">a</a></li>
-				<li id="mid_nav_link"><a class="nav_link" href="#" onClick="return false;">b</a></li>
+				<li id="link_nav_link">
+					<a class="nav_link" href="#" onClick="return false;">
+						<img src="{% static "img/icon/nav_left_icon.png" %}" />
+					</a>
+				</li>
+				<li id="mid_nav_link">
+					<a class="nav_link" href="#" onClick="return false;">
+						<img src="{% static "img/icon/nav_mid_icon.png" %}" />
+					</a>
+				</li>
 				{% if user.is_authenticated %}
 					{% if user.following_number > 0 or user.sub_following_number > 0 %}
-						<li id="info_nav_link"><a class="nav_link" href="#" onClick="return false;">c</a></li>
+						<li id="info_nav_link">
+							<a class="nav_link" href="#" onClick="return false;">
+								<img src="{% static "img/icon/nav_right_icon.png" %}" />
+							</a>
+						</li>
 					{% else %}
-						<li id="info_nav_link" style="display:none;"><a class="nav_link" href="#" onClick="return false;">c</a></li>
+						<li id="info_nav_link" style="display:none;">
+							<a class="nav_link" href="#" onClick="return false;">
+								<img src="{% static "img/icon/nav_right_icon.png" %}" />
+							</a>
+						</li>
 					{% endif %}
+					<li id="envelope_link">
+						<a class="nav_link" href="/notify">
+							<img src="{% static "img/icon/envelope_icon.png" %}" />
+						</a>
+					</li>
 				{% endif %}
 			</ul>
 		</nav>
@@ -72,11 +93,12 @@
 
 		{% if user.is_authenticated %}
 			<div id="info_panel" class="panel side_panel" style="display:none;">
-				<ul>
-					<a href="/notify" id="follow_{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="{% static "img/dfiid_logo_small.png" %}">{{ user.noty_number }}</li></a>
-				</ul>
-
-				<div class="separator"></div>
+				{% if user.noty_number > 0 %}
+					<ul id="notify_panel">
+						<a href="/notify" id="follow_{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="{% static "img/icon/envelope_icon.png" %}">{{ user.noty_number }}</li></a>
+					</ul>
+					<div class="separator"></div>
+				{% endif %}
 
 				<ul id="info_panel_users">
 					{% if user.following_number > 0 %}
