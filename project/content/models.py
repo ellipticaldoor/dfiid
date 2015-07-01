@@ -1,5 +1,3 @@
-from markdown import markdown
-
 from django.db import models
 from django.utils.text import slugify
 
@@ -8,6 +6,7 @@ from core.core import _createId
 from core.video_embed import CustomVideoExtension
 
 from django_resized import ResizedImageField
+from markdown import markdown
 
 
 class Sub(models.Model):
@@ -98,7 +97,7 @@ class Post(models.Model):
 	title = models.CharField(max_length=100)
 	slug = models.SlugField(max_length=100)
 	body = models.TextField(max_length=10000)
-	body_html  = models.TextField(blank=True, null=True)
+	body_html = models.TextField(blank=True, null=True)
 	image = ResizedImageField(size=[950, 950], quality=90, upload_to=get_image, blank=True, null=True)
 	draft = models.BooleanField(default=False)
 	created = models.DateTimeField(auto_now_add=True)
@@ -154,6 +153,6 @@ class Commit(models.Model):
 
 	def __str__(self):
 		return '%s, %s' % (self.post, self.commitid)
-
+		
 	class Meta:
 		ordering = ['-created']

@@ -39,9 +39,10 @@ INSTALLED_APPS = (
 	'django.contrib.staticfiles',
 	'django.contrib.sitemaps',
 	'nocaptcha_recaptcha',
-	'content',
 	'core',
 	'user',
+	'content',
+	'notify',
 )
 
 MIDDLEWARE_CLASSES = (
