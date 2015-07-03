@@ -356,8 +356,8 @@ img {
 
 .post {
 	overflow: hidden;
-	border: 2px solid #ecf0f1;
-	border-radius: 2px;
+	border: 1px solid #ecf0f1;
+	border-radius: 1px;
 	padding: 10px 15px 12px 15px;
 	margin-bottom: 15px;
 }

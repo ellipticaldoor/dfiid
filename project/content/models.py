@@ -152,7 +152,7 @@ class Commit(models.Model):
 		return '/m/user/avatar/%s_thumb.png' % (self.user_id)
 
 	def __str__(self):
-		return '%s, %s' % (self.post, self.commitid)
+		return self.commitid
 
 	class Meta:
 		ordering = ['-created']
