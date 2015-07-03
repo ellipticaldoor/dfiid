@@ -19,19 +19,26 @@ class Noty(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	show = models.BooleanField(default=True)
 
-	def save(self, *args, **kwargs):
-	 	# TODO: cancel save if commit is created by the athor of the post
-		user = User.objects.get(username=self.user_id)
-		user.add_noty()
-		super(Noty, self).save(*args, **kwargs)
-
 	def get_absolute_url(self):
-		if self.category == 'C':
-			return self.commit.get_commit_url()
-		elif self.category == 'F':
-			return self.follow.get_absolute_url()
+		return self.commit.get_commit_url()
+
+	def get_read_url(self):
+		return '/notify/read/%s' % self.notyid
+
+	def create_noty(self):
+		self.user.noty_number += 1
+		self.user.save()
+		return
+
+	def read_noty(self):
+		self.show = False
+		self.save()
+		self.user.noty_number -= 1
+		self.user.save()
+		return
 
 	def __str__(self):
 		return self.notyid
 
-	class Meta: ordering = ['-created']
+	class Meta:
+		ordering = ['-created']

@@ -21,6 +21,7 @@ class Sub(models.Model):
 
 	def get_absolute_url(self):
 		return '/sub/%s' % (self.pk)
+
 	def get_sub_avatar_url(self):
 		return '/m/%s' % (self.image)
 
@@ -49,10 +50,13 @@ class SubFollow(models.Model):
 
 	def get_sub_url(self):
 		return '/sub/%s' % (self.sub_id)
+
 	def get_sub_avatar_url(self):
 		return '/m/sub/%s.png' % (self.sub_id)
+
 	def get_sub_avatar_thumb_url(self):
 		return '/m/sub/%s.png' % (self.sub_id)
+
 	def get_follower_avatar_url(self):
 		return '/m/user/avatar/%s.png' % (self.follower_id)
 
@@ -109,21 +113,27 @@ class Post(models.Model):
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title.replace(' ', '_'))
-		if not self.slug: self.slug = '_'
+		if not self.slug:
+			self.slug = '_'
 		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
 		super(Post, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
-		if not hasattr(self.pk, 'decode'): postid = self.pk
-		else: postid = self.pk.decode('utf-8')
+		if not hasattr(self.pk, 'decode'):
+			postid = self.pk
+		else:
+			postid = self.pk.decode('utf-8')
 		return '/post/%s/%s/' % (postid, self.slug)
 
 	def get_edit_url(self):
 		return '%sedit/' % (self.get_absolute_url())
+
 	def get_view_commits_url(self):
 		return '%s#commits' % (self.get_absolute_url())
+
 	def get_avatar_url(self):
 		return '/m/user/avatar/%s_thumb.png' % (self.user_id)
+
 	def get_image_url(self):
 		return '/m/%s' % (self.image)
 
@@ -146,8 +156,10 @@ class Commit(models.Model):
 
 	def get_absolute_url(self):
 		return self.post.get_absolute_url()
+
 	def get_commit_url(self):
 		return '%s#%s' % (self.post.get_absolute_url(), self.commitid)
+
 	def get_avatar_url(self):
 		return '/m/user/avatar/%s_thumb.png' % (self.user_id)
 

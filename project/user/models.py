@@ -52,11 +52,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 	objects = UserManager()
 
-	def add_noty(self):
-		self.noty_number += 1
-		self.save()
-		return
-
 	def get_short_name(self):
 		return self.pk
 

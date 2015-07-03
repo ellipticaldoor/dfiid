@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block title %}notify{% endblock %}
+
+{% block mid_panel %}
+	<div id="profile_container">
+		<a href="/"><img id="dfiid_image_view" src="{% static "img/notify_logo_text.png" %}" alt="dfiid"></a>
+	</div>
+
+	<ul id="tab_selector">
+		<li><a class="{% if tab_show == 'new' %}tab_selected{% endif %}" href="/notify">new</a></li>
+		<li><a class="{% if tab_show == 'all' %}tab_selected{% endif %}" href="/notify/all">all</a></li>
+	</ul>
+
+	{% for noty in object_list %}
+		<div class="post">
+			{% if noty.category == 'C' %}
+				<div class="post_content">{{ noty.commit.body_html|safe }}</div>
+
+				<div class="post_info">
+					<a class="blog_link" href="/{{ noty.commit.user_id }}"><img alt="{{ noty.commit.user_id }}" src="{{ noty.commit.get_avatar_url }}"></a>
+					<span><a href="/{{ noty.commit.user_id }}">{{ noty.commit.user_id }}</a> / <a href="{{ noty.commit.get_commit_url }}">{{ noty.commit.post.title }}</a></span>
+					<span class="date">{{ commit.created |date:"d/m/Y H:i" }}</span>
+
+					{% if noty.show == True %}
+						<a class="commits_link" href="{{ noty.get_read_url }}">ok</a>
+					{% endif %}
+				</div>
+			{% else %}
+				<div class="post_info">
+					<a class="blog_link" href="/{{ noty.follow.follower_id }}"><img alt="{{ noty.follow.follower_id }}" src="{{ noty.follow.follower.get_avatar_url }}"></a>
+					<span><a href="/{{ noty.follow.follower_id }}">{{ noty.follow.follower_id }}</a> / follow</span>
+
+					{% if noty.show == True %}
+						<a class="commits_link" href="{{ noty.get_read_url }}">ok</a>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+	{% endfor %}
+{% endblock %}
+
+{% block js %}
+	<script>
+			console.log('hola :)');
+	</script>
+{% endblock %}
