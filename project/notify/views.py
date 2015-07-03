@@ -4,5 +4,5 @@ from notify.models import Noty
 
 
 class Notify(ListView):
-	template_name = 'notify/base.html'
+	template_name = 'notify.html'
 	model = Noty
