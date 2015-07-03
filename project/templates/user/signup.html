@@ -5,7 +5,7 @@
 {% block mid_panel %}
 	{% if not user.is_authenticated %}
 		<div id="auth_form_container">
-			<img src="{% static "img/dfiid_logo_text.jpg" %}">
+			<img src="{% static "img/dfiid_logo_text_high.jpg" %}">
 
 			<form id="auth_form" action="/signup/" method="post">
 				{% csrf_token %}

@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 {% block title %}notify{% endblock %}
 
 {% block mid_panel %}
+	<div id="profile_container">
+		<a href="/"><img id="dfiid_image_view" src="{% static "img/notify_logo_text.png" %}" alt="dfiid"></a>
+	</div>
+
+	<ul id="tab_selector">
+		<li><a class="tab_selected" href="/notify">new</a></li>
+		<li><a class="" href="/notify/all">all</a></li>
+	</ul>
+
 	{% for noty in object_list %}
 		<div class="post">
 			{% if noty.category == 'C' %}

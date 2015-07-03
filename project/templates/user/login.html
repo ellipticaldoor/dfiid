@@ -5,7 +5,7 @@
 {% block mid_panel %}
 	{% if not user.is_authenticated %}
 		<div id="auth_form_container">
-			<img src="{% static "img/dfiid_logo_text.jpg" %}">
+			<img src="{% static "img/dfiid_logo_text_high.jpg" %}">
 			{% if next %}
 				<form id="auth_form" action="/login/?next={{next}}" method="post" >
 			{%else%}
