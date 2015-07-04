@@ -37,6 +37,7 @@
 				</div>
 			{% endif %}
 		</div>
+		
 	{% endfor %}
 {% endblock %}
 
@@ -48,6 +49,20 @@
 
 		$('.read_link').click(function() {
 			var read_noty_id = this.getAttribute('noty_id');
+
+			$.ajax({
+				type: 'POST',
+				url: '/notify/read/' + read_noty_id + '/',
+				data: {'csrfmiddlewaretoken': '{{ csrf_token }}',},
+				success: readNoty(read_noty_id),
+				error: function(xhr, error) {
+					console.debug(xhr); console.debug(error);
+				},
+			});
+		});
+
+
+		function readNoty(read_noty_id) {
 			fadeOut(document.getElementById(read_noty_id));
 			nav_noty_number.innerText = parseInt(nav_noty_number.innerText) - 1;
 			panel_noty_number.innerText = parseInt(panel_noty_number.innerText) - 1;
@@ -56,7 +71,7 @@
 				nav_noty_number.previousElementSibling.setAttribute('src', '{% static "img/icon/envelope_grey_icon.png" %}');
 				panel_noty_number.previousElementSibling.setAttribute('src', '{% static "img/icon/envelope_grey_icon.png" %}');
 			}
-		});
+		}
 
 
 		function fadeOut(el){

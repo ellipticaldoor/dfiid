@@ -21,12 +21,10 @@ class Notify(ListView):
 
 
 class ReadNoty(View):
-	# def post(self, request, *args, **kwargs):
-	def get(self, request, *args, **kwargs):
+	def post(self, request, *args, **kwargs):
 		notyid = self.kwargs['notyid']
 
 		noty = Noty.objects.get(notyid=notyid, user=self.request.user)
 		noty.read_noty()
 
-		# return HttpResponse(status=200)
-		return HttpResponseRedirect('/notify')
+		return HttpResponse(status=200)

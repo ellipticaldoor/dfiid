@@ -77,24 +77,12 @@
 					follower_number.innerText = parseInt(follower_number.innerText) + 1;
 					info_panel_users.append(user_html);
 					follow_state = 'unfollow';
-
-					// info_panel.style.display = 'block';
-					// info_nav_link.style.display = 'inline-block';
-					// show_info = true;
 				}
 				else {
 					follower_number.innerText = parseInt(follower_number.innerText) - 1;
 					document.getElementById('follow_{{ profile.pk }}').remove();
 					follow_state = 'follow';
-
-					// info_panel.style.display = 'block';
-					// if (info_panel.offsetHeight < 60) {
-					// 	info_panel.style.display = 'none';
-					// 	info_nav_link.style.display = 'none';
-					// 	show_info = false;
-					// }
 				}
-				// set_panel_visibility();
 				profile_option.innerText = follow_state;
 			}
 
