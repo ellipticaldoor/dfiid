@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView, UpdateView
 
 from content.models import Sub, SubFollow, Post, Commit
 from content.forms import SubForm, PostForm, CommitForm
+from notify.models import Noty
 from core.core import random_avatar_sub
 
 
@@ -110,17 +111,16 @@ class PostCommitView(CreateView):
 
 	def form_valid(self, form):
 		if self.request.user.is_authenticated():
+			user = self.request.user
+			post = Post.objects.get(postid=self.kwargs['pk'])
+
 			obj = form.save(commit=False)
-			obj.user = self.request.user
-			obj.post = Post.objects.get(postid=self.kwargs['pk'])
-			obj.save()
-			obj.user.last_commited = obj.created
-			obj.user.save()
-			obj.post.last_commited = obj.created
-			obj.post.commit_number += 1
-			obj.post.save()
-			obj.post.sub.last_commited = obj.created
-			obj.post.sub.save()
+			obj.create_commit(user, post)
+
+			if not obj.post.user.pk == user.pk:
+				noty = Noty.objects.create(user_id=obj.post.user_id, category='C', commit=obj)
+				noty.create_noty()
+
 			return HttpResponseRedirect(obj.get_commit_url())
 		else:
 			commit_url = '/post/%s/%s/' % (self.kwargs['pk'], self.kwargs['slug'])

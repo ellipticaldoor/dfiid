@@ -1,7 +1,7 @@
 from django.db import models
 
-from user.models import User, UserFollow
 from content.models import Post, Commit
+from user.models import User, UserFollow
 from core.core import _createId
 
 
@@ -19,12 +19,6 @@ class Noty(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	show = models.BooleanField(default=True)
 
-	def get_absolute_url(self):
-		return self.commit.get_commit_url()
-
-	def get_read_url(self):
-		return '/notify/read/%s' % self.notyid
-
 	def create_noty(self):
 		self.user.noty_number += 1
 		self.user.save()
@@ -37,8 +31,9 @@ class Noty(models.Model):
 		self.user.save()
 		return
 
-	def __str__(self):
-		return self.notyid
+	def get_absolute_url(self): return self.commit.get_commit_url()
+	def get_read_url(self): return '/notify/read/%s' % self.notyid
 
-	class Meta:
-		ordering = ['-created']
+	def __str__(self): return self.notyid
+
+	class Meta: ordering = ['-created']

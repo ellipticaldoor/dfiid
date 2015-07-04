@@ -164,7 +164,6 @@ class UserFollowCreate(View):
 		return HttpResponse(status=200)
 
 
-
 class UserFollowDelete(View):
 	def post(self, request, *args, **kwargs):
 		unfollowed = self.kwargs['unfollowed']
