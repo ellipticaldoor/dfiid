@@ -23,7 +23,7 @@
 					<span class="date">{{ commit.created |date:"d/m/Y H:i" }}</span>
 
 					{% if noty.show == True %}
-						<div class="read_link noselect" href="{{ noty.get_read_url }}" noty_id="{{ noty.pk }}">read</div>
+						<div class="read_link noselect" href="{{ noty.get_read_url }}" noty_id="{{ noty.pk }}">✔</div>
 					{% endif %}
 				</div>
 			{% else %}
@@ -32,7 +32,7 @@
 					<span><a href="/{{ noty.follow.follower_id }}">{{ noty.follow.follower_id }}</a> / follow</span>
 
 					{% if noty.show == True %}
-						<div class="read_link noselect" href="{{ noty.get_read_url }}" noty_id="{{ noty.pk }}">read</div>
+						<div class="read_link noselect" href="{{ noty.get_read_url }}" noty_id="{{ noty.pk }}">✔</div>
 					{% endif %}
 				</div>
 			{% endif %}
@@ -42,10 +42,22 @@
 
 {% block js %}
 	<script>
+		var nav_noty_number = document.getElementById('nav_noty_number');
+		var panel_noty_number = document.getElementById('panel_noty_number');
+
+
 		$('.read_link').click(function() {
 			var read_noty_id = this.getAttribute('noty_id');
 			fadeOut(document.getElementById(read_noty_id));
+			nav_noty_number.innerText = parseInt(nav_noty_number.innerText) - 1;
+			panel_noty_number.innerText = parseInt(panel_noty_number.innerText) - 1;
+
+			if (parseInt(nav_noty_number.innerText) == 0) {
+				nav_noty_number.previousElementSibling.setAttribute('src', '{% static "img/icon/envelope_grey_icon.png" %}');
+				panel_noty_number.previousElementSibling.setAttribute('src', '{% static "img/icon/envelope_grey_icon.png" %}');
+			}
 		});
+
 
 		function fadeOut(el){
 			el.style.opacity = 1;

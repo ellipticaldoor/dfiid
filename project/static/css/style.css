@@ -326,7 +326,7 @@ __________________________________________________________________________ */
 		font-size: 140%;
 	}
 
-	#notify_panel { display: none; }
+	/*#notify_panel { display: none; }*/
 
 	.visit {
 		font-size: 110%;

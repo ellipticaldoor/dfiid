@@ -61,7 +61,7 @@
 						<a id="notify_link" class="nav_link" href="/notify">
 							{% if user.noty_number > 0 %}
 								<img src="{% static "img/icon/envelope_icon.png" %}" />
-								<span>{{ user.noty_number }}</span>
+								<span id="nav_noty_number">{{ user.noty_number }}</span>
 							{% else %}
 								<img src="{% static "img/icon/envelope_grey_icon.png" %}" />
 							{% endif %}
@@ -101,24 +101,24 @@
 			<div id="info_panel" class="panel side_panel" style="display:none;">
 				<ul id="notify_panel">
 					{% if user.noty_number > 0 %}
-						<a href="/notify" ><li class="visit" id="notify_link"><img class="panel_avatar" src="{% static "img/icon/envelope_icon.png" %}"><span class="notify_span">{{ user.noty_number }}</span></li></a>
+						<a href="/notify" ><li class="visit" id="notify_link"><img class="panel_avatar" src="{% static "img/icon/envelope_icon.png" %}"><span id="panel_noty_number" class="notify_span">{{ user.noty_number }}</span></li></a>
 					{% else %}
-						<a href="/notify"><li class="visit"><img class="panel_avatar" src="{% static "img/icon/envelope_grey_icon.png" %}"><span class="notify_span">notify</span></li></a>
+						<a href="/notify"><li class="visit"><img class="panel_avatar" src="{% static "img/icon/envelope_grey_icon.png" %}"></li></a>
 					{% endif %}
-
-					<div class="separator"></div>
 				</ul>
+
+				<div class="separator"></div>
 
 				<ul id="info_panel_users">
 					{% if user.following_number > 0 %}
+
 						{% for follow in user.follower.all %}
 							<a href="/{{ follow.followed_id }}" id="follow_{{ follow.followed_id }}"><li class="visit"><img class="panel_avatar" src="{{ follow.get_followed_avatar_thumb }}">{{ follow.followed_id }}</li></a>
 						{% endfor %}
 					{% endif %}
-
-					<div class="separator"></div>
 				</ul>
 
+				<div class="separator"></div>
 
 				<ul id="info_panel_subs">
 					{% if user.sub_following_number > 0 %}

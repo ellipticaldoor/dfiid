@@ -10,9 +10,9 @@ class Notify(ListView):
 
 	def get_queryset(self):
 		if self.kwargs['tab'] == 'new':
-			return Noty.objects.filter(show=True)
+			return Noty.objects.filter(user=self.request.user, show=True)
 		else:
-			return Noty.objects.all()
+			return Noty.objects.filter(user=self.request.user)
 
 	def get_context_data(self, **kwargs):
 		context = super(Notify, self).get_context_data(**kwargs)
