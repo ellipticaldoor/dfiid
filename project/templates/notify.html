@@ -13,7 +13,7 @@
 	</ul>
 
 	{% for noty in object_list %}
-		<div class="post">
+		<div class="post" id="{{ noty.pk }}">
 			{% if noty.category == 'C' %}
 				<div class="post_content">{{ noty.commit.body_html|safe }}</div>
 
@@ -23,16 +23,16 @@
 					<span class="date">{{ commit.created |date:"d/m/Y H:i" }}</span>
 
 					{% if noty.show == True %}
-						<a class="commits_link" href="{{ noty.get_read_url }}">ok</a>
+						<div class="read_link noselect" href="{{ noty.get_read_url }}" noty_id="{{ noty.pk }}">read</div>
 					{% endif %}
 				</div>
 			{% else %}
-				<div class="post_info">
+				<div class="post_info follow_noty_container">
 					<a class="blog_link" href="/{{ noty.follow.follower_id }}"><img alt="{{ noty.follow.follower_id }}" src="{{ noty.follow.follower.get_avatar_url }}"></a>
 					<span><a href="/{{ noty.follow.follower_id }}">{{ noty.follow.follower_id }}</a> / follow</span>
 
 					{% if noty.show == True %}
-						<a class="commits_link" href="{{ noty.get_read_url }}">ok</a>
+						<div class="read_link noselect" href="{{ noty.get_read_url }}" noty_id="{{ noty.pk }}">read</div>
 					{% endif %}
 				</div>
 			{% endif %}
@@ -42,6 +42,19 @@
 
 {% block js %}
 	<script>
-			console.log('hola :)');
+		$('.read_link').click(function() {
+			var read_noty_id = this.getAttribute('noty_id');
+			fadeOut(document.getElementById(read_noty_id));
+		});
+
+		function fadeOut(el){
+			el.style.opacity = 1;
+
+			(function fade() {
+				if ((el.style.opacity -= .07) < 0) {
+					el.style.display = "none";
+				} else { requestAnimationFrame(fade); }
+			})();
+		}
 	</script>
 {% endblock %}

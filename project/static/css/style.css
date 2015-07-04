@@ -161,6 +161,8 @@ textarea:focus { border: 2px solid #34AADC; }
 
 .action_link:focus { color: #007AFF; }
 
+.orange { color: #FF9500; }
+
 
 /* nav
 __________________________________________________________________________ */
@@ -189,14 +191,15 @@ nav a { display: inline-block; }
 	text-align: center;
 }
 
-#envelope_link { float: right; }
-
-.right_nav_link { float: right !important! }
-
 .nav_link img {
 	margin: 13px 0 0 0;
 	height: 24px;
 	text-align: center;
+}
+
+.nav_link span {
+	position: relative;
+	top: -5px;
 }
 
 .nav_link:focus { text-decoration: none; }
@@ -205,6 +208,8 @@ nav a { display: inline-block; }
 #mid_nav_link { display: none; }
 #info_nav_link { display: none; }
 
+#envelope_link { float: right; }
+.right_nav_link { float: right !important! }
 
 /* panels
 __________________________________________________________________________ */
@@ -320,6 +325,8 @@ __________________________________________________________________________ */
 		margin: 15px 0 0 10px;
 		font-size: 140%;
 	}
+
+	#notify_panel { display: none; }
 
 	.visit {
 		font-size: 110%;
@@ -592,6 +599,35 @@ __________________________________________________________________________ */
 }
 
 
+/* notify
+__________________________________________________________________________ */
+
+.notify_span {
+	position: relative;
+	top: 1px;
+}
+
+.read_link {
+	cursor: pointer;
+	margin: 4px 4px 0 0;
+	float: right;
+	height: 30px;
+	padding: 10px 20px 10px 20px;
+	border: 2px solid #007AFF;
+	color: #007AFF;
+	line-height: 5px;
+	border-radius: 2px;
+}
+
+.read_link:hover {
+	background-color: #007AFF;
+	color: white;
+}
+
+.follow_noty_container { padding-top: 2px; }
+
+
+
 /* profile
 __________________________________________________________________________ */
 
@@ -837,7 +873,7 @@ __________________________________________________________________________ */
 .g-recaptcha iframe { margin: -10px 0 0 -2px; }
 
 
-/* Editor
+/* editor
 __________________________________________________________________________ */
 
 #edit_options {
@@ -884,7 +920,7 @@ __________________________________________________________________________ */
 #edit_form_button { width: 100px; }
 
 
-/* Animations
+/* about
 __________________________________________________________________________ */
 
 #about_logo {
@@ -894,7 +930,7 @@ __________________________________________________________________________ */
 }
 
 
-/* Animations
+/* animations
 __________________________________________________________________________ */
 
 @-webkit-keyframes bg_change {
