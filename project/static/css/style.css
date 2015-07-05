@@ -21,13 +21,13 @@ __________________________________________________________________________ */
 /* typography
 __________________________________________________________________________ */
 
-html, body { overflow: auto; }
+html, body, #app { overflow: auto; }
 
 html, body, textarea, input {
 	font-family: 'Open Sans';
 	text-rendering: optimizeLegibility;
 	font-size: 100%;
-	max-width: 100vw;
+	max-width: 100%;
 }
 
 a {
@@ -231,7 +231,7 @@ __________________________________________________________________________ */
 #info_panel { width: 240px; }
 
 #mid_panel {
-	width: calc(100vw - 160px - 240px);
+	width: calc(100% - 160px - 240px);
 	max-width: 700px;
 	padding: 0 5px 0 5px;
 }
@@ -244,6 +244,7 @@ __________________________________________________________________________ */
 	overflow: auto;
 	display: table;
 	margin: 0 auto 45px auto;
+	width: 100%;
 }
 
 #link_panel li {
@@ -333,8 +334,8 @@ __________________________________________________________________________ */
 	}
 
 	#mid_panel {
-		width: 100vw;
-		margin-left: calc((100vw - 700px)/2);
+		width: 100%;
+		margin-left: calc((100% - 700px)/2);
 	}
 
 	.post { padding: 10px 8px 12px 8px !important; }
