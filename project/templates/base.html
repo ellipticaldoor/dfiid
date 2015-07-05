@@ -20,12 +20,6 @@
 			}
 		}
 
-		@media only screen and (orientation: landscape) {
-			body, nav {
-				width: calc(100vw - 42px) !important;
-			}
-		}
-
 		nav { top: 0; }
 	</style>
 
@@ -38,7 +32,7 @@
 
 			var android_css = document.getElementById('android_css');
 			if (isNativeApp()) {
-                android_css.innerText = 'body { margin: 25px 0 0 0; opacity: 1 !important;} nav {height: 75px !important; padding: 25px 13px 0 13px !important;}'
+                android_css.innerText = '@media only screen and (orientation: landscape) { body, nav { width: calc(100vw - 42px) !important; } } body { margin: 25px 0 0 0; opacity: 1 !important;} nav {height: 75px !important; padding: 25px 13px 0 13px !important;}'
 			}
 			else {
 				android_css.innerText = 'body { opacity: 1 !important;}'
