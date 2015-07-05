@@ -30,13 +30,9 @@
 			}
 
 			if (isNativeApp()) {
-				var app = document.getElementById('app');
-				var nav = document.getElementsByTagName('nav')[0];
-
-				app.style.marginTop = '75px';
-				nav.style.height = '75px';
-				nav.style.paddingTop = '25px';
-				console.log('android webview :D');
+                var android_css = document.createElement('style');
+                android_css.innerHTML = 'body { margin-top: 75px;} nav {height: 75px; padding-top: 25px;}';
+                document.head.appendChild(android_css);
 			}
 		});
 	</script>
