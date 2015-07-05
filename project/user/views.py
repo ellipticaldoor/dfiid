@@ -167,8 +167,7 @@ class UserFollowCreate(View):
 
 
 class UserFollowDelete(View):
-	# def post(self, request, *args, **kwargs):
-	def get(self, request, *args, **kwargs):
+	def post(self, request, *args, **kwargs):
 		user = self.request.user
 		unfollowed = self.kwargs['unfollowed']
 
@@ -185,5 +184,4 @@ class UserFollowDelete(View):
 		obj.followed.save()
 		obj.delete()
 
-		# return HttpResponse(status=200)
-		return HttpResponseRedirect('/piramide')
+		return HttpResponse(status=200)
