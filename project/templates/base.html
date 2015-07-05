@@ -30,9 +30,12 @@
 				return /dfiid_android$/.test(navigator.userAgent);
 			}
 
+			var android_css = document.getElementById('android_css');
 			if (isNativeApp()) {
-                var android_css = document.getElementById('android_css');
-                android_css.innerText = 'body { margin-top: 25px;} nav {height: 75px !important; padding: 25px 13px 0 13px !important;}'
+                android_css.innerText = 'body { margin-top: 25px;display: block !important;} nav {height: 75px !important; padding: 25px 13px 0 13px !important;}'
+			}
+			else {
+				android_css.innerText = 'body { display: block !important}'
 			}
 		});
 	</script>
@@ -149,7 +152,6 @@
 		{% endif %}
 	</div>
 
-	<script>document.getElementsByTagName('body')[0].style.display = 'block';</script>
 	<script src="{% static "js/lib/zepto_1.1.6.min.js" %}"></script>
 	<script>
 		{% if user.is_authenticated %}
