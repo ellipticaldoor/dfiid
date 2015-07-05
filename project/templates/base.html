@@ -31,7 +31,7 @@
 			}
 
 			var android_css = document.getElementById('android_css');
-			if (!isNativeApp()) {
+			if (isNativeApp()) {
                 android_css.innerText = 'body { margin-top: 25px; opacity: 1 !important;} nav {height: 75px !important; padding: 25px 13px 0 13px !important;}'
 			}
 			else {
