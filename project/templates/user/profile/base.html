@@ -4,7 +4,7 @@
 
 
 {% block mid_panel %}
-	<div id="profile_head" style="background-image: url('{{ profile.get_cover_url }}');background-repeat: no-repeat;background-size: auto 100%;">
+	<div id="profile_head" style="background-image: url('{{ profile.get_cover_url }}');background-repeat: no-repeat;background-size: auto 100%;background-position: center;">
 		<div id="follow_action_container">
 			{% if action == 'follow' %}
 				<span id="profile_option" class="action_link noselect">follow</span>
@@ -65,7 +65,7 @@
 					data: {'csrfmiddlewaretoken': '{{ csrf_token }}',},
 					success: followSuccess,
 					error: function(xhr, error) {
-						followError();
+						// followError();
 						console.debug(xhr); console.debug(error);
  					},
 				});

@@ -8,6 +8,7 @@ from django import forms
 
 from user.models import User, UserFollow
 from content.models import Post, Commit, SubFollow
+from notify.models import Noty
 from user.forms import UserEditForm, SignUpForm
 from core.core import random_avatar, avatar_resize, cover_resize
 
@@ -88,12 +89,9 @@ class ProfileShowView(ListView):
 	def get_queryset(self):
 		show = self.kwargs['show']
 
-		if show == 'followers':
-			return UserFollow.objects.filter(followed=self.kwargs['profile'])
-		elif show == 'following':
-			return UserFollow.objects.filter(follower=self.kwargs['profile'])
-		else:
-			return SubFollow.objects.filter(follower=self.kwargs['profile'])
+		if show == 'followers': return UserFollow.objects.filter(followed=self.kwargs['profile'])
+		elif show == 'following': return UserFollow.objects.filter(follower=self.kwargs['profile'])
+		else: return SubFollow.objects.filter(follower=self.kwargs['profile'])
 
 	def get_context_data(self, **kwargs):
 		context = super(ProfileShowView, self).get_context_data(**kwargs)
@@ -152,27 +150,36 @@ class UserEdit(UpdateView):
 
 class UserFollowCreate(View):
 	def post(self, request, *args, **kwargs):
+		user = self.request.user
 		followed = self.kwargs['followed']
 
-		followed_obj = UserFollow.objects.create(follower_id=self.request.user, followed_id=followed)
-		followed_obj.save()
-		followed_obj.follower.following_number += 1
-		followed_obj.follower.save()
-		followed_obj.followed.follower_number += 1
-		followed_obj.followed.save()
+		obj = UserFollow.objects.create(follower=user, followed_id=followed)
+		obj.save()
+		obj.follower.following_number += 1
+		obj.follower.save()
+		obj.followed.follower_number += 1
+		obj.followed.save()
+
+		noty = Noty.objects.create(user_id=followed, category='F', follow_id=obj.pk)
+		noty.create_noty()
 
 		return HttpResponse(status=200)
 
 
 class UserFollowDelete(View):
 	def post(self, request, *args, **kwargs):
+		user = self.request.user
 		unfollowed = self.kwargs['unfollowed']
 
-		unfollowed_obj = UserFollow.objects.get(follower_id=self.request.user, followed_id=unfollowed)
-		unfollowed_obj.follower.following_number -= 1
-		unfollowed_obj.follower.save()
-		unfollowed_obj.followed.follower_number -= 1
-		unfollowed_obj.followed.save()
-		unfollowed_obj.delete()
+		obj = UserFollow.objects.get(follower_id=user, followed_id=unfollowed)
+
+		noty = Noty.objects.get(user_id=obj.followed_id, follow_id=obj.pk)
+		if noty.show == True: obj.followed.noty_number -= 1
+
+		obj.follower.following_number -= 1
+		obj.follower.save()
+		obj.followed.follower_number -= 1
+		obj.followed.save()
+		obj.delete()
 
 		return HttpResponse(status=200)

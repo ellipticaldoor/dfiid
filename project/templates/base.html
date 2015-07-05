@@ -61,10 +61,10 @@
 						<a id="notify_link" class="nav_link" href="/notify">
 							{% if user.noty_number > 0 %}
 								<img src="{% static "img/icon/envelope_icon.png" %}" />
-								<span id="nav_noty_number">{{ user.noty_number }}</span>
 							{% else %}
 								<img src="{% static "img/icon/envelope_grey_icon.png" %}" />
 							{% endif %}
+							<span id="nav_noty_number">{{ user.noty_number }}</span>
 						</a>
 					</li>
 				{% endif %}
@@ -103,7 +103,7 @@
 					{% if user.noty_number > 0 %}
 						<a href="/notify" ><li class="visit" id="notify_link"><img class="panel_avatar" src="{% static "img/icon/envelope_icon.png" %}"><span id="panel_noty_number" class="notify_span">{{ user.noty_number }}</span></li></a>
 					{% else %}
-						<a href="/notify"><li class="visit"><img class="panel_avatar" src="{% static "img/icon/envelope_grey_icon.png" %}"></li></a>
+						<a href="/notify"><li class="visit"><img class="panel_avatar" src="{% static "img/icon/envelope_grey_icon.png" %}"><span id="panel_noty_number" class="notify_span">{{ user.noty_number }}</span></li></a>
 					{% endif %}
 				</ul>
 

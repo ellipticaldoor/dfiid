@@ -144,7 +144,12 @@ class Commit(models.Model):
 		return self
 
 	def get_absolute_url(self): return self.post.get_absolute_url()
-	def get_commit_url(self): return '%s#%s' % (self.post.get_absolute_url(), self.commitid)
+
+	def get_commit_url(self):
+		if not hasattr(self.pk, 'decode'): commitid = self.pk
+		else: commitid = self.pk.decode('utf-8')
+		return '%s#%s' % (self.post.get_absolute_url(), commitid)
+
 	def get_avatar_url(self): return '/m/user/avatar/%s_thumb.png' % (self.user_id)
 
 	def __str__(self): return self.commitid

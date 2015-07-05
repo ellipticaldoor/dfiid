@@ -33,25 +33,20 @@ class FrontView(ListView):
 	paginate_by = 4
 
 	def get(self, request, *args, **kwargs):
-		if request.is_ajax():
-			self.template_name = 'ajax/post_list.html'
+		if request.is_ajax(): self.template_name = 'ajax/post_list.html'
 		return super(FrontView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
-		if self.kwargs['tab'] == 'top':
-			return Post.objects.last_commited()
-		else:
-			return Post.objects.created()
+		if self.kwargs['tab'] == 'top': return Post.objects.last_commited()
+		else: return Post.objects.created()
 
 	def get_context_data(self, **kwargs):
 		context = super(FrontView, self).get_context_data(**kwargs)
 		context['list'] = 'portada'
 		context['tab_show'] = self.kwargs['tab']
 
-		if self.kwargs['tab'] == 'top':
-			context['list_url'] = '/'
-		else:
-			context['list_url'] = '/new'
+		if self.kwargs['tab'] == 'top': context['list_url'] = '/'
+		else: context['list_url'] = '/new'
 		return context
 
 
@@ -60,41 +55,33 @@ class SubPostListView(ListView):
 	paginate_by = 4
 
 	def get(self, request, *args, **kwargs):
-		if request.is_ajax():
-			self.template_name = 'ajax/post_list.html'
+		if request.is_ajax(): self.template_name = 'ajax/post_list.html'
 		return super(SubPostListView, self).get(request, *args, **kwargs)
 
 	def get_queryset(self):
-		if self.kwargs['tab'] == 'top':
-			return Post.objects.sub_last_commited(self.kwargs['sub'])
-		else:
-			return Post.objects.sub_created(self.kwargs['sub'])
+		if self.kwargs['tab'] == 'top': return Post.objects.sub_last_commited(self.kwargs['sub'])
+		else: return Post.objects.sub_created(self.kwargs['sub'])
 
 	def get_context_data(self, **kwargs):
 		context = super(SubPostListView, self).get_context_data(**kwargs)
 		sub = Sub.objects.get(pk=self.kwargs['sub'])
 		user = self.request.user
 
-		if self.kwargs['tab'] == 'followers':
-			context['followers'] = True
+		if self.kwargs['tab'] == 'followers': context['followers'] = True
 
 		context['tab_show'] = self.kwargs['tab']
 		context['list'] = sub
 
 		context['tab'] = self.kwargs['tab']
-		if self.kwargs['tab'] == 'top':
-			context['list_url'] = '/sub/%s' % sub
-		else:
-			context['list_url'] = '/sub/%s/new' % sub
+		if self.kwargs['tab'] == 'top': context['list_url'] = '/sub/%s' % sub
+		else: context['list_url'] = '/sub/%s/new' % sub
 
 		context['action'] = 'follow'
 
 		if user.is_authenticated():
 			follow_state = SubFollow.objects.by_id(sub_followid='%s>%s' % (user.pk, sub.pk))
-			if follow_state:
-				context['action'] = 'unfollow'
-			else:
-				context['action'] = 'follow'
+			if follow_state: context['action'] = 'unfollow'
+			else: context['action'] = 'follow'
 
 		return context
 
@@ -178,9 +165,10 @@ class PostUserCreatedView(ListView):
 
 class SubFollowCreate(View):
 	def post(self, request, *args, **kwargs):
+		user = self.request.user
 		sub_followed = self.kwargs['followed']
 
-		sub_followed_obj = SubFollow.objects.create(follower=self.request.user,sub_id=sub_followed)
+		sub_followed_obj = SubFollow.objects.create(follower=user, sub_id=sub_followed)
 		sub_followed_obj.save()
 		sub_followed_obj.follower.sub_following_number += 1
 		sub_followed_obj.follower.save()
