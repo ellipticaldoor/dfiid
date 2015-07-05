@@ -23,6 +23,7 @@
 		nav { top: 0; }
 	</style>
 
+    <style id="android_css" type="text/css"></style>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			function isNativeApp() {
@@ -30,9 +31,8 @@
 			}
 
 			if (isNativeApp()) {
-                var android_css = document.createElement('style');
-                android_css.innerHTML = 'body { margin-top: 75px;} nav {height: 75px; padding-top: 25px;}';
-                document.head.appendChild(android_css);
+                var android_css = document.getElementById('android_css');
+                android_css.innerText = 'body { margin-top: 75px;} nav {height: 75px !important; padding: 25px 13px 0 13px !important;}'
 			}
 		});
 	</script>
