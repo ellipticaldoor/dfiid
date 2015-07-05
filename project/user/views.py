@@ -167,14 +167,17 @@ class UserFollowCreate(View):
 
 
 class UserFollowDelete(View):
-	def post(self, request, *args, **kwargs):
+	# def post(self, request, *args, **kwargs):
+	def get(self, request, *args, **kwargs):
 		user = self.request.user
 		unfollowed = self.kwargs['unfollowed']
 
 		obj = UserFollow.objects.get(follower_id=user, followed_id=unfollowed)
 
-		noty = Noty.objects.get(user_id=obj.followed_id, follow_id=obj.pk)
-		if noty.show == True: obj.followed.noty_number -= 1
+		try:
+			noty = Noty.objects.get(user_id=obj.followed_id, follow_id=obj.pk)
+			if noty.show == True: obj.followed.noty_number -= 1
+		except: pass
 
 		obj.follower.following_number -= 1
 		obj.follower.save()
@@ -182,4 +185,5 @@ class UserFollowDelete(View):
 		obj.followed.save()
 		obj.delete()
 
-		return HttpResponse(status=200)
+		# return HttpResponse(status=200)
+		return HttpResponseRedirect('/piramide')
