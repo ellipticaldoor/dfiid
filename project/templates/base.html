@@ -35,7 +35,7 @@
                 android_css.innerText = '@media only screen and (orientation: landscape) { body, nav { width: calc(100vw - 42px) !important;} app {width: 100%;} } body { margin: 25px 0 0 0; opacity: 1 !important;} nav {height: 75px !important; padding: 25px 13px 0 13px !important;}'
 			}
 			else {
-				android_css.innerText = 'body { opacity: 1 !important;}'
+				document.getElementsByTagName('body')[0].style.opacity = '1';
 			}
 		});
 	</script>
@@ -152,14 +152,12 @@
 		{% endif %}
 	</div>
 
-	<script src="{% static "js/lib/zepto_1.1.6.min.js" %}"></script>
 	<script>
-		{% if user.is_authenticated %}
-			show_info = true;
-		{% else %}
-			var show_info = false;
+		{% if user.is_authenticated %} show_info = true;
+		{% else %} var show_info = false;
 		{% endif %}
 	</script>
+	<script src="{% static "js/lib/zepto_1.1.6.min.js" %}"></script>
 	<script src="{% static "js/global.js" %}"></script>
 	<script src="{% static "js/video_thumb.js" %}"></script>
 	{% block js %}{% endblock %}
