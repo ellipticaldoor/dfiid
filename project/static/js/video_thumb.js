@@ -1,9 +1,14 @@
+function isNativeApp() {
+	return /dfiid_android$/.test(navigator.userAgent);
+}
+
 function video_thumb() {
 	var v = document.getElementsByClassName('youtube_player');
+
 	for (var n = 0; n < v.length; n++) {
 		var p = document.createElement('div');
 		p.innerHTML = youtubeThumb(v[n].dataset.id);
-		p.onclick = youtubeIframe;
+		if (!isNativeApp()) { p.onclick = youtubeIframe; }
 		v[n].appendChild(p);
 	}
 
@@ -34,7 +39,14 @@ function youtubeThumb(id) {
 
 	thumbImg.src = thumb_url;
 
-	return '<img id="thumb_' + id + '" class="thumb" src="' + thumb_url + '" ><div class="play_button"></div>';
+	video_thumb_container = '<img id="thumb_' + id + '" class="thumb" src="' + thumb_url + '" ><div class="play_button"></div>';
+
+	if (isNativeApp()) {
+		video_thumb_container = '<a href="https://www.youtube.com/watch?v=' + id + '" target="_blank">' + video_thumb_container + '</a>';
+		console.log('android');
+	}
+
+	return video_thumb_container;
 }
 
 
