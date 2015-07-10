@@ -3,7 +3,7 @@ from markdown.preprocessors import Preprocessor
 from markdown.extensions import Extension
 
 
-urlfinder = re.compile(r'(http[s]?://(?!www\.youtube|youtu\.be|(www.|)vimeo\.com)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
+urlfinder = re.compile(r'(http[s]?://(?!www\.youtube\.com/watch\?\S*v=(?P<youtubeid>\S[^&/]+)|youtu\.be|(www.|)vimeo\.com/(?P<vimeoid>\d+)\S*)(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)')
 
 
 class URLify(Preprocessor):
