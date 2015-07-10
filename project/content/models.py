@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from user.models import User
 from core.core import _createId
 from core.video_embed import CustomVideoExtension
+from core.markdown_urlify import URLifyExtension
 
 from django_resized import ResizedImageField
 from markdown import markdown
@@ -98,7 +99,7 @@ class Post(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.title.replace(' ', '_'))
 		if not self.slug: self.slug = '_'
-		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
+		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension(), URLifyExtension()])
 		super(Post, self).save(*args, **kwargs)
 
 	def get_absolute_url(self):
@@ -124,7 +125,7 @@ class Commit(models.Model):
 	show = models.BooleanField(default=True)
 
 	def save(self, *args, **kwargs):
-		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension()])
+		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension(), URLifyExtension()])
 		super(Commit, self).save(*args, **kwargs)
 
 	def create_commit(self, user, post):
