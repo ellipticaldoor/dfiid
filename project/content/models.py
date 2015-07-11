@@ -125,7 +125,7 @@ class Commit(models.Model):
 	show = models.BooleanField(default=True)
 
 	def save(self, *args, **kwargs):
-		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension(), URLifyExtension()])
+		self.body_html = markdown(self.body, safe_mode=True, extensions=[CustomVideoExtension(), UrlizeExtension()])
 		super(Commit, self).save(*args, **kwargs)
 
 	def create_commit(self, user, post):
