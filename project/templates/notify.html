@@ -16,7 +16,7 @@
 		<li><a class="{% if tab_show == 'all' %}tab_selected{% endif %}" href="/notify/all">all</a></li>
 	</ul>
 
-	{% if user.noty_number > 0 %}
+	{% if object_list %}
 		{% for noty in object_list %}
 			<div class="post" id="{{ noty.pk }}">
 				{% if noty.category == 'C' %}
