@@ -2,11 +2,17 @@
 
 $ mkvirtualenv --python=[your_python_3_path] dfiid
 
+$ vim ~/.virtualenvs/dfiid/bin/postactivate
+# Add postactivate configured included in the docs folder
+$ vim ~/.virtualenvs/dfiid/bin/predeactivate
+# Add predeactivate included in the docs folder
 
 # On the project folder
 
 $ workon dfiid
 $ pip install -r requirements/base
+$ pip install -r requirements/dev
+$ cd project
 $ python manage.py makemigrations user
 $ python manage.py migrate
 $ python manage.py syncdb
