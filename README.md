@@ -1,7 +1,7 @@
 # dfiid
 
-dfiid is a web app that allows to create simple blogging social networks.
+dfiid is a web app that allows to create a simple blogging social network.
 
 ## Installation
 
-Al the necessary info for a development and pruduction is in the folder dfiid_docs
+Check the folder dfiid_docs for a development or production installation.
