@@ -1,0 +1,13 @@
+# Create a virtualenv for the dfiid project
+
+$ mkvirtualenv --python=[your_python_3_path] dfiid
+
+
+# On the project folder
+
+$ workon dfiid
+$ pip install -r requirements/base.txt
+$ python manage.py makemigrations user
+$ python manage.py migrate
+$ python manage.py syncdb
+$ python manage.py runserver

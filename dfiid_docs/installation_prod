@@ -1,0 +1,108 @@
+##### Update the system (Ubuntu 14.10 x64)
+
+$ sudo apt-get update
+$ sudo apt-get dist-upgrade
+$ sudo apt-get autoremove
+
+
+##### Install dependencies
+
+$ sudo apt-get install git-core python-pip python-virtualenv python3-dev postgresql postgresql-contrib libpq-dev nginx libjpeg-dev zlib1g-dev libpng12-dev libmemcached-dev libpng12-dev memcached python-dev libmemcached-dev
+
+$ sudo pip install virtualenvwrapper
+##### Other stuff
+
+$ sudo dpkg-reconfigure tzdata
+$ sudo apt-get install ntp
+
+##### Configurar server
+
+$ vim /etc/environment
+
+LC_ALL=en_US.UTF-8
+LANG=en_US.UTF-8
+
+$ vim ~/.bash_profile
+
+# Language
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Prompt personalitation
+PS1="\[\033[33m\]\u \h:\w\$ \[\033[0m\]"
+
+# Virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/dev
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+source /usr/local/bin/virtualenvwrapper.sh
+
+$ vim ~/.vimrc
+
+filetype plugin indent on
+syntax on
+
+$ source ~/.bash_profile
+
+##### Create a virtualenv for the dfiid project
+
+$ mkvirtualenv --python=[your_python_3_path] dfiid
+# /usr/bin/python3 on debian
+$ deactivate
+$ vim ~/.virtualenvs/dfiid/bin/postactivate
+# Add postactivate configured included in the docs folder
+$ vim ~/.virtualenvs/dfiid/bin/predeactivate
+# Add predeactivate included in the docs folder
+
+
+##### Configure database
+
+$ sudo su - postgres
+$ createdb dfiid
+$ createuser -P dfiid
+# Enter the new password
+$ psql
+$ GRANT ALL PRIVILEGES ON DATABASE dfiid TO dfiid;
+$ \q
+$ exit
+
+##### Configure database connection
+
+$ sudo vim /etc/postgresql/9.4/main/postgresql.conf
+$ sudo vim /etc/postgresql/9.4/main/pg_hba.conf
+
+
+##### On the project folder
+
+$ workon dfiid
+$ pip install -r requirements/base
+$ pip install -r requirements/prod
+$ pip install git+https://github.com/elky/django-flat-theme.git@master
+
+
+##### Nginx configuration
+
+$ sudo vim /etc/nginx/sites-available/dfiid
+# This file is the configured nginx_config in the docs
+$ sudo mv /etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default_disabled
+$ sudo vim /etc/nginx/nginx.conf
+# Change the line 'user www-data;' for 'user root;' (TODO: Create a user for the execution of the project without root permissions)
+# Uncomment gzip options to enable it
+$ sudo vim /etc/nginx/mime.types
+# add the string inside types - application/x-web-app-manifest+json   webapp;
+$ sudo service nginx restart
+
+
+$ python manage.py runserver 0.0.0.0:9000 --settings=withaliasing.settings.development
+# nginx test with django in the project folder
+
+
+##### Gunicorn configuration
+
+$ gunicorn dfiid.wsgi --bind 127.0.0.1:8000 --daemon --workers=3
+$ gunicorn withaliasing.wsgi --bind 127.0.0.1:8000 --daemon --workers=3
+
+
+#parar gunicorn
+$ ps ax|grep gunicorn
+$ pkill gunicorn

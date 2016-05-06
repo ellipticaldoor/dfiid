@@ -1,0 +1,5 @@
+# backup
+$pg_dump -U dfiid dfiid -f dfiid_db_dump_14_08_2015.sql
+
+# restore
+psql -U miguel -d dfiid -f date.sql

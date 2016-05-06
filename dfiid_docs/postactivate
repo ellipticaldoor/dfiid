@@ -1,0 +1,13 @@
+#!/bin/bash
+# This hook is sourced after this virtualenv is activated.
+export DJANGO_SETTINGS_MODULE=''
+export SECRET_KEY=''
+export DB_NAME=''
+export DB_USER=''
+export DB_PASSWORD=''
+export DB_HOST=''
+export DB_PORT=''
+export LANGUAGE=''
+export STATIC_ROOT=''
+export SK_ENDPOINT=''
+export SK_API_KEY=''
