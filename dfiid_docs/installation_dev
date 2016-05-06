@@ -6,7 +6,7 @@ $ mkvirtualenv --python=[your_python_3_path] dfiid
 # On the project folder
 
 $ workon dfiid
-$ pip install -r requirements/base.txt
+$ pip install -r requirements/base
 $ python manage.py makemigrations user
 $ python manage.py migrate
 $ python manage.py syncdb
